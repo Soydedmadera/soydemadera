@@ -1,0 +1,504 @@
+<!--
+  ════════════════════════════════════════════════════════════════
+  WIDGET DE CHAT IA — Soy de Madera
+  ════════════════════════════════════════════════════════════════
+  INSTRUCCIONES:
+  1. Copiá TODO este bloque y pegalo justo antes del </body> 
+     en tu index.html (reemplazando este comentario)
+  2. Asegurate de que el backend esté corriendo en localhost:8000
+  ════════════════════════════════════════════════════════════════
+-->
+
+<!-- ESTILOS DEL WIDGET -->
+<style>
+  /* ── Botón flotante ── */
+  #chat-fab {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 200;
+    width: 56px;
+    height: 56px;
+    background: var(--ambar);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    transition: background 0.2s, transform 0.2s;
+  }
+  #chat-fab:hover { background: var(--crema); transform: scale(1.05); }
+  #chat-fab .fab-icon-open  { display: block; }
+  #chat-fab .fab-icon-close { display: none; }
+  #chat-fab.open .fab-icon-open  { display: none; }
+  #chat-fab.open .fab-icon-close { display: block; }
+
+  /* ── Panel del chat ── */
+  #chat-panel {
+    position: fixed;
+    bottom: 5.5rem;
+    right: 2rem;
+    z-index: 200;
+    width: 380px;
+    max-height: 560px;
+    background: var(--roble);
+    border: 1px solid rgba(196,122,42,0.25);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    transform: translateY(16px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  #chat-panel.open {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
+
+  /* ── Header del panel ── */
+  .chat-header {
+    background: var(--cedro);
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid rgba(196,122,42,0.2);
+    flex-shrink: 0;
+  }
+  .chat-header-top {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.7rem;
+  }
+  .chat-dot {
+    width: 8px; height: 8px;
+    background: var(--ambar);
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  @keyframes pulse-dot {
+    0%,100% { opacity: 1; }
+    50%      { opacity: 0.4; }
+  }
+  .chat-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--crema);
+    letter-spacing: -0.01em;
+  }
+  .chat-modes {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .chat-mode-btn {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid rgba(122,106,82,0.4);
+    background: transparent;
+    color: var(--gris-tex);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .chat-mode-btn:hover    { border-color: var(--ambar); color: var(--ambar); }
+  .chat-mode-btn.active   { background: var(--ambar); border-color: var(--ambar); color: var(--nogal); }
+
+  /* ── Mensajes ── */
+  .chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gris-tex) transparent;
+  }
+  .chat-bubble {
+    max-width: 88%;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+  .chat-bubble.user {
+    background: var(--cedro);
+    color: var(--crema);
+    align-self: flex-end;
+    border-left: 2px solid var(--ambar);
+  }
+  .chat-bubble.assistant {
+    background: rgba(255,255,255,0.04);
+    color: var(--crema2);
+    align-self: flex-start;
+    border-left: 2px solid var(--siena);
+  }
+  .chat-bubble.assistant strong { color: var(--ambar); font-weight: 500; }
+  .chat-bubble.assistant code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.8rem;
+    background: rgba(0,0,0,0.3);
+    padding: 1px 5px;
+    color: var(--ambar);
+  }
+  .chat-bubble.typing {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    padding: 0.8rem;
+  }
+  .typing-dot {
+    width: 6px; height: 6px;
+    background: var(--gris-tex);
+    border-radius: 50%;
+    animation: typing-bounce 1.2s ease-in-out infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typing-bounce {
+    0%,80%,100% { transform: translateY(0); opacity: 0.4; }
+    40%          { transform: translateY(-5px); opacity: 1; }
+  }
+
+  /* ── Sugerencias rápidas ── */
+  .chat-suggestions {
+    padding: 0 1rem 0.6rem;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+  .chat-suggestion {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border: 1px solid rgba(122,106,82,0.3);
+    color: var(--gris-tex);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+  }
+  .chat-suggestion:hover { border-color: var(--siena); color: var(--siena); }
+
+  /* ── Input ── */
+  .chat-input-area {
+    padding: 0.8rem 1rem;
+    border-top: 1px solid rgba(122,106,82,0.15);
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  #chat-input {
+    flex: 1;
+    background: var(--nogal);
+    border: 1px solid rgba(122,106,82,0.3);
+    color: var(--crema);
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 0.95rem;
+    padding: 0.55rem 0.8rem;
+    outline: none;
+    resize: none;
+    line-height: 1.4;
+    transition: border-color 0.2s;
+  }
+  #chat-input:focus { border-color: var(--ambar); }
+  #chat-input::placeholder { color: var(--gris-tex); }
+  #chat-send {
+    background: var(--ambar);
+    color: var(--nogal);
+    border: none;
+    padding: 0 1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex-shrink: 0;
+    align-self: flex-end;
+    height: 36px;
+  }
+  #chat-send:hover    { background: var(--crema); }
+  #chat-send:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  /* ── Error de conexión ── */
+  .chat-error {
+    background: rgba(180, 50, 30, 0.15);
+    border-left: 2px solid #c04020;
+    color: #e07060;
+    font-size: 0.82rem;
+    padding: 0.6rem 0.9rem;
+    align-self: flex-start;
+    max-width: 88%;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 500px) {
+    #chat-panel { width: calc(100vw - 1.5rem); right: 0.75rem; bottom: 4.5rem; }
+    #chat-fab   { bottom: 1.2rem; right: 1.2rem; }
+  }
+</style>
+
+<!-- BOTÓN FLOTANTE -->
+<button id="chat-fab" aria-label="Abrir asistente de carpintería" aria-expanded="false">
+  <span class="fab-icon-open">🪵</span>
+  <span class="fab-icon-close">✕</span>
+</button>
+
+<!-- PANEL DEL CHAT -->
+<div id="chat-panel" role="dialog" aria-label="Asistente de carpintería">
+
+  <!-- Header con modos -->
+  <div class="chat-header">
+    <div class="chat-header-top">
+      <div class="chat-dot"></div>
+      <span class="chat-title">Asistente Soy de Madera</span>
+    </div>
+    <div class="chat-modes">
+      <button class="chat-mode-btn active" data-mode="general">Carpintería</button>
+      <button class="chat-mode-btn" data-mode="diccionario">Diccionario</button>
+      <button class="chat-mode-btn" data-mode="corte">Plan de corte</button>
+    </div>
+  </div>
+
+  <!-- Mensajes -->
+  <div class="chat-messages" id="chat-messages"></div>
+
+  <!-- Sugerencias rápidas -->
+  <div class="chat-suggestions" id="chat-suggestions"></div>
+
+  <!-- Input -->
+  <div class="chat-input-area">
+    <textarea
+      id="chat-input"
+      placeholder="Preguntá sobre carpintería…"
+      rows="1"
+      aria-label="Escribí tu pregunta"
+    ></textarea>
+    <button id="chat-send" aria-label="Enviar">Enviar</button>
+  </div>
+</div>
+
+<!-- LÓGICA DEL WIDGET -->
+<script>
+(function() {
+  // ── Configuración ──────────────────────────────────────────────
+  const API_URL = 'http://localhost:8000/api/chat';
+
+  // Sugerencias por modo
+  const SUGGESTIONS = {
+    general: [
+      '¿Qué unión uso para una caja?',
+      'Diferencia entre MDF y aglomerado',
+      '¿Cómo cuadro una pieza?',
+      'Secuencia de lijado recomendada',
+    ],
+    diccionario: [
+      '¿Qué es un dovetail joint?',
+      '¿Cómo se pronuncia "mortise"?',
+      '¿Qué es un kerf?',
+      'Explicame "snipe"',
+    ],
+    corte: [
+      'Mesa de 1200×700mm en pino',
+      'Caja con tapa 300×200×150mm',
+      'Cajón para escritorio 400×350mm',
+      'Estante flotante 800×250mm',
+    ],
+  };
+
+  // Prefijos de mensaje según el modo
+  const MODE_PREFIX = {
+    general:     '',
+    diccionario: '[MODO DICCIONARIO] ',
+    corte:       '[MODO PLAN DE CORTE] Necesito un plan de corte para: ',
+  };
+
+  // ── Estado ──────────────────────────────────────────────────────
+  let isOpen        = false;
+  let isLoading     = false;
+  let activeMode    = 'general';
+  let conversation  = [];   // historial completo de la conversación
+
+  // ── Referencias al DOM ──────────────────────────────────────────
+  const fab         = document.getElementById('chat-fab');
+  const panel       = document.getElementById('chat-panel');
+  const messagesEl  = document.getElementById('chat-messages');
+  const suggestEl   = document.getElementById('chat-suggestions');
+  const inputEl     = document.getElementById('chat-input');
+  const sendBtn     = document.getElementById('chat-send');
+
+  // ── Función: abrir/cerrar panel ─────────────────────────────────
+  function togglePanel() {
+    isOpen = !isOpen;
+    fab.classList.toggle('open', isOpen);
+    panel.classList.toggle('open', isOpen);
+    fab.setAttribute('aria-expanded', isOpen);
+
+    if (isOpen && conversation.length === 0) {
+      // Mensaje de bienvenida la primera vez
+      addMessage('assistant', '¡Hola! Soy el asistente de **Soy de Madera**. Puedo ayudarte con preguntas de carpintería, explicarte términos del diccionario técnico, o generarte un plan de corte. ¿Por dónde empezamos?');
+    }
+    if (isOpen) setTimeout(() => inputEl.focus(), 300);
+  }
+
+  // ── Función: agregar un mensaje al chat ─────────────────────────
+  function addMessage(role, text, isError = false) {
+    const bubble = document.createElement('div');
+    bubble.className = isError ? 'chat-bubble chat-error' : `chat-bubble ${role}`;
+
+    // Convierte Markdown básico a HTML
+    const html = text
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\n/g, '<br>');
+
+    bubble.innerHTML = html;
+    messagesEl.appendChild(bubble);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+    return bubble;
+  }
+
+  // ── Función: mostrar/ocultar indicador de "escribiendo..." ──────
+  function showTyping() {
+    const bubble = document.createElement('div');
+    bubble.className = 'chat-bubble assistant typing';
+    bubble.id = 'typing-indicator';
+    bubble.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+    messagesEl.appendChild(bubble);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function hideTyping() {
+    const el = document.getElementById('typing-indicator');
+    if (el) el.remove();
+  }
+
+  // ── Función: renderizar sugerencias del modo activo ─────────────
+  function renderSuggestions() {
+    suggestEl.innerHTML = '';
+    SUGGESTIONS[activeMode].forEach(text => {
+      const btn = document.createElement('button');
+      btn.className = 'chat-suggestion';
+      btn.textContent = text;
+      btn.addEventListener('click', () => sendMessage(text));
+      suggestEl.appendChild(btn);
+    });
+  }
+
+  // ── Función: enviar mensaje a la IA ─────────────────────────────
+  async function sendMessage(text) {
+    const userText = text || inputEl.value.trim();
+    if (!userText || isLoading) return;
+
+    // Limpia el input y muestra el mensaje del usuario
+    inputEl.value = '';
+    inputEl.style.height = 'auto';
+    suggestEl.style.display = 'none';
+    addMessage('user', userText);
+
+    // Arma el mensaje con el prefijo del modo actual
+    const messageWithMode = MODE_PREFIX[activeMode] + userText;
+
+    // Agrega al historial
+    conversation.push({ role: 'user', content: messageWithMode });
+
+    // Bloquea el input mientras espera
+    isLoading = true;
+    sendBtn.disabled = true;
+    showTyping();
+
+    try {
+      // Llama al backend
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: conversation }),
+      });
+
+      if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err.detail || 'Error del servidor');
+      }
+
+      const data = await response.json();
+
+      // Agrega la respuesta al historial y la muestra
+      conversation.push({ role: 'assistant', content: data.reply });
+      hideTyping();
+      addMessage('assistant', data.reply);
+
+    } catch (error) {
+      hideTyping();
+      // Distingue entre error de conexión y error del servidor
+      const msg = error.message.includes('fetch')
+        ? 'No puedo conectarme al servidor. ¿Está corriendo el backend en localhost:8000?'
+        : `Error: ${error.message}`;
+      addMessage('assistant', msg, true);
+      // Saca el último mensaje del historial si falló
+      conversation.pop();
+    } finally {
+      isLoading = false;
+      sendBtn.disabled = false;
+      suggestEl.style.display = 'flex';
+      inputEl.focus();
+    }
+  }
+
+  // ── Event listeners ─────────────────────────────────────────────
+
+  fab.addEventListener('click', togglePanel);
+
+  // Enviar con botón
+  sendBtn.addEventListener('click', () => sendMessage());
+
+  // Enviar con Enter (Shift+Enter para salto de línea)
+  inputEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  });
+
+  // Auto-resize del textarea
+  inputEl.addEventListener('input', () => {
+    inputEl.style.height = 'auto';
+    inputEl.style.height = Math.min(inputEl.scrollHeight, 100) + 'px';
+  });
+
+  // Cambio de modo
+  document.querySelectorAll('.chat-mode-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.chat-mode-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeMode = btn.dataset.mode;
+      renderSuggestions();
+      // Cambia el placeholder según el modo
+      const placeholders = {
+        general:     'Preguntá sobre carpintería…',
+        diccionario: 'Escribí un término en inglés o español…',
+        corte:       'Describí el mueble que querés cortar…',
+      };
+      inputEl.placeholder = placeholders[activeMode];
+    });
+  });
+
+  // Cerrar panel al hacer clic fuera
+  document.addEventListener('click', (e) => {
+    if (isOpen && !panel.contains(e.target) && !fab.contains(e.target)) {
+      togglePanel();
+    }
+  });
+
+  // ── Inicialización ───────────────────────────────────────────────
+  renderSuggestions();
+
+})();
+</script>
