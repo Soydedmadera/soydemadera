@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conversor Imperial / Decimal — Soy de Madera</title>
+  <meta name="description" content="Convertí pulgadas fraccionarias y pies/pulgadas a mm, cm y metros. Tabla de tamaños nominales vs reales de madera aserrada." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --nogal:       #1a1209;
+      --nogal-mid:   #251a0e;
+      --roble:       #2e2010;
+      --cedro:       #3a2a14;
+      --siena:       #a0522d;
+      --siena-claro: #c4733f;
+      --ambar:       #d4922a;
+      --ambar-claro: #e8b84b;
+      --crema:       #f0e6cc;
+      --crema-suave: #d9c9a8;
+      --blanco:      #faf7f0;
+      --radio:       6px;
+      --radio-lg:    12px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--nogal);
+      color: var(--crema);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      min-height: 100vh;
+      background-image:
+        radial-gradient(ellipse 70% 50% at 10% 0%, rgba(58,42,20,0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 35% at 90% 95%, rgba(36,22,6,0.55) 0%, transparent 55%);
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 2rem;
+      border-bottom: 1px solid rgba(212,146,42,0.18);
+      background: rgba(26,18,9,0.85);
+      backdrop-filter: blur(6px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--ambar);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--ambar-claro); }
+    .nav-back svg { width: 16px; height: 16px; }
+    .nav-sep { width: 1px; height: 1.1rem; background: rgba(212,146,42,0.25); }
+    .nav-title {
+      font-family: 'Fraunces', serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--crema-suave);
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* ── HEADER ── */
+    .page-header { margin-bottom: 2.8rem; }
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ambar);
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .eyebrow::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 40px;
+      background: var(--ambar);
+      opacity: 0.4;
+    }
+    h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--blanco);
+      margin-bottom: 0.8rem;
+    }
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--crema-suave);
+      max-width: 540px;
+      font-style: italic;
+    }
+
+    /* ── TABS ── */
+    .tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2rem;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(212,146,42,0.15);
+      border-radius: var(--radio-lg);
+      padding: 4px;
+      overflow-x: auto;
+    }
+    .tab-btn {
+      flex: 1;
+      min-width: max-content;
+      padding: 0.6rem 1.1rem;
+      border: none;
+      background: transparent;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.04em;
+      color: rgba(240,230,204,0.45);
+      cursor: pointer;
+      border-radius: var(--radio);
+      transition: background 0.18s, color 0.18s;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      background: var(--cedro);
+      color: var(--ambar-claro);
+      border: 1px solid rgba(212,146,42,0.25);
+    }
+    .tab-btn:hover:not(.active) { color: var(--crema-suave); }
+
+    /* ── TAB CONTENT ── */
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--nogal-mid);
+      border: 1px solid rgba(212,146,42,0.15);
+      border-radius: var(--radio-lg);
+      padding: 1.8rem 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .card-title {
+      font-family: 'Fraunces', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--crema);
+      margin-bottom: 1.4rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 1px solid rgba(212,146,42,0.12);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .card-title .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: rgba(212,146,42,0.1);
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    /* ── LABEL / INPUT ── */
+    label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ambar);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .field { margin-bottom: 1.2rem; }
+
+    .input-row {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    .input-row .field { flex: 1; min-width: 80px; margin-bottom: 0; }
+
+    .input-wrap { position: relative; }
+    input[type="number"], select {
+      width: 100%;
+      background: var(--cedro);
+      border: 1px solid rgba(212,146,42,0.25);
+      border-radius: var(--radio);
+      padding: 0.7rem 2.8rem 0.7rem 0.9rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1rem;
+      color: var(--blanco);
+      outline: none;
+      transition: border-color 0.18s;
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
+    input[type="number"]:focus, select:focus { border-color: var(--ambar); }
+    input::placeholder { color: rgba(240,230,204,0.25); }
+
+    select {
+      padding-right: 2rem;
+      cursor: pointer;
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23d4922a' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.7rem center;
+    }
+    select option { background: var(--cedro); }
+
+    .input-unit {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: rgba(212,146,42,0.55);
+      pointer-events: none;
+    }
+
+    /* ── BTN ── */
+    .btn-calc {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.6rem;
+      background: var(--siena);
+      border: none;
+      border-radius: var(--radio);
+      font-family: 'Fraunces', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--blanco);
+      cursor: pointer;
+      transition: background 0.18s;
+      white-space: nowrap;
+    }
+    .btn-calc:hover { background: var(--siena-claro); }
+    .btn-calc-full { width: 100%; justify-content: center; margin-top: 0.8rem; }
+
+    /* ── RESULTADO INLINE ── */
+    .result-inline {
+      background: var(--cedro);
+      border: 1px solid rgba(212,146,42,0.2);
+      border-radius: var(--radio);
+      padding: 1rem 1.4rem;
+      margin-top: 1.2rem;
+      display: none;
+    }
+    .result-inline.visible { display: block; }
+
+    .result-cols {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 0.9rem;
+    }
+
+    .r-item { display: flex; flex-direction: column; gap: 0.15rem; }
+    .r-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(240,230,204,0.45);
+    }
+    .r-value {
+      font-family: 'Fraunces', serif;
+      font-size: 1.7rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--ambar-claro);
+    }
+    .r-value.sm { font-size: 1.35rem; }
+    .r-sub {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: rgba(212,146,42,0.6);
+    }
+
+    /* ── FRACCIÓN RÁPIDA ── */
+    .fractions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 0.5rem;
+    }
+    .frac-btn {
+      background: var(--cedro);
+      border: 1px solid rgba(212,146,42,0.2);
+      border-radius: var(--radio);
+      padding: 0.6rem 0.5rem;
+      text-align: center;
+      cursor: pointer;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--crema);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .frac-btn:hover {
+      border-color: var(--ambar);
+      background: rgba(58,42,20,0.8);
+    }
+    .frac-btn .frac-val {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ambar-claro);
+      display: block;
+    }
+    .frac-btn .frac-mm {
+      font-size: 0.65rem;
+      color: rgba(240,230,204,0.45);
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+    /* ── TABLA ── */
+    .tabla-wrap {
+      overflow-x: auto;
+      border-radius: var(--radio);
+      border: 1px solid rgba(212,146,42,0.12);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+    }
+    thead tr {
+      background: var(--cedro);
+      border-bottom: 1px solid rgba(212,146,42,0.25);
+    }
+    thead th {
+      padding: 0.7rem 0.9rem;
+      text-align: left;
+      font-weight: 500;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ambar);
+      white-space: nowrap;
+    }
+    tbody tr {
+      border-bottom: 1px solid rgba(212,146,42,0.07);
+      transition: background 0.12s;
+    }
+    tbody tr:hover { background: rgba(58,42,20,0.4); }
+    tbody tr:last-child { border-bottom: none; }
+    tbody td {
+      padding: 0.65rem 0.9rem;
+      color: var(--crema-suave);
+      white-space: nowrap;
+    }
+    tbody td:first-child {
+      color: var(--crema);
+      font-weight: 500;
+    }
+    .badge-nominal {
+      display: inline-block;
+      background: rgba(160,82,45,0.2);
+      border: 1px solid rgba(160,82,45,0.3);
+      color: var(--siena-claro);
+      border-radius: 3px;
+      padding: 0.05rem 0.4rem;
+      font-size: 0.68rem;
+      margin-left: 0.3rem;
+    }
+    .badge-real {
+      display: inline-block;
+      background: rgba(212,146,42,0.1);
+      border: 1px solid rgba(212,146,42,0.25);
+      color: var(--ambar);
+      border-radius: 3px;
+      padding: 0.05rem 0.4rem;
+      font-size: 0.68rem;
+      margin-left: 0.3rem;
+    }
+
+    /* ── FILTER ── */
+    .tabla-filter {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-pill {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      border: 1px solid rgba(212,146,42,0.2);
+      background: transparent;
+      color: rgba(240,230,204,0.5);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-pill.active {
+      background: rgba(212,146,42,0.12);
+      border-color: var(--ambar);
+      color: var(--ambar-claro);
+    }
+    .filter-pill:hover:not(.active) { color: var(--crema); }
+
+    /* ── SECTION DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      color: rgba(212,146,42,0.2);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(212,146,42,0.1);
+    }
+
+    /* ── INFO ── */
+    .info-box {
+      background: rgba(26,18,9,0.6);
+      border: 1px solid rgba(212,146,42,0.1);
+      border-radius: var(--radio);
+      padding: 1.1rem 1.4rem;
+      margin-top: 1.5rem;
+      font-size: 0.88rem;
+      color: var(--crema-suave);
+      line-height: 1.75;
+    }
+    .info-box strong { color: var(--ambar); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      color: rgba(240,230,204,0.2);
+      border-top: 1px solid rgba(212,146,42,0.08);
+    }
+    footer a { color: var(--ambar); text-decoration: none; }
+
+    @media (max-width: 560px) {
+      .card { padding: 1.3rem 1.1rem; }
+      .input-row { gap: 0.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/index.html" class="nav-back">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Inicio
+    </a>
+    <div class="nav-sep"></div>
+    <span class="nav-title">Conversor · Imperial / Decimal</span>
+  </nav>
+
+  <main>
+
+    <!-- HEADER -->
+    <header class="page-header">
+      <div class="eyebrow">Herramientas técnicas</div>
+      <h1>Conversor<br><em>Imperial / Decimal</em></h1>
+      <p>Pulgadas fraccionarias, pies y pulgadas a sistema métrico. Tabla de medidas nominales vs. reales de madera aserrada.</p>
+    </header>
+
+    <!-- TABS -->
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" onclick="showTab('fraccionarias')" id="tab-fraccionarias">Pulgadas fraccionarias</button>
+      <button class="tab-btn" onclick="showTab('pies-pulgadas')" id="tab-pies-pulgadas">Pies + pulgadas</button>
+      <button class="tab-btn" onclick="showTab('nominal-real')" id="tab-nominal-real">Nominal vs. real</button>
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         TAB 1: PULGADAS FRACCIONARIAS
+    ════════════════════════════════════════════════ -->
+    <div class="tab-panel active" id="panel-fraccionarias">
+
+      <div class="card">
+        <div class="card-title">
+          <span class="icon">⅝</span>
+          Pulgada fraccionaria → métrico
+        </div>
+
+        <div class="input-row">
+          <div class="field" style="max-width:100px;">
+            <label for="f-entero">Entero</label>
+            <div class="input-wrap">
+              <input type="number" id="f-entero" placeholder="0" min="0" step="1" value="0" />
+              <span class="input-unit">"</span>
+            </div>
+          </div>
+          <div class="field" style="flex:2; min-width:160px;">
+            <label for="f-fraccion">Fracción</label>
+            <select id="f-fraccion">
+              <option value="0">Sin fracción</option>
+              <optgroup label="Cuartos">
+                <option value="0.25">1/4</option>
+                <option value="0.5">1/2</option>
+                <option value="0.75">3/4</option>
+              </optgroup>
+              <optgroup label="Octavos">
+                <option value="0.125">1/8</option>
+                <option value="0.375">3/8</option>
+                <option value="0.625">5/8</option>
+                <option value="0.875">7/8</option>
+              </optgroup>
+              <optgroup label="Dieciseisavos">
+                <option value="0.0625">1/16</option>
+                <option value="0.1875">3/16</option>
+                <option value="0.3125">5/16</option>
+                <option value="0.4375">7/16</option>
+                <option value="0.5625">9/16</option>
+                <option value="0.6875">11/16</option>
+                <option value="0.8125">13/16</option>
+                <option value="0.9375">15/16</option>
+              </optgroup>
+              <optgroup label="Treintaidosavos">
+                <option value="0.03125">1/32</option>
+                <option value="0.09375">3/32</option>
+                <option value="0.15625">5/32</option>
+                <option value="0.21875">7/32</option>
+                <option value="0.28125">9/32</option>
+                <option value="0.34375">11/32</option>
+                <option value="0.40625">13/32</option>
+                <option value="0.46875">15/32</option>
+                <option value="0.53125">17/32</option>
+                <option value="0.59375">19/32</option>
+                <option value="0.65625">21/32</option>
+                <option value="0.71875">23/32</option>
+                <option value="0.78125">25/32</option>
+                <option value="0.84375">27/32</option>
+                <option value="0.90625">29/32</option>
+                <option value="0.96875">31/32</option>
+              </optgroup>
+            </select>
+          </div>
+          <div>
+            <button class="btn-calc" onclick="convertirFrac()">Convertir →</button>
+          </div>
+        </div>
+
+        <div class="result-inline" id="res-frac">
+          <div class="result-cols" id="res-frac-cols"></div>
+        </div>
+
+        <div class="divider">Referencia rápida — fracciones comunes</div>
+        <div class="fractions-grid" id="frac-quick"></div>
+      </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         TAB 2: PIES + PULGADAS
+    ════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="panel-pies-pulgadas">
+
+      <div class="card">
+        <div class="card-title">
+          <span class="icon">📐</span>
+          Pies y pulgadas → sistema métrico
+        </div>
+
+        <div class="input-row">
+          <div class="field">
+            <label for="pp-pies">Pies</label>
+            <div class="input-wrap">
+              <input type="number" id="pp-pies" placeholder="0" min="0" step="1" value="0" />
+              <span class="input-unit">ft</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="pp-pulgadas">Pulgadas enteras</label>
+            <div class="input-wrap">
+              <input type="number" id="pp-pulgadas" placeholder="0" min="0" step="1" value="0" />
+              <span class="input-unit">"</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="pp-fraccion">Fracción</label>
+            <select id="pp-fraccion">
+              <option value="0">—</option>
+              <option value="0.0625">1/16</option>
+              <option value="0.125">1/8</option>
+              <option value="0.1875">3/16</option>
+              <option value="0.25">1/4</option>
+              <option value="0.3125">5/16</option>
+              <option value="0.375">3/8</option>
+              <option value="0.4375">7/16</option>
+              <option value="0.5">1/2</option>
+              <option value="0.5625">9/16</option>
+              <option value="0.625">5/8</option>
+              <option value="0.6875">11/16</option>
+              <option value="0.75">3/4</option>
+              <option value="0.8125">13/16</option>
+              <option value="0.875">7/8</option>
+              <option value="0.9375">15/16</option>
+            </select>
+          </div>
+          <div>
+            <button class="btn-calc" onclick="convertirPP()">Convertir →</button>
+          </div>
+        </div>
+
+        <div class="result-inline" id="res-pp">
+          <div class="result-cols" id="res-pp-cols"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">
+          <span class="icon">🔄</span>
+          mm / cm / m → pies y pulgadas
+        </div>
+        <div class="input-row">
+          <div class="field" style="flex:2;">
+            <label for="inv-valor">Valor</label>
+            <div class="input-wrap">
+              <input type="number" id="inv-valor" placeholder="ej: 2440" min="0" step="any" />
+            </div>
+          </div>
+          <div class="field" style="flex:1; min-width: 90px;">
+            <label for="inv-unidad">Unidad</label>
+            <select id="inv-unidad">
+              <option value="mm">mm</option>
+              <option value="cm">cm</option>
+              <option value="m">m</option>
+            </select>
+          </div>
+          <div>
+            <button class="btn-calc" onclick="convertirInverso()">Convertir →</button>
+          </div>
+        </div>
+
+        <div class="result-inline" id="res-inv">
+          <div class="result-cols" id="res-inv-cols"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ══════════════════════════════════════════════
+         TAB 3: NOMINAL VS REAL
+    ════════════════════════════════════════════════ -->
+    <div class="tab-panel" id="panel-nominal-real">
+
+      <div class="card">
+        <div class="card-title">
+          <span class="icon">📏</span>
+          Madera aserrada: medidas nominales vs. reales
+        </div>
+
+        <div class="tabla-filter">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:0.68rem;color:rgba(240,230,204,0.4);letter-spacing:0.06em;text-transform:uppercase;">Filtrar:</span>
+          <button class="filter-pill active" onclick="filtrarTabla('all',this)">Todos</button>
+          <button class="filter-pill" onclick="filtrarTabla('1x',this)">Serie 1×</button>
+          <button class="filter-pill" onclick="filtrarTabla('2x',this)">Serie 2×</button>
+          <button class="filter-pill" onclick="filtrarTabla('4x',this)">Serie 4×</button>
+          <button class="filter-pill" onclick="filtrarTabla('decks',this)">Decks/Pisos</button>
+        </div>
+
+        <div class="tabla-wrap">
+          <table id="tabla-nominal">
+            <thead>
+              <tr>
+                <th>Nominal (pulg.)</th>
+                <th>Real (pulg.)</th>
+                <th>Real (mm)</th>
+                <th>Real (cm)</th>
+                <th>Diferencia</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-body"></tbody>
+          </table>
+        </div>
+
+        <div class="info-box" style="margin-top:1.2rem;">
+          <strong>¿Por qué difieren?</strong> Cuando la madera se corta del tronco tiene la dimensión nominal.
+          El cepillado y el secado al horno reducen las medidas. El estándar NHLA (National Hardwood Lumber Association)
+          fija las medidas reales para madera blanda; los carpinteros deben trabajar siempre con las <strong>medidas reales</strong>.
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <a href="/index.html">soydemadera.com</a> · Conversor Imperial / Decimal · uso libre
+  </footer>
+
+  <script>
+    // ── CONSTANTE ──
+    const MM_PER_INCH = 25.4;
+    const MM_PER_FOOT = 304.8;
+
+    // ── UTILS ──
+    function fmt(n, dec) {
+      return n.toLocaleString('es-AR', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+    }
+    function fmtIn(n) { return fmt(n, 4); }
+    function fmtMM(n) { return fmt(n, 2); }
+    function fmtCM(n) { return fmt(n, 3); }
+    function fmtM(n)  { return fmt(n, 4); }
+
+    function showResult(id, colsId, html) {
+      document.getElementById(colsId).innerHTML = html;
+      document.getElementById(id).classList.add('visible');
+    }
+
+    // ── TABS ──
+    function showTab(name) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('panel-' + name).classList.add('active');
+      document.getElementById('tab-' + name).classList.add('active');
+    }
+
+    // ════════════════════════════
+    // TAB 1: FRACCIONARIAS
+    // ════════════════════════════
+    function convertirFrac() {
+      const entero  = parseFloat(document.getElementById('f-entero').value) || 0;
+      const frac    = parseFloat(document.getElementById('f-fraccion').value) || 0;
+      const total_in = entero + frac;
+      if (total_in <= 0) return;
+      calcFrac(total_in);
+    }
+
+    function calcFrac(total_in) {
+      const mm = total_in * MM_PER_INCH;
+      const cm = mm / 10;
+      const m  = mm / 1000;
+
+      // Representación fraccionaria legible
+      const fracLabel = fracToLabel(total_in);
+
+      const html = `
+        <div class="r-item">
+          <span class="r-label">Entrada</span>
+          <span class="r-value sm">${fracLabel}"</span>
+          <span class="r-sub">${fmtIn(total_in)} pulg. decimales</span>
+        </div>
+        <div class="r-item">
+          <span class="r-label">Milímetros</span>
+          <span class="r-value">${fmtMM(mm)}</span>
+          <span class="r-sub">mm</span>
+        </div>
+        <div class="r-item">
+          <span class="r-label">Centímetros</span>
+          <span class="r-value sm">${fmtCM(cm)}</span>
+          <span class="r-sub">cm</span>
+        </div>
+        <div class="r-item">
+          <span class="r-label">Metros</span>
+          <span class="r-value sm">${fmtM(m)}</span>
+          <span class="r-sub">m</span>
+        </div>
+      `;
+      showResult('res-frac', 'res-frac-cols', html);
+    }
+
+    function fracToLabel(dec) {
+      const whole = Math.floor(dec);
+      const frac  = dec - whole;
+      const denominators = [2,4,8,16,32];
+      let bestLabel = '';
+      for (const d of denominators) {
+        const n = Math.round(frac * d);
+        if (Math.abs(n / d - frac) < 0.0001) {
+          bestLabel = n > 0 ? `${n}/${d}` : '';
+          break;
+        }
+      }
+      if (whole > 0 && bestLabel) return `${whole} ${bestLabel}`;
+      if (whole > 0) return `${whole}`;
+      return bestLabel || dec.toString();
+    }
+
+    // Referencia rápida
+    const FRACS_RAPIDAS = [
+      { label: '1/32', val: 1/32 }, { label: '1/16', val: 1/16 },
+      { label: '1/8',  val: 1/8  }, { label: '3/16', val: 3/16 },
+      { label: '1/4',  val: 1/4  }, { label: '5/16', val: 5/16 },
+      { label: '3/8',  val: 3/8  }, { label: '7/16', val: 7/16 },
+      { label: '1/2',  val: 1/2  }, { label: '9/16', val: 9/16 },
+      { label: '5/8',  val: 5/8  }, { label: '11/16',val:11/16 },
+      { label: '3/4',  val: 3/4  }, { label: '13/16',val:13/16 },
+      { label: '7/8',  val: 7/8  }, { label: '15/16',val:15/16 },
+      { label: '1"',   val: 1    }, { label: '1 1/4"',val:1.25 },
+      { label: '1 1/2"',val:1.5  }, { label: '2"',   val: 2    },
+    ];
+
+    function renderFracRapidas() {
+      const grid = document.getElementById('frac-quick');
+      grid.innerHTML = FRACS_RAPIDAS.map(f => {
+        const mm = f.val * MM_PER_INCH;
+        return `<button class="frac-btn" onclick="cargarFrac(${f.val})">
+          <span class="frac-val">${f.label}</span>
+          <span class="frac-mm">${fmtMM(mm)} mm</span>
+        </button>`;
+      }).join('');
+    }
+
+    function cargarFrac(val) {
+      const whole = Math.floor(val);
+      const frac  = val - whole;
+      document.getElementById('f-entero').value = whole;
+      // Encontrar el option más cercano
+      const sel = document.getElementById('f-fraccion');
+      let bestOpt = 0;
+      let bestDiff = Infinity;
+      for (const opt of sel.options) {
+        const d = Math.abs(parseFloat(opt.value) - frac);
+        if (d < bestDiff) { bestDiff = d; bestOpt = opt.value; }
+      }
+      sel.value = bestOpt;
+      calcFrac(val);
+    }
+
+    // ════════════════════════════
+    // TAB 2: PIES + PULGADAS
+    // ════════════════════════════
+    function convertirPP() {
+      const pies     = parseFloat(document.getElementById('pp-pies').value) || 0;
+      const pulg     = parseFloat(document.getElementById('pp-pulgadas').value) || 0;
+      const frac     = parseFloat(document.getElementById('pp-fraccion').value) || 0;
+      const total_in = (pies * 12) + pulg + frac;
+      if (total_in <= 0) return;
+
+      const mm = total_in * MM_PER_INCH;
+      const cm = mm / 10;
+      const m  = mm / 1000;
+      const total_ft = total_in / 12;
+
+      // Armar label legible
+      let partes = [];
+      if (pies > 0) partes.push(`${pies}'`);
+      if (pulg > 0 && frac === 0) partes.push(`${pulg}"`);
+      else if (pulg > 0 && frac > 0) partes.push(`${pulg} ${fracToLabel(frac)}"`);
+      else if (frac > 0) partes.push(`${fracToLabel(frac)}"`);
+      const label = partes.join(' ') || '0';
+
+      const html = `
+        <div class="r-item">
+          <span class="r-label">Entrada</span>
+          <span class="r-value sm">${label}</span>
+          <span class="r-sub">${fmtIn(total_ft)} ft · ${fmtIn(total_in)}"</span>
+        </div>
+        <div class="r-item">
+          <span class="r-label">mm</span>
+          <span class="r-value">${fmtMM(mm)}</span>
+          <span class="r-sub">milímetros</span>
+        </div>
+        <div class="r-item">
+          <span class="r-label">cm</span>
+          <span class="r-value sm">${fmtCM(cm)}</span>
+          <span class="r-sub">centímetros</span>
+        </div>
+        <div class="r-item">
+          <span class="r-label">m</span>
+          <span class="r-value sm">${fmtM(m)}</span>
+          <span class="r-sub">metros</span>
+        </div>
+      `;
+      showResult('res-pp', 'res-pp-cols', html);
+    }
+
+    function convertirInverso() {
+      const val   = parseFloat(document.getElementById('inv-valor').value);
+      const unidad = document.getElementById('inv-unidad').value;
+      if (!val || val <= 0) return;
+
+      let mm;
+      if (unidad === 'mm') mm = val;
+      else if (unidad === 'cm') mm = val * 10;
+      else mm = val * 1000;
+
+      const total_in = mm / MM_PER_INCH;
+      const pies     = Math.floor(total_in / 12);
+      const pulg_rem = total_in % 12;
+      const pulg_ent = Math.floor(pulg_rem);
+      const frac_dec = pulg_rem - pulg_ent;
+
+      // Fracción más cercana a 1/16
+      const denom = 16;
+      const num   = Math.round(frac_dec * denom);
+      let fracStr = '';
+      if (num > 0 && num < denom) fracStr = ` ${num}/${denom}"`;
+      else if (num === denom) { /* redondear al entero siguiente */ }
+
+      let label = '';
+      if (pies > 0) label += `${pies}'`;
+      if (pulg_ent > 0) label += ` ${pulg_ent}${fracStr || '"'}`;
+      else if (fracStr) label += ` ${fracStr.trim()}`;
+      if (!label) label = '0"';
+
+      const html = `
+        <div class="r-item">
+          <span class="r-label">Entrada</span>
+          <span class="r-value sm">${fmt(val,2)} ${unidad}</span>
+          <span class="r-sub">${fmtMM(mm)} mm</span>
+        </div>
+        <div class="r-item">
+          <span class="r-label">Pies y pulgadas</span>
+          <span class="r-value sm">${label.trim()}</span>
+          <span class="r-sub">${fmtIn(total_in)}" totales</span>
+        </div>
+        <div class="r-item">
+          <span class="r-label">Solo pulgadas</span>
+          <span class="r-value sm">${fmtIn(total_in)}"</span>
+          <span class="r-sub">pulgadas decimales</span>
+        </div>
+        <div class="r-item">
+          <span class="r-label">Solo pies</span>
+          <span class="r-value sm">${fmtIn(total_in/12)}'</span>
+          <span class="r-sub">pies decimales</span>
+        </div>
+      `;
+      showResult('res-inv', 'res-inv-cols', html);
+    }
+
+    // ════════════════════════════
+    // TAB 3: NOMINAL VS REAL
+    // ════════════════════════════
+    // Datos: [nominalLabel, nomAncho_in, nomEspesor_in, realAncho_in, realEspesor_in, categoria]
+    const NOMINAL_DATA = [
+      // Serie 1× (boards)
+      ['1×2',   1, 2,   0.75, 1.5,   '1x'],
+      ['1×3',   1, 3,   0.75, 2.5,   '1x'],
+      ['1×4',   1, 4,   0.75, 3.5,   '1x'],
+      ['1×6',   1, 6,   0.75, 5.5,   '1x'],
+      ['1×8',   1, 8,   0.75, 7.25,  '1x'],
+      ['1×10',  1, 10,  0.75, 9.25,  '1x'],
+      ['1×12',  1, 12,  0.75, 11.25, '1x'],
+      // Serie 2×
+      ['2×2',   2, 2,   1.5,  1.5,   '2x'],
+      ['2×3',   2, 3,   1.5,  2.5,   '2x'],
+      ['2×4',   2, 4,   1.5,  3.5,   '2x'],
+      ['2×6',   2, 6,   1.5,  5.5,   '2x'],
+      ['2×8',   2, 8,   1.5,  7.25,  '2x'],
+      ['2×10',  2, 10,  1.5,  9.25,  '2x'],
+      ['2×12',  2, 12,  1.5,  11.25, '2x'],
+      // Serie 4×
+      ['4×4',   4, 4,   3.5,  3.5,   '4x'],
+      ['4×6',   4, 6,   3.5,  5.5,   '4x'],
+      ['4×8',   4, 8,   3.5,  7.25,  '4x'],
+      // Decks / pisos
+      ['5/4×4', 1.25, 4, 1,   3.5,   'decks'],
+      ['5/4×6', 1.25, 6, 1,   5.5,   'decks'],
+      ['Deck 2×6 (deck)', 2, 6, 1.5, 5.5, 'decks'],
+    ];
+
+    let filtroActivo = 'all';
+
+    function renderTabla(filtro) {
+      const body = document.getElementById('tabla-body');
+      const datos = filtro === 'all' ? NOMINAL_DATA : NOMINAL_DATA.filter(r => r[5] === filtro);
+
+      body.innerHTML = datos.map(r => {
+        const [label, nomA, nomE, realA, realE] = r;
+        const nomMM_A = (nomA * MM_PER_INCH).toFixed(1);
+        const nomMM_E = (nomE * MM_PER_INCH).toFixed(1);
+        const realMM_A = (realA * MM_PER_INCH).toFixed(1);
+        const realMM_E = (realE * MM_PER_INCH).toFixed(1);
+        const difA = ((nomA - realA) * MM_PER_INCH).toFixed(1);
+        const difE = ((nomE - realE) * MM_PER_INCH).toFixed(1);
+
+        return `<tr>
+          <td>${label} <span class="badge-nominal">${nomMM_A}×${nomMM_E}mm</span></td>
+          <td>${realA}"×${realE}"</td>
+          <td>${realMM_A} × ${realMM_E}</td>
+          <td>${(realA*MM_PER_INCH/10).toFixed(2)} × ${(realE*MM_PER_INCH/10).toFixed(2)}</td>
+          <td><span class="badge-real">−${difA} / −${difE} mm</span></td>
+        </tr>`;
+      }).join('');
+    }
+
+    function filtrarTabla(cat, btn) {
+      filtroActivo = cat;
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      renderTabla(cat);
+    }
+
+    // ── ENTER ──
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Enter') return;
+      const active = document.querySelector('.tab-panel.active');
+      if (active.id === 'panel-fraccionarias')  convertirFrac();
+      if (active.id === 'panel-pies-pulgadas') {
+        const inv = document.getElementById('inv-valor');
+        if (document.activeElement === inv) convertirInverso();
+        else convertirPP();
+      }
+    });
+
+    // ── INIT ──
+    renderFracRapidas();
+    renderTabla('all');
+  </script>
+
+</body>
+</html>
