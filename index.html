@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- saved from url=(0024)https://soydemadera.com/ -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soy de Madera — Carpintería y Ebanistería en español</title>
-  <meta name="description" content="Divulgación técnica de carpintería y ebanistería en español. Herramientas digitales, terminología técnica y proyectos DIY." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <meta name="description" content="Divulgación técnica de carpintería y ebanistería en español. Herramientas digitales, terminología técnica y proyectos DIY.">
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./Soy de Madera — Carpintería y Ebanistería en español_files/css2" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -24,6 +24,83 @@
     }
 
     html { scroll-behavior: smooth; }
+    #pilares, #herramientas, #diccionario, #sobre, #maestros, #estudiar, #redes {
+      scroll-margin-top: 75px;
+    }
+
+    /* ── TABS / PESTAÑAS ── */
+    .page-section { display: none !important; }
+    .page-section.active { display: block !important; }
+    #diccionario.page-section.active { display: block !important; }
+    .hero { transition: opacity 0.25s ease; }
+    .hero.hidden { display: none !important; }
+    .nav-links a.nav-active { color: var(--ambar) !important; }
+
+    /* ── ASTILLAS ── */
+    .ast-filtro {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--crema-dim, #b8a896);
+      padding: 0.45rem 1rem;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .ast-filtro:hover, .ast-filtro.active {
+      background: var(--ambar, #c8912a);
+      border-color: var(--ambar, #c8912a);
+      color: #1a1209;
+    }
+    .ast-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 1.5rem;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .ast-card:hover { border-color: var(--ambar, #c8912a); }
+    .ast-card-tipo {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ambar, #c8912a);
+      margin-bottom: 0.75rem;
+    }
+    .ast-card h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      color: var(--crema, #f5ede0);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+    .ast-card p {
+      color: var(--crema-dim, #b8a896);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .ast-card a.ast-btn {
+      display: inline-block;
+      border: 1px solid var(--ambar, #c8912a);
+      color: var(--ambar, #c8912a);
+      padding: 0.4rem 1rem;
+      font-size: 0.82rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+    }
+    .ast-card a.ast-btn:hover { background: var(--ambar, #c8912a); color: #1a1209; }
+    .ast-card-img { width: 100%; height: 160px; object-fit: cover; margin-bottom: 1rem; }
+    .ast-video-wrap { position: relative; padding-bottom: 56.25%; height: 0; margin-bottom: 1rem; }
+    .ast-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+    .ast-delete-btn {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      background: none; border: none; color: rgba(255,255,255,0.3);
+      cursor: pointer; font-size: 1rem; display: none;
+    }
+    .ast-admin-active .ast-delete-btn { display: block; }
+    .ast-delete-btn:hover { color: #e05555; }
 
     body {
       background-color: var(--nogal);
@@ -868,6 +945,293 @@
       opacity: 0.7;
     }
 
+    /* ── DICCIONARIO APP (scoped .da-*) ── */
+    .da-app {
+      font-family: 'DM Sans', 'Crimson Pro', sans-serif;
+    }
+
+    .da-controls {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 3rem 1rem;
+    }
+
+    .da-search-wrap { position: relative; margin-bottom: 1rem; }
+
+    .da-search-icon {
+      position: absolute; left: 14px; top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem; pointer-events: none;
+    }
+
+    #da-search {
+      width: 100%;
+      padding: 13px 20px 13px 42px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      border: 2px solid rgba(122,106,82,0.4);
+      background: var(--roble);
+      color: var(--crema);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      border-radius: 0;
+    }
+    #da-search:focus { border-color: var(--ambar); box-shadow: 0 0 0 3px rgba(232,164,58,0.15); }
+    #da-search::placeholder { color: var(--gris-tex); }
+
+    .da-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .da-filter-btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 13px;
+      border: 1.5px solid rgba(122,106,82,0.35);
+      background: transparent;
+      color: var(--gris-tex);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .da-filter-btn:hover { border-color: var(--ambar); color: var(--ambar); }
+    .da-filter-btn.active { background: var(--ambar); border-color: var(--ambar); color: var(--nogal); font-weight: 500; }
+
+    .da-stats {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--gris-tex);
+      letter-spacing: 0.06em;
+      padding: 8px 3rem 12px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .da-main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 3rem 5rem;
+    }
+
+    .da-cat-section { margin-bottom: 3rem; }
+
+    .da-cat-header {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 1rem;
+      padding-bottom: 0.7rem;
+      border-bottom: 2px solid rgba(122,106,82,0.25);
+    }
+
+    .da-cat-icon { font-size: 1.2rem; }
+
+    .da-cat-name {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--crema);
+    }
+
+    .da-cat-count {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.6rem;
+      color: var(--gris-tex);
+      background: var(--roble);
+      padding: 3px 8px;
+      margin-left: auto;
+    }
+
+    .da-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 10px;
+    }
+
+    .da-entry {
+      background: var(--roble);
+      border: 1.5px solid rgba(122,106,82,0.2);
+      padding: 14px 16px;
+      transition: border-color 0.2s, transform 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .da-entry::before {
+      content: '';
+      position: absolute; left:0; top:0; bottom:0;
+      width: 3px;
+      background: var(--ambar);
+      transform: scaleY(0);
+      transition: transform 0.2s;
+      transform-origin: bottom;
+    }
+
+    .da-entry:hover { border-color: rgba(232,164,58,0.4); transform: translateY(-1px); }
+    .da-entry:hover::before { transform: scaleY(1); }
+
+    .da-en {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--siena);
+      letter-spacing: 0.03em;
+      margin-bottom: 2px;
+    }
+
+    .da-pron {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.68rem;
+      color: #7a9a5e;
+      margin-bottom: 5px;
+    }
+    .da-pron::before { content: '🔊 '; font-size: 0.6rem; }
+
+    .da-es {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.05rem;
+      color: var(--crema);
+      margin-bottom: 3px;
+    }
+
+    .da-lt {
+      font-size: 0.75rem;
+      color: var(--gris-tex);
+      font-style: italic;
+      margin-bottom: 7px;
+    }
+
+    .da-def {
+      font-size: 0.78rem;
+      color: var(--crema2);
+      line-height: 1.5;
+      border-top: 1px solid rgba(122,106,82,0.2);
+      padding-top: 7px;
+      opacity: 0.75;
+    }
+
+    .da-no-results {
+      text-align: center; padding: 60px 20px;
+      color: var(--gris-tex);
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.4rem;
+    }
+    .da-no-results span {
+      display: block;
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 0.95rem;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 900px) {
+      .da-controls, .da-stats, .da-main { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .da-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── HERRAMIENTAS ── */
+    .herramienta-card {
+      background: var(--roble);
+      height: 100%;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .herramienta-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, var(--ambar), var(--siena));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    a:hover .herramienta-card { background: var(--cedro); transform: translateY(-4px); }
+    a:hover .herramienta-card::after { transform: scaleX(1); }
+
+    .herramienta-card-inner {
+      padding: 2.8rem 2.5rem 2.2rem;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .herramienta-num {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 900;
+      font-size: 4.5rem;
+      line-height: 1;
+      color: rgba(196,122,42,0.12);
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      letter-spacing: -0.05em;
+      pointer-events: none;
+    }
+
+    .herramienta-cat {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--siena);
+      margin-bottom: 0.6rem;
+    }
+
+    .herramienta-titulo {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      color: var(--crema);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.2rem;
+    }
+
+    .herramienta-desc {
+      font-size: 0.92rem;
+      color: var(--gris-tex);
+      line-height: 1.65;
+      flex: 1;
+      margin-bottom: 1.8rem;
+    }
+
+    .herramienta-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .herramienta-tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .h-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.58rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      border: 1px solid rgba(122,106,82,0.35);
+      color: var(--gris-tex);
+    }
+
+    .herramienta-cta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      color: var(--ambar);
+      white-space: nowrap;
+      transition: letter-spacing 0.2s;
+    }
+    a:hover .herramienta-cta { letter-spacing: 0.18em; }
+
+    @media (max-width: 900px) {
+      #herramientas { padding: 5rem 1.5rem !important; }
+    }
+
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(22px); }
@@ -907,14 +1271,16 @@
 
   <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">Soy <span>de</span> Madera</a>
+    <a href="https://soydemadera.com/#" class="nav-logo">Soy <span>de</span> Madera</a>
     <ul class="nav-links">
-      <li><a href="#pilares">Pilares</a></li>
-      <li><a href="#diccionario">Diccionario</a></li>
-      <li><a href="#maestros">Maestros</a></li>
-      <li><a href="#estudiar">Dónde estudiar</a></li>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#redes">Redes</a></li>
+      <li><a href="#pilares" data-nav="pilares">Pilares</a></li>
+      <li><a href="#diccionario" data-nav="diccionario">Diccionario</a></li>
+      <li><a href="#herramientas" data-nav="herramientas">Herramientas</a></li>
+      <li><a href="#maestros" data-nav="maestros">Maestros</a></li>
+      <li><a href="#estudiar" data-nav="estudiar">Dónde estudiar</a></li>
+      <li><a href="#sobre" data-nav="sobre">Sobre</a></li>
+      <li><a href="#redes" data-nav="redes">Redes</a></li>
+      <li><a href="#astillas" data-nav="astillas">Astillas</a></li>
     </ul>
   </nav>
 
@@ -935,8 +1301,8 @@
         Carpintería y ebanistería explicadas con precisión. Proyectos DIY, herramientas digitales y terminología técnica en castellano.
       </p>
       <div class="hero-actions">
-        <a href="#diccionario" class="btn-primary">Ver el diccionario</a>
-        <a href="#pilares" class="btn-secondary">Explorar el proyecto</a>
+        <a href="https://soydemadera.com/#diccionario" class="btn-primary">Ver el diccionario</a>
+        <a href="https://soydemadera.com/#pilares" class="btn-secondary">Explorar el proyecto</a>
       </div>
     </div>
 
@@ -949,7 +1315,7 @@
   <div class="divider" style="max-width:1200px; margin: 0 auto;"></div>
 
   <!-- PILARES -->
-  <section id="pilares" class="pilares-section" style="max-width:1200px;">
+  <section id="pilares" class="pilares-section page-section" style="max-width:1200px;">
     <div class="pilares-header">
       <div>
         <p class="section-label reveal">Tres pilares</p>
@@ -977,6 +1343,10 @@
         <h3 class="pilar-title">Herramientas digitales</h3>
         <p class="pilar-desc">Calculadoras de corte, planificadores de tableros, recursos técnicos online. La tecnología al servicio del taller.</p>
         <p class="pilar-tag">// software · apps · utilidades</p>
+        <div style="margin-top:1.25rem; display:flex; flex-direction:column; gap:0.5rem;">
+          <a href="calculadora_pie_madera.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">→ Calculadora pie de madera</a>
+          <a href="conversor_imperial.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">→ Conversor imperial / decimal</a>
+        </div>
       </div>
 
       <div class="pilar-card reveal" style="transition-delay:0.3s">
@@ -984,65 +1354,820 @@
         <div class="pilar-num">03</div>
         <span class="pilar-icon">📖</span>
         <h3 class="pilar-title">Terminología técnica</h3>
-        <p class="pilar-desc">130 términos técnicos EN/ES/LT con pronunciación. Porque nombrar bien lo que hacés es la primera herramienta del oficio.</p>
-        <p class="pilar-tag">// diccionario · EN · ES · latín</p>
+        <p class="pilar-desc">111 términos técnicos EN/ES/LT con pronunciación. Porque nombrar bien lo que hacés es la primera herramienta del oficio.</p>
+        <p class="pilar-tag">// diccionario · EN · ES · lituano</p>
       </div>
     </div>
   </section>
 
-  <!-- DICCIONARIO TEASER -->
-  <section id="diccionario" class="dict-section" style="max-width:1200px;">
-    <p class="section-label reveal">Recurso online</p>
-    <h2 class="section-title reveal">Diccionario técnico<br><em>EN / ES / Latín</em></h2>
-
-    <div class="dict-wrapper reveal" style="margin-top:3rem;">
-      <div class="dict-header">
-        <span class="dict-header-title">soydemadera.com / diccionario</span>
-        <span class="dict-counter">130 términos indexados</span>
+  <!-- HERRAMIENTAS -->
+  <section id="herramientas" class="page-section" style="max-width:1200px; padding: 7rem 3rem;">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; flex-wrap:wrap; margin-bottom:3.5rem;">
+      <div>
+        <p class="section-label reveal">Herramientas digitales</p>
+        <h2 class="section-title reveal">Calculadoras<br><em>para el taller</em></h2>
       </div>
+      <p class="reveal" style="max-width:340px; font-size:0.95rem; color:var(--gris-tex); line-height:1.75;">
+        Herramientas online para resolver cálculos del día a día en el taller. Sin instalación, desde el navegador.
+      </p>
+    </div>
 
-      <div class="dict-entries">
-        <div class="dict-entry">
-          <span class="entry-en">mortise</span>
-          <span class="entry-es">mortaja</span>
-          <span class="entry-pron">/ˈmɔːrtɪs/</span>
-          <span class="entry-cat">unión</span>
-        </div>
-        <div class="dict-entry">
-          <span class="entry-en">tenon</span>
-          <span class="entry-es">espiga</span>
-          <span class="entry-pron">/ˈtɛnən/</span>
-          <span class="entry-cat">unión</span>
-        </div>
-        <div class="dict-entry">
-          <span class="entry-en">grain</span>
-          <span class="entry-es">veta / fibra</span>
-          <span class="entry-pron">/ɡreɪn/</span>
-          <span class="entry-cat">madera</span>
-        </div>
-        <div class="dict-entry">
-          <span class="entry-en">rabbet</span>
-          <span class="entry-es">rebaje / ranura</span>
-          <span class="entry-pron">/ˈræbɪt/</span>
-          <span class="entry-cat">perfil</span>
-        </div>
-        <div class="dict-entry">
-          <span class="entry-en">chamfer</span>
-          <span class="entry-es">chaflán</span>
-          <span class="entry-pron">/ˈtʃæmfər/</span>
-          <span class="entry-cat">perfil</span>
-        </div>
-      </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:1.5px;">
 
-      <div class="dict-cta">
-        <span class="dict-cta-text">Términos de carpintería, ebanistería y construcción — con pronunciación fonética</span>
-        <a href="https://soydemadera.com/diccionario" class="btn-primary" target="_blank">Abrir el diccionario completo →</a>
-      </div>
+      <a href="calculadora_pie_madera.html" style="text-decoration:none;" class="reveal">
+        <div class="herramienta-card">
+          <div class="herramienta-card-inner">
+            <div class="herramienta-num">01</div>
+            <div style="font-size:2.4rem; margin-bottom:1.2rem;">🪵</div>
+            <p class="herramienta-cat">Cálculo de volumen</p>
+            <h3 class="herramienta-titulo">Calculadora<br>Pie de Madera</h3>
+            <p class="herramienta-desc">Calculá pies de madera a partir de dimensiones en mm o cm. Incluye presets de tableros estándar del mercado argentino.</p>
+            <div class="herramienta-footer">
+              <span class="herramienta-tags"><span class="h-tag">mm / cm</span><span class="h-tag">presets ARG</span></span>
+              <span class="herramienta-cta">Abrir →</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="conversor_imperial.html" style="text-decoration:none;" class="reveal">
+        <div class="herramienta-card">
+          <div class="herramienta-card-inner">
+            <div class="herramienta-num">02</div>
+            <div style="font-size:2.4rem; margin-bottom:1.2rem;">📐</div>
+            <p class="herramienta-cat">Conversión de medidas</p>
+            <h3 class="herramienta-titulo">Conversor<br>Imperial / Decimal</h3>
+            <p class="herramienta-desc">Convertí pulgadas fraccionarias y pies/pulgadas a mm, cm y metros. Tabla de tamaños nominales vs reales de madera aserrada.</p>
+            <div class="herramienta-footer">
+              <span class="herramienta-tags"><span class="h-tag">pulgadas ↔ mm</span><span class="h-tag">tabla nominal</span></span>
+              <span class="herramienta-cta">Abrir →</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <a href="#diccionario" style="text-decoration:none;" class="reveal">
+        <div class="herramienta-card">
+          <div class="herramienta-card-inner">
+            <div class="herramienta-num">03</div>
+            <div style="font-size:2.4rem; margin-bottom:1.2rem;">📖</div>
+            <p class="herramienta-cat">Referencia técnica</p>
+            <h3 class="herramienta-titulo">Diccionario<br>EN / ES / Lituano</h3>
+            <p class="herramienta-desc">111 términos técnicos con pronunciación fonética y definición en contexto. Buscá en cualquiera de los tres idiomas.</p>
+            <div class="herramienta-footer">
+              <span class="herramienta-tags"><span class="h-tag">111 términos</span><span class="h-tag">3 idiomas</span></span>
+              <span class="herramienta-cta">Ver →</span>
+            </div>
+          </div>
+        </div>
+      </a>
+
     </div>
   </section>
+
+  <div class="divider" style="max-width:1200px; margin: 0 auto;"></div>
+
+  <!-- DICCIONARIO COMPLETO -->
+  <div id="diccionario" class="page-section" style="background:var(--nogal); padding: 7rem 0 0;">
+    <div style="max-width:1200px; margin:0 auto; padding: 0 3rem 3rem;">
+      <p class="section-label reveal">Recurso online</p>
+      <h2 class="section-title reveal">Diccionario técnico<br><em>EN / ES / Lituano</em></h2>
+    </div>
+
+    <!-- Dictionary app — scoped with .da prefix to avoid style collisions -->
+    <div class="da-app">
+
+      <div class="da-controls">
+        <div class="da-search-wrap">
+          <span class="da-search-icon">🔍</span>
+          <input type="text" id="da-search" placeholder="Buscar en inglés, español, lituano o pronunciación…" autocomplete="off">
+        </div>
+        <div class="da-filters">
+          <button class="da-filter-btn active" data-cat="all">Todos</button>
+          <button class="da-filter-btn" data-cat="partes">🪑 Partes del mueble</button>
+          <button class="da-filter-btn" data-cat="herramientas">🔨 Herramientas</button>
+          <button class="da-filter-btn" data-cat="tecnicas">🔧 Técnicas y uniones</button>
+          <button class="da-filter-btn" data-cat="materiales">🪵 Materiales</button>
+          <button class="da-filter-btn" data-cat="medicion">📐 Medición y trazado</button>
+          <button class="da-filter-btn" data-cat="acabados">🎨 Acabados</button>
+        </div>
+      </div>
+
+      <div class="da-stats" id="da-stats">Mostrando 111 de 111 términos · 6 categorías</div>
+      <main class="da-main" id="da-main"><div class="da-cat-section">
+          <div class="da-cat-header">
+            <span class="da-cat-icon">🪑</span>
+            <span class="da-cat-name">Partes del mueble</span>
+            <span class="da-cat-count">20 términos</span>
+          </div>
+          <div class="da-grid"><div class="da-entry">
+            <div class="da-en">Carcass</div>
+            <div class="da-pron">KAR-kas</div>
+            <div class="da-es">Carcasa / Cuerpo</div>
+            <div class="da-lt">Korpusas</div>
+            <div class="da-def">La caja estructural del mueble sin puertas ni cajones. Es el esqueleto que define el volumen.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Face frame</div>
+            <div class="da-pron">féis freim</div>
+            <div class="da-es">Marco frontal</div>
+            <div class="da-lt">Priekinis rėmas</div>
+            <div class="da-def">Marco de madera maciza pegado al frente de la carcasa. Define las aberturas y oculta los cantos del tablero.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Rail</div>
+            <div class="da-pron">réil</div>
+            <div class="da-es">Travesaño</div>
+            <div class="da-lt">Skersinė</div>
+            <div class="da-def">Pieza horizontal del marco. Conecta los montantes laterales en puertas y face frames.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Stile</div>
+            <div class="da-pron">stáil</div>
+            <div class="da-es">Montante</div>
+            <div class="da-lt">Montantas</div>
+            <div class="da-def">Pieza vertical del marco de una puerta o face frame. Corre de arriba a abajo.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Panel</div>
+            <div class="da-pron">PÁ-nel</div>
+            <div class="da-es">Panel / Tablero</div>
+            <div class="da-lt">Plokštė</div>
+            <div class="da-def">Superficie plana encajada dentro del marco de una puerta. Puede ser madera maciza o MDF.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Shelf</div>
+            <div class="da-pron">shélf</div>
+            <div class="da-es">Estante</div>
+            <div class="da-lt">Lentyna</div>
+            <div class="da-def">Superficie horizontal interior donde se apoya el contenido. Puede ser fija o regulable.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Shelf pin</div>
+            <div class="da-pron">shélf pin</div>
+            <div class="da-es">Pivote de estante</div>
+            <div class="da-lt">Lentynos kaištis</div>
+            <div class="da-def">Pequeño perno metálico insertado en orificios para sostener un estante regulable.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Toe kick</div>
+            <div class="da-pron">tou kik</div>
+            <div class="da-es">Zócalo / Retranqueo</div>
+            <div class="da-lt">Apatinis gaubtas</div>
+            <div class="da-def">Retranqueo en la parte inferior del mueble para que los pies quepan al pararse frente a él.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Back panel</div>
+            <div class="da-pron">bak PÁ-nel</div>
+            <div class="da-es">Fondo</div>
+            <div class="da-lt">Galinė sienelė</div>
+            <div class="da-def">Panel trasero de la carcasa. Rigidiza el conjunto y cierra el interior.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Drawer box</div>
+            <div class="da-pron">dróer boks</div>
+            <div class="da-es">Caja del cajón</div>
+            <div class="da-lt">Stalčiaus korpusas</div>
+            <div class="da-def">Estructura interior del cajón, sin incluir el frente decorativo.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Drawer front</div>
+            <div class="da-pron">dróer front</div>
+            <div class="da-es">Frente del cajón</div>
+            <div class="da-lt">Stalčiaus fasadas</div>
+            <div class="da-def">Pieza decorativa visible del cajón. Se atornilla a la caja del cajón.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Inset door</div>
+            <div class="da-pron">ín-set dor</div>
+            <div class="da-es">Puerta embutida</div>
+            <div class="da-lt">Įleidžiamos durys</div>
+            <div class="da-def">Puerta que queda enrasada dentro del marco del mueble, sin sobresalir.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Overlay door</div>
+            <div class="da-pron">OU-ver-lei dor</div>
+            <div class="da-es">Puerta superpuesta</div>
+            <div class="da-lt">Uždedamos durys</div>
+            <div class="da-def">Puerta que cubre el frente de la carcasa por encima del rebaje.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Nailer / Cleat</div>
+            <div class="da-pron">néi-ler / klit</div>
+            <div class="da-es">Listón de fijación</div>
+            <div class="da-lt">Tvirtinimo kartelė</div>
+            <div class="da-def">Tira de madera usada para anclar el mueble a la pared o fijar la tapa.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Apron</div>
+            <div class="da-pron">ÉI-pron</div>
+            <div class="da-es">Larguero / Falda</div>
+            <div class="da-lt">Apvadas</div>
+            <div class="da-def">Pieza horizontal bajo la tapa de una mesa que conecta las patas y da rigidez.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Stretcher</div>
+            <div class="da-pron">STRÉ-cher</div>
+            <div class="da-es">Travesaño de patas</div>
+            <div class="da-lt">Kojelių skersinis</div>
+            <div class="da-def">Barra horizontal que conecta y refuerza las patas de una mesa o silla.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Plinth</div>
+            <div class="da-pron">plinth</div>
+            <div class="da-es">Plinto / Base</div>
+            <div class="da-lt">Cokoliai</div>
+            <div class="da-def">Elemento de base del mueble, generalmente más ancho que la carcasa.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Corner block</div>
+            <div class="da-pron">KOR-ner blok</div>
+            <div class="da-es">Bloque de esquina</div>
+            <div class="da-lt">Kampinis blokas</div>
+            <div class="da-def">Refuerzo triangular en las esquinas interiores para dar rigidez al mueble.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Dust panel</div>
+            <div class="da-pron">dast PÁ-nel</div>
+            <div class="da-es">Panel antipolvo</div>
+            <div class="da-lt">Dulkių skydelis</div>
+            <div class="da-def">Panel horizontal entre cajones que evita que el polvo caiga de uno a otro.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Muntin</div>
+            <div class="da-pron">MÁN-tin</div>
+            <div class="da-es">Parteluz / Maineles</div>
+            <div class="da-lt">Stiklo pertvara</div>
+            <div class="da-def">Listón que divide un panel de vidrio o madera en secciones más pequeñas.</div>
+          </div></div>
+        </div><div class="da-cat-section">
+          <div class="da-cat-header">
+            <span class="da-cat-icon">🔨</span>
+            <span class="da-cat-name">Herramientas y máquinas</span>
+            <span class="da-cat-count">22 términos</span>
+          </div>
+          <div class="da-grid"><div class="da-entry">
+            <div class="da-en">Table saw</div>
+            <div class="da-pron">TÉI-bel so</div>
+            <div class="da-es">Sierra de mesa / Escuadra</div>
+            <div class="da-lt">Stalo pjūklas</div>
+            <div class="da-def">Máquina con disco circular fijo y mesa deslizante. La herramienta central de cualquier taller.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Miter saw</div>
+            <div class="da-pron">MÁI-ter so</div>
+            <div class="da-es">Sierra ingleteadora</div>
+            <div class="da-lt">Stūmoklinė pjovimo mašina</div>
+            <div class="da-def">Sierra de brazo con cabezal giratorio para cortes en ángulo y a tope.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Circular saw</div>
+            <div class="da-pron">SÉR-kiu-lar so</div>
+            <div class="da-es">Sierra circular de mano</div>
+            <div class="da-lt">Diskinis pjūklas</div>
+            <div class="da-def">Sierra portátil con disco. Para cortar tableros y piezas grandes in situ.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Jigsaw</div>
+            <div class="da-pron">YIG-so</div>
+            <div class="da-es">Caladora</div>
+            <div class="da-lt">Siaurapjūklis</div>
+            <div class="da-def">Sierra de hoja recíproca para cortes curvos o formas irregulares en tableros.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Router</div>
+            <div class="da-pron">RÁU-ter</div>
+            <div class="da-es">Fresadora / Router</div>
+            <div class="da-lt">Frezavimo mašina</div>
+            <div class="da-def">Herramienta rotatoria de alta velocidad para molduras, ranuras, rebajas y ensambles.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Router table</div>
+            <div class="da-pron">RÁU-ter TÉI-bel</div>
+            <div class="da-es">Mesa de fresadora</div>
+            <div class="da-lt">Frezavimo stalas</div>
+            <div class="da-def">Mesa invertida donde se monta el router para trabajar piezas pequeñas con mayor control.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Planer</div>
+            <div class="da-pron">PLÉi-ner</div>
+            <div class="da-es">Cepilladora / Igualadora</div>
+            <div class="da-lt">Obliavimo staklės</div>
+            <div class="da-def">Máquina que reduce el tablero a un espesor uniforme en toda su longitud.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Jointer</div>
+            <div class="da-pron">YÓin-ter</div>
+            <div class="da-es">Regruesadora</div>
+            <div class="da-lt">Fugovimo staklės</div>
+            <div class="da-def">Máquina para aplanar una cara y cuadrar un canto. Primer paso antes del planer.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Band saw</div>
+            <div class="da-pron">band so</div>
+            <div class="da-es">Sierra de cinta</div>
+            <div class="da-lt">Juostinis pjūklas</div>
+            <div class="da-def">Sierra de hoja continua flexible. Ideal para cortes curvos y reaserrío de madera.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Drill press</div>
+            <div class="da-pron">dril pres</div>
+            <div class="da-es">Taladro de columna</div>
+            <div class="da-lt">Gręžimo staklės</div>
+            <div class="da-def">Taladro fijo en columna que garantiza orificios perfectamente perpendiculares.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Biscuit joiner</div>
+            <div class="da-pron">BÍS-kit YÓI-ner</div>
+            <div class="da-es">Ranurador de galletas</div>
+            <div class="da-lt">Biskvitų frezavimo mašina</div>
+            <div class="da-def">Herramienta que corta ranuras semicirculares para insertar galletas de madera comprimida.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Pocket hole jig</div>
+            <div class="da-pron">PÓ-ket houl yig</div>
+            <div class="da-es">Guía para tornillo de bolsillo</div>
+            <div class="da-lt">Kišeninio varžto šablonas</div>
+            <div class="da-def">Accesorio que guía la broca en ángulo para crear uniones con tornillo inclinado (tipo Kreg).</div>
+          </div><div class="da-entry">
+            <div class="da-en">Random orbital sander</div>
+            <div class="da-pron">RÁN-dom OR-bi-tal SÁN-der</div>
+            <div class="da-es">Lijadora orbital</div>
+            <div class="da-lt">Orbitinė šlifuoklė</div>
+            <div class="da-def">Lijadora de movimiento excéntrico para lijar sin marcas direccionales.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Hand plane</div>
+            <div class="da-pron">hand plein</div>
+            <div class="da-es">Cepillo de mano</div>
+            <div class="da-lt">Oblius</div>
+            <div class="da-def">Herramienta manual para afinar superficies y rebajar cantos de madera maciza.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Chisel</div>
+            <div class="da-pron">CHÍ-sel</div>
+            <div class="da-es">Formón / Escoplo</div>
+            <div class="da-lt">Kaltas</div>
+            <div class="da-def">Herramienta de corte manual con hoja plana y bisel. Para tallar mortajas y ajustes finos.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Marking gauge</div>
+            <div class="da-pron">MÁR-king guéich</div>
+            <div class="da-es">Gramil</div>
+            <div class="da-lt">Žymėjimo storis</div>
+            <div class="da-def">Instrumento para trazar líneas paralelas al canto de una pieza. Esencial para uniones precisas.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Clamp</div>
+            <div class="da-pron">klamp</div>
+            <div class="da-es">Sargento / Prensa</div>
+            <div class="da-lt">Gnybtas</div>
+            <div class="da-def">Dispositivo para mantener piezas unidas mientras seca la cola. Nunca se tienen suficientes.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Combination square</div>
+            <div class="da-pron">kom-bi-NÉI-shon skuér</div>
+            <div class="da-es">Escuadra combinada</div>
+            <div class="da-lt">Kombinuotas kampuolis</div>
+            <div class="da-def">Herramienta con regla deslizante y cabezal a 90° y 45°. Imprescindible en el taller.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Spokeshave</div>
+            <div class="da-pron">SPÓUK-sheiv</div>
+            <div class="da-es">Raedera / Guillame</div>
+            <div class="da-lt">Žagrė</div>
+            <div class="da-def">Herramienta de mano para alisar superficies curvas. Similar a un cepillo pero para curvas.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Card scraper</div>
+            <div class="da-pron">kard SKRÉI-per</div>
+            <div class="da-es">Rasqueta / Rasqueta de mano</div>
+            <div class="da-lt">Grandiklis</div>
+            <div class="da-def">Lámina de acero delgada que raspa la superficie dejando un acabado mejor que la lija.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Flush trim bit</div>
+            <div class="da-pron">flash trim bit</div>
+            <div class="da-es">Fresa al ras</div>
+            <div class="da-lt">Lyginamoji freza</div>
+            <div class="da-def">Fresa para router con rodamiento que copia el perfil de una plantilla dejando el canto perfecto.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Forstner bit</div>
+            <div class="da-pron">FÓRST-ner bit</div>
+            <div class="da-es">Broca Forstner</div>
+            <div class="da-lt">Forstnerio grąžtas</div>
+            <div class="da-def">Broca plana que hace orificios limpios de fondo plano. Usada para bisagras de cazoleta.</div>
+          </div></div>
+        </div><div class="da-cat-section">
+          <div class="da-cat-header">
+            <span class="da-cat-icon">🔧</span>
+            <span class="da-cat-name">Técnicas y uniones</span>
+            <span class="da-cat-count">22 términos</span>
+          </div>
+          <div class="da-grid"><div class="da-entry">
+            <div class="da-en">Dovetail joint</div>
+            <div class="da-pron">DÁV-teil yoint</div>
+            <div class="da-es">Cola de milano</div>
+            <div class="da-lt">Uodegos jungimas</div>
+            <div class="da-def">Unión en forma de trapecio. Extremadamente resistente a la tracción. Marca de calidad artesanal.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Mortise and tenon</div>
+            <div class="da-pron">MÓR-tis and TÉ-non</div>
+            <div class="da-es">Espiga y caja / Mortaja</div>
+            <div class="da-lt">Tenono ir mortizo jungimas</div>
+            <div class="da-def">Unión clásica: una espiga entra en una caja. Base de la carpintería estructural.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Box joint</div>
+            <div class="da-pron">boks yoint</div>
+            <div class="da-es">Unión en caja / Dientes</div>
+            <div class="da-lt">Dėžutės jungimas</div>
+            <div class="da-def">Unión de esquina con dedos rectangulares entrelazados. Más sencilla que la cola de milano.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Rabbet joint</div>
+            <div class="da-pron">RÁ-bet yoint</div>
+            <div class="da-es">Rebaje / Ranura de canto</div>
+            <div class="da-lt">Atkarpos jungimas</div>
+            <div class="da-def">Escalón cortado en el canto de una pieza donde encaja otra. Muy usado para fondos y tapas.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Dado joint</div>
+            <div class="da-pron">DÉI-do yoint</div>
+            <div class="da-es">Ranura transversal</div>
+            <div class="da-lt">Griovelių jungimas</div>
+            <div class="da-def">Canal fresado a través del tablero donde encaja un estante o panel.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Groove joint</div>
+            <div class="da-pron">gruv yoint</div>
+            <div class="da-es">Ranura longitudinal</div>
+            <div class="da-lt">Išilginis griovelys</div>
+            <div class="da-def">Canal fresado en paralelo a la veta. Para paneles de puerta o fondos corredizos.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Biscuit joint</div>
+            <div class="da-pron">BÍS-kit yoint</div>
+            <div class="da-es">Unión con galleta</div>
+            <div class="da-lt">Biskvitinis jungimas</div>
+            <div class="da-def">Unión con galleta oval de madera comprimida. Alineación y resistencia sin tornillos.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Pocket screw joint</div>
+            <div class="da-pron">PÓ-ket skru yoint</div>
+            <div class="da-es">Tornillo de bolsillo</div>
+            <div class="da-lt">Kišeninio varžto jungimas</div>
+            <div class="da-def">Tornillo inclinado que entra por la cara oculta. Rápido y muy popular en muebles modernos.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Dowel joint</div>
+            <div class="da-pron">DÁU-el yoint</div>
+            <div class="da-es">Unión con tarugo</div>
+            <div class="da-lt">Kaiščių jungimas</div>
+            <div class="da-def">Clavija cilíndrica de madera encolada en orificios. Alinea piezas y agrega superficie de encolado.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Butt joint</div>
+            <div class="da-pron">bat yoint</div>
+            <div class="da-es">Unión a tope</div>
+            <div class="da-lt">Tiesus jungimas</div>
+            <div class="da-def">La unión más simple: dos piezas pegadas de frente. Poco resistente sin refuerzo adicional.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Miter joint</div>
+            <div class="da-pron">MÁI-ter yoint</div>
+            <div class="da-es">Inglete</div>
+            <div class="da-lt">Ąžuolo jungimas</div>
+            <div class="da-def">Corte a 45° para unir esquinas sin mostrar cantos. Muy usado en marcos y molduras.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Lap joint</div>
+            <div class="da-pron">lap yoint</div>
+            <div class="da-es">Unión a media madera</div>
+            <div class="da-lt">Sluoksninis jungimas</div>
+            <div class="da-def">Dos piezas se superponen retirando la mitad del grosor de cada una. Simple y efectiva.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Cut-out door</div>
+            <div class="da-pron">kat áut dor</div>
+            <div class="da-es">Puerta cortada de la carcasa</div>
+            <div class="da-lt">Durys išpjautos iš korpuso</div>
+            <div class="da-def">El frente completo se fija al cuerpo y las puertas se cortan in situ con sierra, garantizando alineación perfecta.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Kerf</div>
+            <div class="da-pron">kerf</div>
+            <div class="da-es">Corte de sierra / Sangría</div>
+            <div class="da-lt">Pjovimo plyšys</div>
+            <div class="da-def">El ancho del material removido por el disco de la sierra (~2–3 mm). Debe considerarse en el plan de corte.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Rip cut</div>
+            <div class="da-pron">rip kat</div>
+            <div class="da-es">Corte longitudinal</div>
+            <div class="da-lt">Išilginis pjūvis</div>
+            <div class="da-def">Corte en paralelo a la veta. Se realiza con la guía paralela de la sierra de mesa.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Cross cut</div>
+            <div class="da-pron">kros kat</div>
+            <div class="da-es">Corte transversal</div>
+            <div class="da-lt">Skersinis pjūvis</div>
+            <div class="da-def">Corte perpendicular a la veta. Se realiza con tope o ingleteadora.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Squaring up</div>
+            <div class="da-pron">SKUÉR-ing ap</div>
+            <div class="da-es">Cuadrar / Escuadrar</div>
+            <div class="da-lt">Sulyginimas</div>
+            <div class="da-def">Proceso de lograr que todas las caras estén a 90° entre sí. Primer paso de cualquier proyecto.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Dry fit</div>
+            <div class="da-pron">drái fit</div>
+            <div class="da-es">Ensamble en seco</div>
+            <div class="da-lt">Sausas surinkimas</div>
+            <div class="da-def">Armar el mueble completo sin cola para verificar que todo encaje antes de pegar definitivamente.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Grain direction</div>
+            <div class="da-pron">grein dai-RÉK-shon</div>
+            <div class="da-es">Dirección de la veta</div>
+            <div class="da-lt">Grūdų kryptis</div>
+            <div class="da-def">Orientación de las fibras de la madera. Cortar en contra de la veta produce astillas.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Snipe</div>
+            <div class="da-pron">snaip</div>
+            <div class="da-es">Hundimiento de extremo</div>
+            <div class="da-lt">Obliavimo žymė</div>
+            <div class="da-def">Depresión en los extremos causada por el planer. Se evita pasando piezas de sacrificio.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Tearout</div>
+            <div class="da-pron">TÉR-aut</div>
+            <div class="da-es">Astillado / Desgarro</div>
+            <div class="da-lt">Drožlių atskilimas</div>
+            <div class="da-def">Astillas que se arrancan al cortar o fresar madera en contra de la veta.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Spline</div>
+            <div class="da-pron">splain</div>
+            <div class="da-es">Lengüeta / Filete</div>
+            <div class="da-lt">Jungiamoji juostelė</div>
+            <div class="da-def">Lámina delgada insertada en dos ranuras enfrentadas para unir y alinear dos piezas.</div>
+          </div></div>
+        </div><div class="da-cat-section">
+          <div class="da-cat-header">
+            <span class="da-cat-icon">🪵</span>
+            <span class="da-cat-name">Materiales y tableros</span>
+            <span class="da-cat-count">18 términos</span>
+          </div>
+          <div class="da-grid"><div class="da-entry">
+            <div class="da-en">Plywood</div>
+            <div class="da-pron">PLÁI-ud</div>
+            <div class="da-es">Terciado / Madera terciada</div>
+            <div class="da-lt">Fanera</div>
+            <div class="da-def">Tablero de chapas de madera cruzadas y encoladas. Alta resistencia y estabilidad dimensional.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Marine plywood</div>
+            <div class="da-pron">ma-RÍN PLÁI-ud</div>
+            <div class="da-es">Fenólico marino</div>
+            <div class="da-lt">Jūrinė fanera</div>
+            <div class="da-def">Terciado de alta calidad con resinas resistentes al agua. Sin vacíos internos. Ideal para muebles.</div>
+          </div><div class="da-entry">
+            <div class="da-en">MDF</div>
+            <div class="da-pron">em-di-ef</div>
+            <div class="da-es">MDF (fibra de densidad media)</div>
+            <div class="da-lt">Vidutinio tankio plaušų plokštė</div>
+            <div class="da-def">Tablero de fibras de madera y resina prensadas. Superficie muy lisa, fácil de pintar.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Particle board</div>
+            <div class="da-pron">PÁR-ti-kel bord</div>
+            <div class="da-es">Aglomerado</div>
+            <div class="da-lt">Drožlių plokštė</div>
+            <div class="da-def">Tablero de virutas prensadas. Económico. Base de la mayoría de muebles laminados de cocina.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Melamine board</div>
+            <div class="da-pron">MÉ-la-min bord</div>
+            <div class="da-es">Melamina</div>
+            <div class="da-lt">Melamino plokštė</div>
+            <div class="da-def">Aglomerado o MDF recubierto con papel impregnado en resina melamínica. Superficie dura y lavable.</div>
+          </div><div class="da-entry">
+            <div class="da-en">OSB</div>
+            <div class="da-pron">ou-es-bi</div>
+            <div class="da-es">OSB (tablero de virutas orientadas)</div>
+            <div class="da-lt">Orientuotų skiedrų plokštė</div>
+            <div class="da-def">Tablero de virutas largas orientadas y prensadas. Más resistente que el aglomerado. Uso estructural.</div>
+          </div><div class="da-entry">
+            <div class="da-en">HDF / Hardboard</div>
+            <div class="da-pron">éich-di-ef / HÁRD-bord</div>
+            <div class="da-es">HDF / Hardboard</div>
+            <div class="da-lt">Aukšto tankio plokštė</div>
+            <div class="da-def">Fibra de madera de alta densidad. Muy delgado (3–6 mm). Para fondos de cajones y gabinetes.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Solid wood</div>
+            <div class="da-pron">SÓ-lid ud</div>
+            <div class="da-es">Madera maciza</div>
+            <div class="da-lt">Kietmedis</div>
+            <div class="da-def">Madera natural sin procesar en tablero. Se mueve con los cambios de humedad.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Veneer</div>
+            <div class="da-pron">ve-NÍR</div>
+            <div class="da-es">Chapa / Enchapado</div>
+            <div class="da-lt">Faneruotė</div>
+            <div class="da-def">Lámina muy fina de madera noble pegada sobre un tablero de menor costo.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Edge banding</div>
+            <div class="da-pron">ey bÁN-ding</div>
+            <div class="da-es">Tapacantos</div>
+            <div class="da-lt">Kraštų juostelė</div>
+            <div class="da-def">Tira de PVC, ABS o chapa de madera que cubre el canto del tablero para protegerlo.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Hardwood</div>
+            <div class="da-pron">HÁRD-ud</div>
+            <div class="da-es">Madera dura</div>
+            <div class="da-lt">Kietmedis</div>
+            <div class="da-def">Madera de árboles de hoja caduca (roble, haya, cerezo). Dura y de grano cerrado.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Softwood</div>
+            <div class="da-pron">SÓFT-ud</div>
+            <div class="da-es">Madera blanda / Conífera</div>
+            <div class="da-lt">Minkštmedis</div>
+            <div class="da-def">Madera de coníferas (pino, abeto, cedro). Más fácil de trabajar pero menos resistente.</div>
+          </div><div class="da-entry">
+            <div class="da-en">PVA glue</div>
+            <div class="da-pron">pi-vi-ei glu</div>
+            <div class="da-es">Cola PVA / Cola de carpintero</div>
+            <div class="da-lt">PVA klijai</div>
+            <div class="da-def">Adhesivo vinílico para madera. Seca en 20–30 min, curado total en 24 h.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Piano hinge</div>
+            <div class="da-pron">piÁ-no hinch</div>
+            <div class="da-es">Bisagra piano / Bisagra continua</div>
+            <div class="da-lt">Pianinių vyrių</div>
+            <div class="da-def">Bisagra que corre en toda la longitud de la puerta. Distribuye el peso uniformemente.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Wood filler</div>
+            <div class="da-pron">ud FÍ-ler</div>
+            <div class="da-es">Masilla para madera</div>
+            <div class="da-lt">Medžio glaistas</div>
+            <div class="da-def">Pasta para rellenar orificios y marcas de tornillos antes de pintar.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Epoxy resin</div>
+            <div class="da-pron">i-PÓK-si RÉ-sin</div>
+            <div class="da-es">Resina epoxi</div>
+            <div class="da-lt">Epoksidinė derva</div>
+            <div class="da-def">Adhesivo de dos componentes de altísima resistencia. También se usa para rellenar vetas y nudos.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Wood conditioner</div>
+            <div class="da-pron">ud kon-DÍ-sho-ner</div>
+            <div class="da-es">Acondicionador de madera</div>
+            <div class="da-lt">Medienos kondicionierius</div>
+            <div class="da-def">Producto que se aplica antes del tinte para lograr una absorción uniforme en maderas porosas.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Teak oil</div>
+            <div class="da-pron">tik oil</div>
+            <div class="da-es">Aceite de teca</div>
+            <div class="da-lt">Tikmedžio aliejus</div>
+            <div class="da-def">Aceite penetrante para proteger madera. Resalta la veta natural. Fácil de aplicar.</div>
+          </div></div>
+        </div><div class="da-cat-section">
+          <div class="da-cat-header">
+            <span class="da-cat-icon">📐</span>
+            <span class="da-cat-name">Medición y trazado</span>
+            <span class="da-cat-count">14 términos</span>
+          </div>
+          <div class="da-grid"><div class="da-entry">
+            <div class="da-en">Kerf allowance</div>
+            <div class="da-pron">kerf a-LÁU-ans</div>
+            <div class="da-es">Margen de corte</div>
+            <div class="da-lt">Pjovimo leidimas</div>
+            <div class="da-def">Material extra que se deja en el plan de corte para compensar el ancho del disco de sierra (~3 mm).</div>
+          </div><div class="da-entry">
+            <div class="da-en">Story stick</div>
+            <div class="da-pron">STÓ-ri stik</div>
+            <div class="da-es">Bastón de cotas</div>
+            <div class="da-lt">Matavimo lazdelė</div>
+            <div class="da-def">Regla o listón donde se marcan todas las medidas de un proyecto para transferirlas sin números.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Layout</div>
+            <div class="da-pron">LÉI-aut</div>
+            <div class="da-es">Trazado / Diagramado</div>
+            <div class="da-lt">Išdėstymas</div>
+            <div class="da-def">El proceso de marcar en la madera todas las líneas de corte y ensamble antes de empezar a cortar.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Reveal</div>
+            <div class="da-pron">re-VÍL</div>
+            <div class="da-es">Retranqueo visible / Línea de vista</div>
+            <div class="da-lt">Atodanga</div>
+            <div class="da-def">La pequeña franja visible entre una puerta y el marco. Define la estética de la cara del mueble.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Tolerance</div>
+            <div class="da-pron">TÓ-le-rans</div>
+            <div class="da-es">Tolerancia</div>
+            <div class="da-lt">Tolerancija</div>
+            <div class="da-def">El margen aceptable de error en una medida. En carpintería de muebles suele ser ±1 mm.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Datum line</div>
+            <div class="da-pron">DÉI-tam lain</div>
+            <div class="da-es">Línea de referencia</div>
+            <div class="da-lt">Atskaitos linija</div>
+            <div class="da-def">Línea base desde la cual se toman todas las demás medidas del proyecto.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Plumb</div>
+            <div class="da-pron">plam</div>
+            <div class="da-es">Plomada / A plomo</div>
+            <div class="da-lt">Vertikalumas</div>
+            <div class="da-def">Perfectamente vertical. Se verifica con plomada o nivel de burbuja.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Level</div>
+            <div class="da-pron">LÉ-vel</div>
+            <div class="da-es">Nivel / A nivel</div>
+            <div class="da-lt">Horizontalumas</div>
+            <div class="da-def">Perfectamente horizontal. Se verifica con nivel de burbuja o nivel láser.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Square</div>
+            <div class="da-pron">skuér</div>
+            <div class="da-es">A escuadra / En escuadra</div>
+            <div class="da-lt">Statmenas</div>
+            <div class="da-def">Que forma exactamente 90°. Una caja a escuadra tiene todas sus esquinas en ángulo recto.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Centerline</div>
+            <div class="da-pron">SÉN-ter-lain</div>
+            <div class="da-es">Línea de centro / Eje</div>
+            <div class="da-lt">Centro linija</div>
+            <div class="da-def">Línea que marca el centro exacto de una pieza. Fundamental para ubicar bisagras y herrajes.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Overhang</div>
+            <div class="da-pron">OU-ver-hang</div>
+            <div class="da-es">Vuelo / Voladizo</div>
+            <div class="da-lt">Iškyšulys</div>
+            <div class="da-def">La parte de la tapa o repisa que sobresale más allá de la base de soporte.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Setback</div>
+            <div class="da-pron">SÉT-bak</div>
+            <div class="da-es">Retranqueo / Distancia de retiro</div>
+            <div class="da-lt">Atitraukimas</div>
+            <div class="da-def">La distancia entre el borde de una pieza y su punto de fijación o referencia.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Flush</div>
+            <div class="da-pron">flash</div>
+            <div class="da-es">Al ras / Enrasado</div>
+            <div class="da-lt">Sulyginta</div>
+            <div class="da-def">Que dos superficies quedan perfectamente en el mismo plano, sin escalón ni diferencia.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Proud</div>
+            <div class="da-pron">práud</div>
+            <div class="da-es">Sobresalido / Orgulloso</div>
+            <div class="da-lt">Išsikišęs</div>
+            <div class="da-def">Que una superficie sobresale levemente por encima del plano de referencia. Opuesto a flush.</div>
+          </div></div>
+        </div><div class="da-cat-section">
+          <div class="da-cat-header">
+            <span class="da-cat-icon">🎨</span>
+            <span class="da-cat-name">Acabados y tratamientos</span>
+            <span class="da-cat-count">15 términos</span>
+          </div>
+          <div class="da-grid"><div class="da-entry">
+            <div class="da-en">Finishing</div>
+            <div class="da-pron">FÍ-ni-shing</div>
+            <div class="da-es">Acabado / Terminación</div>
+            <div class="da-lt">Apdaila</div>
+            <div class="da-def">Todo proceso aplicado a la superficie de la madera para protegerla y darle apariencia final.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Sanding sealer</div>
+            <div class="da-pron">SÁN-ding SÍ-ler</div>
+            <div class="da-es">Sellador para lijar</div>
+            <div class="da-lt">Gruntas šlifavimui</div>
+            <div class="da-def">Primera capa que sella el poro de la madera y facilita el lijado final antes del acabado.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Grain filler</div>
+            <div class="da-pron">grein FÍ-ler</div>
+            <div class="da-es">Relleno de poro</div>
+            <div class="da-lt">Porų užpildas</div>
+            <div class="da-def">Pasta que se aplica para rellenar el poro abierto de maderas como el roble antes del barniz.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Stain</div>
+            <div class="da-pron">stein</div>
+            <div class="da-es">Tinte / Tintura</div>
+            <div class="da-lt">Dažyvai</div>
+            <div class="da-def">Producto que colorea la madera sin tapar la veta. Penetra en las fibras.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Varnish</div>
+            <div class="da-pron">VÁR-nish</div>
+            <div class="da-es">Barniz</div>
+            <div class="da-lt">Lakas</div>
+            <div class="da-def">Acabado transparente que forma una película protectora sobre la madera. Resiste agua y roce.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Lacquer</div>
+            <div class="da-pron">LÁ-ker</div>
+            <div class="da-es">Laca</div>
+            <div class="da-lt">Lakas nitro</div>
+            <div class="da-def">Acabado de secado rápido por evaporación del solvente. Muy usado en carpintería industrial.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Shellac</div>
+            <div class="da-pron">she-LÁK</div>
+            <div class="da-es">Goma laca / Shellac</div>
+            <div class="da-lt">Šelakas</div>
+            <div class="da-def">Acabado natural derivado de insecto. Excelente sellador y base para otros acabados.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Danish oil</div>
+            <div class="da-pron">DÉI-nish oil</div>
+            <div class="da-es">Aceite danés</div>
+            <div class="da-lt">Daniškas aliejus</div>
+            <div class="da-def">Mezcla de aceites y barniz que penetra en la madera dando protección con aspecto natural.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Wax</div>
+            <div class="da-pron">uaks</div>
+            <div class="da-es">Cera</div>
+            <div class="da-lt">Vaškas</div>
+            <div class="da-def">Acabado de protección suave que se aplica sobre otros acabados o directamente en maderas blandas.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Polyurethane</div>
+            <div class="da-pron">po-li-iú-re-zein</div>
+            <div class="da-es">Poliuretano</div>
+            <div class="da-lt">Poliuretanas</div>
+            <div class="da-def">Acabado muy resistente al agua y al roce. Ideal para mesas y pisos de madera.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Sanding</div>
+            <div class="da-pron">SÁN-ding</div>
+            <div class="da-es">Lijado</div>
+            <div class="da-lt">Šlifavimas</div>
+            <div class="da-def">Proceso de alisar la superficie con papel de lija de distinta granulación, de menor a mayor número.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Grit</div>
+            <div class="da-pron">grit</div>
+            <div class="da-es">Granulación / Grano</div>
+            <div class="da-lt">Grūdėtumas</div>
+            <div class="da-def">El número que indica el tamaño de los granos de la lija. A mayor número, más fina la lija.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Burnishing</div>
+            <div class="da-pron">BÉR-ni-shing</div>
+            <div class="da-es">Bruñido / Pulido</div>
+            <div class="da-lt">Poliravimas</div>
+            <div class="da-def">Proceso de frotar la superficie con un elemento duro para compactar las fibras y lograr brillo.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Wire brushing</div>
+            <div class="da-pron">uáier BRÁ-shing</div>
+            <div class="da-es">Cepillado de alambre</div>
+            <div class="da-lt">Vielos šepečio apdaila</div>
+            <div class="da-def">Técnica para resaltar la veta de la madera eliminando las partes blandas con cepillo de alambre.</div>
+          </div><div class="da-entry">
+            <div class="da-en">Distressing</div>
+            <div class="da-pron">dis-TRÉ-sing</div>
+            <div class="da-es">Envejecido / Patinado</div>
+            <div class="da-lt">Dirbtinis sendinimas</div>
+            <div class="da-def">Técnica para dar apariencia de madera usada y antigua mediante marcas, golpes y acabados especiales.</div>
+          </div></div>
+        </div></main>
+    </div>
+  </div>
 
   <!-- SOBRE -->
-  <section id="sobre" class="about-section" style="max-width:1200px;">
+  <section id="sobre" class="about-section page-section" style="max-width:1200px;">
     <div class="about-text">
       <p class="section-label reveal">Sobre el proyecto</p>
       <h2 class="section-title reveal">Técnica precisa,<br><em>en nuestro idioma</em></h2>
@@ -1059,7 +2184,7 @@
 
     <div class="about-stats">
       <div class="stat-box reveal">
-        <div class="stat-num">130</div>
+        <div class="stat-num">111</div>
         <div class="stat-label">términos técnicos</div>
       </div>
       <div class="stat-box reveal" style="transition-delay:0.1s">
@@ -1078,7 +2203,7 @@
   </section>
 
   <!-- MAESTROS -->
-  <section id="maestros" class="maestros-section" style="max-width:1200px;">
+  <section id="maestros" class="maestros-section page-section" style="max-width:1200px;">
     <div class="maestros-intro">
       <div>
         <p class="section-label reveal">Referentes del oficio</p>
@@ -1140,7 +2265,7 @@
   <div class="divider" style="max-width:1200px; margin: 0 auto;"></div>
 
   <!-- DÓNDE ESTUDIAR -->
-  <section id="estudiar" class="estudiar-section" style="max-width:1200px;">
+  <section id="estudiar" class="estudiar-section page-section" style="max-width:1200px;">
     <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; flex-wrap:wrap; margin-bottom:4rem;">
       <div>
         <p class="section-label reveal">Formación</p>
@@ -1240,7 +2365,7 @@
           <div class="estudiar-item">
             <div class="item-info">
               <div class="item-nombre">Diccionario técnico EN/ES/LT</div>
-              <div class="item-detalle">soydemadera.com · 130 términos con pronunciación</div>
+              <div class="item-detalle">soydemadera.com · 111 términos con pronunciación</div>
             </div>
             <span class="item-badge gratuito">Gratuito</span>
           </div>
@@ -1280,7 +2405,7 @@
   <div class="divider" style="max-width:1200px; margin: 0 auto;"></div>
 
   <!-- REDES -->
-  <section id="redes" class="redes-section" style="max-width:1200px;">
+  <section id="redes" class="redes-section page-section" style="max-width:1200px;">
     <p class="section-label reveal">Seguí el proyecto</p>
     <h2 class="section-title reveal">Encontranos<br><em>donde trabajamos</em></h2>
 
@@ -1300,6 +2425,75 @@
     </div>
   </section>
 
+  <!-- ASTILLAS -->
+  <section id="astillas" class="page-section" style="max-width:1200px; padding: 7rem 3rem; display:none;">
+    <div style="margin-bottom:3rem;">
+      <p style="font-family:'Fraunces',Georgia,serif; color:var(--ambar); font-size:0.85rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:1rem;">Recursos</p>
+      <h2 style="font-family:'Fraunces',Georgia,serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:900; color:var(--crema); line-height:1.1;">Astillas</h2>
+      <p style="color:var(--crema-dim); max-width:600px; margin-top:1rem; line-height:1.7;">PDFs, videos y fotos del taller. Material de referencia para el oficio.</p>
+    </div>
+
+    <!-- FILTROS -->
+    <div id="astillas-filtros" style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:2.5rem;">
+      <button class="ast-filtro active" data-tipo="todos" onclick="astFiltrar(this)">Todos</button>
+      <button class="ast-filtro" data-tipo="pdf" onclick="astFiltrar(this)">📄 PDFs</button>
+      <button class="ast-filtro" data-tipo="video" onclick="astFiltrar(this)">▶ Videos</button>
+      <button class="ast-filtro" data-tipo="imagen" onclick="astFiltrar(this)">🖼 Fotos</button>
+    </div>
+
+    <!-- GRID -->
+    <div id="astillas-grid" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem;"></div>
+    <p id="astillas-empty" style="color:var(--crema-dim); font-style:italic; display:none;">Todavía no hay contenido en esta sección.</p>
+
+    <!-- BOTÓN ADMIN -->
+    <div style="margin-top:4rem; text-align:right;">
+      <button onclick="astAdminToggle()" style="background:none; border:1px solid var(--ambar-dim,#8a6a2a); color:var(--ambar); padding:0.5rem 1rem; font-size:0.8rem; letter-spacing:0.1em; cursor:pointer; font-family:inherit;">⚙ Administrar</button>
+    </div>
+
+    <!-- PANEL ADMIN (oculto) -->
+    <div id="ast-admin-panel" style="display:none; margin-top:2rem; border:1px solid var(--ambar-dim,#8a6a2a); padding:2rem; background:rgba(255,255,255,0.03);">
+      <div id="ast-login" style="">
+        <p style="color:var(--crema); margin-bottom:1rem; font-size:0.9rem;">Contraseña de administrador</p>
+        <input id="ast-pwd" type="password" placeholder="Contraseña…" style="background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; width:220px;">
+        <button onclick="astLogin()" style="margin-left:0.75rem; background:var(--ambar,#c8912a); color:#1a1209; border:none; padding:0.6rem 1.2rem; cursor:pointer; font-family:inherit; font-weight:700;">Entrar</button>
+        <p id="ast-pwd-err" style="color:#e05555; font-size:0.8rem; margin-top:0.5rem; display:none;">Contraseña incorrecta.</p>
+      </div>
+      <div id="ast-form" style="display:none;">
+        <h4 style="color:var(--ambar); font-family:'Fraunces',serif; margin-bottom:1.5rem;">Agregar contenido</h4>
+        <div style="display:grid; gap:1rem; max-width:560px;">
+          <div>
+            <label style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">Tipo</label>
+            <select id="ast-tipo" style="width:100%; background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit;">
+              <option value="pdf">📄 PDF / Documento</option>
+              <option value="video">▶ Video (YouTube / Vimeo)</option>
+              <option value="imagen">🖼 Imagen / Foto</option>
+            </select>
+          </div>
+          <div>
+            <label style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">Título</label>
+            <input id="ast-titulo" type="text" placeholder="Ej: Guía de ensambles EN/ES" style="width:100%; background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
+          </div>
+          <div>
+            <label style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">Descripción (opcional)</label>
+            <input id="ast-desc" type="text" placeholder="Breve descripción del recurso" style="width:100%; background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
+          </div>
+          <div>
+            <label id="ast-url-label" style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">URL del archivo / video / imagen</label>
+            <input id="ast-url" type="url" placeholder="https://…" style="width:100%; background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
+          </div>
+          <div style="display:flex; gap:1rem; margin-top:0.5rem;">
+            <button onclick="astAgregar()" style="background:var(--ambar,#c8912a); color:#1a1209; border:none; padding:0.7rem 1.5rem; cursor:pointer; font-family:inherit; font-weight:700;">Agregar</button>
+            <button onclick="astCerrarSesion()" style="background:none; border:1px solid rgba(255,255,255,0.2); color:var(--crema-dim); padding:0.7rem 1.5rem; cursor:pointer; font-family:inherit;">Cerrar sesión</button>
+          </div>
+          <p id="ast-form-err" style="color:#e05555; font-size:0.8rem; display:none;"></p>
+        </div>
+
+        <!-- Lista de items existentes -->
+        <div id="ast-lista-admin" style="margin-top:2.5rem;"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-brand">Soy de Madera</div>
@@ -1308,17 +2502,420 @@
   </footer>
 
   <script>
-    // Intersection Observer for reveal animations
+    // ── DICCIONARIO DATA ──
+    const daData = {
+      partes: {
+        icon: "🪑", label: "Partes del mueble",
+        entries: [
+          { en: "Carcass", pron: "KAR-kas", es: "Carcasa / Cuerpo", lt: "Korpusas", def: "La caja estructural del mueble sin puertas ni cajones. Es el esqueleto que define el volumen." },
+          { en: "Face frame", pron: "féis freim", es: "Marco frontal", lt: "Priekinis rėmas", def: "Marco de madera maciza pegado al frente de la carcasa. Define las aberturas y oculta los cantos del tablero." },
+          { en: "Rail", pron: "réil", es: "Travesaño", lt: "Skersinė", def: "Pieza horizontal del marco. Conecta los montantes laterales en puertas y face frames." },
+          { en: "Stile", pron: "stáil", es: "Montante", lt: "Montantas", def: "Pieza vertical del marco de una puerta o face frame. Corre de arriba a abajo." },
+          { en: "Panel", pron: "PÁ-nel", es: "Panel / Tablero", lt: "Plokštė", def: "Superficie plana encajada dentro del marco de una puerta. Puede ser madera maciza o MDF." },
+          { en: "Shelf", pron: "shélf", es: "Estante", lt: "Lentyna", def: "Superficie horizontal interior donde se apoya el contenido. Puede ser fija o regulable." },
+          { en: "Shelf pin", pron: "shélf pin", es: "Pivote de estante", lt: "Lentynos kaištis", def: "Pequeño perno metálico insertado en orificios para sostener un estante regulable." },
+          { en: "Toe kick", pron: "tou kik", es: "Zócalo / Retranqueo", lt: "Apatinis gaubtas", def: "Retranqueo en la parte inferior del mueble para que los pies quepan al pararse frente a él." },
+          { en: "Back panel", pron: "bak PÁ-nel", es: "Fondo", lt: "Galinė sienelė", def: "Panel trasero de la carcasa. Rigidiza el conjunto y cierra el interior." },
+          { en: "Drawer box", pron: "dróer boks", es: "Caja del cajón", lt: "Stalčiaus korpusas", def: "Estructura interior del cajón, sin incluir el frente decorativo." },
+          { en: "Drawer front", pron: "dróer front", es: "Frente del cajón", lt: "Stalčiaus fasadas", def: "Pieza decorativa visible del cajón. Se atornilla a la caja del cajón." },
+          { en: "Inset door", pron: "ín-set dor", es: "Puerta embutida", lt: "Įleidžiamos durys", def: "Puerta que queda enrasada dentro del marco del mueble, sin sobresalir." },
+          { en: "Overlay door", pron: "OU-ver-lei dor", es: "Puerta superpuesta", lt: "Uždedamos durys", def: "Puerta que cubre el frente de la carcasa por encima del rebaje." },
+          { en: "Nailer / Cleat", pron: "néi-ler / klit", es: "Listón de fijación", lt: "Tvirtinimo kartelė", def: "Tira de madera usada para anclar el mueble a la pared o fijar la tapa." },
+          { en: "Apron", pron: "ÉI-pron", es: "Larguero / Falda", lt: "Apvadas", def: "Pieza horizontal bajo la tapa de una mesa que conecta las patas y da rigidez." },
+          { en: "Stretcher", pron: "STRÉ-cher", es: "Travesaño de patas", lt: "Kojelių skersinis", def: "Barra horizontal que conecta y refuerza las patas de una mesa o silla." },
+          { en: "Plinth", pron: "plinth", es: "Plinto / Base", lt: "Cokoliai", def: "Elemento de base del mueble, generalmente más ancho que la carcasa." },
+          { en: "Corner block", pron: "KOR-ner blok", es: "Bloque de esquina", lt: "Kampinis blokas", def: "Refuerzo triangular en las esquinas interiores para dar rigidez al mueble." },
+          { en: "Dust panel", pron: "dast PÁ-nel", es: "Panel antipolvo", lt: "Dulkių skydelis", def: "Panel horizontal entre cajones que evita que el polvo caiga de uno a otro." },
+          { en: "Muntin", pron: "MÁN-tin", es: "Parteluz / Maineles", lt: "Stiklo pertvara", def: "Listón que divide un panel de vidrio o madera en secciones más pequeñas." },
+        ]
+      },
+      herramientas: {
+        icon: "🔨", label: "Herramientas y máquinas",
+        entries: [
+          { en: "Table saw", pron: "TÉI-bel so", es: "Sierra de mesa / Escuadra", lt: "Stalo pjūklas", def: "Máquina con disco circular fijo y mesa deslizante. La herramienta central de cualquier taller." },
+          { en: "Miter saw", pron: "MÁI-ter so", es: "Sierra ingleteadora", lt: "Stūmoklinė pjovimo mašina", def: "Sierra de brazo con cabezal giratorio para cortes en ángulo y a tope." },
+          { en: "Circular saw", pron: "SÉR-kiu-lar so", es: "Sierra circular de mano", lt: "Diskinis pjūklas", def: "Sierra portátil con disco. Para cortar tableros y piezas grandes in situ." },
+          { en: "Jigsaw", pron: "YIG-so", es: "Caladora", lt: "Siaurapjūklis", def: "Sierra de hoja recíproca para cortes curvos o formas irregulares en tableros." },
+          { en: "Router", pron: "RÁU-ter", es: "Fresadora / Router", lt: "Frezavimo mašina", def: "Herramienta rotatoria de alta velocidad para molduras, ranuras, rebajas y ensambles." },
+          { en: "Router table", pron: "RÁU-ter TÉI-bel", es: "Mesa de fresadora", lt: "Frezavimo stalas", def: "Mesa invertida donde se monta el router para trabajar piezas pequeñas con mayor control." },
+          { en: "Planer", pron: "PLÉi-ner", es: "Cepilladora / Igualadora", lt: "Obliavimo staklės", def: "Máquina que reduce el tablero a un espesor uniforme en toda su longitud." },
+          { en: "Jointer", pron: "YÓin-ter", es: "Regruesadora", lt: "Fugovimo staklės", def: "Máquina para aplanar una cara y cuadrar un canto. Primer paso antes del planer." },
+          { en: "Band saw", pron: "band so", es: "Sierra de cinta", lt: "Juostinis pjūklas", def: "Sierra de hoja continua flexible. Ideal para cortes curvos y reaserrío de madera." },
+          { en: "Drill press", pron: "dril pres", es: "Taladro de columna", lt: "Gręžimo staklės", def: "Taladro fijo en columna que garantiza orificios perfectamente perpendiculares." },
+          { en: "Biscuit joiner", pron: "BÍS-kit YÓI-ner", es: "Ranurador de galletas", lt: "Biskvitų frezavimo mašina", def: "Herramienta que corta ranuras semicirculares para insertar galletas de madera comprimida." },
+          { en: "Pocket hole jig", pron: "PÓ-ket houl yig", es: "Guía para tornillo de bolsillo", lt: "Kišeninio varžto šablonas", def: "Accesorio que guía la broca en ángulo para crear uniones con tornillo inclinado (tipo Kreg)." },
+          { en: "Random orbital sander", pron: "RÁN-dom OR-bi-tal SÁN-der", es: "Lijadora orbital", lt: "Orbitinė šlifuoklė", def: "Lijadora de movimiento excéntrico para lijar sin marcas direccionales." },
+          { en: "Hand plane", pron: "hand plein", es: "Cepillo de mano", lt: "Oblius", def: "Herramienta manual para afinar superficies y rebajar cantos de madera maciza." },
+          { en: "Chisel", pron: "CHÍ-sel", es: "Formón / Escoplo", lt: "Kaltas", def: "Herramienta de corte manual con hoja plana y bisel. Para tallar mortajas y ajustes finos." },
+          { en: "Marking gauge", pron: "MÁR-king guéich", es: "Gramil", lt: "Žymėjimo storis", def: "Instrumento para trazar líneas paralelas al canto de una pieza. Esencial para uniones precisas." },
+          { en: "Clamp", pron: "klamp", es: "Sargento / Prensa", lt: "Gnybtas", def: "Dispositivo para mantener piezas unidas mientras seca la cola. Nunca se tienen suficientes." },
+          { en: "Combination square", pron: "kom-bi-NÉI-shon skuér", es: "Escuadra combinada", lt: "Kombinuotas kampuolis", def: "Herramienta con regla deslizante y cabezal a 90° y 45°. Imprescindible en el taller." },
+          { en: "Spokeshave", pron: "SPÓUK-sheiv", es: "Raedera / Guillame", lt: "Žagrė", def: "Herramienta de mano para alisar superficies curvas. Similar a un cepillo pero para curvas." },
+          { en: "Card scraper", pron: "kard SKRÉI-per", es: "Rasqueta / Rasqueta de mano", lt: "Grandiklis", def: "Lámina de acero delgada que raspa la superficie dejando un acabado mejor que la lija." },
+          { en: "Flush trim bit", pron: "flash trim bit", es: "Fresa al ras", lt: "Lyginamoji freza", def: "Fresa para router con rodamiento que copia el perfil de una plantilla dejando el canto perfecto." },
+          { en: "Forstner bit", pron: "FÓRST-ner bit", es: "Broca Forstner", lt: "Forstnerio grąžtas", def: "Broca plana que hace orificios limpios de fondo plano. Usada para bisagras de cazoleta." },
+        ]
+      },
+      tecnicas: {
+        icon: "🔧", label: "Técnicas y uniones",
+        entries: [
+          { en: "Dovetail joint", pron: "DÁV-teil yoint", es: "Cola de milano", lt: "Uodegos jungimas", def: "Unión en forma de trapecio. Extremadamente resistente a la tracción. Marca de calidad artesanal." },
+          { en: "Mortise and tenon", pron: "MÓR-tis and TÉ-non", es: "Espiga y caja / Mortaja", lt: "Tenono ir mortizo jungimas", def: "Unión clásica: una espiga entra en una caja. Base de la carpintería estructural." },
+          { en: "Box joint", pron: "boks yoint", es: "Unión en caja / Dientes", lt: "Dėžutės jungimas", def: "Unión de esquina con dedos rectangulares entrelazados. Más sencilla que la cola de milano." },
+          { en: "Rabbet joint", pron: "RÁ-bet yoint", es: "Rebaje / Ranura de canto", lt: "Atkarpos jungimas", def: "Escalón cortado en el canto de una pieza donde encaja otra. Muy usado para fondos y tapas." },
+          { en: "Dado joint", pron: "DÉI-do yoint", es: "Ranura transversal", lt: "Griovelių jungimas", def: "Canal fresado a través del tablero donde encaja un estante o panel." },
+          { en: "Groove joint", pron: "gruv yoint", es: "Ranura longitudinal", lt: "Išilginis griovelys", def: "Canal fresado en paralelo a la veta. Para paneles de puerta o fondos corredizos." },
+          { en: "Biscuit joint", pron: "BÍS-kit yoint", es: "Unión con galleta", lt: "Biskvitinis jungimas", def: "Unión con galleta oval de madera comprimida. Alineación y resistencia sin tornillos." },
+          { en: "Pocket screw joint", pron: "PÓ-ket skru yoint", es: "Tornillo de bolsillo", lt: "Kišeninio varžto jungimas", def: "Tornillo inclinado que entra por la cara oculta. Rápido y muy popular en muebles modernos." },
+          { en: "Dowel joint", pron: "DÁU-el yoint", es: "Unión con tarugo", lt: "Kaiščių jungimas", def: "Clavija cilíndrica de madera encolada en orificios. Alinea piezas y agrega superficie de encolado." },
+          { en: "Butt joint", pron: "bat yoint", es: "Unión a tope", lt: "Tiesus jungimas", def: "La unión más simple: dos piezas pegadas de frente. Poco resistente sin refuerzo adicional." },
+          { en: "Miter joint", pron: "MÁI-ter yoint", es: "Inglete", lt: "Ąžuolo jungimas", def: "Corte a 45° para unir esquinas sin mostrar cantos. Muy usado en marcos y molduras." },
+          { en: "Lap joint", pron: "lap yoint", es: "Unión a media madera", lt: "Sluoksninis jungimas", def: "Dos piezas se superponen retirando la mitad del grosor de cada una. Simple y efectiva." },
+          { en: "Cut-out door", pron: "kat áut dor", es: "Puerta cortada de la carcasa", lt: "Durys išpjautos iš korpuso", def: "El frente completo se fija al cuerpo y las puertas se cortan in situ con sierra, garantizando alineación perfecta." },
+          { en: "Kerf", pron: "kerf", es: "Corte de sierra / Sangría", lt: "Pjovimo plyšys", def: "El ancho del material removido por el disco de la sierra (~2–3 mm). Debe considerarse en el plan de corte." },
+          { en: "Rip cut", pron: "rip kat", es: "Corte longitudinal", lt: "Išilginis pjūvis", def: "Corte en paralelo a la veta. Se realiza con la guía paralela de la sierra de mesa." },
+          { en: "Cross cut", pron: "kros kat", es: "Corte transversal", lt: "Skersinis pjūvis", def: "Corte perpendicular a la veta. Se realiza con tope o ingleteadora." },
+          { en: "Squaring up", pron: "SKUÉR-ing ap", es: "Cuadrar / Escuadrar", lt: "Sulyginimas", def: "Proceso de lograr que todas las caras estén a 90° entre sí. Primer paso de cualquier proyecto." },
+          { en: "Dry fit", pron: "drái fit", es: "Ensamble en seco", lt: "Sausas surinkimas", def: "Armar el mueble completo sin cola para verificar que todo encaje antes de pegar definitivamente." },
+          { en: "Grain direction", pron: "grein dai-RÉK-shon", es: "Dirección de la veta", lt: "Grūdų kryptis", def: "Orientación de las fibras de la madera. Cortar en contra de la veta produce astillas." },
+          { en: "Snipe", pron: "snaip", es: "Hundimiento de extremo", lt: "Obliavimo žymė", def: "Depresión en los extremos causada por el planer. Se evita pasando piezas de sacrificio." },
+          { en: "Tearout", pron: "TÉR-aut", es: "Astillado / Desgarro", lt: "Drožlių atskilimas", def: "Astillas que se arrancan al cortar o fresar madera en contra de la veta." },
+          { en: "Spline", pron: "splain", es: "Lengüeta / Filete", lt: "Jungiamoji juostelė", def: "Lámina delgada insertada en dos ranuras enfrentadas para unir y alinear dos piezas." },
+        ]
+      },
+      materiales: {
+        icon: "🪵", label: "Materiales y tableros",
+        entries: [
+          { en: "Plywood", pron: "PLÁI-ud", es: "Terciado / Madera terciada", lt: "Fanera", def: "Tablero de chapas de madera cruzadas y encoladas. Alta resistencia y estabilidad dimensional." },
+          { en: "Marine plywood", pron: "ma-RÍN PLÁI-ud", es: "Fenólico marino", lt: "Jūrinė fanera", def: "Terciado de alta calidad con resinas resistentes al agua. Sin vacíos internos. Ideal para muebles." },
+          { en: "MDF", pron: "em-di-ef", es: "MDF (fibra de densidad media)", lt: "Vidutinio tankio plaušų plokštė", def: "Tablero de fibras de madera y resina prensadas. Superficie muy lisa, fácil de pintar." },
+          { en: "Particle board", pron: "PÁR-ti-kel bord", es: "Aglomerado", lt: "Drožlių plokštė", def: "Tablero de virutas prensadas. Económico. Base de la mayoría de muebles laminados de cocina." },
+          { en: "Melamine board", pron: "MÉ-la-min bord", es: "Melamina", lt: "Melamino plokštė", def: "Aglomerado o MDF recubierto con papel impregnado en resina melamínica. Superficie dura y lavable." },
+          { en: "OSB", pron: "ou-es-bi", es: "OSB (tablero de virutas orientadas)", lt: "Orientuotų skiedrų plokštė", def: "Tablero de virutas largas orientadas y prensadas. Más resistente que el aglomerado. Uso estructural." },
+          { en: "HDF / Hardboard", pron: "éich-di-ef / HÁRD-bord", es: "HDF / Hardboard", lt: "Aukšto tankio plokštė", def: "Fibra de madera de alta densidad. Muy delgado (3–6 mm). Para fondos de cajones y gabinetes." },
+          { en: "Solid wood", pron: "SÓ-lid ud", es: "Madera maciza", lt: "Kietmedis", def: "Madera natural sin procesar en tablero. Se mueve con los cambios de humedad." },
+          { en: "Veneer", pron: "ve-NÍR", es: "Chapa / Enchapado", lt: "Faneruotė", def: "Lámina muy fina de madera noble pegada sobre un tablero de menor costo." },
+          { en: "Edge banding", pron: "ey bÁN-ding", es: "Tapacantos", lt: "Kraštų juostelė", def: "Tira de PVC, ABS o chapa de madera que cubre el canto del tablero para protegerlo." },
+          { en: "Hardwood", pron: "HÁRD-ud", es: "Madera dura", lt: "Kietmedis", def: "Madera de árboles de hoja caduca (roble, haya, cerezo). Dura y de grano cerrado." },
+          { en: "Softwood", pron: "SÓFT-ud", es: "Madera blanda / Conífera", lt: "Minkštmedis", def: "Madera de coníferas (pino, abeto, cedro). Más fácil de trabajar pero menos resistente." },
+          { en: "PVA glue", pron: "pi-vi-ei glu", es: "Cola PVA / Cola de carpintero", lt: "PVA klijai", def: "Adhesivo vinílico para madera. Seca en 20–30 min, curado total en 24 h." },
+          { en: "Piano hinge", pron: "piÁ-no hinch", es: "Bisagra piano / Bisagra continua", lt: "Pianinių vyrių", def: "Bisagra que corre en toda la longitud de la puerta. Distribuye el peso uniformemente." },
+          { en: "Wood filler", pron: "ud FÍ-ler", es: "Masilla para madera", lt: "Medžio glaistas", def: "Pasta para rellenar orificios y marcas de tornillos antes de pintar." },
+          { en: "Epoxy resin", pron: "i-PÓK-si RÉ-sin", es: "Resina epoxi", lt: "Epoksidinė derva", def: "Adhesivo de dos componentes de altísima resistencia. También se usa para rellenar vetas y nudos." },
+          { en: "Wood conditioner", pron: "ud kon-DÍ-sho-ner", es: "Acondicionador de madera", lt: "Medienos kondicionierius", def: "Producto que se aplica antes del tinte para lograr una absorción uniforme en maderas porosas." },
+          { en: "Teak oil", pron: "tik oil", es: "Aceite de teca", lt: "Tikmedžio aliejus", def: "Aceite penetrante para proteger madera. Resalta la veta natural. Fácil de aplicar." },
+        ]
+      },
+      medicion: {
+        icon: "📐", label: "Medición y trazado",
+        entries: [
+          { en: "Kerf allowance", pron: "kerf a-LÁU-ans", es: "Margen de corte", lt: "Pjovimo leidimas", def: "Material extra que se deja en el plan de corte para compensar el ancho del disco de sierra (~3 mm)." },
+          { en: "Story stick", pron: "STÓ-ri stik", es: "Bastón de cotas", lt: "Matavimo lazdelė", def: "Regla o listón donde se marcan todas las medidas de un proyecto para transferirlas sin números." },
+          { en: "Layout", pron: "LÉI-aut", es: "Trazado / Diagramado", lt: "Išdėstymas", def: "El proceso de marcar en la madera todas las líneas de corte y ensamble antes de empezar a cortar." },
+          { en: "Reveal", pron: "re-VÍL", es: "Retranqueo visible / Línea de vista", lt: "Atodanga", def: "La pequeña franja visible entre una puerta y el marco. Define la estética de la cara del mueble." },
+          { en: "Tolerance", pron: "TÓ-le-rans", es: "Tolerancia", lt: "Tolerancija", def: "El margen aceptable de error en una medida. En carpintería de muebles suele ser ±1 mm." },
+          { en: "Datum line", pron: "DÉI-tam lain", es: "Línea de referencia", lt: "Atskaitos linija", def: "Línea base desde la cual se toman todas las demás medidas del proyecto." },
+          { en: "Plumb", pron: "plam", es: "Plomada / A plomo", lt: "Vertikalumas", def: "Perfectamente vertical. Se verifica con plomada o nivel de burbuja." },
+          { en: "Level", pron: "LÉ-vel", es: "Nivel / A nivel", lt: "Horizontalumas", def: "Perfectamente horizontal. Se verifica con nivel de burbuja o nivel láser." },
+          { en: "Square", pron: "skuér", es: "A escuadra / En escuadra", lt: "Statmenas", def: "Que forma exactamente 90°. Una caja a escuadra tiene todas sus esquinas en ángulo recto." },
+          { en: "Centerline", pron: "SÉN-ter-lain", es: "Línea de centro / Eje", lt: "Centro linija", def: "Línea que marca el centro exacto de una pieza. Fundamental para ubicar bisagras y herrajes." },
+          { en: "Overhang", pron: "OU-ver-hang", es: "Vuelo / Voladizo", lt: "Iškyšulys", def: "La parte de la tapa o repisa que sobresale más allá de la base de soporte." },
+          { en: "Setback", pron: "SÉT-bak", es: "Retranqueo / Distancia de retiro", lt: "Atitraukimas", def: "La distancia entre el borde de una pieza y su punto de fijación o referencia." },
+          { en: "Flush", pron: "flash", es: "Al ras / Enrasado", lt: "Sulyginta", def: "Que dos superficies quedan perfectamente en el mismo plano, sin escalón ni diferencia." },
+          { en: "Proud", pron: "práud", es: "Sobresalido / Orgulloso", lt: "Išsikišęs", def: "Que una superficie sobresale levemente por encima del plano de referencia. Opuesto a flush." },
+        ]
+      },
+      acabados: {
+        icon: "🎨", label: "Acabados y tratamientos",
+        entries: [
+          { en: "Finishing", pron: "FÍ-ni-shing", es: "Acabado / Terminación", lt: "Apdaila", def: "Todo proceso aplicado a la superficie de la madera para protegerla y darle apariencia final." },
+          { en: "Sanding sealer", pron: "SÁN-ding SÍ-ler", es: "Sellador para lijar", lt: "Gruntas šlifavimui", def: "Primera capa que sella el poro de la madera y facilita el lijado final antes del acabado." },
+          { en: "Grain filler", pron: "grein FÍ-ler", es: "Relleno de poro", lt: "Porų užpildas", def: "Pasta que se aplica para rellenar el poro abierto de maderas como el roble antes del barniz." },
+          { en: "Stain", pron: "stein", es: "Tinte / Tintura", lt: "Dažyvai", def: "Producto que colorea la madera sin tapar la veta. Penetra en las fibras." },
+          { en: "Varnish", pron: "VÁR-nish", es: "Barniz", lt: "Lakas", def: "Acabado transparente que forma una película protectora sobre la madera. Resiste agua y roce." },
+          { en: "Lacquer", pron: "LÁ-ker", es: "Laca", lt: "Lakas nitro", def: "Acabado de secado rápido por evaporación del solvente. Muy usado en carpintería industrial." },
+          { en: "Shellac", pron: "she-LÁK", es: "Goma laca / Shellac", lt: "Šelakas", def: "Acabado natural derivado de insecto. Excelente sellador y base para otros acabados." },
+          { en: "Danish oil", pron: "DÉI-nish oil", es: "Aceite danés", lt: "Daniškas aliejus", def: "Mezcla de aceites y barniz que penetra en la madera dando protección con aspecto natural." },
+          { en: "Wax", pron: "uaks", es: "Cera", lt: "Vaškas", def: "Acabado de protección suave que se aplica sobre otros acabados o directamente en maderas blandas." },
+          { en: "Polyurethane", pron: "po-li-iú-re-zein", es: "Poliuretano", lt: "Poliuretanas", def: "Acabado muy resistente al agua y al roce. Ideal para mesas y pisos de madera." },
+          { en: "Sanding", pron: "SÁN-ding", es: "Lijado", lt: "Šlifavimas", def: "Proceso de alisar la superficie con papel de lija de distinta granulación, de menor a mayor número." },
+          { en: "Grit", pron: "grit", es: "Granulación / Grano", lt: "Grūdėtumas", def: "El número que indica el tamaño de los granos de la lija. A mayor número, más fina la lija." },
+          { en: "Burnishing", pron: "BÉR-ni-shing", es: "Bruñido / Pulido", lt: "Poliravimas", def: "Proceso de frotar la superficie con un elemento duro para compactar las fibras y lograr brillo." },
+          { en: "Wire brushing", pron: "uáier BRÁ-shing", es: "Cepillado de alambre", lt: "Vielos šepečio apdaila", def: "Técnica para resaltar la veta de la madera eliminando las partes blandas con cepillo de alambre." },
+          { en: "Distressing", pron: "dis-TRÉ-sing", es: "Envejecido / Patinado", lt: "Dirbtinis sendinimas", def: "Técnica para dar apariencia de madera usada y antigua mediante marcas, golpes y acabados especiales." },
+        ]
+      }
+    };
+
+    function daBuild(filter='all', query='') {
+      const main = document.getElementById('da-main');
+      main.innerHTML = '';
+      let totalShown = 0;
+      const cats = filter === 'all' ? Object.keys(daData) : [filter];
+
+      cats.forEach(catKey => {
+        const cat = daData[catKey];
+        const filtered = cat.entries.filter(e => {
+          if (!query) return true;
+          const q = query.toLowerCase();
+          return e.en.toLowerCase().includes(q) ||
+                 e.pron.toLowerCase().includes(q) ||
+                 e.es.toLowerCase().includes(q) ||
+                 e.lt.toLowerCase().includes(q) ||
+                 e.def.toLowerCase().includes(q);
+        });
+        if (!filtered.length) return;
+        totalShown += filtered.length;
+
+        const section = document.createElement('div');
+        section.className = 'da-cat-section';
+        section.innerHTML = `
+          <div class="da-cat-header">
+            <span class="da-cat-icon">${cat.icon}</span>
+            <span class="da-cat-name">${cat.label}</span>
+            <span class="da-cat-count">${filtered.length} términos</span>
+          </div>
+          <div class="da-grid"></div>
+        `;
+        const grid = section.querySelector('.da-grid');
+
+        filtered.forEach(e => {
+          const q = query.toLowerCase();
+          function hl(text) {
+            if (!q) return text;
+            const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+            return text.replace(re, '<mark style="background:#e8a43a;color:#1a1209;border-radius:2px">$1</mark>');
+          }
+          const card = document.createElement('div');
+          card.className = 'da-entry';
+          card.innerHTML = `
+            <div class="da-en">${hl(e.en)}</div>
+            <div class="da-pron">${hl(e.pron)}</div>
+            <div class="da-es">${hl(e.es)}</div>
+            <div class="da-lt">${hl(e.lt)}</div>
+            <div class="da-def">${hl(e.def)}</div>
+          `;
+          grid.appendChild(card);
+        });
+        main.appendChild(section);
+      });
+
+      if (!totalShown) {
+        main.innerHTML = `<div class="da-no-results">🔍 Sin resultados<span>Probá en inglés, pronunciación, español o lituano</span></div>`;
+      }
+
+      const total = Object.values(daData).reduce((a,c)=>a+c.entries.length,0);
+      document.getElementById('da-stats').textContent =
+        `Mostrando ${totalShown} de ${total} términos · 6 categorías`;
+    }
+
+    let daActiveFilter = 'all';
+    document.querySelectorAll('.da-filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.da-filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        daActiveFilter = btn.dataset.cat;
+        daBuild(daActiveFilter, document.getElementById('da-search').value);
+      });
+    });
+    document.getElementById('da-search').addEventListener('input', e => {
+      daBuild(daActiveFilter, e.target.value.trim());
+    });
+
+    daBuild();
+
+    // ── SCROLL REVEAL ──
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
     revealEls.forEach(el => observer.observe(el));
+
+  // ── NAVEGACIÓN POR PESTAÑAS ──
+  const hero = document.querySelector('.hero');
+  const heroScroll = document.querySelector('.hero-scroll');
+  const dividers = document.querySelectorAll('.divider');
+  const allSections = document.querySelectorAll('.page-section');
+
+  function showSection(id) {
+    // Ocultar hero y divisores
+    hero.classList.add('hidden');
+    dividers.forEach(d => d.style.display = 'none');
+    if (heroScroll) heroScroll.style.display = 'none';
+
+    // Ocultar todas las secciones
+    allSections.forEach(s => s.classList.remove('active'));
+
+    // Mostrar la sección pedida
+    const target = document.getElementById(id);
+    if (target) {
+      target.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Marcar nav activa
+    document.querySelectorAll('.nav-links a').forEach(a => {
+      a.classList.toggle('nav-active', a.dataset.nav === id);
+    });
+  }
+
+  function showHero() {
+    hero.classList.remove('hidden');
+    dividers.forEach(d => d.style.display = '');
+    if (heroScroll) heroScroll.style.display = '';
+    allSections.forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('nav-active'));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Interceptar clicks de nav
+  document.querySelectorAll('.nav-links a[data-nav]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      showSection(this.dataset.nav);
+    });
+  });
+
+  // Logo vuelve al hero
+  document.querySelector('.nav-logo').addEventListener('click', function(e) {
+    e.preventDefault();
+    showHero();
+  });
+
+  // Botones del hero que apuntan a secciones
+  document.querySelectorAll('.hero-actions a').forEach(a => {
+    a.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      const match = href.match(/#(\w+)$/);
+      if (match) {
+        e.preventDefault();
+        showSection(match[1]);
+      }
+    });
+  });
+
+  // Hash inicial en la URL
+  if (window.location.hash) {
+    const id = window.location.hash.slice(1);
+    if (document.getElementById(id)) showSection(id);
+  }
+
+
+  // ── ASTILLAS ──
+  const AST_PWD = 'madera2026'; // cambiá esto
+  let astAdminMode = false;
+  let astItems = JSON.parse(localStorage.getItem('ast_items') || '[]');
+  let astFiltroActivo = 'todos';
+
+  function astRender() {
+    const grid = document.getElementById('astillas-grid');
+    const empty = document.getElementById('astillas-empty');
+    const filtered = astFiltroActivo === 'todos' ? astItems : astItems.filter(i => i.tipo === astFiltroActivo);
+    if (filtered.length === 0) {
+      grid.innerHTML = '';
+      empty.style.display = 'block';
+    } else {
+      empty.style.display = 'none';
+      grid.innerHTML = filtered.map((item, idx) => {
+        const realIdx = astItems.indexOf(item);
+        const deleteBtn = `<button class="ast-delete-btn" title="Eliminar" onclick="astEliminar(${realIdx})">✕</button>`;
+        if (item.tipo === 'pdf') {
+          return `<div class="ast-card"><div class="ast-card-tipo">📄 PDF · Documento</div><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}<a href="${item.url}" target="_blank" class="ast-btn">Descargar →</a>${deleteBtn}</div>`;
+        } else if (item.tipo === 'video') {
+          const embedUrl = astVideoEmbed(item.url);
+          return `<div class="ast-card"><div class="ast-card-tipo">▶ Video</div><h3>${item.titulo}</h3>${embedUrl ? `<div class="ast-video-wrap"><iframe src="${embedUrl}" allowfullscreen></iframe></div>` : `<p style="color:#e05555">URL de video no reconocida.</p>`}${item.desc ? `<p>${item.desc}</p>` : ''}${deleteBtn}</div>`;
+        } else {
+          return `<div class="ast-card"><div class="ast-card-tipo">🖼 Imagen · Foto</div><img class="ast-card-img" src="${item.url}" alt="${item.titulo}" onerror="this.style.display='none'"><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}${deleteBtn}</div>`;
+        }
+      }).join('');
+    }
+    if (astAdminMode) grid.classList.add('ast-admin-active');
+    else grid.classList.remove('ast-admin-active');
+
+    // Lista admin
+    const lista = document.getElementById('ast-lista-admin');
+    if (lista) {
+      if (astItems.length === 0) { lista.innerHTML = ''; return; }
+      lista.innerHTML = `<p style="color:var(--crema-dim);font-size:0.8rem;margin-bottom:1rem;">${astItems.length} item(s) guardado(s)</p>` +
+        astItems.map((item, i) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.07);">
+          <span style="color:var(--crema);font-size:0.88rem;">${item.tipo === 'pdf' ? '📄' : item.tipo === 'video' ? '▶' : '🖼'} ${item.titulo}</span>
+          <button onclick="astEliminar(${i})" style="background:none;border:none;color:#e05555;cursor:pointer;font-size:0.8rem;">Eliminar</button>
+        </div>`).join('');
+    }
+  }
+
+  function astVideoEmbed(url) {
+    let m;
+    m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
+    if (m) return `https://www.youtube.com/embed/${m[1]}`;
+    m = url.match(/vimeo\.com\/(\d+)/);
+    if (m) return `https://player.vimeo.com/video/${m[1]}`;
+    return null;
+  }
+
+  function astGuardar() { localStorage.setItem('ast_items', JSON.stringify(astItems)); }
+
+  window.astFiltrar = function(btn) {
+    document.querySelectorAll('.ast-filtro').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    astFiltroActivo = btn.dataset.tipo;
+    astRender();
+  };
+
+  window.astAdminToggle = function() {
+    const panel = document.getElementById('ast-admin-panel');
+    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+  };
+
+  window.astLogin = function() {
+    const val = document.getElementById('ast-pwd').value;
+    if (val === AST_PWD) {
+      astAdminMode = true;
+      document.getElementById('ast-login').style.display = 'none';
+      document.getElementById('ast-form').style.display = 'block';
+      astRender();
+    } else {
+      document.getElementById('ast-pwd-err').style.display = 'block';
+    }
+  };
+
+  window.astCerrarSesion = function() {
+    astAdminMode = false;
+    document.getElementById('ast-login').style.display = 'block';
+    document.getElementById('ast-form').style.display = 'none';
+    document.getElementById('ast-pwd').value = '';
+    document.getElementById('ast-admin-panel').style.display = 'none';
+    astRender();
+  };
+
+  window.astAgregar = function() {
+    const tipo = document.getElementById('ast-tipo').value;
+    const titulo = document.getElementById('ast-titulo').value.trim();
+    const desc = document.getElementById('ast-desc').value.trim();
+    const url = document.getElementById('ast-url').value.trim();
+    const err = document.getElementById('ast-form-err');
+    if (!titulo || !url) { err.textContent = 'Título y URL son obligatorios.'; err.style.display='block'; return; }
+    err.style.display = 'none';
+    astItems.push({ tipo, titulo, desc, url });
+    astGuardar();
+    document.getElementById('ast-titulo').value = '';
+    document.getElementById('ast-desc').value = '';
+    document.getElementById('ast-url').value = '';
+    astRender();
+  };
+
+  window.astEliminar = function(idx) {
+    if (!confirm('¿Eliminar este item?')) return;
+    astItems.splice(idx, 1);
+    astGuardar();
+    astRender();
+  };
+
+  // Render inicial
+  astRender();
   </script>
-</body>
-</html>
+
+
+</body></html>
