@@ -173,9 +173,12 @@
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 1.6rem;
       list-style: none;
+      overflow-x: auto;
+      scrollbar-width: none;
     }
+    .nav-links::-webkit-scrollbar { display: none; }
     .nav-links a {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.72rem;
@@ -184,8 +187,65 @@
       color: var(--gris-tex);
       text-decoration: none;
       transition: color 0.2s;
+      white-space: nowrap;
     }
     .nav-links a:hover { color: var(--ambar); }
+
+    /* ── HAMBURGER ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      z-index: 201;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--crema);
+      border-radius: 2px;
+      transition: all 0.25s ease;
+      transform-origin: center;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* ── MOBILE MENU OVERLAY ── */
+    .nav-mobile-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(26,18,9,0.98);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+    .nav-mobile-overlay.open { display: flex; }
+    .nav-mobile-overlay a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gris-tex);
+      text-decoration: none;
+      padding: 1.1rem 2rem;
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: color 0.2s, background 0.2s;
+    }
+    .nav-mobile-overlay a:hover,
+    .nav-mobile-overlay a.nav-active { color: var(--ambar); background: rgba(255,255,255,0.03); }
 
     /* ── HERO ── */
     .hero {
@@ -1252,6 +1312,7 @@
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
       .hero { padding: 0 1.5rem; }
       section { padding: 5rem 1.5rem; }
       .pilares-grid { grid-template-columns: 1fr; gap: 2px; }
@@ -1282,7 +1343,22 @@
       <li><a href="#redes" data-nav="redes">Redes</a></li>
       <li><a href="#astillas" data-nav="astillas">Astillas</a></li>
     </ul>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Menú" onclick="navToggle()">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="nav-mobile-overlay" id="nav-mobile-overlay">
+    <a href="#pilares" data-nav="pilares" onclick="navClose()">Pilares</a>
+    <a href="#diccionario" data-nav="diccionario" onclick="navClose()">Diccionario</a>
+    <a href="#herramientas" data-nav="herramientas" onclick="navClose()">Herramientas</a>
+    <a href="#maestros" data-nav="maestros" onclick="navClose()">Maestros</a>
+    <a href="#estudiar" data-nav="estudiar" onclick="navClose()">Dónde estudiar</a>
+    <a href="#sobre" data-nav="sobre" onclick="navClose()">Sobre</a>
+    <a href="#redes" data-nav="redes" onclick="navClose()">Redes</a>
+    <a href="#astillas" data-nav="astillas" onclick="navClose()">Astillas</a>
+  </div>
 
   <!-- HERO -->
   <div class="hero">
@@ -2770,8 +2846,8 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Marcar nav activa
-    document.querySelectorAll('.nav-links a').forEach(a => {
+    // Marcar nav activa — desktop y mobile
+    document.querySelectorAll('.nav-links a, .nav-mobile-overlay a').forEach(a => {
       a.classList.toggle('nav-active', a.dataset.nav === id);
     });
   }
@@ -2781,9 +2857,32 @@
     dividers.forEach(d => d.style.display = '');
     if (heroScroll) heroScroll.style.display = '';
     allSections.forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('nav-active'));
+    document.querySelectorAll('.nav-links a, .nav-mobile-overlay a').forEach(a => a.classList.remove('nav-active'));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  // ── HAMBURGER ──
+  function navToggle() {
+    const btn = document.getElementById('nav-hamburger');
+    const overlay = document.getElementById('nav-mobile-overlay');
+    btn.classList.toggle('open');
+    overlay.classList.toggle('open');
+    document.body.style.overflow = overlay.classList.contains('open') ? 'hidden' : '';
+  }
+  function navClose() {
+    document.getElementById('nav-hamburger').classList.remove('open');
+    document.getElementById('nav-mobile-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Clicks overlay mobile
+  document.querySelectorAll('.nav-mobile-overlay a[data-nav]').forEach(a => {
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      navClose();
+      showSection(this.dataset.nav);
+    });
+  });
 
   // Interceptar clicks de nav
   document.querySelectorAll('.nav-links a[data-nav]').forEach(a => {
