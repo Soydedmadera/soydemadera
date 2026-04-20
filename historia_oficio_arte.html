@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El oficio y el arte — Soy de Madera</title>
+  <meta name="description" content="Por qué lo que hacemos importa. Historia del concepto de arte desde la Antigüedad hasta hoy, vista desde el taller." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+
+  <style>
+    /* =============================================
+       VARIABLES Y RESET
+    ============================================= */
+    :root {
+      --nogal:   #1a1209;
+      --nogal-2: #221808;
+      --nogal-3: #2e2010;
+      --siena:   #c47a2a;
+      --ambar:   #e8a43a;
+      --crema:   #f5edd8;
+      --crema-2: #ede0c4;
+      --humo:    rgba(245,237,216,0.06);
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body:    'Crimson Pro', Georgia, serif;
+      --font-mono:    'IBM Plex Mono', monospace;
+      --max-w: 820px;
+      --gap: clamp(2rem, 5vw, 4rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--nogal);
+      color: var(--crema);
+      font-family: var(--font-body);
+      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Ruido de fondo */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* =============================================
+       NAVEGACIÓN
+    ============================================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(26,18,9,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(196,122,42,0.15);
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--ambar);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--siena);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* =============================================
+       LAYOUT PRINCIPAL
+    ============================================= */
+    main {
+      position: relative;
+      z-index: 1;
+      padding-top: 5rem;
+    }
+
+    section {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: var(--gap) 2rem;
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      max-width: 100%;
+      padding: clamp(5rem, 12vw, 9rem) 2rem clamp(3rem, 6vw, 5rem);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 4rem;
+      background: linear-gradient(to bottom, var(--siena), transparent);
+    }
+
+    .hero-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--siena);
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.1s forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 8vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--crema);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.25s forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--ambar);
+    }
+
+    .hero-sub {
+      font-family: var(--font-body);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-style: italic;
+      color: var(--crema-2);
+      max-width: 600px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeUp 1s 0.45s forwards;
+    }
+
+    /* =============================================
+       SECCIONES DE CONTENIDO
+    ============================================= */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--siena);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--siena), transparent);
+      opacity: 0.4;
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 400;
+      color: var(--crema);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 em { font-style: italic; color: var(--ambar); }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 400;
+      color: var(--ambar);
+      margin: 2rem 0 0.8rem;
+    }
+
+    p { margin-bottom: 1.2rem; color: var(--crema-2); }
+    p:last-child { margin-bottom: 0; }
+
+    strong { color: var(--crema); font-weight: 600; }
+
+    .pull-quote {
+      border-left: 3px solid var(--siena);
+      padding: 1.2rem 1.8rem;
+      margin: 2.5rem 0;
+      background: rgba(196,122,42,0.05);
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--crema);
+      line-height: 1.45;
+    }
+
+    .pull-quote span {
+      display: block;
+      margin-top: 0.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--siena);
+      font-style: normal;
+      letter-spacing: 0.1em;
+    }
+
+    /* Separador decorativo */
+    .sep {
+      width: 100%;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(196,122,42,0.3), transparent);
+    }
+
+    /* =============================================
+       LÍNEA DE TIEMPO SVG INTERACTIVA
+    ============================================= */
+    .timeline-wrapper {
+      max-width: 100%;
+      padding: var(--gap) 0;
+      overflow: hidden;
+    }
+
+    .timeline-intro {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 2rem 2rem;
+    }
+
+    #timeline-svg-container {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      position: relative;
+    }
+
+    #timeline-svg {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      overflow: visible;
+    }
+
+    .tl-node {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .tl-node:hover .tl-circle { filter: brightness(1.3); }
+
+    #timeline-panel {
+      max-width: var(--max-w);
+      margin: 1.5rem auto 0;
+      padding: 0 2rem;
+      min-height: 6rem;
+    }
+
+    .tl-panel-content {
+      background: rgba(196,122,42,0.08);
+      border: 1px solid rgba(196,122,42,0.2);
+      border-radius: 2px;
+      padding: 1.5rem 2rem;
+      animation: fadeUp 0.35s forwards;
+      display: none;
+    }
+
+    .tl-panel-content.visible { display: block; }
+
+    .tl-panel-era {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--siena);
+      margin-bottom: 0.5rem;
+    }
+
+    .tl-panel-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--crema);
+      margin-bottom: 0.5rem;
+    }
+
+    .tl-panel-body {
+      font-size: 0.95rem;
+      color: var(--crema-2);
+      line-height: 1.65;
+    }
+
+    .tl-hint {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: var(--siena);
+      opacity: 0.6;
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    /* =============================================
+       CASO TRES BÚHOS
+    ============================================= */
+    .buhos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin: 2.5rem 0;
+    }
+
+    .buho-card {
+      background: var(--nogal-3);
+      border: 1px solid rgba(196,122,42,0.18);
+      padding: 1.4rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .buho-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .buho-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--crema);
+      margin-bottom: 0.3rem;
+    }
+
+    .buho-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--siena);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .buho-price {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--ambar);
+    }
+
+    .buho-sub {
+      font-size: 0.78rem;
+      color: rgba(245,237,216,0.45);
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+
+    /* =============================================
+       BLOQUE KANT
+    ============================================= */
+    .kant-block {
+      background: linear-gradient(135deg, rgba(196,122,42,0.07), transparent);
+      border: 1px solid rgba(196,122,42,0.2);
+      padding: 2.5rem;
+      margin: 2.5rem 0;
+      position: relative;
+    }
+
+    .kant-block::before {
+      content: '§';
+      position: absolute;
+      top: -1.2rem;
+      left: 2rem;
+      font-family: var(--font-display);
+      font-size: 3rem;
+      color: var(--siena);
+      opacity: 0.4;
+      line-height: 1;
+    }
+
+    .kant-label {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--siena);
+      margin-bottom: 1rem;
+    }
+
+    /* =============================================
+       BLOQUE CÓRDOBA — PENDIENTE
+    ============================================= */
+    .cordoba-pending {
+      background: rgba(30,22,12,0.6);
+      border: 1px dashed rgba(196,122,42,0.25);
+      padding: 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cordoba-pending::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(196,122,42,0.03) 20px,
+        rgba(196,122,42,0.03) 40px
+      );
+    }
+
+    .pending-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    .pending-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--siena);
+      opacity: 0.7;
+      margin-bottom: 0.8rem;
+    }
+
+    .pending-text {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-style: italic;
+      color: rgba(245,237,216,0.4);
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    .pending-date {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--siena);
+      opacity: 0.5;
+      margin-top: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* =============================================
+       NOTAS AL PIE / ATRIBUCIÓN
+    ============================================= */
+    .fuentes {
+      border-top: 1px solid rgba(196,122,42,0.2);
+      padding: 3rem 2rem;
+      max-width: var(--max-w);
+      margin: 0 auto;
+    }
+
+    .fuentes-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--siena);
+      margin-bottom: 1.5rem;
+    }
+
+    .fuente-item {
+      font-size: 0.88rem;
+      color: rgba(245,237,216,0.55);
+      margin-bottom: 0.7rem;
+      line-height: 1.5;
+      font-family: var(--font-body);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .fuente-item::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--siena);
+      opacity: 0.6;
+    }
+
+    .atribucion {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(196,122,42,0.06);
+      border-left: 2px solid var(--siena);
+      font-size: 0.85rem;
+      color: rgba(245,237,216,0.5);
+      line-height: 1.65;
+      font-style: italic;
+    }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border-top: 1px solid rgba(196,122,42,0.1);
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--ambar);
+      text-decoration: none;
+    }
+
+    .footer-meta {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: rgba(196,122,42,0.4);
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    /* =============================================
+       ANIMACIONES
+    ============================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 900px) {
+      .buhos { grid-template-columns: 1fr; max-width: 300px; margin-left: auto; margin-right: auto; }
+      nav .nav-tag { display: none; }
+      .kant-block { padding: 1.8rem 1.5rem; }
+      .cordoba-pending { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Soy de Madera</a>
+    <span class="nav-tag">Historia del oficio</span>
+  </nav>
+
+  <main>
+
+    <!-- ===================================================
+         HERO
+    =================================================== -->
+    <div class="hero">
+      <p class="hero-kicker">El oficio y el arte</p>
+      <h1 class="hero-title">Por qué lo que<br /><em>hacemos importa</em></h1>
+      <p class="hero-sub">La jerarquía que relega lo artesanal no es natural. Es una construcción —y tiene fecha.</p>
+    </div>
+
+    <!-- ===================================================
+         SECCIÓN 1 — INTRODUCCIÓN
+    =================================================== -->
+    <section class="reveal">
+      <p class="section-label">01 — La pregunta</p>
+      <h2>¿Cuándo una silla dejó de ser arte?</h2>
+
+      <p>
+        Alguien ensambló los travesaños de la silla Wishbone de Hans Wegner. Lo hizo con precisión submilimétrica,
+        usando herramientas que tardó años en dominar. La silla terminó en el MoMA de Nueva York.
+        ¿Ese artesano hizo arte? ¿O solo ejecutó el diseño de otro?
+      </p>
+
+      <p>
+        La pregunta parece filosófica. En realidad es política. Y tiene una historia concreta
+        que arranca mucho antes del siglo XX —y que explica por qué hoy un taller
+        de ebanistería se llama "oficio" y no "estudio".
+      </p>
+
+      <div class="pull-quote">
+        "La distinción entre arte y artesanía no es natural ni universal.
+        Es una construcción histórica, social e ideológica."
+        <span>— Vanessa Freitag, El Artista N°11, 2014</span>
+      </div>
+
+      <p>
+        Lo que sigue no es la historia completa del arte. Es la historia de <strong>cuándo y por qué
+        el oficio quedó afuera</strong> —y por qué esa decisión dice más sobre quien la tomó
+        que sobre los objetos que clasifica.
+      </p>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- ===================================================
+         SECCIÓN 2 — LÍNEA DE TIEMPO
+    =================================================== -->
+    <div class="timeline-wrapper">
+
+      <div class="timeline-intro reveal">
+        <p class="section-label">02 — En un principio, todo fue techné</p>
+        <h2>Seis momentos que cambiaron<br /><em>el nombre de lo que hacemos</em></h2>
+        <p>
+          El concepto de arte no siempre existió. Apareció, se transformó, se fracturó.
+          Cada uno de estos seis momentos dejó una cicatriz en cómo percibimos el trabajo manual.
+        </p>
+      </div>
+
+      <div id="timeline-svg-container">
+        <!--
+          SVG TIMELINE INTERACTIVA — 6 nodos clickeables
+          Cada nodo dispara el panel de detalle inferior
+        -->
+        <svg id="timeline-svg" viewBox="0 0 920 160" xmlns="http://www.w3.org/2000/svg"
+             aria-label="Línea de tiempo del concepto de arte">
+
+          <!-- Línea base -->
+          <line x1="60" y1="80" x2="860" y2="80"
+                stroke="#c47a2a" stroke-width="1" stroke-opacity="0.3"/>
+
+          <!-- Degradado en extremos -->
+          <defs>
+            <linearGradient id="lineGrad" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0%"   stop-color="#c47a2a" stop-opacity="0"/>
+              <stop offset="8%"   stop-color="#c47a2a" stop-opacity="0.3"/>
+              <stop offset="92%"  stop-color="#c47a2a" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#c47a2a" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <line x1="60" y1="80" x2="860" y2="80"
+                stroke="url(#lineGrad)" stroke-width="1.5"/>
+
+          <!-- ====== NODO 1 — Grecia ====== -->
+          <g class="tl-node" data-id="0" role="button" tabindex="0"
+             aria-label="Antigüedad griega — Techné">
+            <circle class="tl-circle" cx="100" cy="80" r="14"
+                    fill="#1a1209" stroke="#c47a2a" stroke-width="1.5"/>
+            <circle cx="100" cy="80" r="5" fill="#e8a43a"/>
+            <text x="100" y="112" text-anchor="middle"
+                  font-family="'IBM Plex Mono', monospace" font-size="9"
+                  fill="#c47a2a" letter-spacing="0.5">S. V a.C.</text>
+            <text x="100" y="128" text-anchor="middle"
+                  font-family="'Fraunces', Georgia, serif" font-size="11"
+                  fill="#f5edd8">Techné</text>
+          </g>
+
+          <!-- ====== NODO 2 — Roma ====== -->
+          <g class="tl-node" data-id="1" role="button" tabindex="0"
+             aria-label="Roma — Ars">
+            <circle class="tl-circle" cx="240" cy="80" r="12"
+                    fill="#1a1209" stroke="#c47a2a" stroke-width="1.2"/>
+            <circle cx="240" cy="80" r="4" fill="#c47a2a"/>
+            <text x="240" y="112" text-anchor="middle"
+                  font-family="'IBM Plex Mono', monospace" font-size="9"
+                  fill="#c47a2a" letter-spacing="0.5">S. I a.C.</text>
+            <text x="240" y="128" text-anchor="middle"
+                  font-family="'Fraunces', Georgia, serif" font-size="11"
+                  fill="#f5edd8">Ars</text>
+          </g>
+
+          <!-- ====== NODO 3 — Edad Media ====== -->
+          <g class="tl-node" data-id="2" role="button" tabindex="0"
+             aria-label="Edad Media — Artes liberales vs mecánicas">
+            <circle class="tl-circle" cx="390" cy="80" r="12"
+                    fill="#1a1209" stroke="#c47a2a" stroke-width="1.2"/>
+            <circle cx="390" cy="80" r="4" fill="#c47a2a"/>
+            <text x="390" y="112" text-anchor="middle"
+                  font-family="'IBM Plex Mono', monospace" font-size="9"
+                  fill="#c47a2a" letter-spacing="0.5">S. V–XV</text>
+            <text x="390" y="128" text-anchor="middle"
+                  font-family="'Fraunces', Georgia, serif" font-size="11"
+                  fill="#f5edd8">Liberales / Mecánicas</text>
+          </g>
+
+          <!-- ====== NODO 4 — Renacimiento ====== -->
+          <g class="tl-node" data-id="3" role="button" tabindex="0"
+             aria-label="Renacimiento — Primera ruptura">
+            <circle class="tl-circle" cx="540" cy="80" r="12"
+                    fill="#1a1209" stroke="#c47a2a" stroke-width="1.2"/>
+            <circle cx="540" cy="80" r="4" fill="#c47a2a"/>
+            <text x="540" y="112" text-anchor="middle"
+                  font-family="'IBM Plex Mono', monospace" font-size="9"
+                  fill="#c47a2a" letter-spacing="0.5">S. XV–XVI</text>
+            <text x="540" y="128" text-anchor="middle"
+                  font-family="'Fraunces', Georgia, serif" font-size="11"
+                  fill="#f5edd8">Renacimiento</text>
+          </g>
+
+          <!-- ====== NODO 5 — S. XVIII (FRACTURA) ====== -->
+          <g class="tl-node" data-id="4" role="button" tabindex="0"
+             aria-label="Siglo XVIII — La gran fractura">
+            <!-- Nodo destacado: más grande, color diferente -->
+            <circle class="tl-circle" cx="690" cy="80" r="18"
+                    fill="#1a1209" stroke="#e8a43a" stroke-width="2"/>
+            <circle cx="690" cy="80" r="7" fill="#e8a43a"/>
+            <!-- Etiqueta "FRACTURA" -->
+            <text x="690" y="46" text-anchor="middle"
+                  font-family="'IBM Plex Mono', monospace" font-size="8"
+                  fill="#e8a43a" letter-spacing="1" opacity="0.8">FRACTURA</text>
+            <line x1="690" y1="52" x2="690" y2="62" stroke="#e8a43a" stroke-width="1" opacity="0.5"/>
+            <text x="690" y="115" text-anchor="middle"
+                  font-family="'IBM Plex Mono', monospace" font-size="9"
+                  fill="#e8a43a" letter-spacing="0.5">S. XVIII</text>
+            <text x="690" y="131" text-anchor="middle"
+                  font-family="'Fraunces', Georgia, serif" font-size="11"
+                  fill="#f5edd8">Bellas Artes</text>
+          </g>
+
+          <!-- ====== NODO 6 — SS. XIX–XX ====== -->
+          <g class="tl-node" data-id="5" role="button" tabindex="0"
+             aria-label="Siglos XIX-XX — Crisis del concepto">
+            <circle class="tl-circle" cx="840" cy="80" r="12"
+                    fill="#1a1209" stroke="#c47a2a" stroke-width="1.2"/>
+            <circle cx="840" cy="80" r="4" fill="#c47a2a"/>
+            <text x="840" y="112" text-anchor="middle"
+                  font-family="'IBM Plex Mono', monospace" font-size="9"
+                  fill="#c47a2a" letter-spacing="0.5">S. XIX–XX</text>
+            <text x="840" y="128" text-anchor="middle"
+                  font-family="'Fraunces', Georgia, serif" font-size="11"
+                  fill="#f5edd8">Crisis</text>
+          </g>
+        </svg>
+
+        <p class="tl-hint">— cliqueá cada nodo para ver el detalle —</p>
+      </div>
+
+      <!-- Panel de detalle debajo del SVG -->
+      <div id="timeline-panel">
+        <div id="tl-panel-display" class="tl-panel-content">
+          <p class="tl-panel-era" id="tl-era"></p>
+          <p class="tl-panel-title" id="tl-title"></p>
+          <p class="tl-panel-body" id="tl-body"></p>
+        </div>
+      </div>
+
+    </div><!-- .timeline-wrapper -->
+
+    <div class="sep"></div>
+
+    <!-- ===================================================
+         SECCIÓN 3 — LA RUPTURA DEL S. XVIII
+    =================================================== -->
+    <section class="reveal">
+      <p class="section-label">03 — La ruptura</p>
+      <h2>El siglo XVIII inventó<br /><em>al artesano como categoría inferior</em></h2>
+
+      <p>
+        Antes del siglo XVIII no había "bellas artes". Había habilidades. El escultor,
+        el herrero, el tejedor y el pintor compartían un concepto: <em>techné</em> en griego,
+        <em>ars</em> en latín. La misma palabra para todos.
+      </p>
+
+      <p>
+        En el siglo XVIII se tomó una decisión conceptual que cambió todo: separar las artes
+        que producen placer estético de los oficios que producen utilidad.
+        Las primeras pasaron a llamarse "bellas artes". Las segundas quedaron del otro lado del mostrador.
+      </p>
+
+      <p>
+        La pregunta que nadie hizo en ese momento es la que importa: <strong>¿quién tomó esa decisión
+        y por qué le convenía?</strong>
+      </p>
+
+      <h3>El caso de los tres búhos</h3>
+
+      <p>
+        El caso clásico que usa Freitag para mostrar cómo funciona esto en la práctica:
+        tres búhos de cerámica, visualmente idénticos. Uno lo hizo Gorky González —artesano
+        purépecha de Michoacán. Uno lo hizo Picasso. Uno lo firmó Óscar Otero Regal —artista
+        del circuito institucional.
+      </p>
+
+      <div class="buhos">
+        <div class="buho-card">
+          <span class="buho-icon">🦉</span>
+          <p class="buho-name">Gorky González</p>
+          <span class="buho-label">Artesano purépecha</span>
+          <p class="buho-price">Mercado local</p>
+          <p class="buho-sub">objeto popular</p>
+        </div>
+        <div class="buho-card" style="border-color:rgba(232,164,58,0.4);">
+          <span class="buho-icon">🦉</span>
+          <p class="buho-name">Pablo Picasso</p>
+          <span class="buho-label">Artista institucional</span>
+          <p class="buho-price">Subasta internacional</p>
+          <p class="buho-sub">obra de arte</p>
+        </div>
+        <div class="buho-card">
+          <span class="buho-icon">🦉</span>
+          <p class="buho-name">Ó. Otero Regal</p>
+          <span class="buho-label">Circuito de galerías</span>
+          <p class="buho-price">Galería contemporánea</p>
+          <p class="buho-sub">pieza de autor</p>
+        </div>
+      </div>
+
+      <p>
+        El mismo objeto. Tres valoraciones completamente distintas.
+        <strong>La estética no determina nada acá. Lo que determina es la posición en el campo.</strong>
+        Quién firma, dónde se exhibe, qué institución lo legitima.
+      </p>
+
+      <div class="pull-quote">
+        "Los museos sacralizan los objetos. Lo que cambia no es el objeto —cambia el contexto que lo rodea."
+        <span>— Pierre Bourdieu, vía Freitag, El Artista, 2014</span>
+      </div>
+
+      <p>
+        El "campo artístico" de Bourdieu es el espacio social donde se decide qué y quién es arte.
+        Museos, galerías, críticos, academias: no son espejos neutrales de la calidad.
+        Son los árbitros de un juego con reglas construidas históricamente.
+      </p>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- ===================================================
+         SECCIÓN 4 — EL CASO DE LA EBANISTERÍA
+    =================================================== -->
+    <section class="reveal">
+      <p class="section-label">04 — La ebanistería en este mapa</p>
+      <h2>El mueble entre<br /><em>la función y la pregunta</em></h2>
+
+      <p>
+        La ebanistería tiene un problema específico en este debate. Trabaja sobre objetos
+        que tienen una función declarada: sostener, guardar, acompañar. Eso la ubicó durante
+        siglos del lado "mecánico" —el lado de lo útil, lo reproducible, lo sin alma.
+      </p>
+
+      <p>
+        Pero la historia del mueble es también la historia de los límites de esa clasificación.
+        Un armario del período Luis XIV no es solo un contenedor. Un escritorio de André-Charles
+        Boulle no se agota en su función. Una silla Shaker no es solo un lugar para sentarse.
+        <strong>La función está presente, pero algo excede la función.</strong>
+      </p>
+
+      <p>
+        El problema es que ese "algo que excede" es exactamente lo que el campo artístico
+        institucional se reservó el derecho de reconocer o ignorar.
+        Un ebanista anónimo del XVIII podía hacer una pieza técnicamente superior a cualquier
+        cosa firmada por un artista del período —y sin embargo quedar fuera del canon.
+      </p>
+
+      <h3>El patrón cognitivo del evaluador</h3>
+
+      <p>
+        Hay otro problema, más sutil. Cuando alguien formado en la tradición occidental
+        mira la cerámica de Deruta, la orfebrería de la Cultura Aguada o los tejidos
+        andinos, opera con toda la sofisticación de su formación dentro de sus propios
+        parámetros —y simultáneamente "vuelve a cero" ante esas otras tradiciones.
+      </p>
+
+      <p>
+        No percibe la complejidad porque no tiene las herramientas para verla.
+        Y en lugar de reconocer esa limitación propia, tiende a proyectarla como deficiencia
+        del objeto. <strong>La limitación del observador se transforma en juicio sobre lo observado.</strong>
+        Eso no es análisis. Es colonialismo con vocabulario estético.
+      </p>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- ===================================================
+         SECCIÓN 5 — LA PREGUNTA HONESTA (KANT)
+    =================================================== -->
+    <section class="reveal">
+      <p class="section-label">05 — La pregunta honesta</p>
+      <h2>¿Hay algo real<br /><em>en la distinción?</em></h2>
+
+      <div class="kant-block">
+        <p class="kant-label">Aproximación kantiana — TP N°1 · Anuzis / Yanover / Yulitta · 2026</p>
+        <p>
+          Quizás la distinción arte/artesanía existe en algún nivel más profundo —en lo que Kant
+          llamaría el noúmeno: la diferencia entre hacer algo para que funcione bien y hacer algo
+          para que abra una pregunta.
+        </p>
+        <p style="margin-top:1rem;">
+          Entre el objeto que se agota en su uso y el que lo excede.
+          Entre el cajón que cierra perfectamente y el cajón que además pregunta algo sobre
+          el tiempo, la madera, o el que lo hizo.
+        </p>
+        <p style="margin-top:1rem;">
+          Esa distinción <em>puede</em> existir en abstracto. El problema es que en el momento de
+          bajarla a objetos concretos, choca con los límites culturales del evaluador.
+          Solo alguien que conoce los códigos de una tradición puede percibir cuándo un objeto
+          dentro de esa tradición excede su función.
+        </p>
+        <p style="margin-top:1rem;">
+          <strong>La única posición honesta: reconocer esos límites antes de juzgar.</strong>
+        </p>
+      </div>
+
+      <p>
+        Esto no resuelve la pregunta arte/artesanía. Y eso está bien.
+        No se trata de invertir la jerarquía —de decir "la artesanía es tan arte como el arte".
+        Se trata de entender que la jerarquía misma es una herramienta política,
+        y que usarla sin conciencia de su historia es reproducir exactamente
+        el mecanismo que excluye.
+      </p>
+
+      <p>
+        El artesano que entiende esto no trabaja más tranquilo ni más libre —trabaja
+        con más conciencia de dónde está parado y por qué eso importa.
+      </p>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- ===================================================
+         SECCIÓN 6 — CÓRDOBA HOY [BLOQUE PENDIENTE]
+         Material de campo disponible: 21-04-2026
+         TODO: Integrar entrevistas/material de campo cuando esté disponible
+         Referencia: prof. Alfonso Teresa, Historia de la Ebanistería, Spilimbergo/FAD/UPC
+    =================================================== -->
+    <section class="reveal">
+      <p class="section-label">06 — Córdoba hoy</p>
+      <h2>El oficio en territorio</h2>
+
+      <div class="cordoba-pending" aria-label="Contenido pendiente, disponible el 21 de abril de 2026">
+        <div class="pending-icon">🏛</div>
+        <p class="pending-label">Material de campo — en proceso</p>
+        <p class="pending-text">
+          Este bloque integrará relevamiento de talleres, escuelas y productores
+          artesanales de la región cordobesa.
+        </p>
+        <p class="pending-date">Disponible: 21-04-2026 · Fuente: trabajo de campo, materia Historia de la Ebanistería</p>
+      </div>
+
+      <!-- TODO: Reemplazar el bloque .cordoba-pending con el contenido real
+           una vez disponible el material de campo (post 21-04-2026).
+           El contenido debe citar la fuente académica:
+           Historia de la Ebanistería, prof. Alfonso Teresa,
+           Escuela Spilimbergo / FAD / UPC, Córdoba. -->
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- ===================================================
+         NOTAS DE FUENTES Y ATRIBUCIÓN ACADÉMICA
+    =================================================== -->
+    <div class="fuentes reveal">
+      <p class="fuentes-label">Fuentes y atribución académica</p>
+
+      <p class="fuente-item">
+        Vanessa Freitag, "Entre arte y artesanía: elementos para pensar el oficio artesanal en la actualidad",
+        <em>El Artista</em>, N°11, Universidad Distrital Francisco José de Caldas, Colombia, 2014.
+      </p>
+      <p class="fuente-item">
+        Wladyslaw Tatarkiewicz, "El Arte: Historia de un concepto", cap. 1 de
+        <em>Historia de seis ideas</em>, Tecnos, Madrid, 1997.
+      </p>
+      <p class="fuente-item">
+        Material de cátedra y análisis de casos: cerámica de Deruta, Cultura Aguada, Hermès París.
+        Historia de la Ebanistería, Escuela Spilimbergo / FAD / UPC, 2026.
+      </p>
+
+      <div class="atribucion">
+        Los contenidos históricos y conceptuales de esta sección se originaron en la materia
+        <strong>Historia de la Ebanistería</strong>, dictada por el profesor
+        <strong>Alfonso Teresa</strong> en la Escuela Superior de Artes Aplicadas Lino E. Spilimbergo /
+        Facultad de Arte y Diseño (FAD) / Universidad Provincial de Córdoba (UPC), Córdoba, Argentina.
+        El desarrollo analítico adicional corresponde al Trabajo Práctico N°1 (entrega: 22-04-2026),
+        elaborado por Abel José Anuzis, Javier Yanover y Alejandro Yulitta.
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <a href="index.html" class="footer-logo">Soy de Madera</a>
+    <p class="footer-meta">soydemadera.com · Abel J. Anuzis · 2026</p>
+  </footer>
+
+  <!-- =============================================
+       JAVASCRIPT
+  ============================================= -->
+  <script>
+    // -----------------------------------------------
+    // DATOS DE LA LÍNEA DE TIEMPO
+    // -----------------------------------------------
+    const tlData = [
+      {
+        era: 'Antigüedad griega — s. V–IV a.C.',
+        title: 'Techné: el arte como destreza',
+        body: 'Toda habilidad para producir con destreza se llamaba techné. Escultor, carpintero, pintor, tejedor: todos bajo el mismo concepto. Sin separación arte/oficio. La poesía quedaba afuera —era inspiración divina, no destreza humana.'
+      },
+      {
+        era: 'Roma — s. I a.C. al s. V',
+        title: 'Ars: la misma amplitud en latín',
+        body: 'Roma hereda el sentido amplio de techné con la palabra ars. Sin distinción arte/oficio. Un pintor y un zapatero practicaban formas distintas del mismo tipo de actividad. La jerarquía no existía aún.'
+      },
+      {
+        era: 'Edad Media — s. V al XV',
+        title: 'Artes liberales vs. artes mecánicas',
+        body: 'Primera fractura formal. Artes liberales: las del intelecto (trivium + quadrivium). Artes mecánicas: pintura, escultura, arquitectura —trabajo físico, socialmente inferior. Paradoja histórica: lo que hoy llamamos "arte" era lo despreciado en la Edad Media.'
+      },
+      {
+        era: 'Renacimiento — s. XV–XVI',
+        title: 'Primera ruptura: el artista busca autonomía',
+        body: 'El artista empieza a reclamar status intelectual. Da Vinci argumenta que la pintura es actividad del intelecto, no del cuerpo. El inicio de una separación que todavía no está consolidada —pero ya tiene dirección.'
+      },
+      {
+        era: 'Siglo XVIII — El momento decisivo',
+        title: 'Nacimiento de las "Bellas Artes"',
+        body: 'Se establece formalmente la categoría "bellas artes" (orientadas al placer estético) versus "oficios" (orientados a la utilidad). El artesano queda definitivamente separado del artista. Esta separación no es natural: es una decisión tomada en un momento específico, con actores específicos, en un contexto económico e ideológico concreto.'
+      },
+      {
+        era: 'Siglos XIX–XX hasta hoy',
+        title: 'Crisis del concepto: el arte se disputa',
+        body: 'El Romanticismo instala la figura del artista-genio. Las vanguardias la hacen explotar: Duchamp pregunta si cualquier objeto puede ser arte. El dadaísmo cuestiona todas las categorías. Desde entonces el concepto está en disputa permanente —sin cierre, sin consenso.'
+      }
+    ];
+
+    // -----------------------------------------------
+    // INTERACTIVIDAD DE LA LÍNEA DE TIEMPO
+    // -----------------------------------------------
+    const panel     = document.getElementById('tl-panel-display');
+    const eraEl     = document.getElementById('tl-era');
+    const titleEl   = document.getElementById('tl-title');
+    const bodyEl    = document.getElementById('tl-body');
+    let activeNode  = null;
+
+    function showTlNode(idx) {
+      const d = tlData[idx];
+      if (!d) return;
+      eraEl.textContent   = d.era;
+      titleEl.textContent = d.title;
+      bodyEl.textContent  = d.body;
+      panel.classList.remove('visible');
+      // reflow para reiniciar la animación
+      void panel.offsetWidth;
+      panel.classList.add('visible');
+    }
+
+    document.querySelectorAll('.tl-node').forEach(node => {
+      const activate = () => {
+        const id = parseInt(node.dataset.id, 10);
+        showTlNode(id);
+        // resaltar nodo activo
+        document.querySelectorAll('.tl-node circle:last-of-type')
+          .forEach(c => c.style.opacity = '0.5');
+        node.querySelectorAll('circle').forEach(c => c.style.opacity = '1');
+      };
+      node.addEventListener('click', activate);
+      node.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') activate(); });
+    });
+
+    // Mostrar primer nodo por defecto al cargar
+    window.addEventListener('DOMContentLoaded', () => {
+      showTlNode(0);
+    });
+
+    // -----------------------------------------------
+    // REVEAL ON SCROLL
+    // -----------------------------------------------
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => io.observe(el));
+    } else {
+      reveals.forEach(el => el.classList.add('in'));
+    }
+  </script>
+
+</body>
+</html>
