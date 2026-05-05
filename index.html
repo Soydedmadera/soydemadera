@@ -1,1316 +1,792 @@
-﻿<!DOCTYPE html>
-<!-- saved from url=(0024)https://soydemadera.com/ -->
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soy de Madera â€” CarpinterÃ­a y EbanisterÃ­a en espaÃ±ol</title>
-  <meta name="description" content="DivulgaciÃ³n tÃ©cnica de carpinterÃ­a y ebanisterÃ­a en espaÃ±ol. Herramientas digitales, terminologÃ­a tÃ©cnica y proyectos DIY.">
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="./Soy de Madera â€” CarpinterÃ­a y EbanisterÃ­a en espaÃ±ol_files/css2" rel="stylesheet">
+  <meta name="description" content="Divulgación técnica sobre el mundo de la madera en español. Carpintería, ebanistería, herramientas digitales y terminología técnica. Documentando la única Tecnicatura Universitaria en Ebanistería de Latinoamérica.">
+  <meta name="keywords" content="carpintería, ebanistería, madera, diccionario técnico, herramientas, Argentina">
+  <meta property="og:title" content="Soy de Madera — Divulgación técnica sobre el mundo de la madera">
+  <meta property="og:description" content="Carpintería, ebanistería, herramientas digitales y terminología técnica en español.">
+  <meta property="og:url" content="https://soydemadera.com">
+  <title>Soy de Madera — El mundo de la madera en español</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --oak:      #7B5C3A;
+      --oak-dark: #5C4229;
+      --grain:    #C8A97A;
+      --grain-light: #E2C99B;
+      --sawdust:  #F5EEE3;
+      --sawdust-dark: #EDE3D2;
+      --ink:      #1E1611;
+      --ink-mid:  #3D2E1E;
+      --highlight:#E8C547;
+      --white:    #FDFAF5;
+      --muted:    #8C7B68;
+
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-mono:    'DM Mono', monospace;
+
+      --radius: 4px;
+      --transition: 0.25s ease;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    :root {
-      --nogal:    #1a1209;
-      --roble:    #2e1f0e;
-      --cedro:    #3d2a10;
-      --siena:    #c47a2a;
-      --ambar:    #e8a43a;
-      --crema:    #f5edd8;
-      --crema2:   #ede0c4;
-      --gris-tex: #7a6a52;
-      --verde-musgo: #3a4a2e;
-    }
-
     html { scroll-behavior: smooth; }
-    #pilares, #herramientas, #diccionario, #sobre, #maestros, #estudiar, #redes {
-      scroll-margin-top: 75px;
-    }
-
-    /* â”€â”€ TABS / PESTAÃ‘AS â”€â”€ */
-    .page-section { display: none !important; }
-    .page-section.active { display: block !important; }
-    #diccionario.page-section.active { display: block !important; }
-    .hero { transition: opacity 0.25s ease; }
-    .hero.hidden { display: none !important; }
-    .nav-links a.nav-active { color: var(--ambar) !important; }
-
-    /* â”€â”€ ASTILLAS â”€â”€ */
-    .ast-filtro {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: var(--crema-dim, #b8a896);
-      padding: 0.45rem 1rem;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      transition: all 0.2s;
-    }
-    .ast-filtro:hover, .ast-filtro.active {
-      background: var(--ambar, #c8912a);
-      border-color: var(--ambar, #c8912a);
-      color: #1a1209;
-    }
-    .ast-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 1.5rem;
-      position: relative;
-      transition: border-color 0.2s;
-    }
-    .ast-card:hover { border-color: var(--ambar, #c8912a); }
-    .ast-card-tipo {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--ambar, #c8912a);
-      margin-bottom: 0.75rem;
-    }
-    .ast-card h3 {
-      font-family: 'Fraunces', Georgia, serif;
-      color: var(--crema, #f5ede0);
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-    }
-    .ast-card p {
-      color: var(--crema-dim, #b8a896);
-      font-size: 0.88rem;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-    .ast-card a.ast-btn {
-      display: inline-block;
-      border: 1px solid var(--ambar, #c8912a);
-      color: var(--ambar, #c8912a);
-      padding: 0.4rem 1rem;
-      font-size: 0.82rem;
-      text-decoration: none;
-      letter-spacing: 0.05em;
-      transition: all 0.2s;
-    }
-    .ast-card a.ast-btn:hover { background: var(--ambar, #c8912a); color: #1a1209; }
-    .ast-card-img { width: 100%; height: 160px; object-fit: cover; margin-bottom: 1rem; }
-    .ast-video-wrap { position: relative; padding-bottom: 56.25%; height: 0; margin-bottom: 1rem; }
-    .ast-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-    .ast-delete-btn {
-      position: absolute; top: 0.75rem; right: 0.75rem;
-      background: none; border: none; color: rgba(255,255,255,0.3);
-      cursor: pointer; font-size: 1rem; display: none;
-    }
-    .ast-admin-active .ast-delete-btn { display: block; }
-    .ast-delete-btn:hover { color: #e05555; }
 
     body {
-      background-color: var(--nogal);
-      color: var(--crema);
-      font-family: 'Crimson Pro', Georgia, serif;
-      font-size: 18px;
+      font-family: var(--font-body);
+      background-color: var(--sawdust);
+      color: var(--ink);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
-    /* â”€â”€ GRAIN OVERLAY â”€â”€ */
+    /* ── GRAIN TEXTURE OVERLAY ── */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
       pointer-events: none;
-      z-index: 999;
-      opacity: 0.035;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      background-size: 200px 200px;
+      z-index: 1000;
     }
 
-    /* â”€â”€ WOOD GRAIN LINES (decorative) â”€â”€ */
-    .wood-lines {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      opacity: 0.04;
-    }
-    .wood-lines::before {
-      content: '';
-      position: absolute;
-      inset: -20%;
-      background: repeating-linear-gradient(
-        168deg,
-        transparent,
-        transparent 28px,
-        rgba(196,122,42,0.8) 28px,
-        rgba(196,122,42,0.8) 29px,
-        transparent 29px,
-        transparent 58px,
-        rgba(255,200,100,0.4) 58px,
-        rgba(255,200,100,0.4) 59px
-      );
-    }
-
-    /* â”€â”€ NAV â”€â”€ */
+    /* ── NAV ── */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      padding: 1.2rem 3rem;
+      padding: 1rem 2rem;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(26,18,9,0.95) 0%, transparent 100%);
-      backdrop-filter: blur(2px);
+      align-items: center;
+      background: rgba(245, 238, 227, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--grain-light);
     }
 
     .nav-logo {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 900;
-      font-size: 1.3rem;
-      letter-spacing: -0.01em;
-      color: var(--ambar);
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--oak);
       text-decoration: none;
+      letter-spacing: -0.01em;
     }
-    .nav-logo span { color: var(--crema); font-weight: 300; font-style: italic; }
 
     .nav-links {
       display: flex;
-      gap: 2.5rem;
+      gap: 2rem;
       list-style: none;
     }
+
     .nav-links a {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gris-tex);
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--ink-mid);
       text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--ambar); }
-
-    /* â”€â”€ HAMBURGER â”€â”€ */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      z-index: 200;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--crema);
-      transition: all 0.25s ease;
-      transform-origin: center;
-    }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-    .nav-mobile-menu {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(26,18,9,0.98);
-      z-index: 150;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2.5rem;
-    }
-    .nav-mobile-menu.open { display: flex; }
-    .nav-mobile-menu a {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 1rem;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.02em;
       text-transform: uppercase;
-      color: var(--crema);
-      text-decoration: none;
-      transition: color 0.2s;
+      transition: color var(--transition);
     }
-    .nav-mobile-menu a:hover, .nav-mobile-menu a.nav-active { color: var(--ambar); }
 
-    /* â”€â”€ HERO â”€â”€ */
+    .nav-links a:hover { color: var(--oak); }
+
+    /* ── HERO ── */
     .hero {
-      position: relative;
       min-height: 100vh;
       display: grid;
-      grid-template-rows: 1fr auto;
-      padding: 0 3rem;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      gap: 4rem;
+      position: relative;
       overflow: hidden;
     }
 
-    .hero-bg {
+    .hero::after {
+      content: '';
       position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(61,42,16,0.9) 0%, var(--nogal) 70%);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-top: 8rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
+      right: -10%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 55%;
+      aspect-ratio: 1;
+      background: radial-gradient(ellipse at center, var(--grain-light) 0%, transparent 70%);
+      opacity: 0.5;
+      pointer-events: none;
     }
 
     .hero-eyebrow {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.25em;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--siena);
-      margin-bottom: 1.2rem;
+      color: var(--oak);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
       opacity: 0;
-      animation: fadeUp 0.8s ease 0.2s forwards;
+      animation: fadeUp 0.7s ease 0.1s forwards;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--oak);
     }
 
     .hero-title {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 900;
-      font-size: clamp(5rem, 14vw, 13rem);
-      line-height: 0.88;
-      letter-spacing: -0.03em;
-      color: var(--crema);
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
       opacity: 0;
-      animation: fadeUp 0.9s ease 0.35s forwards;
+      animation: fadeUp 0.7s ease 0.2s forwards;
     }
 
-    .hero-title .accent {
-      color: var(--ambar);
+    .hero-title em {
       font-style: italic;
-      font-weight: 300;
+      color: var(--oak);
     }
 
     .hero-subtitle {
-      margin-top: 2.5rem;
-      font-size: 1.2rem;
+      font-size: 1.125rem;
       font-weight: 300;
-      color: var(--crema2);
-      max-width: 480px;
+      color: var(--ink-mid);
       line-height: 1.7;
+      max-width: 38ch;
+      margin-bottom: 2.5rem;
       opacity: 0;
-      animation: fadeUp 0.9s ease 0.55s forwards;
+      animation: fadeUp 0.7s ease 0.35s forwards;
     }
 
     .hero-actions {
-      margin-top: 3rem;
       display: flex;
-      gap: 1.2rem;
+      gap: 1rem;
       flex-wrap: wrap;
       opacity: 0;
-      animation: fadeUp 0.9s ease 0.7s forwards;
+      animation: fadeUp 0.7s ease 0.5s forwards;
     }
 
     .btn-primary {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.9rem 2rem;
-      background: var(--ambar);
-      color: var(--nogal);
-      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      background: var(--oak);
+      color: var(--sawdust);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
       font-weight: 500;
-      transition: background 0.2s, transform 0.15s;
-      display: inline-block;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition);
+      letter-spacing: 0.01em;
     }
-    .btn-primary:hover { background: var(--crema); transform: translateY(-2px); }
+
+    .btn-primary:hover {
+      background: var(--oak-dark);
+      transform: translateY(-1px);
+    }
 
     .btn-secondary {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.9rem 2rem;
-      border: 1px solid var(--gris-tex);
-      color: var(--crema2);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 1.75rem;
+      background: transparent;
+      color: var(--oak);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
       text-decoration: none;
-      transition: border-color 0.2s, color 0.2s, transform 0.15s;
-      display: inline-block;
-    }
-    .btn-secondary:hover { border-color: var(--ambar); color: var(--ambar); transform: translateY(-2px); }
-
-    /* Vertical text decoration */
-    .hero-vertical {
-      position: absolute;
-      right: 3rem;
-      top: 50%;
-      transform: translateY(-50%) rotate(90deg);
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gris-tex);
-      opacity: 0.6;
-      white-space: nowrap;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--grain);
+      transition: border-color var(--transition), background var(--transition), transform var(--transition);
+      letter-spacing: 0.01em;
     }
 
-    /* scroll indicator */
-    .hero-scroll {
+    .btn-secondary:hover {
+      border-color: var(--oak);
+      background: var(--sawdust-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Hero visual — veta de madera decorativa */
+    .hero-visual {
       position: relative;
-      z-index: 2;
-      padding: 2rem 0 3rem;
       display: flex;
       align-items: center;
-      gap: 1rem;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
+      justify-content: center;
       opacity: 0;
-      animation: fadeUp 0.9s ease 1s forwards;
-    }
-    .scroll-line {
-      width: 40px;
-      height: 1px;
-      background: var(--siena);
-    }
-    .scroll-text {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gris-tex);
+      animation: fadeIn 1s ease 0.4s forwards;
     }
 
-    /* â”€â”€ SECTION COMMON â”€â”€ */
+    .wood-rings {
+      width: min(420px, 100%);
+      aspect-ratio: 1;
+      position: relative;
+    }
+
+    .wood-rings svg {
+      width: 100%;
+      height: 100%;
+      opacity: 0.85;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--ink);
+      color: var(--sawdust);
+      padding: 1.25rem 4rem;
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      overflow-x: auto;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--grain);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .stat-divider {
+      width: 1px;
+      height: 2rem;
+      background: var(--ink-mid);
+      flex-shrink: 0;
+    }
+
+    /* ── SECCIONES GENERALES ── */
     section {
-      padding: 7rem 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      padding: 6rem 4rem;
     }
 
     .section-label {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.28em;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--siena);
-      margin-bottom: 0.8rem;
+      color: var(--oak);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--oak);
     }
 
     .section-title {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 700;
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
-      line-height: 1.05;
-      color: var(--crema);
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.1;
       letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
     }
 
-    .section-title em {
-      color: var(--ambar);
-      font-style: italic;
+    .section-body {
+      font-size: 1.05rem;
       font-weight: 300;
+      color: var(--ink-mid);
+      max-width: 52ch;
+      line-height: 1.75;
     }
 
-    /* â”€â”€ DIVIDER â”€â”€ */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(to right, var(--siena), transparent);
-      margin: 0 3rem;
-      max-width: calc(1200px - 0px);
+    /* ── PILARES ── */
+    .pillars {
+      background: var(--white);
     }
 
-    /* â”€â”€ PILARES â”€â”€ */
-    .pilares-section { padding-top: 5rem; }
-
-    .pilares-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
+    .pillars-header {
+      max-width: 600px;
       margin-bottom: 4rem;
-      gap: 2rem;
-      flex-wrap: wrap;
     }
 
-    .pilares-grid {
+    .pillars-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.5px;
+      gap: 2rem;
     }
 
-    .pilar-card {
-      background: var(--roble);
-      padding: 3rem 2.5rem;
+    .pillar-card {
+      padding: 2.5rem;
+      border: 1px solid var(--sawdust-dark);
+      border-radius: var(--radius);
+      background: var(--sawdust);
       position: relative;
       overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition);
       cursor: default;
-      transition: background 0.3s;
     }
-    .pilar-card:hover { background: var(--cedro); }
 
-    .pilar-card .wood-lines { opacity: 0.06; }
-
-    .pilar-num {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 900;
-      font-size: 5rem;
-      line-height: 1;
-      color: rgba(196,122,42,0.15);
+    .pillar-card::before {
+      content: '';
       position: absolute;
-      top: 1.5rem;
-      right: 2rem;
-      letter-spacing: -0.05em;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--grain);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
     }
 
-    .pilar-icon {
-      font-size: 2rem;
+    .pillar-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--grain);
+    }
+
+    .pillar-card:hover::before { transform: scaleX(1); }
+
+    .pillar-num {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--muted);
       margin-bottom: 1.5rem;
+    }
+
+    .pillar-icon {
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
       display: block;
     }
 
-    .pilar-title {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: var(--crema);
-      margin-bottom: 0.8rem;
-      letter-spacing: -0.01em;
+    .pillar-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--oak);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
     }
 
-    .pilar-desc {
-      font-size: 0.95rem;
-      color: var(--gris-tex);
-      line-height: 1.65;
-    }
-
-    .pilar-tag {
-      margin-top: 2rem;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--siena);
-    }
-
-    /* â”€â”€ DICCIONARIO TEASER â”€â”€ */
-    .dict-section {
-      padding-top: 7rem;
-      padding-bottom: 7rem;
-    }
-
-    .dict-wrapper {
-      margin-top: 4rem;
-      background: var(--roble);
-      border-left: 3px solid var(--ambar);
-      padding: 0;
-      overflow: hidden;
-    }
-
-    .dict-header {
-      background: var(--cedro);
-      padding: 1.2rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .dict-header-title {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--ambar);
-    }
-
-    .dict-counter {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--gris-tex);
-    }
-
-    .dict-entries {
-      padding: 1rem 0;
-    }
-
-    .dict-entry {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr auto;
-      align-items: center;
-      padding: 1.1rem 2.5rem;
-      border-bottom: 1px solid rgba(122,106,82,0.15);
-      transition: background 0.2s;
-      gap: 1rem;
-    }
-    .dict-entry:last-child { border-bottom: none; }
-    .dict-entry:hover { background: rgba(255,255,255,0.03); }
-
-    .entry-en {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--ambar);
-      font-weight: 500;
-    }
-
-    .entry-es {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 1rem;
-      color: var(--crema);
-      font-weight: 400;
-    }
-
-    .entry-pron {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--gris-tex);
-      font-style: italic;
-    }
-
-    .entry-cat {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--verde-musgo);
-      background: rgba(58,74,46,0.3);
-      padding: 0.2rem 0.5rem;
-      white-space: nowrap;
-    }
-
-    .dict-cta {
-      padding: 1.5rem 2.5rem;
-      background: var(--cedro);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .dict-cta-text {
+    .pillar-body {
       font-size: 0.9rem;
-      color: var(--gris-tex);
-      font-style: italic;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.7;
     }
 
-    /* â”€â”€ ABOUT â”€â”€ */
-    .about-section {
-      padding-top: 5rem;
-      padding-bottom: 7rem;
+    /* ── DICCIONARIO HIGHLIGHT ── */
+    .dictionary-section {
+      background: var(--ink);
+      color: var(--sawdust);
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 6rem;
       align-items: center;
     }
 
-    .about-text p {
-      margin-top: 1.5rem;
-      font-size: 1.05rem;
-      color: var(--crema2);
-      line-height: 1.75;
-      font-weight: 300;
-    }
+    .dictionary-section .section-label { color: var(--grain); }
+    .dictionary-section .section-label::before { background: var(--grain); }
+    .dictionary-section .section-title { color: var(--white); }
+    .dictionary-section .section-body { color: rgba(245,238,227,0.7); }
 
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5px;
-    }
-
-    .stat-box {
-      background: var(--roble);
-      padding: 2.5rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .stat-num {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 900;
-      font-size: 3.5rem;
-      line-height: 1;
-      color: var(--ambar);
-      letter-spacing: -0.04em;
-    }
-
-    .stat-label {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gris-tex);
-      margin-top: 0.5rem;
-    }
-
-    /* â”€â”€ REDES â”€â”€ */
-    .redes-section {
-      padding-top: 5rem;
-      padding-bottom: 8rem;
-    }
-
-    .redes-grid {
-      margin-top: 3.5rem;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5px;
-    }
-
-    .red-card {
-      background: var(--roble);
-      padding: 2.5rem;
+    .dict-features {
+      list-style: none;
+      margin: 2rem 0 2.5rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      text-decoration: none;
-      transition: background 0.25s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-    }
-    .red-card:hover { background: var(--cedro); transform: translateY(-3px); }
-
-    .red-platform {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--siena);
+      gap: 0.875rem;
     }
 
-    .red-handle {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 700;
-      font-size: 1.6rem;
-      color: var(--crema);
-      letter-spacing: -0.02em;
-    }
-
-    .red-desc {
-      font-size: 0.9rem;
-      color: var(--gris-tex);
-      line-height: 1.5;
-    }
-
-    .red-arrow {
-      margin-top: auto;
-      font-size: 1.4rem;
-      color: var(--ambar);
-      transition: transform 0.2s;
-    }
-    .red-card:hover .red-arrow { transform: translateX(5px); }
-
-    /* â”€â”€ FOOTER â”€â”€ */
-    footer {
-      border-top: 1px solid rgba(122,106,82,0.2);
-      padding: 3rem;
-      max-width: 1200px;
-      margin: 0 auto;
+    .dict-features li {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-
-    .footer-brand {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 900;
-      font-size: 1.1rem;
-      color: var(--ambar);
-      letter-spacing: -0.01em;
-    }
-
-    .footer-copy {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.62rem;
-      color: var(--gris-tex);
-      letter-spacing: 0.1em;
-    }
-
-    .footer-next {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--gris-tex);
-    }
-    .footer-next span {
-      color: var(--siena);
-      font-style: italic;
-    }
-
-    /* â”€â”€ MAESTROS â”€â”€ */
-    .maestros-section { padding-top: 7rem; padding-bottom: 3rem; }
-
-    .maestros-intro {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 4rem;
-    }
-
-    .maestros-intro-text {
-      max-width: 400px;
+      gap: 0.875rem;
       font-size: 0.95rem;
-      color: var(--gris-tex);
-      line-height: 1.75;
+      color: rgba(245,238,227,0.85);
     }
 
-    .maestros-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5px;
-      margin-bottom: 3rem;
-    }
-
-    .maestro-card {
-      background: var(--roble);
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      min-height: 320px;
-    }
-
-    /* Empty placeholder state */
-    .maestro-card.empty {
-      border: 1px dashed rgba(122,106,82,0.3);
-      background: transparent;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      gap: 1rem;
-    }
-
-    .maestro-card.empty .empty-icon {
-      font-size: 2.5rem;
-      opacity: 0.25;
-    }
-
-    .maestro-card.empty .empty-label {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gris-tex);
-      opacity: 0.5;
-    }
-
-    .maestro-photo-placeholder {
-      width: 64px;
-      height: 64px;
+    .dict-features li::before {
+      content: '';
+      display: block;
+      width: 6px;
+      height: 6px;
       border-radius: 50%;
-      background: var(--cedro);
-      border: 2px dashed rgba(122,106,82,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 1.2rem;
-      opacity: 0.5;
+      background: var(--grain);
+      flex-shrink: 0;
     }
 
-    .maestro-tipos {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-      margin-bottom: 0.8rem;
+    .dict-preview {
+      background: var(--ink-mid);
+      border: 1px solid rgba(200,169,122,0.2);
+      border-radius: var(--radius);
+      padding: 0.5rem;
+      overflow: hidden;
     }
 
-    .tipo-tag {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.58rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.5rem;
-      border: 1px solid rgba(122,106,82,0.3);
-      color: var(--gris-tex);
-    }
-
-    .tipo-tag.entrevista { border-color: rgba(196,122,42,0.5); color: var(--siena); }
-    .tipo-tag.obra       { border-color: rgba(58,74,46,0.5);   color: #7a9a5e; }
-    .tipo-tag.texto      { border-color: rgba(90,80,60,0.5);   color: var(--gris-tex); }
-
-    .maestro-nombre {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--crema);
-      margin-bottom: 0.3rem;
-      letter-spacing: -0.01em;
-    }
-
-    .maestro-especialidad {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--siena);
-      margin-bottom: 1rem;
-    }
-
-    .maestro-bio {
-      font-size: 0.9rem;
-      color: var(--gris-tex);
-      line-height: 1.65;
-      flex: 1;
-    }
-
-    /* Convocatoria banner */
-    .convocatoria-banner {
-      background: var(--cedro);
-      border-left: 3px solid var(--ambar);
-      padding: 2rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-top: 1.5px;
-    }
-
-    .conv-text h3 {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: var(--crema);
-      margin-bottom: 0.3rem;
-    }
-
-    .conv-text p {
-      font-size: 0.88rem;
-      color: var(--gris-tex);
-      line-height: 1.5;
-    }
-
-    /* â”€â”€ DÃ“NDE ESTUDIAR â”€â”€ */
-    .estudiar-section { padding-top: 7rem; padding-bottom: 7rem; }
-
-    .estudiar-cols {
-      margin-top: 4rem;
+    .dict-card {
+      background: rgba(245,238,227,0.05);
+      border: 1px solid rgba(200,169,122,0.15);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 0.5rem;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5px;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem;
+      align-items: start;
+      transition: background var(--transition);
     }
 
-    .estudiar-bloque {
-      background: var(--roble);
-      padding: 2.5rem;
+    .dict-card:last-child { margin-bottom: 0; }
+    .dict-card:hover { background: rgba(245,238,227,0.08); }
+
+    .dict-card-en {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--grain);
+      line-height: 1.2;
     }
 
-    .estudiar-bloque.full-width {
-      grid-column: 1 / -1;
-    }
-
-    .bloque-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      padding-bottom: 1.2rem;
-      border-bottom: 1px solid rgba(122,106,82,0.2);
-    }
-
-    .bloque-icon { font-size: 1.4rem; }
-
-    .bloque-titulo {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 700;
-      font-size: 1.15rem;
-      color: var(--crema);
-    }
-
-    .bloque-subtitle {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--siena);
+    .dict-card-es {
+      font-size: 0.875rem;
+      color: rgba(245,238,227,0.6);
       margin-top: 0.2rem;
     }
 
-    .estudiar-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      padding: 1.1rem 0;
-      border-bottom: 1px solid rgba(122,106,82,0.12);
+    .dict-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--oak);
+      background: rgba(123,92,58,0.2);
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    /* ── HERRAMIENTAS PRÓXIMAMENTE ── */
+    .tools-section {
+      background: var(--sawdust-dark);
+    }
+
+    .tools-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 3rem;
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
-    .estudiar-item:last-child { border-bottom: none; }
 
-    .item-info {}
-
-    .item-nombre {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 1rem;
-      color: var(--crema);
-      margin-bottom: 0.2rem;
-    }
-
-    .item-detalle {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--gris-tex);
-      letter-spacing: 0.05em;
-    }
-
-    .item-badge {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.58rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.6rem;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .item-badge.presencial  { background: rgba(58,74,46,0.3);   color: #7a9a5e; }
-    .item-badge.online      { background: rgba(61,42,16,0.5);   color: var(--ambar); }
-    .item-badge.gratuito    { background: rgba(30,50,70,0.4);   color: #6ab0d4; }
-    .item-badge.particular  { background: rgba(80,40,10,0.5);   color: var(--siena); }
-
-    /* Empty item state */
-    .estudiar-item.placeholder {
-      opacity: 0.35;
-      pointer-events: none;
-    }
-    .estudiar-item.placeholder .item-nombre {
-      font-style: italic;
-      color: var(--gris-tex);
-    }
-
-    .agregar-cta {
-      margin-top: 1.5rem;
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--siena);
-      cursor: default;
-      opacity: 0.7;
-    }
-
-    /* â”€â”€ DICCIONARIO APP (scoped .da-*) â”€â”€ */
-    .da-app {
-      font-family: 'DM Sans', 'Crimson Pro', sans-serif;
-    }
-
-    .da-controls {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 3rem 1rem;
-    }
-
-    .da-search-wrap { position: relative; margin-bottom: 1rem; }
-
-    .da-search-icon {
-      position: absolute; left: 14px; top: 50%;
-      transform: translateY(-50%);
-      font-size: 1rem; pointer-events: none;
-    }
-
-    #da-search {
-      width: 100%;
-      padding: 13px 20px 13px 42px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      border: 2px solid rgba(122,106,82,0.4);
-      background: var(--roble);
-      color: var(--crema);
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      border-radius: 0;
-    }
-    #da-search:focus { border-color: var(--ambar); box-shadow: 0 0 0 3px rgba(232,164,58,0.15); }
-    #da-search::placeholder { color: var(--gris-tex); }
-
-    .da-filters { display: flex; gap: 8px; flex-wrap: wrap; }
-
-    .da-filter-btn {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 6px 13px;
-      border: 1.5px solid rgba(122,106,82,0.35);
-      background: transparent;
-      color: var(--gris-tex);
-      cursor: pointer;
-      transition: all 0.18s;
-    }
-    .da-filter-btn:hover { border-color: var(--ambar); color: var(--ambar); }
-    .da-filter-btn.active { background: var(--ambar); border-color: var(--ambar); color: var(--nogal); font-weight: 500; }
-
-    .da-stats {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--gris-tex);
-      letter-spacing: 0.06em;
-      padding: 8px 3rem 12px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .da-main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 3rem 5rem;
-    }
-
-    .da-cat-section { margin-bottom: 3rem; }
-
-    .da-cat-header {
-      display: flex; align-items: center; gap: 10px;
-      margin-bottom: 1rem;
-      padding-bottom: 0.7rem;
-      border-bottom: 2px solid rgba(122,106,82,0.25);
-    }
-
-    .da-cat-icon { font-size: 1.2rem; }
-
-    .da-cat-name {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 700;
-      font-size: 1.2rem;
-      color: var(--crema);
-    }
-
-    .da-cat-count {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.6rem;
-      color: var(--gris-tex);
-      background: var(--roble);
-      padding: 3px 8px;
-      margin-left: auto;
-    }
-
-    .da-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 10px;
-    }
-
-    .da-entry {
-      background: var(--roble);
-      border: 1.5px solid rgba(122,106,82,0.2);
-      padding: 14px 16px;
-      transition: border-color 0.2s, transform 0.15s;
+    .tool-card {
+      background: var(--white);
+      border: 1px solid var(--sawdust-dark);
+      border-radius: var(--radius);
+      padding: 2rem;
       position: relative;
       overflow: hidden;
     }
 
-    .da-entry::before {
-      content: '';
-      position: absolute; left:0; top:0; bottom:0;
-      width: 3px;
-      background: var(--ambar);
-      transform: scaleY(0);
-      transition: transform 0.2s;
-      transform-origin: bottom;
-    }
-
-    .da-entry:hover { border-color: rgba(232,164,58,0.4); transform: translateY(-1px); }
-    .da-entry:hover::before { transform: scaleY(1); }
-
-    .da-en {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: var(--siena);
-      letter-spacing: 0.03em;
-      margin-bottom: 2px;
-    }
-
-    .da-pron {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.68rem;
-      color: #7a9a5e;
-      margin-bottom: 5px;
-    }
-    .da-pron::before { content: 'ðŸ”Š '; font-size: 0.6rem; }
-
-    .da-es {
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 1.05rem;
-      color: var(--crema);
-      margin-bottom: 3px;
-    }
-
-    .da-lt {
-      font-size: 0.75rem;
-      color: var(--gris-tex);
-      font-style: italic;
-      margin-bottom: 7px;
-    }
-
-    .da-def {
-      font-size: 0.78rem;
-      color: var(--crema2);
-      line-height: 1.5;
-      border-top: 1px solid rgba(122,106,82,0.2);
-      padding-top: 7px;
-      opacity: 0.75;
-    }
-
-    .da-no-results {
-      text-align: center; padding: 60px 20px;
-      color: var(--gris-tex);
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 1.4rem;
-    }
-    .da-no-results span {
-      display: block;
-      font-family: 'Crimson Pro', Georgia, serif;
-      font-size: 0.95rem;
-      margin-top: 8px;
-    }
-
-    @media (max-width: 900px) {
-      .da-controls, .da-stats, .da-main { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .da-grid { grid-template-columns: 1fr; }
-    }
-
-    /* â”€â”€ HERRAMIENTAS â”€â”€ */
-    .herramienta-card {
-      background: var(--roble);
-      height: 100%;
-      position: relative;
-      overflow: hidden;
-      transition: background 0.25s, transform 0.2s;
-    }
-    .herramienta-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(to right, var(--ambar), var(--siena));
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s ease;
-    }
-    a:hover .herramienta-card { background: var(--cedro); transform: translateY(-4px); }
-    a:hover .herramienta-card::after { transform: scaleX(1); }
-
-    .herramienta-card-inner {
-      padding: 2.8rem 2.5rem 2.2rem;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .herramienta-num {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 900;
-      font-size: 4.5rem;
-      line-height: 1;
-      color: rgba(196,122,42,0.12);
+    .tool-badge {
       position: absolute;
       top: 1rem;
-      right: 1.5rem;
-      letter-spacing: -0.05em;
-      pointer-events: none;
-    }
-
-    .herramienta-cat {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
+      right: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--siena);
-      margin-bottom: 0.6rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      background: var(--highlight);
+      color: var(--ink);
+      font-weight: 500;
     }
 
-    .herramienta-titulo {
-      font-family: 'Fraunces', Georgia, serif;
-      font-weight: 700;
-      font-size: 1.6rem;
-      color: var(--crema);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.2rem;
+    .tool-icon {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      display: block;
     }
 
-    .herramienta-desc {
-      font-size: 0.92rem;
-      color: var(--gris-tex);
+    .tool-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--oak-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .tool-desc {
+      font-size: 0.875rem;
+      font-weight: 300;
+      color: var(--muted);
       line-height: 1.65;
-      flex: 1;
-      margin-bottom: 1.8rem;
     }
 
-    .herramienta-footer {
-      display: flex;
+    /* ── ESCUELA ── */
+    .school-section {
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: auto;
     }
 
-    .herramienta-tags {
+    .school-quote {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--oak);
+      line-height: 1.5;
+      border-left: 3px solid var(--grain);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .school-tag-list {
       display: flex;
-      gap: 0.4rem;
       flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
     }
 
-    .h-tag {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.58rem;
+    .school-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 0.2rem 0.55rem;
-      border: 1px solid rgba(122,106,82,0.35);
-      color: var(--gris-tex);
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--grain-light);
+      border-radius: 2px;
+      color: var(--oak);
+      background: var(--sawdust);
     }
 
-    .herramienta-cta {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.72rem;
+    .school-visual {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .school-card {
+      background: var(--sawdust);
+      border: 1px solid var(--sawdust-dark);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      transition: transform var(--transition);
+    }
+
+    .school-card:hover { transform: translateX(4px); }
+
+    .school-card-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .school-card-title {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .school-card-body {
+      font-size: 0.825rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── CTA FINAL ── */
+    .cta-section {
+      background: var(--oak);
+      color: var(--sawdust);
+      text-align: center;
+      padding: 6rem 4rem;
+    }
+
+    .cta-section .section-label { color: var(--grain-light); justify-content: center; }
+    .cta-section .section-label::before { display: none; }
+
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      color: var(--white);
+      margin: 1rem 0 1.5rem;
+    }
+
+    .cta-body {
+      font-size: 1.05rem;
+      font-weight: 300;
+      color: rgba(245,238,227,0.8);
+      max-width: 50ch;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .btn-light {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.875rem 2rem;
+      background: var(--sawdust);
+      color: var(--oak-dark);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: var(--radius);
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .btn-light:hover {
+      background: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: var(--muted);
+      padding: 3rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--grain);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
       letter-spacing: 0.1em;
-      color: var(--ambar);
-      white-space: nowrap;
-      transition: letter-spacing 0.2s;
-    }
-    a:hover .herramienta-cta { letter-spacing: 0.18em; }
-
-    @media (max-width: 900px) {
-      #herramientas { padding: 5rem 1.5rem !important; }
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color var(--transition);
     }
 
-    /* â”€â”€ ANIMATIONS â”€â”€ */
+    .footer-links a:hover { color: var(--grain); }
+
+    /* ── ANIMACIONES ── */
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
+      from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
 
     .reveal {
       opacity: 0;
       transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
+
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* â”€â”€ RESPONSIVE â”€â”€ */
+    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
-      .nav-hamburger { display: flex; }
-      .hero { padding: 0 1.5rem; }
-      section { padding: 5rem 1.5rem; }
-      .pilares-grid { grid-template-columns: 1fr; gap: 2px; }
-      .about-section { grid-template-columns: 1fr; gap: 3rem; padding: 4rem 1.5rem; }
-      .redes-grid { grid-template-columns: 1fr; }
-      .dict-entry { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
-      .entry-pron { display: none; }
-      .maestros-grid { grid-template-columns: 1fr; }
-      .estudiar-cols { grid-template-columns: 1fr; }
-      .estudiar-bloque.full-width { grid-column: 1; }
-      footer { padding: 2rem 1.5rem; }
-      .hero-vertical { display: none; }
+      .nav-links { gap: 1.25rem; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 1.5rem 3rem;
+        gap: 2rem;
+      }
+
+      .hero-visual { display: none; }
+      .hero::after { display: none; }
+
+      section { padding: 4rem 1.5rem; }
+
+      .pillars-grid { grid-template-columns: 1fr; }
+
+      .dictionary-section,
+      .school-section {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .tools-header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .tools-grid { grid-template-columns: 1fr; }
+
+      .stats-bar { padding: 1.25rem 1.5rem; gap: 2rem; }
+
+      footer {
+        grid-template-columns: 1fr;
+        padding: 2.5rem 1.5rem;
+      }
+
+      .footer-links { flex-wrap: wrap; gap: 1rem; }
     }
   </style>
 </head>
@@ -1318,1789 +794,318 @@
 
   <!-- NAV -->
   <nav>
-    <a href="https://soydemadera.com/#" class="nav-logo">Soy <span>de</span> Madera</a>
+    <a href="/" class="nav-logo">Soy de Madera</a>
     <ul class="nav-links">
-      <li><a href="#pilares" data-nav="pilares">Pilares</a></li>
-      <li><a href="#diccionario" data-nav="diccionario">Diccionario</a></li>
-      <li><a href="#herramientas" data-nav="herramientas">Herramientas</a></li>
-      <li><a href="#maestros" data-nav="maestros">Maestros</a></li>
-      <li><a href="#estudiar" data-nav="estudiar">DÃ³nde estudiar</a></li>
-      <li><a href="#sobre" data-nav="sobre">Sobre</a></li>
-      <li><a href="#redes" data-nav="redes">Redes</a></li>
-      <li><a href="#astillas" data-nav="astillas">Astillas</a></li>
+      <li><a href="#pilares">Contenido</a></li>
+      <li><a href="#diccionario">Diccionario</a></li>
+      <li><a href="#herramientas">Herramientas</a></li>
+      <li><a href="#escuela">La Escuela</a></li>
     </ul>
-    <button class="nav-hamburger" id="nav-hamburger" aria-label="MenÃº">
-      <span></span><span></span><span></span>
-    </button>
   </nav>
 
-  <!-- MENÃš MOBILE -->
-  <div class="nav-mobile-menu" id="nav-mobile-menu">
-    <a href="#pilares"    data-nav="pilares"     class="nav-mobile-link">Pilares</a>
-    <a href="#diccionario" data-nav="diccionario" class="nav-mobile-link">Diccionario</a>
-    <a href="#herramientas" data-nav="herramientas" class="nav-mobile-link">Herramientas</a>
-    <a href="#maestros"  data-nav="maestros"    class="nav-mobile-link">Maestros</a>
-    <a href="#estudiar"  data-nav="estudiar"    class="nav-mobile-link">DÃ³nde estudiar</a>
-    <a href="#sobre"     data-nav="sobre"       class="nav-mobile-link">Sobre</a>
-    <a href="#redes"     data-nav="redes"       class="nav-mobile-link">Redes</a>
-    <a href="#astillas"  data-nav="astillas"    class="nav-mobile-link">Astillas</a>
-  </div>
-
   <!-- HERO -->
-  <div class="hero">
-    <div class="hero-bg"></div>
-    <div class="wood-lines"></div>
-    <div class="hero-vertical">CarpinterÃ­a Â· EbanisterÃ­a Â· TerminologÃ­a</div>
-
+  <section class="hero" id="inicio">
     <div class="hero-content">
-      <p class="hero-eyebrow">DivulgaciÃ³n tÃ©cnica Â· En espaÃ±ol</p>
+      <p class="hero-eyebrow">Divulgación técnica · En español</p>
       <h1 class="hero-title">
-        Soy<br>
-        <span class="accent">de</span><br>
-        Madera
+        El mundo<br>
+        de la <em>madera</em><br>
+        en español.
       </h1>
       <p class="hero-subtitle">
-        CarpinterÃ­a y ebanisterÃ­a explicadas con precisiÃ³n. Proyectos DIY, herramientas digitales y terminologÃ­a tÃ©cnica en castellano.
+        Carpintería, ebanistería, herramientas digitales y terminología técnica.
+        Contenido honesto, desde el taller, para quien trabaja la madera o quiere aprenderlo.
       </p>
       <div class="hero-actions">
-        <a href="https://soydemadera.com/#diccionario" class="btn-primary">Ver el diccionario</a>
-        <a href="https://soydemadera.com/#pilares" class="btn-secondary">Explorar el proyecto</a>
+        <a href="diccionario_carpinteria_v2.html" class="btn-primary">
+          Explorar el diccionario →
+        </a>
+        <a href="#pilares" class="btn-secondary">
+          Conocé el proyecto
+        </a>
       </div>
     </div>
 
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      <span class="scroll-text">Seguir leyendo</span>
+    <div class="hero-visual">
+      <div class="wood-rings">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <!-- Anillos de árbol estilizados -->
+          <ellipse cx="200" cy="215" rx="195" ry="178" stroke="#C8A97A" stroke-width="1.5" opacity="0.18"/>
+          <ellipse cx="200" cy="213" rx="178" ry="162" stroke="#C8A97A" stroke-width="1.5" opacity="0.22"/>
+          <ellipse cx="200" cy="210" rx="160" ry="145" stroke="#7B5C3A" stroke-width="1.5" opacity="0.28"/>
+          <ellipse cx="200" cy="207" rx="143" ry="129" stroke="#7B5C3A" stroke-width="1.5" opacity="0.32"/>
+          <ellipse cx="200" cy="205" rx="126" ry="113" stroke="#C8A97A" stroke-width="2" opacity="0.36"/>
+          <ellipse cx="200" cy="203" rx="109" ry="97"  stroke="#7B5C3A" stroke-width="2" opacity="0.40"/>
+          <ellipse cx="200" cy="201" rx="92"  ry="82"  stroke="#C8A97A" stroke-width="2" opacity="0.45"/>
+          <ellipse cx="200" cy="199" rx="75"  ry="67"  stroke="#7B5C3A" stroke-width="2.5" opacity="0.50"/>
+          <ellipse cx="200" cy="198" rx="58"  ry="52"  stroke="#C8A97A" stroke-width="2.5" opacity="0.55"/>
+          <ellipse cx="200" cy="197" rx="42"  ry="38"  stroke="#7B5C3A" stroke-width="3" opacity="0.60"/>
+          <ellipse cx="200" cy="197" rx="26"  ry="24"  stroke="#C8A97A" stroke-width="3" opacity="0.65"/>
+          <ellipse cx="200" cy="197" rx="12"  ry="11"  fill="#7B5C3A" opacity="0.5"/>
+          <!-- Vetas radiales sutiles -->
+          <line x1="200" y1="37" x2="200" y2="8"   stroke="#C8A97A" stroke-width="1" opacity="0.15"/>
+          <line x1="312" y1="88" x2="330" y2="70"  stroke="#C8A97A" stroke-width="1" opacity="0.12"/>
+          <line x1="370" y1="210" x2="392" y2="210" stroke="#C8A97A" stroke-width="1" opacity="0.12"/>
+          <line x1="88"  y1="88" x2="70"  y2="70"  stroke="#C8A97A" stroke-width="1" opacity="0.12"/>
+          <line x1="30"  y1="210" x2="8"  y2="210"  stroke="#C8A97A" stroke-width="1" opacity="0.12"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num">130</span>
+      <span class="stat-label">Términos técnicos</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Idiomas</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">6</span>
+      <span class="stat-label">Categorías</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item">
+      <span class="stat-num">ES · EN · LT</span>
+      <span class="stat-label">Español · Inglés · Lituano</span>
     </div>
   </div>
 
-  <div class="divider" style="max-width:1200px; margin: 0 auto;"></div>
-
   <!-- PILARES -->
-  <section id="pilares" class="pilares-section page-section" style="max-width:1200px;">
-    <div class="pilares-header">
-      <div>
-        <p class="section-label reveal">Tres pilares</p>
-        <h2 class="section-title reveal">El <em>oficio</em><br>en tres ejes</h2>
-      </div>
-      <p class="reveal" style="max-width:320px; font-size:0.95rem; color:var(--gris-tex); line-height:1.7;">
-        Cada pieza del proyecto gira alrededor de estas tres dimensiones del trabajo con madera.
+  <section class="pillars" id="pilares">
+    <div class="pillars-header reveal">
+      <p class="section-label">Lo que hacemos</p>
+      <h2 class="section-title">Tres pilares, un solo oficio.</h2>
+      <p class="section-body">
+        Soy de Madera nació para cubrir un vacío real: contenido técnico serio sobre carpintería y ebanistería en español, con herramientas digitales que acompañen el trabajo en el taller.
       </p>
     </div>
-
-    <div class="pilares-grid">
-      <div class="pilar-card reveal">
-        <div class="wood-lines"></div>
-        <div class="pilar-num">01</div>
-        <span class="pilar-icon">ðŸªš</span>
-        <h3 class="pilar-title">CarpinterÃ­a DIY</h3>
-        <p class="pilar-desc">Proyectos reales, paso a paso. Desde cajas simples hasta muebles de taller. Sin romantizar el oficio: tÃ©cnica con materiales accesibles.</p>
-        <p class="pilar-tag">// proyectos Â· tutoriales</p>
+    <div class="pillars-grid">
+      <div class="pillar-card reveal">
+        <p class="pillar-num">01 —</p>
+        <span class="pillar-icon">🪚</span>
+        <h3 class="pillar-title">Carpintería y DIY</h3>
+        <p class="pillar-body">
+          Proyectos, técnicas y documentación del proceso real de aprendizaje en el taller.
+          Sin atajos, sin edición que oculte los errores. El oficio como es.
+        </p>
       </div>
+      <div class="pillar-card reveal" style="transition-delay: 0.1s">
+        <p class="pillar-num">02 —</p>
+        <span class="pillar-icon">⚙️</span>
+        <h3 class="pillar-title">Herramientas digitales</h3>
+        <p class="pillar-body">
+          Calculadoras, optimizadores y diccionarios interactivos diseñados para quien trabaja en métrico pero consume contenido técnico en imperial.
+        </p>
+      </div>
+      <div class="pillar-card reveal" style="transition-delay: 0.2s">
+        <p class="pillar-num">03 —</p>
+        <span class="pillar-icon">📐</span>
+        <h3 class="pillar-title">Terminología técnica</h3>
+        <p class="pillar-body">
+          Glosarios multilingües, normas y traducción de vocabulario técnico para el contexto latinoamericano. Porque las palabras del oficio también importan.
+        </p>
+      </div>
+    </div>
+  </section>
 
-      <div class="pilar-card reveal" style="transition-delay:0.15s">
-        <div class="wood-lines"></div>
-        <div class="pilar-num">02</div>
-        <span class="pilar-icon">âš™ï¸</span>
-        <h3 class="pilar-title">Herramientas digitales</h3>
-        <p class="pilar-desc">Calculadoras de corte, planificadores de tableros, recursos tÃ©cnicos online. La tecnologÃ­a al servicio del taller.</p>
-        <p class="pilar-tag">// software Â· apps Â· utilidades</p>
-        <div style="margin-top:1.25rem; display:flex; flex-direction:column; gap:0.5rem;">
-          <a href="calculadora_pie_madera.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">â†’ Calculadora pie de madera</a>
-          <a href="conversor_imperial.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">â†’ Conversor imperial / decimal</a>
+  <!-- DICCIONARIO -->
+  <section class="dictionary-section" id="diccionario">
+    <div class="reveal">
+      <p class="section-label">Recurso gratuito</p>
+      <h2 class="section-title">Diccionario técnico EN / ES / Lituano</h2>
+      <p class="section-body">
+        130 términos del oficio con pronunciación, definición y búsqueda en tiempo real. El primer glosario multilingüe de carpintería y ebanistería en español con pronunciación fonética.
+      </p>
+      <ul class="dict-features">
+        <li>Búsqueda en tiempo real por cualquier campo</li>
+        <li>Pronunciación fonética del inglés técnico</li>
+        <li>6 categorías: partes, herramientas, técnicas, materiales, medición, acabados</li>
+        <li>Funciona sin conexión una vez cargado</li>
+      </ul>
+      <a href="diccionario_carpinteria_v2.html" class="btn-secondary" style="border-color: var(--grain); color: var(--grain-light);">
+        Abrir el diccionario →
+      </a>
+    </div>
+    <div class="dict-preview reveal" style="transition-delay: 0.15s">
+      <div class="dict-card">
+        <div>
+          <div class="dict-card-en">Mortise</div>
+          <div class="dict-card-es">Mortaja / Caja</div>
         </div>
+        <span class="dict-card-tag">Técnicas</span>
       </div>
-
-      <div class="pilar-card reveal" style="transition-delay:0.3s">
-        <div class="wood-lines"></div>
-        <div class="pilar-num">03</div>
-        <span class="pilar-icon">ðŸ“–</span>
-        <h3 class="pilar-title">TerminologÃ­a tÃ©cnica</h3>
-        <p class="pilar-desc">111 tÃ©rminos tÃ©cnicos EN/ES/LT con pronunciaciÃ³n. Porque nombrar bien lo que hacÃ©s es la primera herramienta del oficio.</p>
-        <p class="pilar-tag">// diccionario Â· EN Â· ES Â· lituano</p>
+      <div class="dict-card">
+        <div>
+          <div class="dict-card-en">Tenon</div>
+          <div class="dict-card-es">Espiga</div>
+        </div>
+        <span class="dict-card-tag">Técnicas</span>
+      </div>
+      <div class="dict-card">
+        <div>
+          <div class="dict-card-en">Chisel</div>
+          <div class="dict-card-es">Formón / Escoplo</div>
+        </div>
+        <span class="dict-card-tag">Herramientas</span>
+      </div>
+      <div class="dict-card">
+        <div>
+          <div class="dict-card-en">Grain</div>
+          <div class="dict-card-es">Veta / Fibra</div>
+        </div>
+        <span class="dict-card-tag">Materiales</span>
+      </div>
+      <div class="dict-card">
+        <div>
+          <div class="dict-card-en">Board foot</div>
+          <div class="dict-card-es">Pie de madera</div>
+        </div>
+        <span class="dict-card-tag">Medición</span>
       </div>
     </div>
   </section>
 
   <!-- HERRAMIENTAS -->
-  <section id="herramientas" class="page-section" style="max-width:1200px; padding: 7rem 3rem;">
-    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; flex-wrap:wrap; margin-bottom:3.5rem;">
-      <div>
-        <p class="section-label reveal">Herramientas digitales</p>
-        <h2 class="section-title reveal">Calculadoras<br><em>para el taller</em></h2>
+  <section class="tools-section" id="herramientas">
+    <div class="tools-header">
+      <div class="reveal">
+        <p class="section-label">En desarrollo</p>
+        <h2 class="section-title">Herramientas para el taller.</h2>
       </div>
-      <p class="reveal" style="max-width:340px; font-size:0.95rem; color:var(--gris-tex); line-height:1.75;">
-        Herramientas online para resolver cÃ¡lculos del dÃ­a a dÃ­a en el taller. Sin instalaciÃ³n, desde el navegador.
-      </p>
-    </div>
-
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:1.5px;">
-
-      <a href="calculadora_pie_madera.html" style="text-decoration:none;" class="reveal">
-        <div class="herramienta-card">
-          <div class="herramienta-card-inner">
-            <div class="herramienta-num">01</div>
-            <div style="font-size:2.4rem; margin-bottom:1.2rem;">ðŸªµ</div>
-            <p class="herramienta-cat">CÃ¡lculo de volumen</p>
-            <h3 class="herramienta-titulo">Calculadora<br>Pie de Madera</h3>
-            <p class="herramienta-desc">CalculÃ¡ pies de madera a partir de dimensiones en mm o cm. Incluye presets de tableros estÃ¡ndar del mercado argentino.</p>
-            <div class="herramienta-footer">
-              <span class="herramienta-tags"><span class="h-tag">mm / cm</span><span class="h-tag">presets ARG</span></span>
-              <span class="herramienta-cta">Abrir â†’</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <a href="conversor_imperial.html" style="text-decoration:none;" class="reveal">
-        <div class="herramienta-card">
-          <div class="herramienta-card-inner">
-            <div class="herramienta-num">02</div>
-            <div style="font-size:2.4rem; margin-bottom:1.2rem;">ðŸ“</div>
-            <p class="herramienta-cat">ConversiÃ³n de medidas</p>
-            <h3 class="herramienta-titulo">Conversor<br>Imperial / Decimal</h3>
-            <p class="herramienta-desc">ConvertÃ­ pulgadas fraccionarias y pies/pulgadas a mm, cm y metros. Tabla de tamaÃ±os nominales vs reales de madera aserrada.</p>
-            <div class="herramienta-footer">
-              <span class="herramienta-tags"><span class="h-tag">pulgadas â†” mm</span><span class="h-tag">tabla nominal</span></span>
-              <span class="herramienta-cta">Abrir â†’</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
-      <a href="#diccionario" style="text-decoration:none;" class="reveal">
-        <div class="herramienta-card">
-          <div class="herramienta-card-inner">
-            <div class="herramienta-num">03</div>
-            <div style="font-size:2.4rem; margin-bottom:1.2rem;">ðŸ“–</div>
-            <p class="herramienta-cat">Referencia tÃ©cnica</p>
-            <h3 class="herramienta-titulo">Diccionario<br>EN / ES / Lituano</h3>
-            <p class="herramienta-desc">111 tÃ©rminos tÃ©cnicos con pronunciaciÃ³n fonÃ©tica y definiciÃ³n en contexto. BuscÃ¡ en cualquiera de los tres idiomas.</p>
-            <div class="herramienta-footer">
-              <span class="herramienta-tags"><span class="h-tag">111 tÃ©rminos</span><span class="h-tag">3 idiomas</span></span>
-              <span class="herramienta-cta">Ver â†’</span>
-            </div>
-          </div>
-        </div>
-      </a>
-
-    </div>
-  </section>
-
-  <div class="divider" style="max-width:1200px; margin: 0 auto;"></div>
-
-  <!-- DICCIONARIO COMPLETO -->
-  <div id="diccionario" class="page-section" style="background:var(--nogal); padding: 7rem 0 0;">
-    <div style="max-width:1200px; margin:0 auto; padding: 0 3rem 3rem;">
-      <p class="section-label reveal">Recurso online</p>
-      <h2 class="section-title reveal">Diccionario tÃ©cnico<br><em>EN / ES / Lituano</em></h2>
-    </div>
-
-    <!-- Dictionary app â€” scoped with .da prefix to avoid style collisions -->
-    <div class="da-app">
-
-      <div class="da-controls">
-        <div class="da-search-wrap">
-          <span class="da-search-icon">ðŸ”</span>
-          <input type="text" id="da-search" placeholder="Buscar en inglÃ©s, espaÃ±ol, lituano o pronunciaciÃ³nâ€¦" autocomplete="off">
-        </div>
-        <div class="da-filters">
-          <button class="da-filter-btn active" data-cat="all">Todos</button>
-          <button class="da-filter-btn" data-cat="partes">ðŸª‘ Partes del mueble</button>
-          <button class="da-filter-btn" data-cat="herramientas">ðŸ”¨ Herramientas</button>
-          <button class="da-filter-btn" data-cat="tecnicas">ðŸ”§ TÃ©cnicas y uniones</button>
-          <button class="da-filter-btn" data-cat="materiales">ðŸªµ Materiales</button>
-          <button class="da-filter-btn" data-cat="medicion">ðŸ“ MediciÃ³n y trazado</button>
-          <button class="da-filter-btn" data-cat="acabados">ðŸŽ¨ Acabados</button>
-        </div>
-      </div>
-
-      <div class="da-stats" id="da-stats">Mostrando 111 de 111 tÃ©rminos Â· 6 categorÃ­as</div>
-      <main class="da-main" id="da-main"><div class="da-cat-section">
-          <div class="da-cat-header">
-            <span class="da-cat-icon">ðŸª‘</span>
-            <span class="da-cat-name">Partes del mueble</span>
-            <span class="da-cat-count">20 tÃ©rminos</span>
-          </div>
-          <div class="da-grid"><div class="da-entry">
-            <div class="da-en">Carcass</div>
-            <div class="da-pron">KAR-kas</div>
-            <div class="da-es">Carcasa / Cuerpo</div>
-            <div class="da-lt">Korpusas</div>
-            <div class="da-def">La caja estructural del mueble sin puertas ni cajones. Es el esqueleto que define el volumen.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Face frame</div>
-            <div class="da-pron">fÃ©is freim</div>
-            <div class="da-es">Marco frontal</div>
-            <div class="da-lt">Priekinis rÄ—mas</div>
-            <div class="da-def">Marco de madera maciza pegado al frente de la carcasa. Define las aberturas y oculta los cantos del tablero.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Rail</div>
-            <div class="da-pron">rÃ©il</div>
-            <div class="da-es">TravesaÃ±o</div>
-            <div class="da-lt">SkersinÄ—</div>
-            <div class="da-def">Pieza horizontal del marco. Conecta los montantes laterales en puertas y face frames.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Stile</div>
-            <div class="da-pron">stÃ¡il</div>
-            <div class="da-es">Montante</div>
-            <div class="da-lt">Montantas</div>
-            <div class="da-def">Pieza vertical del marco de una puerta o face frame. Corre de arriba a abajo.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Panel</div>
-            <div class="da-pron">PÃ-nel</div>
-            <div class="da-es">Panel / Tablero</div>
-            <div class="da-lt">PlokÅ¡tÄ—</div>
-            <div class="da-def">Superficie plana encajada dentro del marco de una puerta. Puede ser madera maciza o MDF.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Shelf</div>
-            <div class="da-pron">shÃ©lf</div>
-            <div class="da-es">Estante</div>
-            <div class="da-lt">Lentyna</div>
-            <div class="da-def">Superficie horizontal interior donde se apoya el contenido. Puede ser fija o regulable.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Shelf pin</div>
-            <div class="da-pron">shÃ©lf pin</div>
-            <div class="da-es">Pivote de estante</div>
-            <div class="da-lt">Lentynos kaiÅ¡tis</div>
-            <div class="da-def">PequeÃ±o perno metÃ¡lico insertado en orificios para sostener un estante regulable.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Toe kick</div>
-            <div class="da-pron">tou kik</div>
-            <div class="da-es">ZÃ³calo / Retranqueo</div>
-            <div class="da-lt">Apatinis gaubtas</div>
-            <div class="da-def">Retranqueo en la parte inferior del mueble para que los pies quepan al pararse frente a Ã©l.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Back panel</div>
-            <div class="da-pron">bak PÃ-nel</div>
-            <div class="da-es">Fondo</div>
-            <div class="da-lt">GalinÄ— sienelÄ—</div>
-            <div class="da-def">Panel trasero de la carcasa. Rigidiza el conjunto y cierra el interior.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Drawer box</div>
-            <div class="da-pron">drÃ³er boks</div>
-            <div class="da-es">Caja del cajÃ³n</div>
-            <div class="da-lt">StalÄiaus korpusas</div>
-            <div class="da-def">Estructura interior del cajÃ³n, sin incluir el frente decorativo.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Drawer front</div>
-            <div class="da-pron">drÃ³er front</div>
-            <div class="da-es">Frente del cajÃ³n</div>
-            <div class="da-lt">StalÄiaus fasadas</div>
-            <div class="da-def">Pieza decorativa visible del cajÃ³n. Se atornilla a la caja del cajÃ³n.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Inset door</div>
-            <div class="da-pron">Ã­n-set dor</div>
-            <div class="da-es">Puerta embutida</div>
-            <div class="da-lt">Ä®leidÅ¾iamos durys</div>
-            <div class="da-def">Puerta que queda enrasada dentro del marco del mueble, sin sobresalir.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Overlay door</div>
-            <div class="da-pron">OU-ver-lei dor</div>
-            <div class="da-es">Puerta superpuesta</div>
-            <div class="da-lt">UÅ¾dedamos durys</div>
-            <div class="da-def">Puerta que cubre el frente de la carcasa por encima del rebaje.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Nailer / Cleat</div>
-            <div class="da-pron">nÃ©i-ler / klit</div>
-            <div class="da-es">ListÃ³n de fijaciÃ³n</div>
-            <div class="da-lt">Tvirtinimo kartelÄ—</div>
-            <div class="da-def">Tira de madera usada para anclar el mueble a la pared o fijar la tapa.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Apron</div>
-            <div class="da-pron">Ã‰I-pron</div>
-            <div class="da-es">Larguero / Falda</div>
-            <div class="da-lt">Apvadas</div>
-            <div class="da-def">Pieza horizontal bajo la tapa de una mesa que conecta las patas y da rigidez.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Stretcher</div>
-            <div class="da-pron">STRÃ‰-cher</div>
-            <div class="da-es">TravesaÃ±o de patas</div>
-            <div class="da-lt">KojeliÅ³ skersinis</div>
-            <div class="da-def">Barra horizontal que conecta y refuerza las patas de una mesa o silla.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Plinth</div>
-            <div class="da-pron">plinth</div>
-            <div class="da-es">Plinto / Base</div>
-            <div class="da-lt">Cokoliai</div>
-            <div class="da-def">Elemento de base del mueble, generalmente mÃ¡s ancho que la carcasa.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Corner block</div>
-            <div class="da-pron">KOR-ner blok</div>
-            <div class="da-es">Bloque de esquina</div>
-            <div class="da-lt">Kampinis blokas</div>
-            <div class="da-def">Refuerzo triangular en las esquinas interiores para dar rigidez al mueble.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Dust panel</div>
-            <div class="da-pron">dast PÃ-nel</div>
-            <div class="da-es">Panel antipolvo</div>
-            <div class="da-lt">DulkiÅ³ skydelis</div>
-            <div class="da-def">Panel horizontal entre cajones que evita que el polvo caiga de uno a otro.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Muntin</div>
-            <div class="da-pron">MÃN-tin</div>
-            <div class="da-es">Parteluz / Maineles</div>
-            <div class="da-lt">Stiklo pertvara</div>
-            <div class="da-def">ListÃ³n que divide un panel de vidrio o madera en secciones mÃ¡s pequeÃ±as.</div>
-          </div></div>
-        </div><div class="da-cat-section">
-          <div class="da-cat-header">
-            <span class="da-cat-icon">ðŸ”¨</span>
-            <span class="da-cat-name">Herramientas y mÃ¡quinas</span>
-            <span class="da-cat-count">22 tÃ©rminos</span>
-          </div>
-          <div class="da-grid"><div class="da-entry">
-            <div class="da-en">Table saw</div>
-            <div class="da-pron">TÃ‰I-bel so</div>
-            <div class="da-es">Sierra de mesa / Escuadra</div>
-            <div class="da-lt">Stalo pjÅ«klas</div>
-            <div class="da-def">MÃ¡quina con disco circular fijo y mesa deslizante. La herramienta central de cualquier taller.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Miter saw</div>
-            <div class="da-pron">MÃI-ter so</div>
-            <div class="da-es">Sierra ingleteadora</div>
-            <div class="da-lt">StÅ«moklinÄ— pjovimo maÅ¡ina</div>
-            <div class="da-def">Sierra de brazo con cabezal giratorio para cortes en Ã¡ngulo y a tope.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Circular saw</div>
-            <div class="da-pron">SÃ‰R-kiu-lar so</div>
-            <div class="da-es">Sierra circular de mano</div>
-            <div class="da-lt">Diskinis pjÅ«klas</div>
-            <div class="da-def">Sierra portÃ¡til con disco. Para cortar tableros y piezas grandes in situ.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Jigsaw</div>
-            <div class="da-pron">YIG-so</div>
-            <div class="da-es">Caladora</div>
-            <div class="da-lt">SiaurapjÅ«klis</div>
-            <div class="da-def">Sierra de hoja recÃ­proca para cortes curvos o formas irregulares en tableros.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Router</div>
-            <div class="da-pron">RÃU-ter</div>
-            <div class="da-es">Fresadora / Router</div>
-            <div class="da-lt">Frezavimo maÅ¡ina</div>
-            <div class="da-def">Herramienta rotatoria de alta velocidad para molduras, ranuras, rebajas y ensambles.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Router table</div>
-            <div class="da-pron">RÃU-ter TÃ‰I-bel</div>
-            <div class="da-es">Mesa de fresadora</div>
-            <div class="da-lt">Frezavimo stalas</div>
-            <div class="da-def">Mesa invertida donde se monta el router para trabajar piezas pequeÃ±as con mayor control.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Planer</div>
-            <div class="da-pron">PLÃ‰i-ner</div>
-            <div class="da-es">Cepilladora / Igualadora</div>
-            <div class="da-lt">Obliavimo staklÄ—s</div>
-            <div class="da-def">MÃ¡quina que reduce el tablero a un espesor uniforme en toda su longitud.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Jointer</div>
-            <div class="da-pron">YÃ“in-ter</div>
-            <div class="da-es">Regruesadora</div>
-            <div class="da-lt">Fugovimo staklÄ—s</div>
-            <div class="da-def">MÃ¡quina para aplanar una cara y cuadrar un canto. Primer paso antes del planer.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Band saw</div>
-            <div class="da-pron">band so</div>
-            <div class="da-es">Sierra de cinta</div>
-            <div class="da-lt">Juostinis pjÅ«klas</div>
-            <div class="da-def">Sierra de hoja continua flexible. Ideal para cortes curvos y reaserrÃ­o de madera.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Drill press</div>
-            <div class="da-pron">dril pres</div>
-            <div class="da-es">Taladro de columna</div>
-            <div class="da-lt">GrÄ™Å¾imo staklÄ—s</div>
-            <div class="da-def">Taladro fijo en columna que garantiza orificios perfectamente perpendiculares.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Biscuit joiner</div>
-            <div class="da-pron">BÃS-kit YÃ“I-ner</div>
-            <div class="da-es">Ranurador de galletas</div>
-            <div class="da-lt">BiskvitÅ³ frezavimo maÅ¡ina</div>
-            <div class="da-def">Herramienta que corta ranuras semicirculares para insertar galletas de madera comprimida.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Pocket hole jig</div>
-            <div class="da-pron">PÃ“-ket houl yig</div>
-            <div class="da-es">GuÃ­a para tornillo de bolsillo</div>
-            <div class="da-lt">KiÅ¡eninio varÅ¾to Å¡ablonas</div>
-            <div class="da-def">Accesorio que guÃ­a la broca en Ã¡ngulo para crear uniones con tornillo inclinado (tipo Kreg).</div>
-          </div><div class="da-entry">
-            <div class="da-en">Random orbital sander</div>
-            <div class="da-pron">RÃN-dom OR-bi-tal SÃN-der</div>
-            <div class="da-es">Lijadora orbital</div>
-            <div class="da-lt">OrbitinÄ— Å¡lifuoklÄ—</div>
-            <div class="da-def">Lijadora de movimiento excÃ©ntrico para lijar sin marcas direccionales.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Hand plane</div>
-            <div class="da-pron">hand plein</div>
-            <div class="da-es">Cepillo de mano</div>
-            <div class="da-lt">Oblius</div>
-            <div class="da-def">Herramienta manual para afinar superficies y rebajar cantos de madera maciza.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Chisel</div>
-            <div class="da-pron">CHÃ-sel</div>
-            <div class="da-es">FormÃ³n / Escoplo</div>
-            <div class="da-lt">Kaltas</div>
-            <div class="da-def">Herramienta de corte manual con hoja plana y bisel. Para tallar mortajas y ajustes finos.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Marking gauge</div>
-            <div class="da-pron">MÃR-king guÃ©ich</div>
-            <div class="da-es">Gramil</div>
-            <div class="da-lt">Å½ymÄ—jimo storis</div>
-            <div class="da-def">Instrumento para trazar lÃ­neas paralelas al canto de una pieza. Esencial para uniones precisas.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Clamp</div>
-            <div class="da-pron">klamp</div>
-            <div class="da-es">Sargento / Prensa</div>
-            <div class="da-lt">Gnybtas</div>
-            <div class="da-def">Dispositivo para mantener piezas unidas mientras seca la cola. Nunca se tienen suficientes.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Combination square</div>
-            <div class="da-pron">kom-bi-NÃ‰I-shon skuÃ©r</div>
-            <div class="da-es">Escuadra combinada</div>
-            <div class="da-lt">Kombinuotas kampuolis</div>
-            <div class="da-def">Herramienta con regla deslizante y cabezal a 90Â° y 45Â°. Imprescindible en el taller.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Spokeshave</div>
-            <div class="da-pron">SPÃ“UK-sheiv</div>
-            <div class="da-es">Raedera / Guillame</div>
-            <div class="da-lt">Å½agrÄ—</div>
-            <div class="da-def">Herramienta de mano para alisar superficies curvas. Similar a un cepillo pero para curvas.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Card scraper</div>
-            <div class="da-pron">kard SKRÃ‰I-per</div>
-            <div class="da-es">Rasqueta / Rasqueta de mano</div>
-            <div class="da-lt">Grandiklis</div>
-            <div class="da-def">LÃ¡mina de acero delgada que raspa la superficie dejando un acabado mejor que la lija.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Flush trim bit</div>
-            <div class="da-pron">flash trim bit</div>
-            <div class="da-es">Fresa al ras</div>
-            <div class="da-lt">Lyginamoji freza</div>
-            <div class="da-def">Fresa para router con rodamiento que copia el perfil de una plantilla dejando el canto perfecto.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Forstner bit</div>
-            <div class="da-pron">FÃ“RST-ner bit</div>
-            <div class="da-es">Broca Forstner</div>
-            <div class="da-lt">Forstnerio grÄ…Å¾tas</div>
-            <div class="da-def">Broca plana que hace orificios limpios de fondo plano. Usada para bisagras de cazoleta.</div>
-          </div></div>
-        </div><div class="da-cat-section">
-          <div class="da-cat-header">
-            <span class="da-cat-icon">ðŸ”§</span>
-            <span class="da-cat-name">TÃ©cnicas y uniones</span>
-            <span class="da-cat-count">22 tÃ©rminos</span>
-          </div>
-          <div class="da-grid"><div class="da-entry">
-            <div class="da-en">Dovetail joint</div>
-            <div class="da-pron">DÃV-teil yoint</div>
-            <div class="da-es">Cola de milano</div>
-            <div class="da-lt">Uodegos jungimas</div>
-            <div class="da-def">UniÃ³n en forma de trapecio. Extremadamente resistente a la tracciÃ³n. Marca de calidad artesanal.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Mortise and tenon</div>
-            <div class="da-pron">MÃ“R-tis and TÃ‰-non</div>
-            <div class="da-es">Espiga y caja / Mortaja</div>
-            <div class="da-lt">Tenono ir mortizo jungimas</div>
-            <div class="da-def">UniÃ³n clÃ¡sica: una espiga entra en una caja. Base de la carpinterÃ­a estructural.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Box joint</div>
-            <div class="da-pron">boks yoint</div>
-            <div class="da-es">UniÃ³n en caja / Dientes</div>
-            <div class="da-lt">DÄ—Å¾utÄ—s jungimas</div>
-            <div class="da-def">UniÃ³n de esquina con dedos rectangulares entrelazados. MÃ¡s sencilla que la cola de milano.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Rabbet joint</div>
-            <div class="da-pron">RÃ-bet yoint</div>
-            <div class="da-es">Rebaje / Ranura de canto</div>
-            <div class="da-lt">Atkarpos jungimas</div>
-            <div class="da-def">EscalÃ³n cortado en el canto de una pieza donde encaja otra. Muy usado para fondos y tapas.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Dado joint</div>
-            <div class="da-pron">DÃ‰I-do yoint</div>
-            <div class="da-es">Ranura transversal</div>
-            <div class="da-lt">GrioveliÅ³ jungimas</div>
-            <div class="da-def">Canal fresado a travÃ©s del tablero donde encaja un estante o panel.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Groove joint</div>
-            <div class="da-pron">gruv yoint</div>
-            <div class="da-es">Ranura longitudinal</div>
-            <div class="da-lt">IÅ¡ilginis griovelys</div>
-            <div class="da-def">Canal fresado en paralelo a la veta. Para paneles de puerta o fondos corredizos.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Biscuit joint</div>
-            <div class="da-pron">BÃS-kit yoint</div>
-            <div class="da-es">UniÃ³n con galleta</div>
-            <div class="da-lt">Biskvitinis jungimas</div>
-            <div class="da-def">UniÃ³n con galleta oval de madera comprimida. AlineaciÃ³n y resistencia sin tornillos.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Pocket screw joint</div>
-            <div class="da-pron">PÃ“-ket skru yoint</div>
-            <div class="da-es">Tornillo de bolsillo</div>
-            <div class="da-lt">KiÅ¡eninio varÅ¾to jungimas</div>
-            <div class="da-def">Tornillo inclinado que entra por la cara oculta. RÃ¡pido y muy popular en muebles modernos.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Dowel joint</div>
-            <div class="da-pron">DÃU-el yoint</div>
-            <div class="da-es">UniÃ³n con tarugo</div>
-            <div class="da-lt">KaiÅ¡ÄiÅ³ jungimas</div>
-            <div class="da-def">Clavija cilÃ­ndrica de madera encolada en orificios. Alinea piezas y agrega superficie de encolado.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Butt joint</div>
-            <div class="da-pron">bat yoint</div>
-            <div class="da-es">UniÃ³n a tope</div>
-            <div class="da-lt">Tiesus jungimas</div>
-            <div class="da-def">La uniÃ³n mÃ¡s simple: dos piezas pegadas de frente. Poco resistente sin refuerzo adicional.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Miter joint</div>
-            <div class="da-pron">MÃI-ter yoint</div>
-            <div class="da-es">Inglete</div>
-            <div class="da-lt">Ä„Å¾uolo jungimas</div>
-            <div class="da-def">Corte a 45Â° para unir esquinas sin mostrar cantos. Muy usado en marcos y molduras.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Lap joint</div>
-            <div class="da-pron">lap yoint</div>
-            <div class="da-es">UniÃ³n a media madera</div>
-            <div class="da-lt">Sluoksninis jungimas</div>
-            <div class="da-def">Dos piezas se superponen retirando la mitad del grosor de cada una. Simple y efectiva.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Cut-out door</div>
-            <div class="da-pron">kat Ã¡ut dor</div>
-            <div class="da-es">Puerta cortada de la carcasa</div>
-            <div class="da-lt">Durys iÅ¡pjautos iÅ¡ korpuso</div>
-            <div class="da-def">El frente completo se fija al cuerpo y las puertas se cortan in situ con sierra, garantizando alineaciÃ³n perfecta.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Kerf</div>
-            <div class="da-pron">kerf</div>
-            <div class="da-es">Corte de sierra / SangrÃ­a</div>
-            <div class="da-lt">Pjovimo plyÅ¡ys</div>
-            <div class="da-def">El ancho del material removido por el disco de la sierra (~2â€“3 mm). Debe considerarse en el plan de corte.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Rip cut</div>
-            <div class="da-pron">rip kat</div>
-            <div class="da-es">Corte longitudinal</div>
-            <div class="da-lt">IÅ¡ilginis pjÅ«vis</div>
-            <div class="da-def">Corte en paralelo a la veta. Se realiza con la guÃ­a paralela de la sierra de mesa.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Cross cut</div>
-            <div class="da-pron">kros kat</div>
-            <div class="da-es">Corte transversal</div>
-            <div class="da-lt">Skersinis pjÅ«vis</div>
-            <div class="da-def">Corte perpendicular a la veta. Se realiza con tope o ingleteadora.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Squaring up</div>
-            <div class="da-pron">SKUÃ‰R-ing ap</div>
-            <div class="da-es">Cuadrar / Escuadrar</div>
-            <div class="da-lt">Sulyginimas</div>
-            <div class="da-def">Proceso de lograr que todas las caras estÃ©n a 90Â° entre sÃ­. Primer paso de cualquier proyecto.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Dry fit</div>
-            <div class="da-pron">drÃ¡i fit</div>
-            <div class="da-es">Ensamble en seco</div>
-            <div class="da-lt">Sausas surinkimas</div>
-            <div class="da-def">Armar el mueble completo sin cola para verificar que todo encaje antes de pegar definitivamente.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Grain direction</div>
-            <div class="da-pron">grein dai-RÃ‰K-shon</div>
-            <div class="da-es">DirecciÃ³n de la veta</div>
-            <div class="da-lt">GrÅ«dÅ³ kryptis</div>
-            <div class="da-def">OrientaciÃ³n de las fibras de la madera. Cortar en contra de la veta produce astillas.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Snipe</div>
-            <div class="da-pron">snaip</div>
-            <div class="da-es">Hundimiento de extremo</div>
-            <div class="da-lt">Obliavimo Å¾ymÄ—</div>
-            <div class="da-def">DepresiÃ³n en los extremos causada por el planer. Se evita pasando piezas de sacrificio.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Tearout</div>
-            <div class="da-pron">TÃ‰R-aut</div>
-            <div class="da-es">Astillado / Desgarro</div>
-            <div class="da-lt">DroÅ¾liÅ³ atskilimas</div>
-            <div class="da-def">Astillas que se arrancan al cortar o fresar madera en contra de la veta.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Spline</div>
-            <div class="da-pron">splain</div>
-            <div class="da-es">LengÃ¼eta / Filete</div>
-            <div class="da-lt">Jungiamoji juostelÄ—</div>
-            <div class="da-def">LÃ¡mina delgada insertada en dos ranuras enfrentadas para unir y alinear dos piezas.</div>
-          </div></div>
-        </div><div class="da-cat-section">
-          <div class="da-cat-header">
-            <span class="da-cat-icon">ðŸªµ</span>
-            <span class="da-cat-name">Materiales y tableros</span>
-            <span class="da-cat-count">18 tÃ©rminos</span>
-          </div>
-          <div class="da-grid"><div class="da-entry">
-            <div class="da-en">Plywood</div>
-            <div class="da-pron">PLÃI-ud</div>
-            <div class="da-es">Terciado / Madera terciada</div>
-            <div class="da-lt">Fanera</div>
-            <div class="da-def">Tablero de chapas de madera cruzadas y encoladas. Alta resistencia y estabilidad dimensional.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Marine plywood</div>
-            <div class="da-pron">ma-RÃN PLÃI-ud</div>
-            <div class="da-es">FenÃ³lico marino</div>
-            <div class="da-lt">JÅ«rinÄ— fanera</div>
-            <div class="da-def">Terciado de alta calidad con resinas resistentes al agua. Sin vacÃ­os internos. Ideal para muebles.</div>
-          </div><div class="da-entry">
-            <div class="da-en">MDF</div>
-            <div class="da-pron">em-di-ef</div>
-            <div class="da-es">MDF (fibra de densidad media)</div>
-            <div class="da-lt">Vidutinio tankio plauÅ¡Å³ plokÅ¡tÄ—</div>
-            <div class="da-def">Tablero de fibras de madera y resina prensadas. Superficie muy lisa, fÃ¡cil de pintar.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Particle board</div>
-            <div class="da-pron">PÃR-ti-kel bord</div>
-            <div class="da-es">Aglomerado</div>
-            <div class="da-lt">DroÅ¾liÅ³ plokÅ¡tÄ—</div>
-            <div class="da-def">Tablero de virutas prensadas. EconÃ³mico. Base de la mayorÃ­a de muebles laminados de cocina.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Melamine board</div>
-            <div class="da-pron">MÃ‰-la-min bord</div>
-            <div class="da-es">Melamina</div>
-            <div class="da-lt">Melamino plokÅ¡tÄ—</div>
-            <div class="da-def">Aglomerado o MDF recubierto con papel impregnado en resina melamÃ­nica. Superficie dura y lavable.</div>
-          </div><div class="da-entry">
-            <div class="da-en">OSB</div>
-            <div class="da-pron">ou-es-bi</div>
-            <div class="da-es">OSB (tablero de virutas orientadas)</div>
-            <div class="da-lt">OrientuotÅ³ skiedrÅ³ plokÅ¡tÄ—</div>
-            <div class="da-def">Tablero de virutas largas orientadas y prensadas. MÃ¡s resistente que el aglomerado. Uso estructural.</div>
-          </div><div class="da-entry">
-            <div class="da-en">HDF / Hardboard</div>
-            <div class="da-pron">Ã©ich-di-ef / HÃRD-bord</div>
-            <div class="da-es">HDF / Hardboard</div>
-            <div class="da-lt">AukÅ¡to tankio plokÅ¡tÄ—</div>
-            <div class="da-def">Fibra de madera de alta densidad. Muy delgado (3â€“6 mm). Para fondos de cajones y gabinetes.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Solid wood</div>
-            <div class="da-pron">SÃ“-lid ud</div>
-            <div class="da-es">Madera maciza</div>
-            <div class="da-lt">Kietmedis</div>
-            <div class="da-def">Madera natural sin procesar en tablero. Se mueve con los cambios de humedad.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Veneer</div>
-            <div class="da-pron">ve-NÃR</div>
-            <div class="da-es">Chapa / Enchapado</div>
-            <div class="da-lt">FaneruotÄ—</div>
-            <div class="da-def">LÃ¡mina muy fina de madera noble pegada sobre un tablero de menor costo.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Edge banding</div>
-            <div class="da-pron">ey bÃN-ding</div>
-            <div class="da-es">Tapacantos</div>
-            <div class="da-lt">KraÅ¡tÅ³ juostelÄ—</div>
-            <div class="da-def">Tira de PVC, ABS o chapa de madera que cubre el canto del tablero para protegerlo.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Hardwood</div>
-            <div class="da-pron">HÃRD-ud</div>
-            <div class="da-es">Madera dura</div>
-            <div class="da-lt">Kietmedis</div>
-            <div class="da-def">Madera de Ã¡rboles de hoja caduca (roble, haya, cerezo). Dura y de grano cerrado.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Softwood</div>
-            <div class="da-pron">SÃ“FT-ud</div>
-            <div class="da-es">Madera blanda / ConÃ­fera</div>
-            <div class="da-lt">MinkÅ¡tmedis</div>
-            <div class="da-def">Madera de conÃ­feras (pino, abeto, cedro). MÃ¡s fÃ¡cil de trabajar pero menos resistente.</div>
-          </div><div class="da-entry">
-            <div class="da-en">PVA glue</div>
-            <div class="da-pron">pi-vi-ei glu</div>
-            <div class="da-es">Cola PVA / Cola de carpintero</div>
-            <div class="da-lt">PVA klijai</div>
-            <div class="da-def">Adhesivo vinÃ­lico para madera. Seca en 20â€“30 min, curado total en 24 h.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Piano hinge</div>
-            <div class="da-pron">piÃ-no hinch</div>
-            <div class="da-es">Bisagra piano / Bisagra continua</div>
-            <div class="da-lt">PianiniÅ³ vyriÅ³</div>
-            <div class="da-def">Bisagra que corre en toda la longitud de la puerta. Distribuye el peso uniformemente.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Wood filler</div>
-            <div class="da-pron">ud FÃ-ler</div>
-            <div class="da-es">Masilla para madera</div>
-            <div class="da-lt">MedÅ¾io glaistas</div>
-            <div class="da-def">Pasta para rellenar orificios y marcas de tornillos antes de pintar.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Epoxy resin</div>
-            <div class="da-pron">i-PÃ“K-si RÃ‰-sin</div>
-            <div class="da-es">Resina epoxi</div>
-            <div class="da-lt">EpoksidinÄ— derva</div>
-            <div class="da-def">Adhesivo de dos componentes de altÃ­sima resistencia. TambiÃ©n se usa para rellenar vetas y nudos.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Wood conditioner</div>
-            <div class="da-pron">ud kon-DÃ-sho-ner</div>
-            <div class="da-es">Acondicionador de madera</div>
-            <div class="da-lt">Medienos kondicionierius</div>
-            <div class="da-def">Producto que se aplica antes del tinte para lograr una absorciÃ³n uniforme en maderas porosas.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Teak oil</div>
-            <div class="da-pron">tik oil</div>
-            <div class="da-es">Aceite de teca</div>
-            <div class="da-lt">TikmedÅ¾io aliejus</div>
-            <div class="da-def">Aceite penetrante para proteger madera. Resalta la veta natural. FÃ¡cil de aplicar.</div>
-          </div></div>
-        </div><div class="da-cat-section">
-          <div class="da-cat-header">
-            <span class="da-cat-icon">ðŸ“</span>
-            <span class="da-cat-name">MediciÃ³n y trazado</span>
-            <span class="da-cat-count">14 tÃ©rminos</span>
-          </div>
-          <div class="da-grid"><div class="da-entry">
-            <div class="da-en">Kerf allowance</div>
-            <div class="da-pron">kerf a-LÃU-ans</div>
-            <div class="da-es">Margen de corte</div>
-            <div class="da-lt">Pjovimo leidimas</div>
-            <div class="da-def">Material extra que se deja en el plan de corte para compensar el ancho del disco de sierra (~3 mm).</div>
-          </div><div class="da-entry">
-            <div class="da-en">Story stick</div>
-            <div class="da-pron">STÃ“-ri stik</div>
-            <div class="da-es">BastÃ³n de cotas</div>
-            <div class="da-lt">Matavimo lazdelÄ—</div>
-            <div class="da-def">Regla o listÃ³n donde se marcan todas las medidas de un proyecto para transferirlas sin nÃºmeros.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Layout</div>
-            <div class="da-pron">LÃ‰I-aut</div>
-            <div class="da-es">Trazado / Diagramado</div>
-            <div class="da-lt">IÅ¡dÄ—stymas</div>
-            <div class="da-def">El proceso de marcar en la madera todas las lÃ­neas de corte y ensamble antes de empezar a cortar.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Reveal</div>
-            <div class="da-pron">re-VÃL</div>
-            <div class="da-es">Retranqueo visible / LÃ­nea de vista</div>
-            <div class="da-lt">Atodanga</div>
-            <div class="da-def">La pequeÃ±a franja visible entre una puerta y el marco. Define la estÃ©tica de la cara del mueble.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Tolerance</div>
-            <div class="da-pron">TÃ“-le-rans</div>
-            <div class="da-es">Tolerancia</div>
-            <div class="da-lt">Tolerancija</div>
-            <div class="da-def">El margen aceptable de error en una medida. En carpinterÃ­a de muebles suele ser Â±1 mm.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Datum line</div>
-            <div class="da-pron">DÃ‰I-tam lain</div>
-            <div class="da-es">LÃ­nea de referencia</div>
-            <div class="da-lt">Atskaitos linija</div>
-            <div class="da-def">LÃ­nea base desde la cual se toman todas las demÃ¡s medidas del proyecto.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Plumb</div>
-            <div class="da-pron">plam</div>
-            <div class="da-es">Plomada / A plomo</div>
-            <div class="da-lt">Vertikalumas</div>
-            <div class="da-def">Perfectamente vertical. Se verifica con plomada o nivel de burbuja.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Level</div>
-            <div class="da-pron">LÃ‰-vel</div>
-            <div class="da-es">Nivel / A nivel</div>
-            <div class="da-lt">Horizontalumas</div>
-            <div class="da-def">Perfectamente horizontal. Se verifica con nivel de burbuja o nivel lÃ¡ser.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Square</div>
-            <div class="da-pron">skuÃ©r</div>
-            <div class="da-es">A escuadra / En escuadra</div>
-            <div class="da-lt">Statmenas</div>
-            <div class="da-def">Que forma exactamente 90Â°. Una caja a escuadra tiene todas sus esquinas en Ã¡ngulo recto.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Centerline</div>
-            <div class="da-pron">SÃ‰N-ter-lain</div>
-            <div class="da-es">LÃ­nea de centro / Eje</div>
-            <div class="da-lt">Centro linija</div>
-            <div class="da-def">LÃ­nea que marca el centro exacto de una pieza. Fundamental para ubicar bisagras y herrajes.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Overhang</div>
-            <div class="da-pron">OU-ver-hang</div>
-            <div class="da-es">Vuelo / Voladizo</div>
-            <div class="da-lt">IÅ¡kyÅ¡ulys</div>
-            <div class="da-def">La parte de la tapa o repisa que sobresale mÃ¡s allÃ¡ de la base de soporte.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Setback</div>
-            <div class="da-pron">SÃ‰T-bak</div>
-            <div class="da-es">Retranqueo / Distancia de retiro</div>
-            <div class="da-lt">Atitraukimas</div>
-            <div class="da-def">La distancia entre el borde de una pieza y su punto de fijaciÃ³n o referencia.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Flush</div>
-            <div class="da-pron">flash</div>
-            <div class="da-es">Al ras / Enrasado</div>
-            <div class="da-lt">Sulyginta</div>
-            <div class="da-def">Que dos superficies quedan perfectamente en el mismo plano, sin escalÃ³n ni diferencia.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Proud</div>
-            <div class="da-pron">prÃ¡ud</div>
-            <div class="da-es">Sobresalido / Orgulloso</div>
-            <div class="da-lt">IÅ¡sikiÅ¡Ä™s</div>
-            <div class="da-def">Que una superficie sobresale levemente por encima del plano de referencia. Opuesto a flush.</div>
-          </div></div>
-        </div><div class="da-cat-section">
-          <div class="da-cat-header">
-            <span class="da-cat-icon">ðŸŽ¨</span>
-            <span class="da-cat-name">Acabados y tratamientos</span>
-            <span class="da-cat-count">15 tÃ©rminos</span>
-          </div>
-          <div class="da-grid"><div class="da-entry">
-            <div class="da-en">Finishing</div>
-            <div class="da-pron">FÃ-ni-shing</div>
-            <div class="da-es">Acabado / TerminaciÃ³n</div>
-            <div class="da-lt">Apdaila</div>
-            <div class="da-def">Todo proceso aplicado a la superficie de la madera para protegerla y darle apariencia final.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Sanding sealer</div>
-            <div class="da-pron">SÃN-ding SÃ-ler</div>
-            <div class="da-es">Sellador para lijar</div>
-            <div class="da-lt">Gruntas Å¡lifavimui</div>
-            <div class="da-def">Primera capa que sella el poro de la madera y facilita el lijado final antes del acabado.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Grain filler</div>
-            <div class="da-pron">grein FÃ-ler</div>
-            <div class="da-es">Relleno de poro</div>
-            <div class="da-lt">PorÅ³ uÅ¾pildas</div>
-            <div class="da-def">Pasta que se aplica para rellenar el poro abierto de maderas como el roble antes del barniz.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Stain</div>
-            <div class="da-pron">stein</div>
-            <div class="da-es">Tinte / Tintura</div>
-            <div class="da-lt">DaÅ¾yvai</div>
-            <div class="da-def">Producto que colorea la madera sin tapar la veta. Penetra en las fibras.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Varnish</div>
-            <div class="da-pron">VÃR-nish</div>
-            <div class="da-es">Barniz</div>
-            <div class="da-lt">Lakas</div>
-            <div class="da-def">Acabado transparente que forma una pelÃ­cula protectora sobre la madera. Resiste agua y roce.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Lacquer</div>
-            <div class="da-pron">LÃ-ker</div>
-            <div class="da-es">Laca</div>
-            <div class="da-lt">Lakas nitro</div>
-            <div class="da-def">Acabado de secado rÃ¡pido por evaporaciÃ³n del solvente. Muy usado en carpinterÃ­a industrial.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Shellac</div>
-            <div class="da-pron">she-LÃK</div>
-            <div class="da-es">Goma laca / Shellac</div>
-            <div class="da-lt">Å elakas</div>
-            <div class="da-def">Acabado natural derivado de insecto. Excelente sellador y base para otros acabados.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Danish oil</div>
-            <div class="da-pron">DÃ‰I-nish oil</div>
-            <div class="da-es">Aceite danÃ©s</div>
-            <div class="da-lt">DaniÅ¡kas aliejus</div>
-            <div class="da-def">Mezcla de aceites y barniz que penetra en la madera dando protecciÃ³n con aspecto natural.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Wax</div>
-            <div class="da-pron">uaks</div>
-            <div class="da-es">Cera</div>
-            <div class="da-lt">VaÅ¡kas</div>
-            <div class="da-def">Acabado de protecciÃ³n suave que se aplica sobre otros acabados o directamente en maderas blandas.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Polyurethane</div>
-            <div class="da-pron">po-li-iÃº-re-zein</div>
-            <div class="da-es">Poliuretano</div>
-            <div class="da-lt">Poliuretanas</div>
-            <div class="da-def">Acabado muy resistente al agua y al roce. Ideal para mesas y pisos de madera.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Sanding</div>
-            <div class="da-pron">SÃN-ding</div>
-            <div class="da-es">Lijado</div>
-            <div class="da-lt">Å lifavimas</div>
-            <div class="da-def">Proceso de alisar la superficie con papel de lija de distinta granulaciÃ³n, de menor a mayor nÃºmero.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Grit</div>
-            <div class="da-pron">grit</div>
-            <div class="da-es">GranulaciÃ³n / Grano</div>
-            <div class="da-lt">GrÅ«dÄ—tumas</div>
-            <div class="da-def">El nÃºmero que indica el tamaÃ±o de los granos de la lija. A mayor nÃºmero, mÃ¡s fina la lija.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Burnishing</div>
-            <div class="da-pron">BÃ‰R-ni-shing</div>
-            <div class="da-es">BruÃ±ido / Pulido</div>
-            <div class="da-lt">Poliravimas</div>
-            <div class="da-def">Proceso de frotar la superficie con un elemento duro para compactar las fibras y lograr brillo.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Wire brushing</div>
-            <div class="da-pron">uÃ¡ier BRÃ-shing</div>
-            <div class="da-es">Cepillado de alambre</div>
-            <div class="da-lt">Vielos Å¡epeÄio apdaila</div>
-            <div class="da-def">TÃ©cnica para resaltar la veta de la madera eliminando las partes blandas con cepillo de alambre.</div>
-          </div><div class="da-entry">
-            <div class="da-en">Distressing</div>
-            <div class="da-pron">dis-TRÃ‰-sing</div>
-            <div class="da-es">Envejecido / Patinado</div>
-            <div class="da-lt">Dirbtinis sendinimas</div>
-            <div class="da-def">TÃ©cnica para dar apariencia de madera usada y antigua mediante marcas, golpes y acabados especiales.</div>
-          </div></div>
-        </div></main>
-    </div>
-  </div>
-
-  <!-- SOBRE -->
-  <section id="sobre" class="about-section page-section" style="max-width:1200px;">
-    <div class="about-text">
-      <p class="section-label reveal">Sobre el proyecto</p>
-      <h2 class="section-title reveal">TÃ©cnica precisa,<br><em>en nuestro idioma</em></h2>
-      <p class="reveal">
-        Soy de Madera naciÃ³ de una incomodidad concreta: la mayorÃ­a del conocimiento tÃ©cnico de calidad sobre carpinterÃ­a y ebanisterÃ­a existe en inglÃ©s. El espaÃ±ol merece lo mismo.
-      </p>
-      <p class="reveal">
-        El proyecto combina formaciÃ³n real en ebanisterÃ­a (Spilimbergo / FAD / UPC, CÃ³rdoba) con curiosidad por la tecnologÃ­a y el lenguaje. No es un canal de bricolaje domÃ©stico: es divulgaciÃ³n con rigor de taller.
-      </p>
-      <div class="hero-actions reveal" style="margin-top:2rem;">
-        <a href="https://instagram.com/soydemadera" class="btn-secondary" target="_blank">@soydemadera</a>
+      <div class="reveal" style="transition-delay: 0.1s">
+        <p class="section-body">
+          Calculadoras diseñadas para quien trabaja en milímetros pero compra en pies, mide en pulgadas y necesita convertir todo en segundos.
+        </p>
       </div>
     </div>
-
-    <div class="about-stats">
-      <div class="stat-box reveal">
-        <div class="stat-num">111</div>
-        <div class="stat-label">tÃ©rminos tÃ©cnicos</div>
+    <div class="tools-grid">
+      <div class="tool-card reveal">
+        <span class="tool-badge">Próximamente</span>
+        <span class="tool-icon">📏</span>
+        <h3 class="tool-title">Calculadora de pie de madera</h3>
+        <p class="tool-desc">
+          Ingresás las dimensiones en mm o cm y obtenés el equivalente en pies de madera — con costo total si agregás el precio por pie. Configurada con tableros estándar del mercado argentino.
+        </p>
       </div>
-      <div class="stat-box reveal" style="transition-delay:0.1s">
-        <div class="stat-num">3</div>
-        <div class="stat-label">idiomas indexados</div>
-      </div>
-      <div class="stat-box reveal" style="transition-delay:0.2s">
-        <div class="stat-num">3</div>
-        <div class="stat-label">pilares del proyecto</div>
-      </div>
-      <div class="stat-box reveal" style="transition-delay:0.3s">
-        <div class="stat-num">ES</div>
-        <div class="stat-label">100% en castellano</div>
+      <div class="tool-card reveal" style="transition-delay: 0.1s">
+        <span class="tool-badge">Próximamente</span>
+        <span class="tool-icon">🔄</span>
+        <h3 class="tool-title">Conversor imperial / decimal</h3>
+        <p class="tool-desc">
+          Pulgadas fraccionarias a milímetros y centímetros. Pies y pulgadas a sistema métrico. Incluye tamaños nominales vs. reales de la madera aserrada — porque un 2×4 no mide lo que dice.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- MAESTROS -->
-  <section id="maestros" class="maestros-section page-section" style="max-width:1200px;">
-    <div class="maestros-intro">
-      <div>
-        <p class="section-label reveal">Referentes del oficio</p>
-        <h2 class="section-title reveal">Maestros<br><em>ebanistas</em></h2>
-      </div>
-      <p class="maestros-intro-text reveal">
-        Entrevistas, textos y obras de carpinteros y ebanistas que vale la pena conocer. El oficio se aprende mirando a quienes lo dominan.
+  <!-- ESCUELA -->
+  <section class="school-section" id="escuela">
+    <div class="reveal">
+      <p class="section-label">Desde adentro</p>
+      <h2 class="section-title">La Spilimbergo y el oficio.</h2>
+      <blockquote class="school-quote">
+        La única Tecnicatura Universitaria en Ebanistería de América Latina está en Córdoba, Argentina.
+      </blockquote>
+      <p class="section-body">
+        La Escuela Superior de Artes Aplicadas Lino E. Spilimbergo, Facultad de Artes y Diseño de la Universidad Provincial de Córdoba, forma ebanistas con título de pregrado universitario — un nivel de formación que no existe en ninguna otra institución de la región.
       </p>
-    </div>
-
-    <div class="maestros-grid">
-      <!-- Tarjeta vacÃ­a 1 -->
-      <div class="maestro-card empty reveal">
-        <div class="empty-icon">ðŸªµ</div>
-        <span class="empty-label">Primer maestro Â· prÃ³ximamente</span>
-      </div>
-
-      <!-- Tarjeta vacÃ­a 2 -->
-      <div class="maestro-card empty reveal" style="transition-delay:0.15s">
-        <div class="empty-icon">ðŸªµ</div>
-        <span class="empty-label">En preparaciÃ³n</span>
-      </div>
-
-      <!-- Tarjeta vacÃ­a 3 -->
-      <div class="maestro-card empty reveal" style="transition-delay:0.3s">
-        <div class="empty-icon">ðŸªµ</div>
-        <span class="empty-label">En preparaciÃ³n</span>
+      <div class="school-tag-list">
+        <span class="school-tag">Única en Latinoamérica</span>
+        <span class="school-tag">Título universitario</span>
+        <span class="school-tag">Talleres renovados</span>
+        <span class="school-tag">Córdoba, Argentina</span>
+        <span class="school-tag">FAD · UPC</span>
       </div>
     </div>
-
-    <!--
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-      CÃ“MO AGREGAR UN MAESTRO: reemplazÃ¡ una tarjeta .empty con:
-
-      <div class="maestro-card reveal">
-        <div class="maestro-tipos">
-          <span class="tipo-tag entrevista">entrevista</span>
-          <span class="tipo-tag obra">obra</span>
-          <span class="tipo-tag texto">texto</span>
-        </div>
-        <div class="maestro-photo-placeholder">ðŸ‘¤</div>
-        <p class="maestro-especialidad">EbanisterÃ­a clÃ¡sica Â· Buenos Aires</p>
-        <h3 class="maestro-nombre">Nombre Apellido</h3>
-        <p class="maestro-bio">Breve descripciÃ³n del maestro, su trayectoria y por quÃ© vale la pena conocer su trabajo.</p>
-      </div>
-      â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-    -->
-
-    <!-- Convocatoria -->
-    <div class="convocatoria-banner reveal">
-      <div class="conv-text">
-        <h3>Â¿ConocÃ©s a un maestro que deberÃ­a estar acÃ¡?</h3>
-        <p>Escribinos por Instagram o por mail. Buscamos referentes del oficio en todo el mundo hispanohablante.</p>
-      </div>
-      <a href="https://instagram.com/soydemadera" class="btn-primary" target="_blank">Proponer un maestro â†’</a>
-    </div>
-  </section>
-
-  <div class="divider" style="max-width:1200px; margin: 0 auto;"></div>
-
-  <!-- DÃ“NDE ESTUDIAR -->
-  <section id="estudiar" class="estudiar-section page-section" style="max-width:1200px;">
-    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; flex-wrap:wrap; margin-bottom:4rem;">
-      <div>
-        <p class="section-label reveal">FormaciÃ³n</p>
-        <h2 class="section-title reveal">DÃ³nde<br><em>estudiar</em></h2>
-      </div>
-      <p class="reveal" style="max-width:360px; font-size:0.95rem; color:var(--gris-tex); line-height:1.75;">
-        Escuelas, talleres y recursos para aprender carpinterÃ­a y ebanisterÃ­a en espaÃ±ol. Directorio en construcciÃ³n permanente.
-      </p>
-    </div>
-
-    <div class="estudiar-cols">
-
-      <!-- Escuelas y tecnicaturas -->
-      <div class="estudiar-bloque reveal">
-        <div class="bloque-header">
-          <span class="bloque-icon">ðŸ›ï¸</span>
-          <div>
-            <div class="bloque-titulo">Escuelas y tecnicaturas</div>
-            <div class="bloque-subtitle">formaciÃ³n oficial Â· tÃ­tulo</div>
-          </div>
-        </div>
-
-        <div class="estudiar-item">
-          <div class="item-info">
-            <div class="item-nombre">Escuela de EbanisterÃ­a Spilimbergo</div>
-            <div class="item-detalle">FAD / UPC Â· CÃ³rdoba, Argentina</div>
-          </div>
-          <span class="item-badge presencial">Presencial</span>
-        </div>
-
-        <div class="estudiar-item placeholder">
-          <div class="item-info">
-            <div class="item-nombre">Tu escuela aquÃ­</div>
-            <div class="item-detalle">Ciudad, PaÃ­s</div>
-          </div>
-          <span class="item-badge presencial">Presencial</span>
-        </div>
-
-        <div class="estudiar-item placeholder">
-          <div class="item-info">
-            <div class="item-nombre">En relevamiento</div>
-            <div class="item-detalle">PrÃ³ximamente</div>
-          </div>
-        </div>
-
-        <p class="agregar-cta">+ SugerÃ­ una escuela â†’</p>
-      </div>
-
-      <!-- Maestros particulares -->
-      <div class="estudiar-bloque reveal" style="transition-delay:0.15s">
-        <div class="bloque-header">
-          <span class="bloque-icon">ðŸ¤</span>
-          <div>
-            <div class="bloque-titulo">Maestros particulares</div>
-            <div class="bloque-subtitle">clases individuales Â· taller</div>
-          </div>
-        </div>
-
-        <div class="estudiar-item placeholder">
-          <div class="item-info">
-            <div class="item-nombre">Primer maestro</div>
-            <div class="item-detalle">Especialidad Â· Ciudad</div>
-          </div>
-          <span class="item-badge particular">Particular</span>
-        </div>
-
-        <div class="estudiar-item placeholder">
-          <div class="item-info">
-            <div class="item-nombre">En convocatoria</div>
-            <div class="item-detalle">PrÃ³ximamente</div>
-          </div>
-          <span class="item-badge particular">Particular</span>
-        </div>
-
-        <div class="estudiar-item placeholder">
-          <div class="item-info">
-            <div class="item-nombre">En convocatoria</div>
-            <div class="item-detalle">PrÃ³ximamente</div>
-          </div>
-        </div>
-
-        <p class="agregar-cta">+ Â¿Sos maestro? Escribinos â†’</p>
-      </div>
-
-      <!-- Recursos autodidactas â€” ancho completo -->
-      <div class="estudiar-bloque full-width reveal" style="transition-delay:0.3s">
-        <div class="bloque-header">
-          <span class="bloque-icon">ðŸ“š</span>
-          <div>
-            <div class="bloque-titulo">Recursos autodidactas</div>
-            <div class="bloque-subtitle">libros Â· canales Â· referencia</div>
-          </div>
-        </div>
-
-        <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap:0;">
-
-          <div class="estudiar-item">
-            <div class="item-info">
-              <div class="item-nombre">Diccionario tÃ©cnico EN/ES/LT</div>
-              <div class="item-detalle">soydemadera.com Â· 111 tÃ©rminos con pronunciaciÃ³n</div>
-            </div>
-            <span class="item-badge gratuito">Gratuito</span>
-          </div>
-
-          <div class="estudiar-item placeholder">
-            <div class="item-info">
-              <div class="item-nombre">Libro recomendado</div>
-              <div class="item-detalle">Autor Â· Editorial Â· AÃ±o</div>
-            </div>
-            <span class="item-badge online">Libro</span>
-          </div>
-
-          <div class="estudiar-item placeholder">
-            <div class="item-info">
-              <div class="item-nombre">Canal de YouTube</div>
-              <div class="item-detalle">@handle Â· Idioma</div>
-            </div>
-            <span class="item-badge gratuito">Gratuito</span>
-          </div>
-
-          <div class="estudiar-item placeholder">
-            <div class="item-info">
-              <div class="item-nombre">Curso online</div>
-              <div class="item-detalle">Plataforma Â· Modalidad</div>
-            </div>
-            <span class="item-badge online">Online</span>
-          </div>
-
-        </div>
-
-        <p class="agregar-cta">+ SugerÃ­ un recurso â†’</p>
-      </div>
-
-    </div>
-  </section>
-
-  <div class="divider" style="max-width:1200px; margin: 0 auto;"></div>
-
-  <!-- REDES -->
-  <section id="redes" class="redes-section page-section" style="max-width:1200px;">
-    <p class="section-label reveal">SeguÃ­ el proyecto</p>
-    <h2 class="section-title reveal">Encontranos<br><em>donde trabajamos</em></h2>
-
-    <div class="redes-grid">
-      <a href="https://instagram.com/soydemadera" class="red-card reveal" target="_blank">
-        <span class="red-platform">Instagram</span>
-        <span class="red-handle">@soydemadera</span>
-        <p class="red-desc">Contenido visual, terminologÃ­a rÃ¡pida y proyectos en proceso.</p>
-        <span class="red-arrow">â†’</span>
-      </a>
-      <a href="https://youtube.com/@maderaytecnica" class="red-card reveal" target="_blank" style="transition-delay:0.15s">
-        <span class="red-platform">YouTube</span>
-        <span class="red-handle">@maderaytecnica</span>
-        <p class="red-desc">Videos tÃ©cnicos, tutoriales de herramientas y guÃ­as de terminologÃ­a.</p>
-        <span class="red-arrow">â†’</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ASTILLAS -->
-  <section id="astillas" class="page-section" style="max-width:1200px; padding: 7rem 3rem;">
-    <div style="margin-bottom:3rem;">
-      <p style="font-family:'Fraunces',Georgia,serif; color:var(--ambar); font-size:0.85rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:1rem;">Recursos</p>
-      <h2 style="font-family:'Fraunces',Georgia,serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:900; color:var(--crema); line-height:1.1;">Astillas</h2>
-      <p style="color:var(--crema-dim); max-width:600px; margin-top:1rem; line-height:1.7;">PDFs, videos y fotos del taller. Material de referencia para el oficio.</p>
-    </div>
-
-    <!-- RECURSOS TÃ‰CNICOS FIJOS -->
-    <div style="margin-bottom:2.5rem;">
-      <p style="font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem;">Recursos tÃ©cnicos</p>
-      <a href="tp1_marqueteria.html" style="display:flex;align-items:center;gap:1.25rem;background:rgba(255,255,255,.03);border:1px solid #3d2c15;border-radius:10px;padding:1.1rem 1.4rem;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.06)'" onmouseout="this.style.background='rgba(255,255,255,.03)'">
-        <div style="width:42px;height:42px;background:var(--siena);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5edd8" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
-        </div>
+    <div class="school-visual reveal" style="transition-delay: 0.15s">
+      <div class="school-card">
+        <span class="school-card-icon">🏛️</span>
         <div>
-          <div style="font-family:'Fraunces',Georgia,serif;font-size:1rem;color:var(--crema);margin-bottom:3px;">TP1 â€” MarqueterÃ­a</div>
-          <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim,#8a7560);">GuÃ­a visual completa: diseÃ±o, corte, pegado y terminado Â· Spilimbergo / FAD / UPC</div>
+          <p class="school-card-title">Única en América Latina</p>
+          <p class="school-card-body">La Tecnicatura Universitaria en Ebanistería de la FAD·UPC es la única carrera de pregrado universitario en ebanistería en toda la región. Egresados con título reconocido y perfil técnico-artístico único.</p>
         </div>
-        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver â†’</div>
-      </a>
-    </div>
-
-    <!-- FILTROS -->
-    <div id="astillas-filtros" style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:2.5rem;">
-      <button class="ast-filtro active" data-tipo="todos" onclick="astFiltrar(this)">Todos</button>
-      <button class="ast-filtro" data-tipo="pdf" onclick="astFiltrar(this)">ðŸ“„ PDFs</button>
-      <button class="ast-filtro" data-tipo="video" onclick="astFiltrar(this)">â–¶ Videos</button>
-      <button class="ast-filtro" data-tipo="imagen" onclick="astFiltrar(this)">ðŸ–¼ Fotos</button>
-    </div>
-
-    <!-- GRID -->
-    <div id="astillas-grid" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem;"></div>
-    <p id="astillas-empty" style="color:var(--crema-dim); font-style:italic; display:none;">TodavÃ­a no hay contenido en esta secciÃ³n.</p>
-
-    <!-- BOTÃ“N ADMIN -->
-    <div style="margin-top:4rem; text-align:right;">
-      <button onclick="astAdminToggle()" style="background:none; border:1px solid var(--ambar-dim,#8a6a2a); color:var(--ambar); padding:0.5rem 1rem; font-size:0.8rem; letter-spacing:0.1em; cursor:pointer; font-family:inherit;">âš™ Administrar</button>
-    </div>
-
-    <!-- PANEL ADMIN (oculto) -->
-    <div id="ast-admin-panel" style="display:none; margin-top:2rem; border:1px solid var(--ambar-dim,#8a6a2a); padding:2rem; background:rgba(255,255,255,0.03);">
-      <div id="ast-login" style="">
-        <p style="color:var(--crema); margin-bottom:1rem; font-size:0.9rem;">ContraseÃ±a de administrador</p>
-        <input id="ast-pwd" type="password" placeholder="ContraseÃ±aâ€¦" style="background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; width:220px;">
-        <button onclick="astLogin()" style="margin-left:0.75rem; background:var(--ambar,#c8912a); color:#1a1209; border:none; padding:0.6rem 1.2rem; cursor:pointer; font-family:inherit; font-weight:700;">Entrar</button>
-        <p id="ast-pwd-err" style="color:#e05555; font-size:0.8rem; margin-top:0.5rem; display:none;">ContraseÃ±a incorrecta.</p>
       </div>
-      <div id="ast-form" style="display:none;">
-        <h4 style="color:var(--ambar); font-family:'Fraunces',serif; margin-bottom:1.5rem;">Agregar contenido</h4>
-        <div style="display:grid; gap:1rem; max-width:560px;">
-          <div>
-            <label style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">Tipo</label>
-            <select id="ast-tipo" style="width:100%; background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit;">
-              <option value="pdf">ðŸ“„ PDF / Documento</option>
-              <option value="video">â–¶ Video (YouTube / Vimeo)</option>
-              <option value="imagen">ðŸ–¼ Imagen / Foto</option>
-            </select>
-          </div>
-          <div>
-            <label style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">TÃ­tulo</label>
-            <input id="ast-titulo" type="text" placeholder="Ej: GuÃ­a de ensambles EN/ES" style="width:100%; background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
-          </div>
-          <div>
-            <label style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">DescripciÃ³n (opcional)</label>
-            <input id="ast-desc" type="text" placeholder="Breve descripciÃ³n del recurso" style="width:100%; background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
-          </div>
-          <div>
-            <label id="ast-url-label" style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">URL del archivo / video / imagen</label>
-            <input id="ast-url" type="url" placeholder="https://â€¦" style="width:100%; background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
-          </div>
-          <div style="display:flex; gap:1rem; margin-top:0.5rem;">
-            <button onclick="astAgregar()" style="background:var(--ambar,#c8912a); color:#1a1209; border:none; padding:0.7rem 1.5rem; cursor:pointer; font-family:inherit; font-weight:700;">Agregar</button>
-            <button onclick="astCerrarSesion()" style="background:none; border:1px solid rgba(255,255,255,0.2); color:var(--crema-dim); padding:0.7rem 1.5rem; cursor:pointer; font-family:inherit;">Cerrar sesiÃ³n</button>
-          </div>
-          <p id="ast-form-err" style="color:#e05555; font-size:0.8rem; display:none;"></p>
+      <div class="school-card">
+        <span class="school-card-icon">🔧</span>
+        <div>
+          <p class="school-card-title">Talleres modernizados</p>
+          <p class="school-card-body">Equipamiento nuevo al servicio de una enseñanza que es esencialmente manual. Tecnología que complementa el oficio, no que lo reemplaza.</p>
         </div>
-
-        <!-- Lista de items existentes -->
-        <div id="ast-lista-admin" style="margin-top:2.5rem;"></div>
+      </div>
+      <div class="school-card">
+        <span class="school-card-icon">👨‍🏫</span>
+        <div>
+          <p class="school-card-title">Maestros del oficio</p>
+          <p class="school-card-body">Profesores con trayectoria real en el taller. Próximamente en Soy de Madera: entrevistas, recomendaciones y la visión de quienes enseñan ebanistería en Argentina.</p>
+        </div>
       </div>
     </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-section">
+    <p class="section-label">Empezá ahora</p>
+    <h2 class="cta-title">El diccionario está online.<br>Es gratuito. Es tuyo.</h2>
+    <p class="cta-body">
+      130 términos técnicos en español, inglés y lituano con pronunciación fonética y búsqueda en tiempo real. Sin registro, sin publicidad.
+    </p>
+    <a href="diccionario_carpinteria_v2.html" class="btn-light">
+      Abrir el diccionario →
+    </a>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-brand">Soy de Madera</div>
-    <div class="footer-copy">Â© 2026 soydemadera.com Â· CÃ³rdoba, Argentina</div>
-    <div class="footer-next">prÃ³ximamente: <span>@soydefierro</span></div>
+    <div>
+      <p class="footer-brand">Soy de Madera</p>
+      <p class="footer-tagline">Divulgación técnica sobre el mundo de la madera en español · Córdoba, Argentina</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://instagram.com/soydemadera" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://youtube.com/@maderaytecnica" target="_blank" rel="noopener">YouTube</a></li>
+      <li><a href="diccionario_carpinteria_v2.html">Diccionario</a></li>
+    </ul>
   </footer>
 
   <script>
-    // â”€â”€ DICCIONARIO DATA â”€â”€
-    const daData = {
-      partes: {
-        icon: "ðŸª‘", label: "Partes del mueble",
-        entries: [
-          { en: "Carcass", pron: "KAR-kas", es: "Carcasa / Cuerpo", lt: "Korpusas", def: "La caja estructural del mueble sin puertas ni cajones. Es el esqueleto que define el volumen." },
-          { en: "Face frame", pron: "fÃ©is freim", es: "Marco frontal", lt: "Priekinis rÄ—mas", def: "Marco de madera maciza pegado al frente de la carcasa. Define las aberturas y oculta los cantos del tablero." },
-          { en: "Rail", pron: "rÃ©il", es: "TravesaÃ±o", lt: "SkersinÄ—", def: "Pieza horizontal del marco. Conecta los montantes laterales en puertas y face frames." },
-          { en: "Stile", pron: "stÃ¡il", es: "Montante", lt: "Montantas", def: "Pieza vertical del marco de una puerta o face frame. Corre de arriba a abajo." },
-          { en: "Panel", pron: "PÃ-nel", es: "Panel / Tablero", lt: "PlokÅ¡tÄ—", def: "Superficie plana encajada dentro del marco de una puerta. Puede ser madera maciza o MDF." },
-          { en: "Shelf", pron: "shÃ©lf", es: "Estante", lt: "Lentyna", def: "Superficie horizontal interior donde se apoya el contenido. Puede ser fija o regulable." },
-          { en: "Shelf pin", pron: "shÃ©lf pin", es: "Pivote de estante", lt: "Lentynos kaiÅ¡tis", def: "PequeÃ±o perno metÃ¡lico insertado en orificios para sostener un estante regulable." },
-          { en: "Toe kick", pron: "tou kik", es: "ZÃ³calo / Retranqueo", lt: "Apatinis gaubtas", def: "Retranqueo en la parte inferior del mueble para que los pies quepan al pararse frente a Ã©l." },
-          { en: "Back panel", pron: "bak PÃ-nel", es: "Fondo", lt: "GalinÄ— sienelÄ—", def: "Panel trasero de la carcasa. Rigidiza el conjunto y cierra el interior." },
-          { en: "Drawer box", pron: "drÃ³er boks", es: "Caja del cajÃ³n", lt: "StalÄiaus korpusas", def: "Estructura interior del cajÃ³n, sin incluir el frente decorativo." },
-          { en: "Drawer front", pron: "drÃ³er front", es: "Frente del cajÃ³n", lt: "StalÄiaus fasadas", def: "Pieza decorativa visible del cajÃ³n. Se atornilla a la caja del cajÃ³n." },
-          { en: "Inset door", pron: "Ã­n-set dor", es: "Puerta embutida", lt: "Ä®leidÅ¾iamos durys", def: "Puerta que queda enrasada dentro del marco del mueble, sin sobresalir." },
-          { en: "Overlay door", pron: "OU-ver-lei dor", es: "Puerta superpuesta", lt: "UÅ¾dedamos durys", def: "Puerta que cubre el frente de la carcasa por encima del rebaje." },
-          { en: "Nailer / Cleat", pron: "nÃ©i-ler / klit", es: "ListÃ³n de fijaciÃ³n", lt: "Tvirtinimo kartelÄ—", def: "Tira de madera usada para anclar el mueble a la pared o fijar la tapa." },
-          { en: "Apron", pron: "Ã‰I-pron", es: "Larguero / Falda", lt: "Apvadas", def: "Pieza horizontal bajo la tapa de una mesa que conecta las patas y da rigidez." },
-          { en: "Stretcher", pron: "STRÃ‰-cher", es: "TravesaÃ±o de patas", lt: "KojeliÅ³ skersinis", def: "Barra horizontal que conecta y refuerza las patas de una mesa o silla." },
-          { en: "Plinth", pron: "plinth", es: "Plinto / Base", lt: "Cokoliai", def: "Elemento de base del mueble, generalmente mÃ¡s ancho que la carcasa." },
-          { en: "Corner block", pron: "KOR-ner blok", es: "Bloque de esquina", lt: "Kampinis blokas", def: "Refuerzo triangular en las esquinas interiores para dar rigidez al mueble." },
-          { en: "Dust panel", pron: "dast PÃ-nel", es: "Panel antipolvo", lt: "DulkiÅ³ skydelis", def: "Panel horizontal entre cajones que evita que el polvo caiga de uno a otro." },
-          { en: "Muntin", pron: "MÃN-tin", es: "Parteluz / Maineles", lt: "Stiklo pertvara", def: "ListÃ³n que divide un panel de vidrio o madera en secciones mÃ¡s pequeÃ±as." },
-        ]
-      },
-      herramientas: {
-        icon: "ðŸ”¨", label: "Herramientas y mÃ¡quinas",
-        entries: [
-          { en: "Table saw", pron: "TÃ‰I-bel so", es: "Sierra de mesa / Escuadra", lt: "Stalo pjÅ«klas", def: "MÃ¡quina con disco circular fijo y mesa deslizante. La herramienta central de cualquier taller." },
-          { en: "Miter saw", pron: "MÃI-ter so", es: "Sierra ingleteadora", lt: "StÅ«moklinÄ— pjovimo maÅ¡ina", def: "Sierra de brazo con cabezal giratorio para cortes en Ã¡ngulo y a tope." },
-          { en: "Circular saw", pron: "SÃ‰R-kiu-lar so", es: "Sierra circular de mano", lt: "Diskinis pjÅ«klas", def: "Sierra portÃ¡til con disco. Para cortar tableros y piezas grandes in situ." },
-          { en: "Jigsaw", pron: "YIG-so", es: "Caladora", lt: "SiaurapjÅ«klis", def: "Sierra de hoja recÃ­proca para cortes curvos o formas irregulares en tableros." },
-          { en: "Router", pron: "RÃU-ter", es: "Fresadora / Router", lt: "Frezavimo maÅ¡ina", def: "Herramienta rotatoria de alta velocidad para molduras, ranuras, rebajas y ensambles." },
-          { en: "Router table", pron: "RÃU-ter TÃ‰I-bel", es: "Mesa de fresadora", lt: "Frezavimo stalas", def: "Mesa invertida donde se monta el router para trabajar piezas pequeÃ±as con mayor control." },
-          { en: "Planer", pron: "PLÃ‰i-ner", es: "Cepilladora / Igualadora", lt: "Obliavimo staklÄ—s", def: "MÃ¡quina que reduce el tablero a un espesor uniforme en toda su longitud." },
-          { en: "Jointer", pron: "YÃ“in-ter", es: "Regruesadora", lt: "Fugovimo staklÄ—s", def: "MÃ¡quina para aplanar una cara y cuadrar un canto. Primer paso antes del planer." },
-          { en: "Band saw", pron: "band so", es: "Sierra de cinta", lt: "Juostinis pjÅ«klas", def: "Sierra de hoja continua flexible. Ideal para cortes curvos y reaserrÃ­o de madera." },
-          { en: "Drill press", pron: "dril pres", es: "Taladro de columna", lt: "GrÄ™Å¾imo staklÄ—s", def: "Taladro fijo en columna que garantiza orificios perfectamente perpendiculares." },
-          { en: "Biscuit joiner", pron: "BÃS-kit YÃ“I-ner", es: "Ranurador de galletas", lt: "BiskvitÅ³ frezavimo maÅ¡ina", def: "Herramienta que corta ranuras semicirculares para insertar galletas de madera comprimida." },
-          { en: "Pocket hole jig", pron: "PÃ“-ket houl yig", es: "GuÃ­a para tornillo de bolsillo", lt: "KiÅ¡eninio varÅ¾to Å¡ablonas", def: "Accesorio que guÃ­a la broca en Ã¡ngulo para crear uniones con tornillo inclinado (tipo Kreg)." },
-          { en: "Random orbital sander", pron: "RÃN-dom OR-bi-tal SÃN-der", es: "Lijadora orbital", lt: "OrbitinÄ— Å¡lifuoklÄ—", def: "Lijadora de movimiento excÃ©ntrico para lijar sin marcas direccionales." },
-          { en: "Hand plane", pron: "hand plein", es: "Cepillo de mano", lt: "Oblius", def: "Herramienta manual para afinar superficies y rebajar cantos de madera maciza." },
-          { en: "Chisel", pron: "CHÃ-sel", es: "FormÃ³n / Escoplo", lt: "Kaltas", def: "Herramienta de corte manual con hoja plana y bisel. Para tallar mortajas y ajustes finos." },
-          { en: "Marking gauge", pron: "MÃR-king guÃ©ich", es: "Gramil", lt: "Å½ymÄ—jimo storis", def: "Instrumento para trazar lÃ­neas paralelas al canto de una pieza. Esencial para uniones precisas." },
-          { en: "Clamp", pron: "klamp", es: "Sargento / Prensa", lt: "Gnybtas", def: "Dispositivo para mantener piezas unidas mientras seca la cola. Nunca se tienen suficientes." },
-          { en: "Combination square", pron: "kom-bi-NÃ‰I-shon skuÃ©r", es: "Escuadra combinada", lt: "Kombinuotas kampuolis", def: "Herramienta con regla deslizante y cabezal a 90Â° y 45Â°. Imprescindible en el taller." },
-          { en: "Spokeshave", pron: "SPÃ“UK-sheiv", es: "Raedera / Guillame", lt: "Å½agrÄ—", def: "Herramienta de mano para alisar superficies curvas. Similar a un cepillo pero para curvas." },
-          { en: "Card scraper", pron: "kard SKRÃ‰I-per", es: "Rasqueta / Rasqueta de mano", lt: "Grandiklis", def: "LÃ¡mina de acero delgada que raspa la superficie dejando un acabado mejor que la lija." },
-          { en: "Flush trim bit", pron: "flash trim bit", es: "Fresa al ras", lt: "Lyginamoji freza", def: "Fresa para router con rodamiento que copia el perfil de una plantilla dejando el canto perfecto." },
-          { en: "Forstner bit", pron: "FÃ“RST-ner bit", es: "Broca Forstner", lt: "Forstnerio grÄ…Å¾tas", def: "Broca plana que hace orificios limpios de fondo plano. Usada para bisagras de cazoleta." },
-        ]
-      },
-      tecnicas: {
-        icon: "ðŸ”§", label: "TÃ©cnicas y uniones",
-        entries: [
-          { en: "Dovetail joint", pron: "DÃV-teil yoint", es: "Cola de milano", lt: "Uodegos jungimas", def: "UniÃ³n en forma de trapecio. Extremadamente resistente a la tracciÃ³n. Marca de calidad artesanal." },
-          { en: "Mortise and tenon", pron: "MÃ“R-tis and TÃ‰-non", es: "Espiga y caja / Mortaja", lt: "Tenono ir mortizo jungimas", def: "UniÃ³n clÃ¡sica: una espiga entra en una caja. Base de la carpinterÃ­a estructural." },
-          { en: "Box joint", pron: "boks yoint", es: "UniÃ³n en caja / Dientes", lt: "DÄ—Å¾utÄ—s jungimas", def: "UniÃ³n de esquina con dedos rectangulares entrelazados. MÃ¡s sencilla que la cola de milano." },
-          { en: "Rabbet joint", pron: "RÃ-bet yoint", es: "Rebaje / Ranura de canto", lt: "Atkarpos jungimas", def: "EscalÃ³n cortado en el canto de una pieza donde encaja otra. Muy usado para fondos y tapas." },
-          { en: "Dado joint", pron: "DÃ‰I-do yoint", es: "Ranura transversal", lt: "GrioveliÅ³ jungimas", def: "Canal fresado a travÃ©s del tablero donde encaja un estante o panel." },
-          { en: "Groove joint", pron: "gruv yoint", es: "Ranura longitudinal", lt: "IÅ¡ilginis griovelys", def: "Canal fresado en paralelo a la veta. Para paneles de puerta o fondos corredizos." },
-          { en: "Biscuit joint", pron: "BÃS-kit yoint", es: "UniÃ³n con galleta", lt: "Biskvitinis jungimas", def: "UniÃ³n con galleta oval de madera comprimida. AlineaciÃ³n y resistencia sin tornillos." },
-          { en: "Pocket screw joint", pron: "PÃ“-ket skru yoint", es: "Tornillo de bolsillo", lt: "KiÅ¡eninio varÅ¾to jungimas", def: "Tornillo inclinado que entra por la cara oculta. RÃ¡pido y muy popular en muebles modernos." },
-          { en: "Dowel joint", pron: "DÃU-el yoint", es: "UniÃ³n con tarugo", lt: "KaiÅ¡ÄiÅ³ jungimas", def: "Clavija cilÃ­ndrica de madera encolada en orificios. Alinea piezas y agrega superficie de encolado." },
-          { en: "Butt joint", pron: "bat yoint", es: "UniÃ³n a tope", lt: "Tiesus jungimas", def: "La uniÃ³n mÃ¡s simple: dos piezas pegadas de frente. Poco resistente sin refuerzo adicional." },
-          { en: "Miter joint", pron: "MÃI-ter yoint", es: "Inglete", lt: "Ä„Å¾uolo jungimas", def: "Corte a 45Â° para unir esquinas sin mostrar cantos. Muy usado en marcos y molduras." },
-          { en: "Lap joint", pron: "lap yoint", es: "UniÃ³n a media madera", lt: "Sluoksninis jungimas", def: "Dos piezas se superponen retirando la mitad del grosor de cada una. Simple y efectiva." },
-          { en: "Cut-out door", pron: "kat Ã¡ut dor", es: "Puerta cortada de la carcasa", lt: "Durys iÅ¡pjautos iÅ¡ korpuso", def: "El frente completo se fija al cuerpo y las puertas se cortan in situ con sierra, garantizando alineaciÃ³n perfecta." },
-          { en: "Kerf", pron: "kerf", es: "Corte de sierra / SangrÃ­a", lt: "Pjovimo plyÅ¡ys", def: "El ancho del material removido por el disco de la sierra (~2â€“3 mm). Debe considerarse en el plan de corte." },
-          { en: "Rip cut", pron: "rip kat", es: "Corte longitudinal", lt: "IÅ¡ilginis pjÅ«vis", def: "Corte en paralelo a la veta. Se realiza con la guÃ­a paralela de la sierra de mesa." },
-          { en: "Cross cut", pron: "kros kat", es: "Corte transversal", lt: "Skersinis pjÅ«vis", def: "Corte perpendicular a la veta. Se realiza con tope o ingleteadora." },
-          { en: "Squaring up", pron: "SKUÃ‰R-ing ap", es: "Cuadrar / Escuadrar", lt: "Sulyginimas", def: "Proceso de lograr que todas las caras estÃ©n a 90Â° entre sÃ­. Primer paso de cualquier proyecto." },
-          { en: "Dry fit", pron: "drÃ¡i fit", es: "Ensamble en seco", lt: "Sausas surinkimas", def: "Armar el mueble completo sin cola para verificar que todo encaje antes de pegar definitivamente." },
-          { en: "Grain direction", pron: "grein dai-RÃ‰K-shon", es: "DirecciÃ³n de la veta", lt: "GrÅ«dÅ³ kryptis", def: "OrientaciÃ³n de las fibras de la madera. Cortar en contra de la veta produce astillas." },
-          { en: "Snipe", pron: "snaip", es: "Hundimiento de extremo", lt: "Obliavimo Å¾ymÄ—", def: "DepresiÃ³n en los extremos causada por el planer. Se evita pasando piezas de sacrificio." },
-          { en: "Tearout", pron: "TÃ‰R-aut", es: "Astillado / Desgarro", lt: "DroÅ¾liÅ³ atskilimas", def: "Astillas que se arrancan al cortar o fresar madera en contra de la veta." },
-          { en: "Spline", pron: "splain", es: "LengÃ¼eta / Filete", lt: "Jungiamoji juostelÄ—", def: "LÃ¡mina delgada insertada en dos ranuras enfrentadas para unir y alinear dos piezas." },
-        ]
-      },
-      materiales: {
-        icon: "ðŸªµ", label: "Materiales y tableros",
-        entries: [
-          { en: "Plywood", pron: "PLÃI-ud", es: "Terciado / Madera terciada", lt: "Fanera", def: "Tablero de chapas de madera cruzadas y encoladas. Alta resistencia y estabilidad dimensional." },
-          { en: "Marine plywood", pron: "ma-RÃN PLÃI-ud", es: "FenÃ³lico marino", lt: "JÅ«rinÄ— fanera", def: "Terciado de alta calidad con resinas resistentes al agua. Sin vacÃ­os internos. Ideal para muebles." },
-          { en: "MDF", pron: "em-di-ef", es: "MDF (fibra de densidad media)", lt: "Vidutinio tankio plauÅ¡Å³ plokÅ¡tÄ—", def: "Tablero de fibras de madera y resina prensadas. Superficie muy lisa, fÃ¡cil de pintar." },
-          { en: "Particle board", pron: "PÃR-ti-kel bord", es: "Aglomerado", lt: "DroÅ¾liÅ³ plokÅ¡tÄ—", def: "Tablero de virutas prensadas. EconÃ³mico. Base de la mayorÃ­a de muebles laminados de cocina." },
-          { en: "Melamine board", pron: "MÃ‰-la-min bord", es: "Melamina", lt: "Melamino plokÅ¡tÄ—", def: "Aglomerado o MDF recubierto con papel impregnado en resina melamÃ­nica. Superficie dura y lavable." },
-          { en: "OSB", pron: "ou-es-bi", es: "OSB (tablero de virutas orientadas)", lt: "OrientuotÅ³ skiedrÅ³ plokÅ¡tÄ—", def: "Tablero de virutas largas orientadas y prensadas. MÃ¡s resistente que el aglomerado. Uso estructural." },
-          { en: "HDF / Hardboard", pron: "Ã©ich-di-ef / HÃRD-bord", es: "HDF / Hardboard", lt: "AukÅ¡to tankio plokÅ¡tÄ—", def: "Fibra de madera de alta densidad. Muy delgado (3â€“6 mm). Para fondos de cajones y gabinetes." },
-          { en: "Solid wood", pron: "SÃ“-lid ud", es: "Madera maciza", lt: "Kietmedis", def: "Madera natural sin procesar en tablero. Se mueve con los cambios de humedad." },
-          { en: "Veneer", pron: "ve-NÃR", es: "Chapa / Enchapado", lt: "FaneruotÄ—", def: "LÃ¡mina muy fina de madera noble pegada sobre un tablero de menor costo." },
-          { en: "Edge banding", pron: "ey bÃN-ding", es: "Tapacantos", lt: "KraÅ¡tÅ³ juostelÄ—", def: "Tira de PVC, ABS o chapa de madera que cubre el canto del tablero para protegerlo." },
-          { en: "Hardwood", pron: "HÃRD-ud", es: "Madera dura", lt: "Kietmedis", def: "Madera de Ã¡rboles de hoja caduca (roble, haya, cerezo). Dura y de grano cerrado." },
-          { en: "Softwood", pron: "SÃ“FT-ud", es: "Madera blanda / ConÃ­fera", lt: "MinkÅ¡tmedis", def: "Madera de conÃ­feras (pino, abeto, cedro). MÃ¡s fÃ¡cil de trabajar pero menos resistente." },
-          { en: "PVA glue", pron: "pi-vi-ei glu", es: "Cola PVA / Cola de carpintero", lt: "PVA klijai", def: "Adhesivo vinÃ­lico para madera. Seca en 20â€“30 min, curado total en 24 h." },
-          { en: "Piano hinge", pron: "piÃ-no hinch", es: "Bisagra piano / Bisagra continua", lt: "PianiniÅ³ vyriÅ³", def: "Bisagra que corre en toda la longitud de la puerta. Distribuye el peso uniformemente." },
-          { en: "Wood filler", pron: "ud FÃ-ler", es: "Masilla para madera", lt: "MedÅ¾io glaistas", def: "Pasta para rellenar orificios y marcas de tornillos antes de pintar." },
-          { en: "Epoxy resin", pron: "i-PÃ“K-si RÃ‰-sin", es: "Resina epoxi", lt: "EpoksidinÄ— derva", def: "Adhesivo de dos componentes de altÃ­sima resistencia. TambiÃ©n se usa para rellenar vetas y nudos." },
-          { en: "Wood conditioner", pron: "ud kon-DÃ-sho-ner", es: "Acondicionador de madera", lt: "Medienos kondicionierius", def: "Producto que se aplica antes del tinte para lograr una absorciÃ³n uniforme en maderas porosas." },
-          { en: "Teak oil", pron: "tik oil", es: "Aceite de teca", lt: "TikmedÅ¾io aliejus", def: "Aceite penetrante para proteger madera. Resalta la veta natural. FÃ¡cil de aplicar." },
-        ]
-      },
-      medicion: {
-        icon: "ðŸ“", label: "MediciÃ³n y trazado",
-        entries: [
-          { en: "Kerf allowance", pron: "kerf a-LÃU-ans", es: "Margen de corte", lt: "Pjovimo leidimas", def: "Material extra que se deja en el plan de corte para compensar el ancho del disco de sierra (~3 mm)." },
-          { en: "Story stick", pron: "STÃ“-ri stik", es: "BastÃ³n de cotas", lt: "Matavimo lazdelÄ—", def: "Regla o listÃ³n donde se marcan todas las medidas de un proyecto para transferirlas sin nÃºmeros." },
-          { en: "Layout", pron: "LÃ‰I-aut", es: "Trazado / Diagramado", lt: "IÅ¡dÄ—stymas", def: "El proceso de marcar en la madera todas las lÃ­neas de corte y ensamble antes de empezar a cortar." },
-          { en: "Reveal", pron: "re-VÃL", es: "Retranqueo visible / LÃ­nea de vista", lt: "Atodanga", def: "La pequeÃ±a franja visible entre una puerta y el marco. Define la estÃ©tica de la cara del mueble." },
-          { en: "Tolerance", pron: "TÃ“-le-rans", es: "Tolerancia", lt: "Tolerancija", def: "El margen aceptable de error en una medida. En carpinterÃ­a de muebles suele ser Â±1 mm." },
-          { en: "Datum line", pron: "DÃ‰I-tam lain", es: "LÃ­nea de referencia", lt: "Atskaitos linija", def: "LÃ­nea base desde la cual se toman todas las demÃ¡s medidas del proyecto." },
-          { en: "Plumb", pron: "plam", es: "Plomada / A plomo", lt: "Vertikalumas", def: "Perfectamente vertical. Se verifica con plomada o nivel de burbuja." },
-          { en: "Level", pron: "LÃ‰-vel", es: "Nivel / A nivel", lt: "Horizontalumas", def: "Perfectamente horizontal. Se verifica con nivel de burbuja o nivel lÃ¡ser." },
-          { en: "Square", pron: "skuÃ©r", es: "A escuadra / En escuadra", lt: "Statmenas", def: "Que forma exactamente 90Â°. Una caja a escuadra tiene todas sus esquinas en Ã¡ngulo recto." },
-          { en: "Centerline", pron: "SÃ‰N-ter-lain", es: "LÃ­nea de centro / Eje", lt: "Centro linija", def: "LÃ­nea que marca el centro exacto de una pieza. Fundamental para ubicar bisagras y herrajes." },
-          { en: "Overhang", pron: "OU-ver-hang", es: "Vuelo / Voladizo", lt: "IÅ¡kyÅ¡ulys", def: "La parte de la tapa o repisa que sobresale mÃ¡s allÃ¡ de la base de soporte." },
-          { en: "Setback", pron: "SÃ‰T-bak", es: "Retranqueo / Distancia de retiro", lt: "Atitraukimas", def: "La distancia entre el borde de una pieza y su punto de fijaciÃ³n o referencia." },
-          { en: "Flush", pron: "flash", es: "Al ras / Enrasado", lt: "Sulyginta", def: "Que dos superficies quedan perfectamente en el mismo plano, sin escalÃ³n ni diferencia." },
-          { en: "Proud", pron: "prÃ¡ud", es: "Sobresalido / Orgulloso", lt: "IÅ¡sikiÅ¡Ä™s", def: "Que una superficie sobresale levemente por encima del plano de referencia. Opuesto a flush." },
-        ]
-      },
-      acabados: {
-        icon: "ðŸŽ¨", label: "Acabados y tratamientos",
-        entries: [
-          { en: "Finishing", pron: "FÃ-ni-shing", es: "Acabado / TerminaciÃ³n", lt: "Apdaila", def: "Todo proceso aplicado a la superficie de la madera para protegerla y darle apariencia final." },
-          { en: "Sanding sealer", pron: "SÃN-ding SÃ-ler", es: "Sellador para lijar", lt: "Gruntas Å¡lifavimui", def: "Primera capa que sella el poro de la madera y facilita el lijado final antes del acabado." },
-          { en: "Grain filler", pron: "grein FÃ-ler", es: "Relleno de poro", lt: "PorÅ³ uÅ¾pildas", def: "Pasta que se aplica para rellenar el poro abierto de maderas como el roble antes del barniz." },
-          { en: "Stain", pron: "stein", es: "Tinte / Tintura", lt: "DaÅ¾yvai", def: "Producto que colorea la madera sin tapar la veta. Penetra en las fibras." },
-          { en: "Varnish", pron: "VÃR-nish", es: "Barniz", lt: "Lakas", def: "Acabado transparente que forma una pelÃ­cula protectora sobre la madera. Resiste agua y roce." },
-          { en: "Lacquer", pron: "LÃ-ker", es: "Laca", lt: "Lakas nitro", def: "Acabado de secado rÃ¡pido por evaporaciÃ³n del solvente. Muy usado en carpinterÃ­a industrial." },
-          { en: "Shellac", pron: "she-LÃK", es: "Goma laca / Shellac", lt: "Å elakas", def: "Acabado natural derivado de insecto. Excelente sellador y base para otros acabados." },
-          { en: "Danish oil", pron: "DÃ‰I-nish oil", es: "Aceite danÃ©s", lt: "DaniÅ¡kas aliejus", def: "Mezcla de aceites y barniz que penetra en la madera dando protecciÃ³n con aspecto natural." },
-          { en: "Wax", pron: "uaks", es: "Cera", lt: "VaÅ¡kas", def: "Acabado de protecciÃ³n suave que se aplica sobre otros acabados o directamente en maderas blandas." },
-          { en: "Polyurethane", pron: "po-li-iÃº-re-zein", es: "Poliuretano", lt: "Poliuretanas", def: "Acabado muy resistente al agua y al roce. Ideal para mesas y pisos de madera." },
-          { en: "Sanding", pron: "SÃN-ding", es: "Lijado", lt: "Å lifavimas", def: "Proceso de alisar la superficie con papel de lija de distinta granulaciÃ³n, de menor a mayor nÃºmero." },
-          { en: "Grit", pron: "grit", es: "GranulaciÃ³n / Grano", lt: "GrÅ«dÄ—tumas", def: "El nÃºmero que indica el tamaÃ±o de los granos de la lija. A mayor nÃºmero, mÃ¡s fina la lija." },
-          { en: "Burnishing", pron: "BÃ‰R-ni-shing", es: "BruÃ±ido / Pulido", lt: "Poliravimas", def: "Proceso de frotar la superficie con un elemento duro para compactar las fibras y lograr brillo." },
-          { en: "Wire brushing", pron: "uÃ¡ier BRÃ-shing", es: "Cepillado de alambre", lt: "Vielos Å¡epeÄio apdaila", def: "TÃ©cnica para resaltar la veta de la madera eliminando las partes blandas con cepillo de alambre." },
-          { en: "Distressing", pron: "dis-TRÃ‰-sing", es: "Envejecido / Patinado", lt: "Dirbtinis sendinimas", def: "TÃ©cnica para dar apariencia de madera usada y antigua mediante marcas, golpes y acabados especiales." },
-        ]
-      }
-    };
-
-    function daBuild(filter='all', query='') {
-      const main = document.getElementById('da-main');
-      main.innerHTML = '';
-      let totalShown = 0;
-      const cats = filter === 'all' ? Object.keys(daData) : [filter];
-
-      cats.forEach(catKey => {
-        const cat = daData[catKey];
-        const filtered = cat.entries.filter(e => {
-          if (!query) return true;
-          const q = query.toLowerCase();
-          return e.en.toLowerCase().includes(q) ||
-                 e.pron.toLowerCase().includes(q) ||
-                 e.es.toLowerCase().includes(q) ||
-                 e.lt.toLowerCase().includes(q) ||
-                 e.def.toLowerCase().includes(q);
-        });
-        if (!filtered.length) return;
-        totalShown += filtered.length;
-
-        const section = document.createElement('div');
-        section.className = 'da-cat-section';
-        section.innerHTML = `
-          <div class="da-cat-header">
-            <span class="da-cat-icon">${cat.icon}</span>
-            <span class="da-cat-name">${cat.label}</span>
-            <span class="da-cat-count">${filtered.length} tÃ©rminos</span>
-          </div>
-          <div class="da-grid"></div>
-        `;
-        const grid = section.querySelector('.da-grid');
-
-        filtered.forEach(e => {
-          const q = query.toLowerCase();
-          function hl(text) {
-            if (!q) return text;
-            const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
-            return text.replace(re, '<mark style="background:#e8a43a;color:#1a1209;border-radius:2px">$1</mark>');
-          }
-          const card = document.createElement('div');
-          card.className = 'da-entry';
-          card.innerHTML = `
-            <div class="da-en">${hl(e.en)}</div>
-            <div class="da-pron">${hl(e.pron)}</div>
-            <div class="da-es">${hl(e.es)}</div>
-            <div class="da-lt">${hl(e.lt)}</div>
-            <div class="da-def">${hl(e.def)}</div>
-          `;
-          grid.appendChild(card);
-        });
-        main.appendChild(section);
-      });
-
-      if (!totalShown) {
-        main.innerHTML = `<div class="da-no-results">ðŸ” Sin resultados<span>ProbÃ¡ en inglÃ©s, pronunciaciÃ³n, espaÃ±ol o lituano</span></div>`;
-      }
-
-      const total = Object.values(daData).reduce((a,c)=>a+c.entries.length,0);
-      document.getElementById('da-stats').textContent =
-        `Mostrando ${totalShown} de ${total} tÃ©rminos Â· 6 categorÃ­as`;
-    }
-
-    let daActiveFilter = 'all';
-    document.querySelectorAll('.da-filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.da-filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        daActiveFilter = btn.dataset.cat;
-        daBuild(daActiveFilter, document.getElementById('da-search').value);
-      });
-    });
-    document.getElementById('da-search').addEventListener('input', e => {
-      daBuild(daActiveFilter, e.target.value.trim());
-    });
-
-    daBuild();
-
-    // â”€â”€ SCROLL REVEAL â”€â”€
-    const revealEls = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealEls.forEach(el => observer.observe(el));
 
-  // â”€â”€ NAVEGACIÃ“N POR PESTAÃ‘AS â”€â”€
-  const hero = document.querySelector('.hero');
-  const heroScroll = document.querySelector('.hero-scroll');
-  const dividers = document.querySelectorAll('.divider');
-  const allSections = document.querySelectorAll('.page-section');
+    reveals.forEach(el => observer.observe(el));
 
-  function showSection(id) {
-    // Ocultar hero y divisores
-    hero.classList.add('hidden');
-    dividers.forEach(d => d.style.display = 'none');
-    if (heroScroll) heroScroll.style.display = 'none';
+    // Nav activo en scroll
+    const sections = document.querySelectorAll('section[id], div.stats-bar');
+    const navLinks = document.querySelectorAll('.nav-links a');
 
-    // Ocultar todas las secciones
-    allSections.forEach(s => s.classList.remove('active'));
-
-    // Mostrar la secciÃ³n pedida
-    const target = document.getElementById(id);
-    if (target) {
-      target.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // Marcar nav activa
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      a.classList.toggle('nav-active', a.dataset.nav === id);
-    });
-    document.querySelectorAll('.nav-mobile-link').forEach(a => {
-      a.classList.toggle('nav-active', a.dataset.nav === id);
-    });
-  }
-
-  function showHero() {
-    hero.classList.remove('hidden');
-    dividers.forEach(d => d.style.display = '');
-    if (heroScroll) heroScroll.style.display = '';
-    allSections.forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('nav-active'));
-    document.querySelectorAll('.nav-mobile-link').forEach(a => a.classList.remove('nav-active'));
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  // Interceptar clicks de nav
-  document.querySelectorAll('.nav-links a[data-nav]').forEach(a => {
-    a.addEventListener('click', function(e) {
-      e.preventDefault();
-      showSection(this.dataset.nav);
-    });
-  });
-
-  // Logo vuelve al hero
-  document.querySelector('.nav-logo').addEventListener('click', function(e) {
-    e.preventDefault();
-    showHero();
-  });
-
-  // Botones del hero que apuntan a secciones
-  document.querySelectorAll('.hero-actions a').forEach(a => {
-    a.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      const match = href.match(/#(\w+)$/);
-      if (match) {
-        e.preventDefault();
-        showSection(match[1]);
-      }
-    });
-  });
-
-  // Hash inicial en la URL
-  if (window.location.hash) {
-    const id = window.location.hash.slice(1);
-    if (document.getElementById(id)) showSection(id);
-  }
-
-
-  // â”€â”€ ASTILLAS â”€â”€ (backend: Google Sheets)
-  const AST_PWD    = 'madera2026';
-  const AST_CSV    = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSVNoDgh7XfDewCzSCoVEDBwd-2biUjlgMR5lPzB4obh3WyW7sHyKXnW08U7g42rtmPyP_vCdXY6Plo/pub?gid=0&single=true&output=csv';
-  const AST_SCRIPT = 'https://script.google.com/macros/s/AKfycbzYAiNaTh3xoH1y51_I3PZVBcZaD-4wKnxZyGwGdBxVkATd7dduEBL7vI5fvjyNWiX-/exec';
-
-  let astAdminMode   = false;
-  let astItems       = [];   // se carga desde Sheets, no desde localStorage
-  let astFiltroActivo = 'todos';
-
-  // â”€â”€ helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
-  function astSetLoading(on) {
-    const grid  = document.getElementById('astillas-grid');
-    const empty = document.getElementById('astillas-empty');
-    if (on) {
-      grid.innerHTML = `<p style="color:var(--crema-dim);font-style:italic;">Cargando contenidoâ€¦</p>`;
-      empty.style.display = 'none';
-    }
-  }
-
-  function astVideoEmbed(url) {
-    let m;
-    m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\s]+)/);
-    if (m) return `https://www.youtube.com/embed/${m[1]}`;
-    m = url.match(/vimeo\.com\/(\d+)/);
-    if (m) return `https://player.vimeo.com/video/${m[1]}`;
-    return null;
-  }
-
-  // Parsea el CSV de Sheets (primera fila = headers: tipo,titulo,desc,url)
-  function astParseCsv(text) {
-    const lines = text.trim().split('\n');
-    if (lines.length < 2) return [];
-    return lines.slice(1).map(line => {
-      // split simple por coma, respetando campos con comillas
-      const cols = [];
-      let cur = '', inQ = false;
-      for (let i = 0; i < line.length; i++) {
-        const c = line[i];
-        if (c === '"') { inQ = !inQ; }
-        else if (c === ',' && !inQ) { cols.push(cur.trim()); cur = ''; }
-        else { cur += c; }
-      }
-      cols.push(cur.trim());
-      return { tipo: cols[0] || 'imagen', titulo: cols[1] || '', desc: cols[2] || '', url: cols[3] || '' };
-    }).filter(i => i.titulo && i.url);
-  }
-
-  // â”€â”€ carga desde Sheets â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
-  async function astCargar() {
-    astSetLoading(true);
-    try {
-      const res  = await fetch(AST_CSV + '&t=' + Date.now()); // evita cachÃ©
-      const text = await res.text();
-      astItems   = astParseCsv(text);
-    } catch (e) {
-      astItems = [];
-      document.getElementById('astillas-grid').innerHTML =
-        `<p style="color:#e05555;">Error al cargar contenido. RevisÃ¡ la conexiÃ³n.</p>`;
-      return;
-    }
-    astRender();
-  }
-
-  // â”€â”€ render â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
-  function astRender() {
-    const grid     = document.getElementById('astillas-grid');
-    const empty    = document.getElementById('astillas-empty');
-    const filtered = astFiltroActivo === 'todos'
-      ? astItems
-      : astItems.filter(i => i.tipo === astFiltroActivo);
-
-    if (filtered.length === 0) {
-      grid.innerHTML = '';
-      empty.style.display = 'block';
-    } else {
-      empty.style.display = 'none';
-      grid.innerHTML = filtered.map((item) => {
-        const realIdx  = astItems.indexOf(item);
-        const deleteBtn = `<button class="ast-delete-btn" title="Eliminar" onclick="astEliminar(${realIdx})">âœ•</button>`;
-        if (item.tipo === 'pdf') {
-          return `<div class="ast-card"><div class="ast-card-tipo">ðŸ“„ PDF Â· Documento</div><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}<a href="${item.url}" target="_blank" class="ast-btn">Descargar â†’</a>${deleteBtn}</div>`;
-        } else if (item.tipo === 'video') {
-          const embedUrl = astVideoEmbed(item.url);
-          return `<div class="ast-card"><div class="ast-card-tipo">â–¶ Video</div><h3>${item.titulo}</h3>${embedUrl ? `<div class="ast-video-wrap"><iframe src="${embedUrl}" allowfullscreen></iframe></div>` : `<p style="color:#e05555">URL de video no reconocida.</p>`}${item.desc ? `<p>${item.desc}</p>` : ''}${deleteBtn}</div>`;
-        } else {
-          return `<div class="ast-card"><div class="ast-card-tipo">ðŸ–¼ Imagen Â· Foto</div><img class="ast-card-img" src="${item.url}" alt="${item.titulo}" onerror="this.style.display='none'"><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}${deleteBtn}</div>`;
+    const navObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.style.color = '';
+            if (link.getAttribute('href') === '#' + entry.target.id) {
+              link.style.color = 'var(--oak)';
+            }
+          });
         }
-      }).join('');
-    }
+      });
+    }, { threshold: 0.4 });
 
-    if (astAdminMode) grid.classList.add('ast-admin-active');
-    else grid.classList.remove('ast-admin-active');
-
-    // Lista admin
-    const lista = document.getElementById('ast-lista-admin');
-    if (lista) {
-      if (astItems.length === 0) { lista.innerHTML = ''; return; }
-      lista.innerHTML = `<p style="color:var(--crema-dim);font-size:0.8rem;margin-bottom:1rem;">${astItems.length} item(s) en Sheets</p>` +
-        astItems.map((item, i) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.07);">
-          <span style="color:var(--crema);font-size:0.88rem;">${item.tipo === 'pdf' ? 'ðŸ“„' : item.tipo === 'video' ? 'â–¶' : 'ðŸ–¼'} ${item.titulo}</span>
-          <button onclick="astEliminar(${i})" style="background:none;border:none;color:#e05555;cursor:pointer;font-size:0.8rem;">Eliminar</button>
-        </div>`).join('');
-    }
-  }
-
-  // â”€â”€ escritura vÃ­a Apps Script â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
-  async function astPost(payload) {
-    const res = await fetch(AST_SCRIPT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      mode: 'no-cors'   // Apps Script requiere no-cors; la respuesta llega opaca pero la acciÃ³n se ejecuta
-    });
-    // Con no-cors no podemos leer el body; esperamos un momento y recargamos
-    await new Promise(r => setTimeout(r, 1500));
-    await astCargar();
-  }
-
-  // â”€â”€ controles UI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
-  window.astFiltrar = function(btn) {
-    document.querySelectorAll('.ast-filtro').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    astFiltroActivo = btn.dataset.tipo;
-    astRender();
-  };
-
-  window.astAdminToggle = function() {
-    const panel = document.getElementById('ast-admin-panel');
-    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-  };
-
-  window.astLogin = function() {
-    const val = document.getElementById('ast-pwd').value;
-    if (val === AST_PWD) {
-      astAdminMode = true;
-      document.getElementById('ast-login').style.display = 'none';
-      document.getElementById('ast-form').style.display = 'block';
-      astRender();
-    } else {
-      document.getElementById('ast-pwd-err').style.display = 'block';
-    }
-  };
-
-  window.astCerrarSesion = function() {
-    astAdminMode = false;
-    document.getElementById('ast-login').style.display = 'block';
-    document.getElementById('ast-form').style.display = 'none';
-    document.getElementById('ast-pwd').value = '';
-    document.getElementById('ast-admin-panel').style.display = 'none';
-    astRender();
-  };
-
-  window.astAgregar = async function() {
-    const tipo  = document.getElementById('ast-tipo').value;
-    const titulo = document.getElementById('ast-titulo').value.trim();
-    const desc  = document.getElementById('ast-desc').value.trim();
-    const url   = document.getElementById('ast-url').value.trim();
-    const err   = document.getElementById('ast-form-err');
-    if (!titulo || !url) { err.textContent = 'TÃ­tulo y URL son obligatorios.'; err.style.display='block'; return; }
-    err.style.display = 'none';
-
-    const btn = document.querySelector('#ast-form button');
-    if (btn) { btn.disabled = true; btn.textContent = 'Guardandoâ€¦'; }
-
-    try {
-      await astPost({ action: 'add', tipo, titulo, desc, url });
-      document.getElementById('ast-titulo').value = '';
-      document.getElementById('ast-desc').value   = '';
-      document.getElementById('ast-url').value    = '';
-    } catch(e) {
-      err.textContent = 'Error al guardar. RevisÃ¡ la conexiÃ³n.';
-      err.style.display = 'block';
-    } finally {
-      if (btn) { btn.disabled = false; btn.textContent = 'Agregar'; }
-    }
-  };
-
-  window.astEliminar = async function(idx) {
-    if (!confirm('Â¿Eliminar este item?')) return;
-    // rowIndex: fila en Sheets (1-based header + 1 = idx+2)
-    try {
-      await astPost({ action: 'delete', rowIndex: idx + 2 });
-    } catch(e) {
-      alert('Error al eliminar. RevisÃ¡ la conexiÃ³n.');
-    }
-  };
-
-  // â”€â”€ HAMBURGER MOBILE â”€â”€
-  const hamburger   = document.getElementById('nav-hamburger');
-  const mobileMenu  = document.getElementById('nav-mobile-menu');
-
-  function closeMobileMenu() {
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-  }
-
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    mobileMenu.classList.toggle('open');
-  });
-
-  document.querySelectorAll('.nav-mobile-link').forEach(a => {
-    a.addEventListener('click', function(e) {
-      e.preventDefault();
-      closeMobileMenu();
-      showSection(this.dataset.nav);
-    });
-  });
-
-  // Carga inicial desde Sheets
-  astCargar();
+    sections.forEach(s => { if (s.id) navObserver.observe(s); });
   </script>
 
-
-</body></html>
+</body>
+</html>
