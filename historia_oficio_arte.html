@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>El oficio y el arte — Soy de Madera</title>
-  <meta name="description" content="Por qué lo que hacemos importa. Historia del concepto de arte desde la Antigüedad hasta hoy, vista desde el taller." />
+  <title>El arte y lo artesanal — Soy de Madera</title>
+  <meta name="description" content="Historia del concepto de arte, la distinción arte/artesanía, y algunas personas que trabajan en el límite de esa categoría. Córdoba, 2026." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" />
@@ -414,65 +414,6 @@
     }
 
     /* =============================================
-       BLOQUE CÓRDOBA — PENDIENTE
-    ============================================= */
-    .cordoba-pending {
-      background: rgba(30,22,12,0.6);
-      border: 1px dashed rgba(196,122,42,0.25);
-      padding: 2.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cordoba-pending::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: repeating-linear-gradient(
-        45deg,
-        transparent,
-        transparent 20px,
-        rgba(196,122,42,0.03) 20px,
-        rgba(196,122,42,0.03) 40px
-      );
-    }
-
-    .pending-icon {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      opacity: 0.5;
-    }
-
-    .pending-label {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--siena);
-      opacity: 0.7;
-      margin-bottom: 0.8rem;
-    }
-
-    .pending-text {
-      font-family: var(--font-display);
-      font-size: 1.2rem;
-      font-style: italic;
-      color: rgba(245,237,216,0.4);
-      max-width: 420px;
-      margin: 0 auto;
-    }
-
-    .pending-date {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      color: var(--siena);
-      opacity: 0.5;
-      margin-top: 1rem;
-      letter-spacing: 0.1em;
-    }
-
-    /* =============================================
        NOTAS AL PIE / ATRIBUCIÓN
     ============================================= */
     .fuentes {
@@ -518,6 +459,116 @@
       color: rgba(245,237,216,0.5);
       line-height: 1.65;
       font-style: italic;
+    }
+
+    /* =============================================
+       SECCIÓN 06 — CÓRDOBA HOY
+    ============================================= */
+    .campo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2.5rem 0;
+    }
+
+    .campo-card {
+      background: var(--nogal-3);
+      border: 1px solid rgba(196,122,42,0.15);
+      padding: 1.6rem 1.4rem;
+      position: relative;
+    }
+
+    .campo-card-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--siena);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .campo-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--crema);
+      margin: 0 0 0.4rem;
+    }
+
+    .campo-card p {
+      font-size: 0.9rem;
+      color: rgba(245,237,216,0.6);
+      margin-bottom: 0;
+      line-height: 1.55;
+    }
+
+    .campo-card-tag {
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(196,122,42,0.5);
+      margin-top: 0.8rem;
+      display: block;
+    }
+
+    .entrevista-block {
+      margin: 2.5rem 0;
+      padding: 2rem;
+      background: rgba(30,22,12,0.5);
+      border-left: 2px solid rgba(196,122,42,0.3);
+      position: relative;
+    }
+
+    .entrevista-nombre {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--ambar);
+      margin-bottom: 0.2rem;
+    }
+
+    .entrevista-rol {
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--siena);
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .entrevista-block p {
+      font-size: 0.95rem;
+      color: var(--crema-2);
+      margin-bottom: 0.9rem;
+    }
+
+    .entrevista-cita {
+      border-left: none;
+      padding: 0.8rem 1.4rem;
+      background: rgba(196,122,42,0.05);
+      margin: 1.2rem 0;
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--crema);
+      line-height: 1.5;
+    }
+
+    .campo-intro-nota {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      color: rgba(196,122,42,0.45);
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      .campo-grid { grid-template-columns: 1fr; }
     }
 
     /* =============================================
@@ -567,9 +618,9 @@
     ============================================= */
     @media (max-width: 900px) {
       .buhos { grid-template-columns: 1fr; max-width: 300px; margin-left: auto; margin-right: auto; }
+      .campo-grid { grid-template-columns: 1fr; }
       nav .nav-tag { display: none; }
       .kant-block { padding: 1.8rem 1.5rem; }
-      .cordoba-pending { padding: 2rem 1.5rem; }
     }
   </style>
 </head>
@@ -588,9 +639,9 @@
          HERO
     =================================================== -->
     <div class="hero">
-      <p class="hero-kicker">El oficio y el arte</p>
-      <h1 class="hero-title">Por qué lo que<br /><em>hacemos importa</em></h1>
-      <p class="hero-sub">La jerarquía que relega lo artesanal no es natural. Es una construcción —y tiene fecha.</p>
+      <p class="hero-kicker">Historia del oficio</p>
+      <h1 class="hero-title">El arte y<br /><em>lo artesanal</em></h1>
+      <p class="hero-sub">Una categoría, su historia, algunas preguntas sin resolver. Cada quien saca sus conclusiones.</p>
     </div>
 
     <!-- ===================================================
@@ -619,9 +670,9 @@
       </div>
 
       <p>
-        Lo que sigue no es la historia completa del arte. Es la historia de <strong>cuándo y por qué
-        el oficio quedó afuera</strong> —y por qué esa decisión dice más sobre quien la tomó
-        que sobre los objetos que clasifica.
+        Lo que sigue no es la historia completa del arte. Es la historia de <strong>cuándo y cómo
+        el oficio quedó de un lado y el arte del otro</strong> —y algunos datos sobre quién tomó
+        esa decisión y en qué contexto.
       </p>
     </section>
 
@@ -777,7 +828,7 @@
     =================================================== -->
     <section class="reveal">
       <p class="section-label">03 — La ruptura</p>
-      <h2>El siglo XVIII inventó<br /><em>al artesano como categoría inferior</em></h2>
+      <h2>El siglo XVIII tomó<br /><em>una decisión que todavía pagamos</em></h2>
 
       <p>
         Antes del siglo XVIII no había "bellas artes". Había habilidades. El escultor,
@@ -789,11 +840,6 @@
         En el siglo XVIII se tomó una decisión conceptual que cambió todo: separar las artes
         que producen placer estético de los oficios que producen utilidad.
         Las primeras pasaron a llamarse "bellas artes". Las segundas quedaron del otro lado del mostrador.
-      </p>
-
-      <p>
-        La pregunta que nadie hizo en ese momento es la que importa: <strong>¿quién tomó esa decisión
-        y por qué le convenía?</strong>
       </p>
 
       <h3>El caso de los tres búhos</h3>
@@ -842,8 +888,8 @@
 
       <p>
         El "campo artístico" de Bourdieu es el espacio social donde se decide qué y quién es arte.
-        Museos, galerías, críticos, academias: no son espejos neutrales de la calidad.
-        Son los árbitros de un juego con reglas construidas históricamente.
+        Museos, galerías, críticos, academias: son los árbitros de un juego con reglas
+        construidas históricamente. No necesariamente neutrales. No necesariamente eternos.
       </p>
     </section>
 
@@ -854,7 +900,7 @@
     =================================================== -->
     <section class="reveal">
       <p class="section-label">04 — La ebanistería en este mapa</p>
-      <h2>El mueble entre<br /><em>la función y la pregunta</em></h2>
+      <h2>La ebanistería<br /><em>en este mapa</em></h2>
 
       <p>
         La ebanistería tiene un problema específico en este debate. Trabaja sobre objetos
@@ -872,8 +918,8 @@
       <p>
         El problema es que ese "algo que excede" es exactamente lo que el campo artístico
         institucional se reservó el derecho de reconocer o ignorar.
-        Un ebanista anónimo del XVIII podía hacer una pieza técnicamente superior a cualquier
-        cosa firmada por un artista del período —y sin embargo quedar fuera del canon.
+        Un ebanista anónimo del XVIII podía hacer una pieza técnicamente notable —
+        y aun así quedar fuera del canon. No por razones estéticas.
       </p>
 
       <h3>El patrón cognitivo del evaluador</h3>
@@ -886,10 +932,31 @@
       </p>
 
       <p>
+        El caso de al-Ándalus lo ilustra con particular precisión, porque es un caso de
+        casa. Los maestros artesanos de la tradición árabe-española —los que tallaron
+        los mocárabes de la Alhambra, los que desarrollaron la loza de reflejo metálico
+        en Manises y Paterna, los carpinteros y estuquistas mudéjares que construyeron
+        buena parte del patrimonio arquitectónico de la península ibérica— produjeron
+        objetos de una sofisticación técnica y matemática que la clasificación occidental
+        posterior etiquetó como "artes decorativas" o "artes menores".
+        La geometría islámica que organiza esos mosaicos no es ornamento:
+        es un sistema de pensamiento aplicado a la materia.
+        Pero para percibirlo hace falta conocer el sistema.
+      </p>
+
+      <p>
+        Hay incluso un dato de vocabulario que no es menor: la palabra <em>albañil</em>
+        viene del árabe <em>al-bannā'</em> —el constructor. La palabra <em>alfarero</em>,
+        del árabe <em>al-fahhār</em>. Algunas de las técnicas que hoy llamamos
+        "artesanales" llegaron a Europa con nombres que ya eran árabes.
+        El límite cognitivo, en este caso, tiene hasta etimología.
+      </p>
+
+      <p>
         No percibe la complejidad porque no tiene las herramientas para verla.
         Y en lugar de reconocer esa limitación propia, tiende a proyectarla como deficiencia
         del objeto. <strong>La limitación del observador se transforma en juicio sobre lo observado.</strong>
-        Eso no es análisis. Es colonialismo con vocabulario estético.
+        Es un movimiento tan antiguo que casi ya no se nota.
       </p>
     </section>
 
@@ -920,22 +987,12 @@
           Solo alguien que conoce los códigos de una tradición puede percibir cuándo un objeto
           dentro de esa tradición excede su función.
         </p>
-        <p style="margin-top:1rem;">
-          <strong>La única posición honesta: reconocer esos límites antes de juzgar.</strong>
-        </p>
       </div>
 
       <p>
-        Esto no resuelve la pregunta arte/artesanía. Y eso está bien.
-        No se trata de invertir la jerarquía —de decir "la artesanía es tan arte como el arte".
-        Se trata de entender que la jerarquía misma es una herramienta política,
-        y que usarla sin conciencia de su historia es reproducir exactamente
-        el mecanismo que excluye.
-      </p>
-
-      <p>
-        El artesano que entiende esto no trabaja más tranquilo ni más libre —trabaja
-        con más conciencia de dónde está parado y por qué eso importa.
+        La pregunta arte/artesanía no tiene una respuesta única. Depende de quién pregunta,
+        con qué herramientas conceptuales, y desde qué posición.
+        Lo que sí tiene es una historia concreta —y conocerla cambia la manera de mirar los objetos.
       </p>
     </section>
 
@@ -951,21 +1008,169 @@
       <p class="section-label">06 — Córdoba hoy</p>
       <h2>El oficio en territorio</h2>
 
-      <div class="cordoba-pending" aria-label="Contenido pendiente, disponible el 21 de abril de 2026">
-        <div class="pending-icon">🏛</div>
-        <p class="pending-label">Material de campo — en proceso</p>
-        <p class="pending-text">
-          Este bloque integrará relevamiento de talleres, escuelas y productores
-          artesanales de la región cordobesa.
-        </p>
-        <p class="pending-date">Disponible: 21-04-2026 · Fuente: trabajo de campo, materia Historia de la Ebanistería</p>
+      <p class="campo-intro-nota">Relevamiento de campo · Museo Iberoamericano de Artesanías y Paseo de los Artesanos · Córdoba · abril 2026 · Historia de la Ebanistería, prof. Alfonso Teresa, Spilimbergo / FAD / UPC</p>
+
+      <p>
+        El Museo Iberoamericano de Artesanías (MIA) funciona en el Barrio Güemes de Córdoba.
+        No es una feria. Tiene cartelas, iluminación cuidada, y una política de adquisiciones.
+        Sus piezas son objetos premiados que un comité evaluó y decidió conservar.
+        El edificio hace exactamente lo que Bourdieu describe: sacraliza.
+      </p>
+
+      <p>
+        Lo que llama la atención al recorrerlo no es tanto lo que contiene
+        sino las preguntas que genera sin proponérselo.
+      </p>
+
+      <div class="campo-grid">
+        <div class="campo-card">
+          <span class="campo-card-label">MIA · Ebanistería</span>
+          <h3>"Torbellino" — Fernando Duboué</h3>
+          <p>Vaso de cinco maderas nativas —mora, cancharana, laurel negro, guatambú— realizado con taracea y tornería segmentada. Río Ceballos, Córdoba.</p>
+          <span class="campo-card-tag">Técnica · Madera nobles</span>
+        </div>
+        <div class="campo-card">
+          <span class="campo-card-label">MIA · Ebanistería · 1° Premio 2005</span>
+          <h3>"Senda de los Espíritus" — Jorge Vianella</h3>
+          <p>Caja escultórica de madera tallada y calada con representaciones de figuras mitológicas y monedas de plata. Río Tercero, Córdoba.</p>
+          <span class="campo-card-tag">Técnica · Tallado y calado</span>
+        </div>
+        <div class="campo-card">
+          <span class="campo-card-label">MIA · Ebanistería · Damasquinado</span>
+          <h3>"Alhajero" — Aldo Merlino</h3>
+          <p>Caja de ébano con incrustaciones de nácar e hilo de plata. Córdoba.</p>
+          <span class="campo-card-tag">Técnica · Damasquinado</span>
+        </div>
+        <div class="campo-card">
+          <span class="campo-card-label">MIA · Ebanistería · Tallado</span>
+          <h3>"Cofre" — Edmundo Paviolo</h3>
+          <p>Artesanía jerarquizada en técnica de tallado. Santa María de Punilla, Córdoba.</p>
+          <span class="campo-card-tag">Técnica · Tallado en relieve</span>
+        </div>
       </div>
 
-      <!-- TODO: Reemplazar el bloque .cordoba-pending con el contenido real
-           una vez disponible el material de campo (post 21-04-2026).
-           El contenido debe citar la fuente académica:
-           Historia de la Ebanistería, prof. Alfonso Teresa,
-           Escuela Spilimbergo / FAD / UPC, Córdoba. -->
+      <p>
+        A pocas cuadras del MIA, el Paseo de los Artesanos funciona como contraparte
+        sin curador. Los puestos no tienen comité de adquisiciones. La selección
+        la hace el mercado —o más bien, el sábado a la tarde.
+      </p>
+
+      <p>
+        En el Pasillo 10 hay tres puestos que, sin proponérselo, plantean el mismo
+        problema que Freitag.
+      </p>
+
+      <div class="campo-grid">
+        <div class="campo-card">
+          <span class="campo-card-label">Paseo de los Artesanos · TU Ebanistería UPC</span>
+          <h3>Martín Akmentins — Tornería en Madera</h3>
+          <p>Egresado de la Tecnicatura en Ebanistería de la UPC / Spilimbergo. Produce cuencos, fuentes y esculturas en maderas nativas usando torno y taracea. Las piezas no tienen un precio fijo —tienen un valor que el comprador negocia en persona.</p>
+          <span class="campo-card-tag">Técnica · Tornería · Taracea</span>
+        </div>
+        <div class="campo-card">
+          <span class="campo-card-label">Paseo de los Artesanos · TU Artes del Fuego UPC · 1° Promoción</span>
+          <h3>Taller Arte en Metal</h3>
+          <p>Egresado de la primera promoción de la Tecnicatura en Artes del Fuego de la UPC. Bombillas y accesorios para mate en alpaca y plata, presentados en estuches de cuero. Piezas de uso cotidiano con el mismo nivel de acabado que una pieza de orfebrería.</p>
+          <span class="campo-card-tag">Técnica · Metalurgia artesanal</span>
+        </div>
+      </div>
+
+      <p>
+        Hay un detalle que no está en ninguna cartela: tanto Akmentins como el artesano
+        del Taller Arte en Metal son egresados de la misma universidad que los formó.
+        La UPC les dio herramientas, técnica y criterio. Luego cada uno armó su puesto
+        en el paseo y resolvió el problema de Freitag por las suyas.
+      </p>
+
+      <p>
+        No parece que ninguno de los dos esté esperando que alguien los clasifique.
+      </p>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- ===================================================
+         SECCIÓN 7 — LAS ENTREVISTAS
+    =================================================== -->
+    <section class="reveal">
+      <p class="section-label">07 — Dos personas que lo hacen</p>
+      <h2>Lo que dicen<br /><em>quienes trabajan</em></h2>
+
+      <p>
+        Las categorías son cómodas para quien las aplica desde afuera.
+        Menos para quien trabaja adentro. Dos artesanas, dos materiales distintos,
+        el mismo problema conceptual.
+      </p>
+
+      <div class="entrevista-block">
+        <p class="entrevista-nombre">Damaris Sepúlveda</p>
+        <span class="entrevista-rol">Diseñadora de tocados nupciales · Córdoba · taller doméstico</span>
+
+        <p>
+          Trabaja desde su casa. Un año y medio en esto, veinte años antes en diseño gráfico.
+          Toma piezas antiguas —joyería y bijou vintage de ferias y remates— y las combina
+          con flores modeladas en porcelana fría, metal repujado de 0,2 mm y alambres de joyería.
+          Para los detalles más finos usa instrumental de podología.
+        </p>
+
+        <p>
+          Cada tocado es para un momento específico: el casamiento de alguien.
+          En un caso, las flores eran de la tela del vestido de la madre de la novia.
+          La pieza no va al mercado —va a una persona, a una fecha, a un rito.
+        </p>
+
+        <div class="entrevista-cita">
+          "Creo que la artesanía, para mí, es el cómo: la técnica del oficio.
+          Y el arte es el valor simbólico por lo que lo hago.
+          Si tu trabajo surge de querer resolver un problema técnico, es artesanía.
+          Si surge de querer expresar algo, de comunicar, de crear significado,
+          se convierte en arte."
+        </div>
+
+        <p>
+          La distinción que hace Damaris no es la de Bourdieu ni la de Tatarkiewicz.
+          Es más sencilla —y quizás más operativa. No habla de campos ni de instituciones.
+          Habla de intención. De si hay algo que decir más allá del objeto terminado.
+        </p>
+      </div>
+
+      <div class="entrevista-block">
+        <p class="entrevista-nombre">Debbie Roa Farías</p>
+        <span class="entrevista-rol">Orfebre · artes del fuego · Chile · entrevista via WhatsApp</span>
+
+        <p>
+          Diez años estudiando las artes del fuego. Seis trabajando de esto.
+          Plata 950 y oro, piedras preciosas y semipreciosas, proveedores con criterios éticos.
+          Hojas talladas en metal, grabados que remiten a estrellas y la luna.
+          No hace en serie. No porque no pueda —porque no quiere.
+        </p>
+
+        <div class="entrevista-cita">
+          "Las personas que tomamos este hermoso camino tenemos en nuestras manos
+          la misión de preservar este arte y sus técnicas.
+          Las artes del fuego existen desde hace miles de años
+          y solo eso ya dice mucho."
+        </div>
+
+        <div class="entrevista-cita">
+          "Si tengo que ponerle un nombre, diría que habita un poco las dos cosas.
+          Tiene mucho de artesanía porque hay oficio, técnica, horas de trabajo y aprendizaje.
+          Pero para mí también hay arte, porque cada pieza nace de una búsqueda personal.
+          No hago joyería en serie: cada pieza tiene una intención y una identidad."
+        </div>
+
+        <p>
+          Debbie no parece angustiada por la clasificación.
+          La elige con calma, la describe con precisión, y sigue trabajando.
+          La pregunta la tiene resuelta para sí misma —aunque sepa que el campo institucional
+          tiene sus propias respuestas, y que no siempre coinciden con la suya.
+        </p>
+      </div>
+
+      <p>
+        La discusión, como se ve, sigue abierta.
+        Mientras tanto, el torno gira.
+      </p>
     </section>
 
     <div class="sep"></div>

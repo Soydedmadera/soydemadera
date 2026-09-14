@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cuando el mueble es arte — Soy de Madera</title>
+  <meta name="description" content="Wharton Esherick, el Studio Furniture Movement y los movimientos que cambiaron la relación entre las manos y los objetos: Arts & Crafts, Mingei y Bauhaus." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+
+  <style>
+    /* ============================================= */
+    /* VARIABLES Y RESET — idénticas al sistema del sitio */
+    /* ============================================= */
+    :root {
+      --nogal:   #1a1209;
+      --nogal-2: #221808;
+      --nogal-3: #2e2010;
+      --siena:   #c47a2a;
+      --ambar:   #e8a43a;
+      --crema:   #f5edd8;
+      --crema-2: #ede0c4;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-body:    'Crimson Pro', Georgia, serif;
+      --font-mono:    'IBM Plex Mono', monospace;
+      --max-w: 820px;
+      --gap: clamp(2rem, 5vw, 4rem);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--nogal);
+      color: var(--crema);
+      font-family: var(--font-body);
+      font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(26,18,9,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(196,122,42,0.15);
+    }
+    .nav-logo { font-family: var(--font-display); font-size: 1rem; color: var(--ambar); text-decoration: none; letter-spacing: 0.04em; }
+    .nav-tag { font-family: var(--font-mono); font-size: 0.7rem; color: var(--siena); letter-spacing: 0.12em; text-transform: uppercase; }
+
+    main { position: relative; z-index: 1; padding-top: 5rem; }
+    section { max-width: var(--max-w); margin: 0 auto; padding: var(--gap) 2rem; }
+
+    /* HERO */
+    .hero {
+      max-width: 100%;
+      padding: clamp(5rem, 12vw, 9rem) 2rem clamp(3rem, 6vw, 5rem);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px; height: 4rem;
+      background: linear-gradient(to bottom, var(--siena), transparent);
+    }
+    .hero-kicker {
+      font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--siena); margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp 0.8s 0.1s forwards;
+    }
+    .hero-title {
+      font-family: var(--font-display); font-size: clamp(2.4rem, 7vw, 5.2rem);
+      font-weight: 300; line-height: 1.08; color: var(--crema); margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.9s 0.25s forwards;
+    }
+    .hero-title em { font-style: italic; color: var(--ambar); }
+    .hero-sub {
+      font-family: var(--font-body); font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-style: italic; color: var(--crema-2); max-width: 600px; margin: 0 auto;
+      opacity: 0; animation: fadeUp 1s 0.45s forwards;
+    }
+    .hero-byline {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em;
+      color: rgba(196,122,42,0.6); margin-top: 1.5rem; text-transform: uppercase;
+      opacity: 0; animation: fadeUp 1.1s 0.6s forwards;
+    }
+
+    /* SECCIONES */
+    .section-label {
+      font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--siena); margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(to right, var(--siena), transparent); opacity: 0.4;
+    }
+    h2 {
+      font-family: var(--font-display); font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 400; color: var(--crema); line-height: 1.2; margin-bottom: 1.5rem;
+    }
+    h2 em { font-style: italic; color: var(--ambar); }
+    h3 {
+      font-family: var(--font-display); font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 400; color: var(--ambar); margin: 2rem 0 0.8rem;
+    }
+    p { margin-bottom: 1.2rem; color: var(--crema-2); }
+    p:last-child { margin-bottom: 0; }
+    strong { color: var(--crema); font-weight: 600; }
+    sup { color: var(--siena); font-family: var(--font-mono); font-size: 0.7em; }
+
+    .pull-quote {
+      border-left: 3px solid var(--siena);
+      padding: 1.2rem 1.8rem;
+      margin: 2.5rem 0;
+      background: rgba(196,122,42,0.05);
+      font-family: var(--font-display);
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      font-style: italic; font-weight: 300; color: var(--crema); line-height: 1.45;
+    }
+    .pull-quote span {
+      display: block; margin-top: 0.8rem; font-family: var(--font-mono);
+      font-size: 0.65rem; color: var(--siena); font-style: normal; letter-spacing: 0.1em;
+    }
+
+    .sep {
+      width: 100%; max-width: var(--max-w); margin: 0 auto; height: 1px;
+      background: linear-gradient(to right, transparent, rgba(196,122,42,0.3), transparent);
+    }
+
+    /* BLOQUE COMPARATIVO — 4 movimientos */
+    .movimientos {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin: 2.5rem 0;
+    }
+    .mov-card {
+      background: var(--nogal-3); border: 1px solid rgba(196,122,42,0.18);
+      padding: 1.2rem 1rem; text-align: center;
+    }
+    .mov-name { font-family: var(--font-display); font-size: 1rem; color: var(--ambar); margin-bottom: 0.4rem; }
+    .mov-label {
+      font-family: var(--font-mono); font-size: 0.58rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--siena); opacity: 0.8; margin-bottom: 0.6rem; display: block;
+    }
+    .mov-desc { font-size: 0.78rem; color: rgba(245,237,216,0.6); line-height: 1.4; }
+
+    /* GLOSARIO */
+    .glosario { margin: 2.5rem 0; }
+    .glosario-item {
+      border-top: 1px solid rgba(196,122,42,0.15);
+      padding: 1.2rem 0;
+    }
+    .glosario-item:first-child { border-top: none; }
+    .glosario-term {
+      font-family: var(--font-display); font-size: 1.1rem; color: var(--ambar);
+      font-style: italic; margin-bottom: 0.4rem;
+    }
+    .glosario-def { font-size: 0.92rem; color: rgba(245,237,216,0.7); }
+
+    /* NOTAS AL PIE / ATRIBUCIÓN */
+    .fuentes {
+      border-top: 1px solid rgba(196,122,42,0.2);
+      padding: 3rem 2rem; max-width: var(--max-w); margin: 0 auto;
+    }
+    .fuentes-label {
+      font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--siena); margin-bottom: 1.5rem;
+    }
+    .fuente-item {
+      font-size: 0.88rem; color: rgba(245,237,216,0.55); margin-bottom: 0.7rem;
+      line-height: 1.5; font-family: var(--font-body); padding-left: 1.2rem; position: relative;
+    }
+    .fuente-item::before { content: '→'; position: absolute; left: 0; color: var(--siena); opacity: 0.6; }
+
+    .atribucion {
+      margin-top: 2rem; padding: 1.5rem; background: rgba(196,122,42,0.06);
+      border-left: 2px solid var(--siena); font-size: 0.85rem; color: rgba(245,237,216,0.5);
+      line-height: 1.65; font-style: italic;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 2.5rem 2rem;
+      border-top: 1px solid rgba(196,122,42,0.1); position: relative; z-index: 1;
+    }
+    .footer-logo { font-family: var(--font-display); font-size: 1rem; color: var(--ambar); text-decoration: none; }
+    .footer-meta {
+      font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.1em;
+      color: rgba(196,122,42,0.4); margin-top: 0.5rem; text-transform: uppercase;
+    }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .movimientos { grid-template-columns: 1fr 1fr; }
+      nav .nav-tag { display: none; }
+    }
+    @media (max-width: 560px) {
+      .movimientos { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Soy de Madera</a>
+    <span class="nav-tag">Historia y filosofía del oficio</span>
+  </nav>
+
+  <main>
+
+    <div class="hero">
+      <p class="hero-kicker">Arts & Crafts · Mingei · Studio Furniture · Bauhaus</p>
+      <h1 class="hero-title">Cuando el mueble<br /><em>es arte</em></h1>
+      <p class="hero-sub">Wharton Esherick, el Studio Furniture Movement y los movimientos que cambiaron la relación entre las manos y los objetos.</p>
+      <p class="hero-byline">Por Abel J. Anuzis · soydemadera.com</p>
+    </div>
+
+    <section class="reveal">
+      <p class="section-label">01 — La pregunta</p>
+      <h2>¿Un mueble puede<br /><em>ser una obra de arte?</em></h2>
+      <p>
+        ¿Un mueble es una obra de arte? ¿Puede un objeto funcional ser la expresión de una visión
+        del mundo?
+      </p>
+      <p>
+        La respuesta, aún abierta, es que hay toda una historia detrás de esa pregunta. Y que esa
+        historia explica en parte por qué algunos ebanistas de hoy trabajan completamente a mano,
+        rechazan las máquinas industriales y tratan cada pieza como si fuera única e irrepetible. No
+        es romanticismo. Es una posición filosófica con más de ciento cincuenta años de desarrollo.
+        En el desarrollo de estas conversaciones es mi deseo que otros artistas, artesanos, carpinteros
+        y ebanistas compartan su enfoque. La botella, con la invitación adentro, ya está flotando a
+        la deriva.
+      </p>
+      <p>
+        Este artículo es lo que fui entendiendo sobre tres movimientos que pensaron esa pregunta desde
+        ángulos distintos: el Arts &amp; Crafts inglés del siglo XIX, el Mingei japonés del siglo XX,
+        y el Studio Furniture Movement norteamericano —donde aparece <strong>Wharton Esherick</strong>,
+        el ebanista que más me interesa de todos. Las fuentes que cito son verificables. Las conversaciones
+        directas con artesanos que trabajan dentro de estas tradiciones van a estar en la sección Maestros
+        de soydemadera.com.
+      </p>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="reveal">
+      <p class="section-label">02 — El problema común</p>
+      <h2>Lo que los tres movimientos<br /><em>intentan resolver</em></h2>
+      <p>
+        La Revolución Industrial del siglo XIX separó al artesano del objeto. Antes de las fábricas,
+        quien hacía una silla la diseñaba, la construía y la terminaba —era responsable de todo el
+        proceso y el resultado llevaba su huella. Con la producción industrial, ese proceso se
+        fragmentó: un trabajador hacía una parte, otro hacía otra, nadie era responsable del conjunto.
+        El resultado era más barato, más uniforme y completamente anónimo.
+      </p>
+      <p>
+        Esa separación generó una reacción. No una sola, sino varias —en distintos países, en distintos
+        momentos, con distintas respuestas. Lo que tienen en común es que todas cuestionan si la
+        eficiencia industrial es el único valor posible en la producción de objetos.
+      </p>
+      <div class="pull-quote">
+        El craft —el trabajo artesanal— no es simplemente una técnica antigua. Es una forma de
+        conocimiento que involucra el cuerpo, el material y el tiempo de una manera que la producción
+        industrial no puede replicar.
+        <span>— síntesis de Glenn Adamson, <em>Thinking Through Craft</em>, 2007 <sup>1</sup></span>
+      </div>
+      <p>Cada uno de estos movimientos, a su manera, defiende ese conocimiento.</p>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="reveal">
+      <p class="section-label">03 — Inglaterra, s. XIX</p>
+      <h2>Arts &amp; Crafts:<br /><em>el primero en reaccionar</em></h2>
+      <p>
+        El movimiento Arts &amp; Crafts nació en Inglaterra en la segunda mitad del siglo XIX. Sus
+        figuras centrales fueron el escritor y diseñador <strong>William Morris</strong> y el crítico
+        <strong>John Ruskin</strong>. Ambos reaccionaban contra la producción industrial victoriana
+        —contra los muebles recargados, falsamente ornamentados, fabricados en serie sin ningún criterio
+        más que el del mercado.
+      </p>
+      <p>
+        La posición de Morris era radical para su época: la belleza en un objeto no puede separarse de
+        las condiciones en que fue producido. Un mueble hecho por un trabajador alienado, en una fábrica
+        que destruye su creatividad, no puede ser verdaderamente bello. La estética y la ética de la
+        producción son inseparables.
+      </p>
+      <p>
+        La propuesta práctica era volver al taller medieval: artesanos que dominaban todo el proceso,
+        que usaban materiales honestos —madera visible como madera, no pintada para parecer otra
+        cosa— y que encontraban dignidad en el trabajo manual.
+      </p>
+      <p>
+        Janet Koplos y Bruce Metcalf, en <em>Makers: A History of American Studio Craft</em> (2010),
+        señalan que el Arts &amp; Crafts tuvo una contradicción interna que nunca resolvió: los objetos
+        que producía eran tan costosos que solo podían comprarlos las clases adineradas.<sup>2</sup>
+        El movimiento que quería democratizar la belleza del trabajo artesanal terminó siendo un lujo
+        accesible solo para quienes podían pagarlo. Esa tensión va a reaparecer en todos los movimientos
+        que siguieron.
+      </p>
+      <p>
+        Lo que sí dejó el Arts &amp; Crafts como legado permanente: la idea de que el diseño y la
+        fabricación no deberían separarse, que el material merece honestidad, y que la simplicidad
+        estructural puede ser más bella que el ornamento acumulado.
+      </p>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="reveal">
+      <p class="section-label">04 — Japón, 1926</p>
+      <h2>Mingei:<br /><em>la belleza del objeto anónimo</em></h2>
+      <p>
+        Del otro lado del mundo, el filósofo y crítico <strong>Sōetsu Yanagi</strong> estaba llegando
+        a conclusiones parecidas desde una tradición completamente diferente. En 1926 fundó el
+        movimiento Mingei —literalmente "arte del pueblo" (民芸, <em>min</em> = pueblo, <em>gei</em> =
+        arte)— junto a los ceramistas Shōji Hamada y Kanjirō Kawai.
+      </p>
+      <p>
+        La tesis central de Yanagi, desarrollada en <em>The Unknown Craftsman: A Japanese Insight into
+        Beauty</em> (1972), es provocadora: los objetos más bellos de la historia no fueron hechos por
+        artistas famosos sino por artesanos anónimos que producían sin ego, en serie, siguiendo
+        tradiciones heredadas.<sup>3</sup> La belleza del Mingei es la belleza de lo necesario: una
+        vasija de barro campesina, una cuchara de madera, una tela tejida para uso cotidiano. Objetos
+        donde la función y la forma son inseparables y donde el artesano no intentó ser original
+        —simplemente hizo lo que sabía hacer, bien.
+      </p>
+      <p>
+        Esto parece contradecir todo lo que diría un artista moderno. Yanagi lo sabía y lo abrazaba
+        como provocación filosófica. Para él, el ego del artista —la voluntad de ser original, de
+        firmar, de diferenciarse— es justamente lo que destruye la belleza natural del objeto. El
+        artesano anónimo que sigue una tradición sin cuestionarla produce algo más puro que el genio
+        creador que intenta romper con todo.
+      </p>
+      <p>
+        La influencia del Mingei en la ebanistería occidental llegó principalmente a través de
+        <strong>George Nakashima</strong> —un japonés-americano que estudió arquitectura, vivió en
+        Japón, estuvo internado en un campo durante la Segunda Guerra Mundial y después se convirtió
+        en uno de los ebanistas más influyentes del siglo XX. Nakashima tomó del Mingei la reverencia
+        por el material natural —especialmente por las figuras, los nudos y los bordes vivos de la
+        madera— y la idea de que el artesano debe escuchar lo que el material quiere ser, no imponerle
+        una forma preconcebida.
+      </p>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="reveal">
+      <p class="section-label">05 — EE.UU., posguerra</p>
+      <h2>Studio Furniture Movement:<br /><em>el artesano como autor</em></h2>
+      <p>
+        El Studio Furniture Movement es el movimiento que más directamente conecta con la ebanistería
+        contemporánea de alta calidad. Emergió en los Estados Unidos después de la Segunda Guerra
+        Mundial y su característica central es simple: el mueble es obra de un autor individual que
+        lo diseña y lo construye íntegramente.
+      </p>
+      <p>
+        No es producción en serie. No es trabajo por encargo en el que el diseñador y el fabricante
+        son personas distintas. Es una persona —o un taller pequeño— responsable de todo el proceso,
+        desde la concepción hasta el acabado. Por eso se llama <em>studio</em> furniture: el mueble
+        nace en un estudio de artista, no en una fábrica.
+      </p>
+      <p>
+        Koplos y Metcalf documentan el movimiento en detalle: sus figuras centrales son Wharton
+        Esherick, George Nakashima, Sam Maloof, Wendell Castle y James Krenov, entre otros.<sup>2</sup>
+        Cada uno tiene una voz estética distinta, pero todos comparten esa estructura básica: autoría
+        individual, materiales nobles, proceso artesanal completo.
+      </p>
+
+      <h3>Wharton Esherick: el que abrió el camino</h3>
+      <p>
+        Wharton Esherick (1887–1970) es la figura que más me interesa de todo este panorama, y no por
+        casualidad es a quien se llama "el decano de los artesanos americanos".
+      </p>
+      <p>
+        Esherick empezó como pintor. Estudió en la Pennsylvania Academy of the Fine Arts y durante
+        años intentó abrirse camino en el mundo del arte. No lo consiguió de la manera que esperaba.
+        Se mudó a una granja en Paoli, Pennsylvania, y empezó a trabajar la madera —primero para
+        enmarcar sus propias pinturas, después para hacer marcos para otros artistas, después para
+        hacer muebles para su propia casa.
+      </p>
+      <p>
+        Lo que hizo a lo largo de las siguientes décadas fue construir, literalmente, su mundo. Su
+        casa y estudio en Paoli —hoy el Wharton Esherick Museum— son en sí mismos una obra de arte
+        total: las escaleras, las puertas, los muebles, las herramientas, los mangos de los utensilios
+        de cocina. Todo fue diseñado y construido por él. La coherencia visual es absoluta.
+      </p>
+      <p>
+        La estética de Esherick rompió con todo lo que la ebanistería americana hacía en su época.
+        Rechazó las formas rectangulares y simétricas del mueble convencional —influido por el
+        expresionismo alemán y por el movimiento Arts &amp; Crafts— y desarrolló formas orgánicas,
+        escultóricas, que seguían la lógica de la madera más que la lógica de la geometría euclidiana.
+        Una silla de Esherick puede tener patas de distinto ángulo que se ajustan a la figura que se
+        va a sentar. Una escalera puede ser una escultura que también funciona como escalera.
+      </p>
+      <p>
+        Koplos y Metcalf lo describen como el primero en plantear explícitamente que el mueble podía
+        ser escultura funcional: no escultura que se coloca sobre un pedestal sino objeto que se usa
+        todos los días y que al mismo tiempo tiene valor estético autónomo.<sup>2</sup> Esa idea, que
+        parece obvia ahora, era radical en los años 30 y 40 del siglo XX en el contexto americano.
+      </p>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="reveal">
+      <p class="section-label">06 — El contrapunto necesario</p>
+      <h2>Bauhaus:<br /><em>dominar la máquina, no rechazarla</em></h2>
+      <p>
+        Para entender bien el Studio Furniture Movement hay que contrastar con el movimiento que tomó
+        exactamente la dirección opuesta: la <strong>Bauhaus</strong>.
+      </p>
+      <p>
+        Fundada en 1919 en Weimar, Alemania, por el arquitecto Walter Gropius, la Bauhaus también
+        quería resolver el problema de la separación entre arte y producción. Pero su respuesta fue
+        diferente: en lugar de rechazar la máquina, quería dominarla. El objetivo era diseñar objetos
+        con calidad estética que pudieran ser producidos industrialmente —democratizar el buen diseño
+        haciéndolo accesible masivamente.
+      </p>
+      <p>
+        La silla Wassily de Marcel Breuer —tubos de acero doblados, producible en serie— es el ejemplo
+        más conocido. El diseño tiene calidad artística pero puede fabricarse mil veces idéntico. Eso
+        era precisamente lo que buscaba la Bauhaus: que el buen diseño no fuera privilegio de quien
+        podía pagar a un artesano.
+      </p>
+      <p>
+        La tensión entre Bauhaus y Studio Furniture es la tensión central del diseño del siglo XX:
+        ¿el objeto bien diseñado debe ser único o debe ser reproducible? ¿La autoría individual es un
+        valor o un obstáculo para la democratización?
+      </p>
+      <p>
+        Adamson señala que ninguna de las dos posiciones resolvió completamente el problema.<sup>1</sup>
+        La Bauhaus democratizó el diseño pero perdió la singularidad del objeto artesanal. El Studio
+        Furniture preservó esa singularidad pero mantuvo el problema del Arts &amp; Crafts: los precios
+        hacen que solo una élite pueda acceder a esos objetos.
+      </p>
+
+      <div class="movimientos">
+        <div class="mov-card">
+          <span class="mov-label">Inglaterra · s. XIX</span>
+          <p class="mov-name">Arts &amp; Crafts</p>
+          <p class="mov-desc">Volver al taller medieval. Materiales honestos, dignidad del trabajo manual.</p>
+        </div>
+        <div class="mov-card">
+          <span class="mov-label">Japón · 1926</span>
+          <p class="mov-name">Mingei</p>
+          <p class="mov-desc">Belleza del objeto anónimo. El artesano popular sin ego, sin firma.</p>
+        </div>
+        <div class="mov-card">
+          <span class="mov-label">EE.UU. · posguerra</span>
+          <p class="mov-name">Studio Furniture</p>
+          <p class="mov-desc">El artesano individual como autor completo, del diseño al acabado.</p>
+        </div>
+        <div class="mov-card">
+          <span class="mov-label">Alemania · 1919</span>
+          <p class="mov-name">Bauhaus</p>
+          <p class="mov-desc">Diseñar para la máquina. Democratizar el buen diseño en serie.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="reveal">
+      <p class="section-label">07 — Dos voces del Studio Furniture</p>
+      <h2>El silencio como técnica,<br /><em>el cuerpo como método</em></h2>
+
+      <h3>James Krenov: el silencio como técnica</h3>
+      <p>
+        De las figuras del Studio Furniture Movement, la que más aparece en la literatura técnica de
+        ebanistería fina es <strong>James Krenov</strong> (1920–2009). Nacido en Siberia, criado en
+        Alaska y Seattle, formado en Suecia bajo el maestro Carl Malmsten, Krenov desarrolló una
+        filosofía del trabajo artesanal tan precisa y tan articulada que sus libros se convirtieron en
+        referencia obligada en escuelas de ebanistería de todo el mundo.
+      </p>
+      <p>
+        La idea central de Krenov es que el trabajo artesanal requiere escuchar —al material, a la
+        herramienta, al proceso. Un ebanista que impone su voluntad sobre la madera produce objetos
+        tensos, forzados. Uno que escucha lo que la madera quiere ser produce objetos que tienen una
+        especie de calma inherente. En <em>A Cabinetmaker's Notebook</em> (1976), Krenov describe ese
+        estado de atención como la condición fundamental del trabajo de calidad.<sup>4</sup>
+      </p>
+      <p>
+        Para Krenov, el ebanista artesanal no es un artista que usa la madera como medio de expresión
+        personal. Es un intérprete que traduce las posibilidades del material en objetos funcionales y
+        bellos. El ego no tiene lugar en ese proceso —lo que tiene lugar es la atención.
+      </p>
+      <p>
+        Esa posición conecta con el Mingei de Yanagi más de lo que parece. Vienen de tradiciones muy
+        distintas —uno europeo, el otro japonés— pero los dos desconfían del ego creador y los dos
+        valoran la escucha como método.
+      </p>
+
+      <h3>Sam Maloof: donde el cuerpo y la madera se encuentran</h3>
+      <p>
+        <strong>Sam Maloof</strong> (1916–2009) es el contrapunto de Krenov dentro del mismo movimiento.
+        Donde Krenov era filosófico y casi contemplativo, Maloof era visceral y directo. Sus sillas
+        mecedoras —las piezas por las que es más conocido— son el resultado de décadas de ajuste
+        empírico: formas que se desarrollaron respondiendo al cuerpo humano, no a principios abstractos
+        de diseño.
+      </p>
+      <p>
+        Maloof no tenía formación académica en diseño ni en ebanistería. Aprendió solo, con herramientas
+        que él mismo modificaba cuando no hacían exactamente lo que necesitaba. Esa autodidaxia se nota
+        en el trabajo: hay una energía directa, sin mediación teórica, que hace que sus piezas se
+        sientan inevitables. Como si no pudieran ser de otra forma.
+      </p>
+      <p>
+        Lo que une a Maloof con el resto del movimiento es la misma estructura básica: autoría completa,
+        materiales nobles, proceso artesanal de principio a fin. Lo que lo distingue es que llegó a esa
+        posición desde abajo, sin programa filosófico previo —simplemente haciendo.
+      </p>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="reveal">
+      <p class="section-label">08 — Balance</p>
+      <h2>Qué tienen en común<br /><em>y qué los separa</em></h2>
+      <p>
+        Mirando los cuatro movimientos juntos —Arts &amp; Crafts, Mingei, Studio Furniture, Bauhaus—
+        lo que emerge es un mapa de respuestas posibles a la misma pregunta: ¿qué hacemos con la
+        industrialización?
+      </p>
+      <p>
+        El Arts &amp; Crafts dijo: volvemos al taller medieval. El Mingei dijo: miramos las tradiciones
+        populares anónimas. El Studio Furniture dijo: el artesano individual como autor. La Bauhaus
+        dijo: diseñamos para la máquina.
+      </p>
+      <p>
+        Ninguna de estas respuestas es simplemente correcta o incorrecta. Son posiciones filosóficas
+        que reflejan valores distintos sobre la autoría, la democratización, la belleza y la función.
+        Un ebanista hoy que trabaja completamente a mano está tomando partido en esa conversación, lo
+        sepa o no.
+      </p>
+      <div class="pull-quote">
+        La producción industrial de muebles no resolvió el problema de la calidad —la mayoría de los
+        muebles baratos duran cinco años. Y el trabajo artesanal de alta calidad sigue siendo
+        inaccesible para la mayoría. El problema que Morris identificó en 1860 no tiene solución todavía.
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <section class="reveal">
+      <p class="section-label">09 — Por qué importa acá</p>
+      <h2>El oficio en Argentina,<br /><em>sin el debate teórico</em></h2>
+      <p>
+        Argentina tiene una tradición artesanal fuerte pero sospecho que desconectada de este debate
+        teórico. Hay carpinteros y ebanistas extraordinarios trabajando en talleres del interior del
+        país que posiblemente no sepan quién es Esherick ni Krenov —y que producen objetos de calidad
+        comparable. También sospecho que hay diseñadores formados que conocen la teoría pero que nunca
+        pusieron las manos en la madera.
+      </p>
+      <p>
+        El puente entre esas dos cosas —el conocimiento técnico y la reflexión sobre por qué hacemos
+        lo que hacemos— es lo que me interesa construir con soydemadera. No porque la teoría mejore las
+        manos: si mi sospecha sobre esos carpinteros es correcta, la premisa anterior ya muestra que no
+        hace falta. Sospecho que entender de dónde vienen las ideas que usamos cambia cómo las usamos,
+        aunque no tengo cómo demostrarlo todavía. No hablo desde la autoridad de años de oficio —eso me
+        falta acá—, pero es la intuición con la que arranco este proyecto.
+      </p>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- GLOSARIO -->
+    <section class="reveal">
+      <p class="section-label">10 — Glosario</p>
+      <h2>Términos<br /><em>de este artículo</em></h2>
+      <div class="glosario">
+        <div class="glosario-item">
+          <p class="glosario-term">Studio Furniture Movement</p>
+          <p class="glosario-def">Movimiento norteamericano de posguerra donde el mueble es obra de un autor individual que lo diseña y construye íntegramente. Distinto de la producción industrial o del encargo separado entre diseñador y fabricante.</p>
+        </div>
+        <div class="glosario-item">
+          <p class="glosario-term">Arts &amp; Crafts</p>
+          <p class="glosario-def">Movimiento inglés de fines del siglo XIX liderado por William Morris y John Ruskin. Reacción contra la industrialización; defensa del trabajo artesanal, los materiales honestos y la unidad entre diseñador y fabricante.</p>
+        </div>
+        <div class="glosario-item">
+          <p class="glosario-term">Mingei</p>
+          <p class="glosario-def">Movimiento japonés fundado por Sōetsu Yanagi en 1926. Valora la belleza de los objetos artesanales anónimos de uso cotidiano por encima del arte firmado y del diseño industrial.</p>
+        </div>
+        <div class="glosario-item">
+          <p class="glosario-term">Bauhaus</p>
+          <p class="glosario-def">Escuela de diseño alemana fundada en 1919 por Walter Gropius. Buscaba unir arte y producción industrial para democratizar el buen diseño mediante la reproducción en serie.</p>
+        </div>
+        <div class="glosario-item">
+          <p class="glosario-term">Studio furniture</p>
+          <p class="glosario-def">Mueble producido en un taller artesanal individual, con autoría completa de una persona o un equipo pequeño. Se diferencia del mueble industrial por la singularidad, los materiales nobles y el proceso artesanal íntegro.</p>
+        </div>
+        <div class="glosario-item">
+          <p class="glosario-term">Escultura funcional</p>
+          <p class="glosario-def">Concepto acuñado en el contexto del Studio Furniture Movement: objeto que tiene valor estético autónomo como escultura y al mismo tiempo cumple una función práctica cotidiana.</p>
+        </div>
+        <div class="glosario-item">
+          <p class="glosario-term">Craft</p>
+          <p class="glosario-def">Término inglés sin traducción exacta al español. Abarca tanto la habilidad técnica artesanal como la tradición y el conocimiento que implica. Más cercano a "oficio" que a "artesanía".</p>
+        </div>
+        <div class="glosario-item">
+          <p class="glosario-term">Truth to materials</p>
+          <p class="glosario-def">Principio del Arts &amp; Crafts: la madera debe verse como madera, el metal como metal. Los materiales no deben disfrazarse para parecer lo que no son.</p>
+        </div>
+        <div class="glosario-item">
+          <p class="glosario-term">Wabi-sabi</p>
+          <p class="glosario-def">Concepto estético japonés que valora la imperfección, la impermanencia y lo incompleto. Influencia indirecta sobre el Mingei y sobre ebanistas como Nakashima que incorporaron la irregularidad natural de la madera como valor.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="sep"></div>
+
+    <!-- FUENTES -->
+    <div class="fuentes reveal">
+      <p class="fuentes-label">Fuentes consultadas</p>
+      <p class="fuente-item"><sup>1</sup> Adamson, Glenn. <em>Thinking Through Craft.</em> Berg Publishers, 2007. Referencia fundamental sobre teoría del craft y su relación con el arte y la producción industrial.</p>
+      <p class="fuente-item"><sup>2</sup> Koplos, Janet &amp; Metcalf, Bruce. <em>Makers: A History of American Studio Craft.</em> University of North Carolina Press, 2010. La historia más completa del Studio Craft movement norteamericano, incluyendo el Studio Furniture Movement.</p>
+      <p class="fuente-item"><sup>3</sup> Yanagi, Sōetsu. <em>The Unknown Craftsman: A Japanese Insight into Beauty.</em> Kodansha International, 1972. El texto fundacional del movimiento Mingei. Edición en inglés adaptada por Bernard Leach.</p>
+      <p class="fuente-item"><sup>4</sup> Krenov, James. <em>A Cabinetmaker's Notebook.</em> Van Nostrand Reinhold, 1976. Reimpreso por Lost Art Press. El libro más influyente de Krenov sobre filosofía y práctica del trabajo artesanal en ebanistería.</p>
+
+      <div class="atribucion">
+        Este artículo es parte de la sección Astillas de soydemadera.com. Soy carpintero en formación,
+        aprendiendo con las manos y por curiosidad propia. Lo que escribo acá es lo que voy aprendiendo.
+        Las entrevistas directas con los especialistas que aparecen en estos artículos van a estar en la
+        sección Maestros —ese es el lugar donde las voces de quienes trabajan esto todos los días van a
+        tener el espacio que se merecen.
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <a href="index.html" class="footer-logo">Soy de Madera</a>
+    <p class="footer-meta">soydemadera.com · Abel J. Anuzis · 2026</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => io.observe(el));
+    } else {
+      reveals.forEach(el => el.classList.add('in'));
+    }
+  </script>
+
+</body>
+</html>
