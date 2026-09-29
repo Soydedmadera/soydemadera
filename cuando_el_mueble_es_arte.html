@@ -4,10 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cuando el mueble es arte — Soy de Madera</title>
-  <meta name="description" content="Wharton Esherick, el Studio Furniture Movement y los movimientos que cambiaron la relación entre las manos y los objetos: Arts & Crafts, Mingei y Bauhaus." />
+  <meta name="description" content="Wharton Esherick, el Studio Furniture Movement y los movimientos que cambiaron la relación entre las manos y los objetos: Arts &amp; Crafts, Mingei y Bauhaus." />
+  <meta name="author" content="Abel J. Anuzis" />
+  <link rel="canonical" href="https://soydemadera.com/cuando_el_mueble_es_arte" />
+
+  <!-- Open Graph: vista previa al compartir (WhatsApp, mail, redes) -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Soy de Madera" />
+  <meta property="og:locale" content="es_AR" />
+  <meta property="og:title" content="Cuando el mueble es arte" />
+  <meta property="og:description" content="Arts &amp; Crafts, Mingei, Studio Furniture y Bauhaus: cuatro respuestas a la misma pregunta. ¿Un mueble puede ser una obra de arte?" />
+  <meta property="og:url" content="https://soydemadera.com/cuando_el_mueble_es_arte" />
+  <meta property="og:image" content="https://soydemadera.com/img/og-cuando-el-mueble-es-arte.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Cuando el mueble es arte — Soy de Madera" />
+  <meta property="article:author" content="Abel J. Anuzis" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,300;1,9..144,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" />
 
   <style>
     /* ============================================= */
@@ -215,6 +233,16 @@
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.in { opacity: 1; transform: translateY(0); }
 
+    /* Términos con entrada en el diccionario */
+    .dict-link {
+      color: inherit;
+      text-decoration: underline dotted var(--siena);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      transition: color .2s;
+    }
+    .dict-link:hover, .dict-link:focus-visible { color: var(--ambar); text-decoration-style: solid; }
+
     @media (max-width: 900px) {
       .movimientos { grid-template-columns: 1fr 1fr; }
       nav .nav-tag { display: none; }
@@ -227,19 +255,20 @@
 
 <body>
 
-  <nav>
+  <nav aria-label="Principal">
     <a href="index.html" class="nav-logo">Soy de Madera</a>
     <span class="nav-tag">Historia y filosofía del oficio</span>
   </nav>
 
   <main>
+  <article>
 
-    <div class="hero">
-      <p class="hero-kicker">Arts & Crafts · Mingei · Studio Furniture · Bauhaus</p>
+    <header class="hero">
+      <p class="hero-kicker">Arts &amp; Crafts · Mingei · Studio Furniture · Bauhaus</p>
       <h1 class="hero-title">Cuando el mueble<br /><em>es arte</em></h1>
       <p class="hero-sub">Wharton Esherick, el Studio Furniture Movement y los movimientos que cambiaron la relación entre las manos y los objetos.</p>
       <p class="hero-byline">Por Abel J. Anuzis · soydemadera.com</p>
-    </div>
+    </header>
 
     <section class="reveal">
       <p class="section-label">01 — La pregunta</p>
@@ -383,7 +412,7 @@
       <p>
         No es producción en serie. No es trabajo por encargo en el que el diseñador y el fabricante
         son personas distintas. Es una persona —o un taller pequeño— responsable de todo el proceso,
-        desde la concepción hasta el acabado. Por eso se llama <em>studio</em> furniture: el mueble
+        desde la concepción hasta el <a class="dict-link" href="diccionario_carpinteria_v2.html?q=Terminaci%C3%B3n" title="Ver «Acabado / Terminación» en el diccionario">acabado</a>. Por eso se llama <em>studio</em> furniture: el mueble
         nace en un estudio de artista, no en una fábrica.
       </p>
       <p>
@@ -433,7 +462,7 @@
       <p class="section-label">06 — El contrapunto necesario</p>
       <h2>Bauhaus:<br /><em>dominar la máquina, no rechazarla</em></h2>
       <p>
-        Para entender bien el Studio Furniture Movement hay que contrastar con el movimiento que tomó
+        Para entender bien el Studio Furniture Movement hay que contrastarlo con el movimiento que tomó
         exactamente la dirección opuesta: la <strong>Bauhaus</strong>.
       </p>
       <p>
@@ -640,7 +669,7 @@
     <div class="fuentes reveal">
       <p class="fuentes-label">Fuentes consultadas</p>
       <p class="fuente-item"><sup>1</sup> Adamson, Glenn. <em>Thinking Through Craft.</em> Berg Publishers, 2007. Referencia fundamental sobre teoría del craft y su relación con el arte y la producción industrial.</p>
-      <p class="fuente-item"><sup>2</sup> Koplos, Janet &amp; Metcalf, Bruce. <em>Makers: A History of American Studio Craft.</em> University of North Carolina Press, 2010. La historia más completa del Studio Craft movement norteamericano, incluyendo el Studio Furniture Movement.</p>
+      <p class="fuente-item"><sup>2</sup> Koplos, Janet &amp; Metcalf, Bruce. <em>Makers: A History of American Studio Craft.</em> University of North Carolina Press, 2010. La historia más completa del Studio Craft Movement norteamericano, incluyendo el Studio Furniture Movement.</p>
       <p class="fuente-item"><sup>3</sup> Yanagi, Sōetsu. <em>The Unknown Craftsman: A Japanese Insight into Beauty.</em> Kodansha International, 1972. El texto fundacional del movimiento Mingei. Edición en inglés adaptada por Bernard Leach.</p>
       <p class="fuente-item"><sup>4</sup> Krenov, James. <em>A Cabinetmaker's Notebook.</em> Van Nostrand Reinhold, 1976. Reimpreso por Lost Art Press. El libro más influyente de Krenov sobre filosofía y práctica del trabajo artesanal en ebanistería.</p>
 
@@ -653,6 +682,7 @@
       </div>
     </div>
 
+  </article>
   </main>
 
   <footer>

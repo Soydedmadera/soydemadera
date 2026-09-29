@@ -1690,6 +1690,17 @@
 
     daBuild();
 
+    // ── LINK DIRECTO A UN TÉRMINO: diccionario_carpinteria_v2.html?q=Terminaci%C3%B3n ──
+    (function () {
+      let q = '';
+      try { q = (new URLSearchParams(location.search).get('q') || '').trim(); } catch (e) {}
+      if (!q) return;
+      const input = document.getElementById('da-search');
+      input.value = q;
+      daBuild(daActiveFilter, q);
+      input.scrollIntoView({ block: 'start' });
+    })();
+
     // ── SCROLL REVEAL ──
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
