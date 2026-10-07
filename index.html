@@ -3134,11 +3134,11 @@
 
 
   // ── BIBLIOTECA · estante Archivo ── (ex Astillas; backend: Google Sheets)
-  const AST_PWD    = 'madera2026';
   const AST_CSV    = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSVNoDgh7XfDewCzSCoVEDBwd-2biUjlgMR5lPzB4obh3WyW7sHyKXnW08U7g42rtmPyP_vCdXY6Plo/pub?gid=0&single=true&output=csv';
   const AST_SCRIPT = 'https://script.google.com/macros/s/AKfycbzr3pQqgRh5pRY2u0WGGE7ncX-fesc6sY5Zb8O80Z9xAw2LmuyVLB5Gy5mXswDkfa1n/exec';
 
   let astAdminMode   = false;
+  let astClave       = '';   // se tipea al entrar y vive solo en memoria; la valida el Apps Script
   let astItems       = [];   // se carga desde Sheets, no desde localStorage
   let astFiltroActivo = 'todos';
 
@@ -3162,6 +3162,15 @@
     return null;
   }
 
+  // El contenido de Sheets se trata como texto: se escapa antes de insertarlo en la página
+  function astEsc(t) {
+    return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+  }
+  function astUrlSegura(u) {
+    return /^https?:\/\//i.test(u) ? astEsc(u) : '';
+  }
+
   // Parsea el CSV de Sheets (primera fila = headers: tipo,titulo,desc,url)
   function astParseCsv(text) {
     const lines = text.trim().split('\n');
@@ -3177,7 +3186,7 @@
         else { cur += c; }
       }
       cols.push(cur.trim());
-      return { tipo: cols[0] || 'imagen', titulo: cols[1] || '', desc: cols[2] || '', url: cols[3] || '' };
+      return { tipo: cols[0] || 'imagen', titulo: astEsc(cols[1] || ''), desc: astEsc(cols[2] || ''), url: astUrlSegura(cols[3] || '') };
     }).filter(i => i.titulo && i.url);
   }
 
@@ -3243,14 +3252,22 @@
 
   // ── escritura vía Apps Script ─────────────────────────────
 
-  async function astPost(payload) {
+  // La clave viaja en cada pedido y la verifica el script; el sitio no la guarda.
+  // text/plain evita el preflight CORS y permite leer la respuesta del script.
+  async function astEnviar(payload) {
     const res = await fetch(AST_SCRIPT, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-      mode: 'no-cors'   // Apps Script requiere no-cors; la respuesta llega opaca pero la acción se ejecuta
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(Object.assign({}, payload, { clave: astClave })),
+      redirect: 'follow'
     });
-    // Con no-cors no podemos leer el body; esperamos un momento y recargamos
+    return res.json();
+  }
+
+  async function astPost(payload) {
+    const r = await astEnviar(payload);
+    if (!r || r.status !== 'ok') throw new Error(r && r.status ? r.status : 'error');
+    // Sheets tarda un momento en publicar el cambio
     await new Promise(r => setTimeout(r, 1500));
     await astCargar();
   }
@@ -3269,20 +3286,29 @@
     panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
   };
 
-  window.astLogin = function() {
-    const val = document.getElementById('ast-pwd').value;
-    if (val === AST_PWD) {
+  window.astLogin = async function() {
+    const err = document.getElementById('ast-pwd-err');
+    err.style.display = 'none';
+    astClave = document.getElementById('ast-pwd').value;
+    let r = null;
+    try { r = await astEnviar({ action: 'check' }); } catch (e) { r = null; }
+    if (r && r.status === 'ok') {
       astAdminMode = true;
       document.getElementById('ast-login').style.display = 'none';
       document.getElementById('ast-form').style.display = 'block';
       astRender();
     } else {
-      document.getElementById('ast-pwd-err').style.display = 'block';
+      astClave = '';
+      err.textContent = (r && r.status === 'denied')
+        ? 'Contraseña incorrecta.'
+        : 'No se pudo verificar la contraseña. Revisá la conexión.';
+      err.style.display = 'block';
     }
   };
 
   window.astCerrarSesion = function() {
     astAdminMode = false;
+    astClave = '';
     document.getElementById('ast-login').style.display = 'block';
     document.getElementById('ast-form').style.display = 'none';
     document.getElementById('ast-pwd').value = '';
