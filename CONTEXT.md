@@ -50,9 +50,10 @@ soydemadera/
 ### `index.html` (2920 líneas)
 - Sistema de navegación por **pestañas** (no scroll continuo) — JS vanilla
 - Hero como pantalla de inicio; logo vuelve al hero
-- Secciones: Pilares, Diccionario, Herramientas, Maestros, Dónde estudiar, Sobre, Redes, **Astillas**
-- **Sección Astillas:** muestra PDFs, videos YouTube/Vimeo, imágenes. Panel admin protegido con contraseña `madera2026` (texto plano en HTML, línea `const AST_PWD`). Datos en `localStorage` — persisten por dispositivo, no es backend real.
-- Limitación conocida de Astillas: el contenido cargado solo se ve en el dispositivo donde se subió. Para visibilidad global hay que migrar a backend (Google Sheets, Supabase, etc.)
+- Secciones: Pilares, Diccionario, Herramientas, Maestros, Dónde estudiar, Sobre, Redes, **Biblioteca**, **Agenda**
+- **Biblioteca** (ex Astillas, renombrada el 7/10/2026; el ancla vieja `#astillas` redirige): tres estantes. *Guías* y *Ensayos* son links fijos en el HTML; *Archivo* es la grilla de PDFs, videos YouTube/Vimeo e imágenes que se lee de una planilla de Google Sheets (`AST_CSV`) y se escribe vía Apps Script (`AST_SCRIPT`), visible para todos. Los identificadores internos conservan el prefijo `ast-` / `AST_`.
+- **Agenda:** eventos escritos a mano en el HTML (`.ag-item`), separados en "Próximos" y "Ya pasaron". El banner superior (`.tm-banner`) apunta al próximo evento.
+- Limitación conocida: la contraseña del panel admin está en texto plano (`const AST_PWD`) y el Apps Script acepta escrituras sin validar. La corrección real va en el Apps Script, no en el frontend.
 
 ### `calculadora_pie_madera.html`, `conversor_imperial.html`, `diccionario_carpinteria_v2.html`
 - Sin modificaciones respecto a versión original
@@ -75,7 +76,8 @@ soydemadera/
 
 - [ ] Integrar `chat_widget.html` en `index.html`
 - [ ] Hospedar backend en Railway o Render
-- [ ] Migrar Astillas a backend real (Google Sheets o Supabase) para visibilidad global
+- [x] Migrar Astillas a backend real (Google Sheets) — hecho; hoy es el estante Archivo de Biblioteca
+- [ ] Validar la contraseña del panel admin en el Apps Script (hoy está en texto plano en el frontend)
 - [ ] Ficha técnica de más maderas en `maderas/`
 - [ ] Limpiar proyectos viejos en Netlify
 
