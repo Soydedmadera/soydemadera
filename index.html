@@ -198,13 +198,6 @@
     .ast-card-img { width: 100%; height: 160px; object-fit: cover; margin-bottom: 1rem; }
     .ast-video-wrap { position: relative; padding-bottom: 56.25%; height: 0; margin-bottom: 1rem; }
     .ast-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
-    .ast-delete-btn {
-      position: absolute; top: 0.75rem; right: 0.75rem;
-      background: none; border: none; color: rgba(var(--crema-rgb),0.3);
-      cursor: pointer; font-size: 1rem; display: none;
-    }
-    .ast-admin-active .ast-delete-btn { display: block; }
-    .ast-delete-btn:hover { color: var(--error); }
 
     body {
       background-color: var(--nogal);
@@ -2709,53 +2702,6 @@
     <div id="astillas-grid" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:1.5rem;"></div>
     <p id="astillas-empty" style="color:var(--crema-dim); font-style:italic; display:none;">Todavía no hay contenido en esta sección.</p>
 
-    <!-- BOTÓN ADMIN -->
-    <div style="margin-top:4rem; text-align:right;">
-      <button onclick="astAdminToggle()" style="background:none; border:1px solid var(--ambar-dim); color:var(--ambar); padding:0.5rem 1rem; font-size:0.8rem; letter-spacing:0.1em; cursor:pointer; font-family:inherit;">⚙ Administrar</button>
-    </div>
-
-    <!-- PANEL ADMIN (oculto) -->
-    <div id="ast-admin-panel" style="display:none; margin-top:2rem; border:1px solid var(--ambar-dim); padding:2rem; background:rgba(var(--crema-rgb),0.03);">
-      <div id="ast-login" style="">
-        <p style="color:var(--crema); margin-bottom:1rem; font-size:0.9rem;">Contraseña de administrador</p>
-        <input id="ast-pwd" type="password" placeholder="Contraseña…" style="background:rgba(var(--crema-rgb),0.07); border:1px solid var(--ambar-dim); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; width:220px;">
-        <button onclick="astLogin()" style="margin-left:0.75rem; background:var(--ambar); color:var(--nogal); border:none; padding:0.6rem 1.2rem; cursor:pointer; font-family:inherit; font-weight:700;">Entrar</button>
-        <p id="ast-pwd-err" style="color:var(--error); font-size:0.8rem; margin-top:0.5rem; display:none;">Contraseña incorrecta.</p>
-      </div>
-      <div id="ast-form" style="display:none;">
-        <h4 style="color:var(--ambar); font-family:'Fraunces',serif; margin-bottom:1.5rem;">Agregar contenido</h4>
-        <div style="display:grid; gap:1rem; max-width:560px;">
-          <div>
-            <label style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">Tipo</label>
-            <select id="ast-tipo" style="width:100%; background:rgba(var(--crema-rgb),0.07); border:1px solid var(--ambar-dim); color:var(--crema); padding:0.6rem 1rem; font-family:inherit;">
-              <option value="pdf">📄 PDF / Documento</option>
-              <option value="video">▶ Video (YouTube / Vimeo)</option>
-              <option value="imagen">🖼 Imagen / Foto</option>
-            </select>
-          </div>
-          <div>
-            <label style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">Título</label>
-            <input id="ast-titulo" type="text" placeholder="Ej: Guía de ensambles EN/ES" style="width:100%; background:rgba(var(--crema-rgb),0.07); border:1px solid var(--ambar-dim); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
-          </div>
-          <div>
-            <label style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">Descripción (opcional)</label>
-            <input id="ast-desc" type="text" placeholder="Breve descripción del recurso" style="width:100%; background:rgba(var(--crema-rgb),0.07); border:1px solid var(--ambar-dim); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
-          </div>
-          <div>
-            <label id="ast-url-label" style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">URL del archivo / video / imagen</label>
-            <input id="ast-url" type="url" placeholder="https://…" style="width:100%; background:rgba(var(--crema-rgb),0.07); border:1px solid var(--ambar-dim); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
-          </div>
-          <div style="display:flex; gap:1rem; margin-top:0.5rem;">
-            <button onclick="astAgregar()" style="background:var(--ambar); color:var(--nogal); border:none; padding:0.7rem 1.5rem; cursor:pointer; font-family:inherit; font-weight:700;">Agregar</button>
-            <button onclick="astCerrarSesion()" style="background:none; border:1px solid rgba(var(--crema-rgb),0.2); color:var(--crema-dim); padding:0.7rem 1.5rem; cursor:pointer; font-family:inherit;">Cerrar sesión</button>
-          </div>
-          <p id="ast-form-err" style="color:var(--error); font-size:0.8rem; display:none;"></p>
-        </div>
-
-        <!-- Lista de items existentes -->
-        <div id="ast-lista-admin" style="margin-top:2.5rem;"></div>
-      </div>
-    </div>
   </section>
 
   <!-- AGENDA -->
@@ -3133,12 +3079,9 @@
   irAlHash();
 
 
-  // ── BIBLIOTECA · estante Archivo ── (ex Astillas; backend: Google Sheets)
+  // ── BIBLIOTECA · estante Archivo ── (ex Astillas). Solo lectura: el contenido se carga escribiendo filas en la planilla de Google
   const AST_CSV    = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSVNoDgh7XfDewCzSCoVEDBwd-2biUjlgMR5lPzB4obh3WyW7sHyKXnW08U7g42rtmPyP_vCdXY6Plo/pub?gid=0&single=true&output=csv';
-  const AST_SCRIPT = 'https://script.google.com/macros/s/AKfycbzr3pQqgRh5pRY2u0WGGE7ncX-fesc6sY5Zb8O80Z9xAw2LmuyVLB5Gy5mXswDkfa1n/exec';
 
-  let astAdminMode   = false;
-  let astClave       = '';   // se tipea al entrar y vive solo en memoria; la valida el Apps Script
   let astItems       = [];   // se carga desde Sheets, no desde localStorage
   let astFiltroActivo = 'todos';
 
@@ -3222,54 +3165,16 @@
     } else {
       empty.style.display = 'none';
       grid.innerHTML = filtered.map((item) => {
-        const realIdx  = astItems.indexOf(item);
-        const deleteBtn = `<button class="ast-delete-btn" title="Eliminar" onclick="astEliminar(${realIdx})">✕</button>`;
         if (item.tipo === 'pdf') {
-          return `<div class="ast-card"><div class="ast-card-tipo">📄 PDF · Documento</div><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}<a href="${item.url}" target="_blank" class="ast-btn">Descargar →</a>${deleteBtn}</div>`;
+          return `<div class="ast-card"><div class="ast-card-tipo">📄 PDF · Documento</div><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}<a href="${item.url}" target="_blank" class="ast-btn">Descargar →</a></div>`;
         } else if (item.tipo === 'video') {
           const embedUrl = astVideoEmbed(item.url);
-          return `<div class="ast-card"><div class="ast-card-tipo">▶ Video</div><h3>${item.titulo}</h3>${embedUrl ? `<div class="ast-video-wrap"><iframe src="${embedUrl}" allowfullscreen></iframe></div>` : `<p style="color:var(--error)">URL de video no reconocida.</p>`}${item.desc ? `<p>${item.desc}</p>` : ''}${deleteBtn}</div>`;
+          return `<div class="ast-card"><div class="ast-card-tipo">▶ Video</div><h3>${item.titulo}</h3>${embedUrl ? `<div class="ast-video-wrap"><iframe src="${embedUrl}" allowfullscreen></iframe></div>` : `<p style="color:var(--error)">URL de video no reconocida.</p>`}${item.desc ? `<p>${item.desc}</p>` : ''}</div>`;
         } else {
-          return `<div class="ast-card"><div class="ast-card-tipo">🖼 Imagen · Foto</div><img class="ast-card-img" src="${item.url}" alt="${item.titulo}" onerror="this.style.display='none'"><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}${deleteBtn}</div>`;
+          return `<div class="ast-card"><div class="ast-card-tipo">🖼 Imagen · Foto</div><img class="ast-card-img" src="${item.url}" alt="${item.titulo}" onerror="this.style.display='none'"><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}</div>`;
         }
       }).join('');
     }
-
-    if (astAdminMode) grid.classList.add('ast-admin-active');
-    else grid.classList.remove('ast-admin-active');
-
-    // Lista admin
-    const lista = document.getElementById('ast-lista-admin');
-    if (lista) {
-      if (astItems.length === 0) { lista.innerHTML = ''; return; }
-      lista.innerHTML = `<p style="color:var(--crema-dim);font-size:0.8rem;margin-bottom:1rem;">${astItems.length} item(s) en Sheets</p>` +
-        astItems.map((item, i) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(var(--crema-rgb),0.07);">
-          <span style="color:var(--crema);font-size:0.88rem;">${item.tipo === 'pdf' ? '📄' : item.tipo === 'video' ? '▶' : '🖼'} ${item.titulo}</span>
-          <button onclick="astEliminar(${i})" style="background:none;border:none;color:var(--error);cursor:pointer;font-size:0.8rem;">Eliminar</button>
-        </div>`).join('');
-    }
-  }
-
-  // ── escritura vía Apps Script ─────────────────────────────
-
-  // La clave viaja en cada pedido y la verifica el script; el sitio no la guarda.
-  // text/plain evita el preflight CORS y permite leer la respuesta del script.
-  async function astEnviar(payload) {
-    const res = await fetch(AST_SCRIPT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-      body: JSON.stringify(Object.assign({}, payload, { clave: astClave })),
-      redirect: 'follow'
-    });
-    return res.json();
-  }
-
-  async function astPost(payload) {
-    const r = await astEnviar(payload);
-    if (!r || r.status !== 'ok') throw new Error(r && r.status ? r.status : 'error');
-    // Sheets tarda un momento en publicar el cambio
-    await new Promise(r => setTimeout(r, 1500));
-    await astCargar();
   }
 
   // ── controles UI ──────────────────────────────────────────
@@ -3279,76 +3184,6 @@
     btn.classList.add('active');
     astFiltroActivo = btn.dataset.tipo;
     astRender();
-  };
-
-  window.astAdminToggle = function() {
-    const panel = document.getElementById('ast-admin-panel');
-    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-  };
-
-  window.astLogin = async function() {
-    const err = document.getElementById('ast-pwd-err');
-    err.style.display = 'none';
-    astClave = document.getElementById('ast-pwd').value;
-    let r = null;
-    try { r = await astEnviar({ action: 'check' }); } catch (e) { r = null; }
-    if (r && r.status === 'ok') {
-      astAdminMode = true;
-      document.getElementById('ast-login').style.display = 'none';
-      document.getElementById('ast-form').style.display = 'block';
-      astRender();
-    } else {
-      astClave = '';
-      err.textContent = (r && r.status === 'denied')
-        ? 'Contraseña incorrecta.'
-        : 'No se pudo verificar la contraseña. Revisá la conexión.';
-      err.style.display = 'block';
-    }
-  };
-
-  window.astCerrarSesion = function() {
-    astAdminMode = false;
-    astClave = '';
-    document.getElementById('ast-login').style.display = 'block';
-    document.getElementById('ast-form').style.display = 'none';
-    document.getElementById('ast-pwd').value = '';
-    document.getElementById('ast-admin-panel').style.display = 'none';
-    astRender();
-  };
-
-  window.astAgregar = async function() {
-    const tipo  = document.getElementById('ast-tipo').value;
-    const titulo = document.getElementById('ast-titulo').value.trim();
-    const desc  = document.getElementById('ast-desc').value.trim();
-    const url   = document.getElementById('ast-url').value.trim();
-    const err   = document.getElementById('ast-form-err');
-    if (!titulo || !url) { err.textContent = 'Título y URL son obligatorios.'; err.style.display='block'; return; }
-    err.style.display = 'none';
-
-    const btn = document.querySelector('#ast-form button');
-    if (btn) { btn.disabled = true; btn.textContent = 'Guardando…'; }
-
-    try {
-      await astPost({ action: 'add', tipo, titulo, desc, url });
-      document.getElementById('ast-titulo').value = '';
-      document.getElementById('ast-desc').value   = '';
-      document.getElementById('ast-url').value    = '';
-    } catch(e) {
-      err.textContent = 'Error al guardar. Revisá la conexión.';
-      err.style.display = 'block';
-    } finally {
-      if (btn) { btn.disabled = false; btn.textContent = 'Agregar'; }
-    }
-  };
-
-  window.astEliminar = async function(idx) {
-    if (!confirm('¿Eliminar este item?')) return;
-    // rowIndex: fila en Sheets (1-based header + 1 = idx+2)
-    try {
-      await astPost({ action: 'delete', rowIndex: idx + 2 });
-    } catch(e) {
-      alert('Error al eliminar. Revisá la conexión.');
-    }
   };
 
   // ── HAMBURGER MOBILE ──
