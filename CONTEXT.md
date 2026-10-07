@@ -42,8 +42,9 @@ soydemadera/
 
 - **Fondo:** `#1a1209`
 - **Fuentes:** Fraunces (titulares) + Crimson Pro (cuerpo) + IBM Plex Mono (etiquetas)
-- **Paleta:** siena `#c47a2a` / ámbar `#e8a43a` / crema `#f5edd8`
-- **Variables CSS:** `--ambar`, `--nogal`, `--crema`, `--font-mono`
+- **Paleta (desde 10/2026, "gama apagada"):** papel `#e9e7e1` de fondo, tinta `#2b2926`, madera `#7b5d3f` / `#6b5138` para acentos y botones, azul grisáceo `#4f6676` solo en enlaces y `#4a5c69` en el pie. Tiene variante oscura automática (`prefers-color-scheme: dark`) sobre `#1f1d1a`.
+- **Variables CSS:** se conservan los nombres históricos, pero ya no significan lo que dicen: `--nogal` es el fondo, `--crema` el texto, `--siena` y `--ambar` los acentos madera, `--gris-tex` el texto secundario. Nuevas: `--azul`, `--pie`, `--linea`, `--verde`, `--error` y las ternas `--*-rgb` para usar con `rgba(var(--x-rgb), a)`.
+- Aplicada en: `index.html`, diccionario, calculadora, conversor, los dos ensayos y la nota de Tocar Madera. Pendientes con su paleta vieja: `tp1_marqueteria.html` (ya era clara) y `guia_geometria_talla.html` (colores de diagramas).
 
 ## Archivos HTML — estado actual
 

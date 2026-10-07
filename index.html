@@ -12,15 +12,85 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --nogal:    #1a1209;
-      --roble:    #2e1f0e;
-      --cedro:    #3d2a10;
-      --siena:    #c47a2a;
-      --ambar:    #e8a43a;
-      --crema:    #f5edd8;
-      --crema2:   #ede0c4;
-      --gris-tex: #7a6a52;
-      --verde-musgo: #3a4a2e;
+      color-scheme: light;
+      --nogal: #e9e7e1;
+      --nogal-rgb: 233,231,225;
+      --nogal-mid: #e4e1da;
+      --nogal-2: #e4e1da;
+      --roble: #dfdcd4;
+      --nogal-3: #dfdcd4;
+      --cedro: #d6d2c9;
+      --cedro-rgb: 214,210,201;
+      --siena: #7b5d3f;
+      --siena-claro: #7b5d3f;
+      --ambar: #6b5138;
+      --ambar-claro: #6b5138;
+      --madera-rgb: 123,93,63;
+      --crema: #2b2926;
+      --crema-rgb: 43,41,38;
+      --crema2: #45423d;
+      --crema-2: #45423d;
+      --crema-suave: #45423d;
+      --blanco: #1f1d1b;
+      --gris-tex: #6a655d;
+      --crema-dim: #6a655d;
+      --borde-rgb: 106,101,93;
+      --linea: #cfcbc2;
+      --ambar-dim: #a8937c;
+      --verde-musgo: #55663f;
+      --verde: #55663f;
+      --verde-rgb: 85,102,63;
+      --azul: #4f6676;
+      --azul-rgb: 79,102,118;
+      --pie: #4a5c69;
+      --pie-tinta: #e7eaeb;
+      --pie-suave: #b9c4cb;
+      --error: #a8443a;
+      --sombra-rgb: 43,41,38;
+      --sombra: rgba(43,41,38,0.16);
+      --humo: rgba(43,41,38,0.05);
+    }
+    /* Variante oscura: se activa sola si el visitante navega en modo oscuro */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --nogal: #1f1d1a;
+        --nogal-rgb: 31,29,26;
+        --nogal-mid: #24221e;
+        --nogal-2: #24221e;
+        --roble: #2a2824;
+        --nogal-3: #2a2824;
+        --cedro: #33302b;
+        --cedro-rgb: 51,48,43;
+        --siena: #b89572;
+        --siena-claro: #b89572;
+        --ambar: #c9a680;
+        --ambar-claro: #c9a680;
+        --madera-rgb: 184,149,114;
+        --crema: #ddd8ce;
+        --crema-rgb: 221,216,206;
+        --crema2: #c9c3b8;
+        --crema-2: #c9c3b8;
+        --crema-suave: #c9c3b8;
+        --blanco: #ece8df;
+        --gris-tex: #9a9488;
+        --crema-dim: #9a9488;
+        --borde-rgb: 154,148,136;
+        --linea: #3a3732;
+        --ambar-dim: #6b5a47;
+        --verde-musgo: #8fa67a;
+        --verde: #8fa67a;
+        --verde-rgb: 143,166,122;
+        --azul: #9db2c0;
+        --azul-rgb: 157,178,192;
+        --pie: #2b363d;
+        --pie-tinta: #dfe4e6;
+        --pie-suave: #93a3ad;
+        --error: #e07a6e;
+        --sombra-rgb: 0,0,0;
+        --sombra: rgba(0,0,0,0.45);
+        --humo: rgba(221,216,206,0.06);
+      }
     }
 
     html { scroll-behavior: smooth; }
@@ -34,7 +104,7 @@
     #diccionario.page-section.active { display: block !important; }
     .hero { transition: opacity 0.25s ease; }
     .hero.hidden { display: none !important; }
-    .nav-links a.nav-active { color: var(--ambar) !important; }
+    .nav-links a.nav-active { color: var(--azul) !important; }
 
     /* ── BIBLIOTECA (ex Astillas) ── */
     .bib-estante {
@@ -53,16 +123,16 @@
       grid-template-columns: 7.5rem 1fr;
       gap: 1.75rem;
       padding: 1.75rem 0;
-      border-top: 1px solid #3d2c15;
+      border-top: 1px solid var(--linea);
     }
-    .ag-item:last-child { border-bottom: 1px solid #3d2c15; }
+    .ag-item:last-child { border-bottom: 1px solid var(--linea); }
     .ag-fecha { font-family: 'IBM Plex Mono', monospace; color: var(--ambar); line-height: 1.1; }
     .ag-fecha b { display: block; font-family: 'Fraunces', Georgia, serif; font-size: 2.6rem; font-weight: 900; }
     .ag-fecha span { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
     .ag-item h3 { font-family: 'Fraunces', Georgia, serif; color: var(--crema); font-size: 1.3rem; line-height: 1.25; margin-bottom: .5rem; }
-    .ag-item p { font-family: 'Crimson Pro', Georgia, serif; color: var(--crema-dim, #b8a896); line-height: 1.65; max-width: 62ch; }
-    .ag-item .ag-datos { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .04em; color: var(--crema-dim, #b8a896); margin: .75rem 0 0; }
-    .ag-link { display: inline-block; margin-top: .9rem; font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--ambar); text-decoration: none; }
+    .ag-item p { font-family: 'Crimson Pro', Georgia, serif; color: var(--crema-dim); line-height: 1.65; max-width: 62ch; }
+    .ag-item .ag-datos { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .04em; color: var(--crema-dim); margin: .75rem 0 0; }
+    .ag-link { display: inline-block; margin-top: .9rem; font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--azul); text-decoration: none; }
     .ag-link:hover { text-decoration: underline; }
     .ag-pasado .ag-fecha, .ag-pasado h3 { opacity: .6; }
     @media (max-width: 900px) {
@@ -72,9 +142,9 @@
     }
 
     .ast-filtro {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: var(--crema-dim, #b8a896);
+      background: rgba(var(--crema-rgb),0.05);
+      border: 1px solid rgba(var(--crema-rgb),0.15);
+      color: var(--crema-dim);
       padding: 0.45rem 1rem;
       cursor: pointer;
       font-family: inherit;
@@ -83,58 +153,58 @@
       transition: all 0.2s;
     }
     .ast-filtro:hover, .ast-filtro.active {
-      background: var(--ambar, #c8912a);
-      border-color: var(--ambar, #c8912a);
-      color: #1a1209;
+      background: var(--ambar);
+      border-color: var(--ambar);
+      color: var(--nogal);
     }
     .ast-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(var(--crema-rgb),0.04);
+      border: 1px solid rgba(var(--crema-rgb),0.1);
       padding: 1.5rem;
       position: relative;
       transition: border-color 0.2s;
     }
-    .ast-card:hover { border-color: var(--ambar, #c8912a); }
+    .ast-card:hover { border-color: var(--ambar); }
     .ast-card-tipo {
       font-size: 0.75rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--ambar, #c8912a);
+      color: var(--ambar);
       margin-bottom: 0.75rem;
     }
     .ast-card h3 {
       font-family: 'Fraunces', Georgia, serif;
-      color: var(--crema, #f5ede0);
+      color: var(--crema);
       font-size: 1.1rem;
       margin-bottom: 0.5rem;
     }
     .ast-card p {
-      color: var(--crema-dim, #b8a896);
+      color: var(--crema-dim);
       font-size: 0.88rem;
       line-height: 1.6;
       margin-bottom: 1rem;
     }
     .ast-card a.ast-btn {
       display: inline-block;
-      border: 1px solid var(--ambar, #c8912a);
-      color: var(--ambar, #c8912a);
+      border: 1px solid var(--azul);
+      color: var(--azul);
       padding: 0.4rem 1rem;
       font-size: 0.82rem;
       text-decoration: none;
       letter-spacing: 0.05em;
       transition: all 0.2s;
     }
-    .ast-card a.ast-btn:hover { background: var(--ambar, #c8912a); color: #1a1209; }
+    .ast-card a.ast-btn:hover { background: var(--azul); color: var(--nogal); }
     .ast-card-img { width: 100%; height: 160px; object-fit: cover; margin-bottom: 1rem; }
     .ast-video-wrap { position: relative; padding-bottom: 56.25%; height: 0; margin-bottom: 1rem; }
     .ast-video-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
     .ast-delete-btn {
       position: absolute; top: 0.75rem; right: 0.75rem;
-      background: none; border: none; color: rgba(255,255,255,0.3);
+      background: none; border: none; color: rgba(var(--crema-rgb),0.3);
       cursor: pointer; font-size: 1rem; display: none;
     }
     .ast-admin-active .ast-delete-btn { display: block; }
-    .ast-delete-btn:hover { color: #e05555; }
+    .ast-delete-btn:hover { color: var(--error); }
 
     body {
       background-color: var(--nogal);
@@ -173,12 +243,12 @@
         168deg,
         transparent,
         transparent 28px,
-        rgba(196,122,42,0.8) 28px,
-        rgba(196,122,42,0.8) 29px,
+        rgba(var(--madera-rgb),0.8) 28px,
+        rgba(var(--madera-rgb),0.8) 29px,
         transparent 29px,
         transparent 58px,
-        rgba(255,200,100,0.4) 58px,
-        rgba(255,200,100,0.4) 59px
+        rgba(var(--madera-rgb),0.4) 58px,
+        rgba(var(--madera-rgb),0.4) 59px
       );
     }
 
@@ -191,7 +261,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: linear-gradient(to bottom, rgba(26,18,9,0.95) 0%, transparent 100%);
+      background: linear-gradient(to bottom, rgba(var(--nogal-rgb),0.95) 0%, transparent 100%);
       backdrop-filter: blur(2px);
     }
 
@@ -205,21 +275,23 @@
       align-items: center;
       gap: 0.8rem;
       padding: 0 1.5rem;
-      background: var(--ambar);
-      color: var(--nogal);
+      background: var(--roble);
+      color: var(--crema);
+      border-bottom: 1px solid var(--linea);
       text-decoration: none;
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.8rem;
       white-space: nowrap;
       overflow: hidden;
     }
-    .tm-banner:hover{ filter: brightness(1.06); }
+    .tm-banner:hover{ color: var(--azul); }
     .tm-banner-tag{
       font-weight: 700;
       text-transform: uppercase;
       font-size: 0.68rem;
       letter-spacing: 0.08em;
-      border: 1px solid rgba(26,18,9,0.4);
+      border: 1px solid rgba(var(--borde-rgb),0.5);
+      color: var(--siena);
       border-radius: 3px;
       padding: 0.1rem 0.4rem;
       flex-shrink: 0;
@@ -255,7 +327,7 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-    .nav-links a:hover { color: var(--ambar); }
+    .nav-links a:hover { color: var(--azul); }
 
     /* ── HAMBURGER ── */
     .nav-hamburger {
@@ -284,7 +356,7 @@
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(26,18,9,0.98);
+      background: rgba(var(--nogal-rgb),0.98);
       z-index: 150;
       flex-direction: column;
       align-items: center;
@@ -301,7 +373,7 @@
       text-decoration: none;
       transition: color 0.2s;
     }
-    .nav-mobile-menu a:hover, .nav-mobile-menu a.nav-active { color: var(--ambar); }
+    .nav-mobile-menu a:hover, .nav-mobile-menu a.nav-active { color: var(--azul); }
 
     /* ── HERO ── */
     .hero {
@@ -316,7 +388,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(61,42,16,0.9) 0%, var(--nogal) 70%);
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(var(--cedro-rgb),0.9) 0%, var(--nogal) 70%);
     }
 
     .hero-content {
@@ -525,7 +597,7 @@
       font-weight: 900;
       font-size: 5rem;
       line-height: 1;
-      color: rgba(196,122,42,0.15);
+      color: rgba(var(--madera-rgb),0.15);
       position: absolute;
       top: 1.5rem;
       right: 2rem;
@@ -607,12 +679,12 @@
       grid-template-columns: 1fr 1fr 1fr auto;
       align-items: center;
       padding: 1.1rem 2.5rem;
-      border-bottom: 1px solid rgba(122,106,82,0.15);
+      border-bottom: 1px solid rgba(var(--borde-rgb),0.15);
       transition: background 0.2s;
       gap: 1rem;
     }
     .dict-entry:last-child { border-bottom: none; }
-    .dict-entry:hover { background: rgba(255,255,255,0.03); }
+    .dict-entry:hover { background: rgba(var(--crema-rgb),0.03); }
 
     .entry-en {
       font-family: 'IBM Plex Mono', monospace;
@@ -641,7 +713,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--verde-musgo);
-      background: rgba(58,74,46,0.3);
+      background: rgba(var(--verde-rgb),0.3);
       padding: 0.2rem 0.5rem;
       white-space: nowrap;
     }
@@ -769,7 +841,9 @@
 
     /* ── FOOTER ── */
     footer {
-      border-top: 1px solid rgba(122,106,82,0.2);
+      background: var(--pie);
+      box-shadow: 0 0 0 100vmax var(--pie);
+      clip-path: inset(0 -100vmax);
       padding: 3rem;
       max-width: 1200px;
       margin: 0 auto;
@@ -784,14 +858,14 @@
       font-family: 'Fraunces', Georgia, serif;
       font-weight: 900;
       font-size: 1.1rem;
-      color: var(--ambar);
+      color: var(--pie-tinta);
       letter-spacing: -0.01em;
     }
 
     .footer-copy {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.62rem;
-      color: var(--gris-tex);
+      color: var(--pie-suave);
       letter-spacing: 0.1em;
     }
 
@@ -800,10 +874,10 @@
       font-size: 0.62rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--gris-tex);
+      color: var(--pie-suave);
     }
     .footer-next span {
-      color: var(--siena);
+      color: var(--pie-tinta);
       font-style: italic;
     }
 
@@ -845,7 +919,7 @@
 
     /* Empty placeholder state */
     .maestro-card.empty {
-      border: 1px dashed rgba(122,106,82,0.3);
+      border: 1px dashed rgba(var(--borde-rgb),0.3);
       background: transparent;
       justify-content: center;
       align-items: center;
@@ -872,7 +946,7 @@
       height: 64px;
       border-radius: 50%;
       background: var(--cedro);
-      border: 2px dashed rgba(122,106,82,0.4);
+      border: 2px dashed rgba(var(--borde-rgb),0.4);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -894,13 +968,13 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       padding: 0.2rem 0.5rem;
-      border: 1px solid rgba(122,106,82,0.3);
+      border: 1px solid rgba(var(--borde-rgb),0.3);
       color: var(--gris-tex);
     }
 
-    .tipo-tag.entrevista { border-color: rgba(196,122,42,0.5); color: var(--siena); }
-    .tipo-tag.obra       { border-color: rgba(58,74,46,0.5);   color: #7a9a5e; }
-    .tipo-tag.texto      { border-color: rgba(90,80,60,0.5);   color: var(--gris-tex); }
+    .tipo-tag.entrevista { border-color: rgba(var(--madera-rgb),0.5); color: var(--siena); }
+    .tipo-tag.obra       { border-color: rgba(var(--verde-rgb),0.5);   color: var(--verde); }
+    .tipo-tag.texto      { border-color: rgba(var(--borde-rgb),0.5);   color: var(--gris-tex); }
 
     .maestro-nombre {
       font-family: 'Fraunces', Georgia, serif;
@@ -979,7 +1053,7 @@
       gap: 1rem;
       margin-bottom: 2rem;
       padding-bottom: 1.2rem;
-      border-bottom: 1px solid rgba(122,106,82,0.2);
+      border-bottom: 1px solid rgba(var(--borde-rgb),0.2);
     }
 
     .bloque-icon { font-size: 1.4rem; }
@@ -1005,7 +1079,7 @@
       justify-content: space-between;
       align-items: flex-start;
       padding: 1.1rem 0;
-      border-bottom: 1px solid rgba(122,106,82,0.12);
+      border-bottom: 1px solid rgba(var(--borde-rgb),0.12);
       gap: 1.5rem;
     }
     .estudiar-item:last-child { border-bottom: none; }
@@ -1035,10 +1109,10 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
-    .item-badge.presencial  { background: rgba(58,74,46,0.3);   color: #7a9a5e; }
-    .item-badge.online      { background: rgba(61,42,16,0.5);   color: var(--ambar); }
-    .item-badge.gratuito    { background: rgba(30,50,70,0.4);   color: #6ab0d4; }
-    .item-badge.particular  { background: rgba(80,40,10,0.5);   color: var(--siena); }
+    .item-badge.presencial  { background: rgba(var(--verde-rgb),0.3);   color: var(--verde); }
+    .item-badge.online      { background: rgba(var(--cedro-rgb),0.5);   color: var(--ambar); }
+    .item-badge.gratuito    { background: rgba(var(--azul-rgb),0.4);   color: var(--azul); }
+    .item-badge.particular  { background: rgba(var(--madera-rgb),0.5);   color: var(--siena); }
 
     /* Empty item state */
     .estudiar-item.placeholder {
@@ -1085,14 +1159,14 @@
       padding: 13px 20px 13px 42px;
       font-family: inherit;
       font-size: 0.95rem;
-      border: 2px solid rgba(122,106,82,0.4);
+      border: 2px solid rgba(var(--borde-rgb),0.4);
       background: var(--roble);
       color: var(--crema);
       outline: none;
       transition: border-color 0.2s, box-shadow 0.2s;
       border-radius: 0;
     }
-    #da-search:focus { border-color: var(--ambar); box-shadow: 0 0 0 3px rgba(232,164,58,0.15); }
+    #da-search:focus { border-color: var(--ambar); box-shadow: 0 0 0 3px rgba(var(--madera-rgb),0.15); }
     #da-search::placeholder { color: var(--gris-tex); }
 
     .da-filters { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -1103,7 +1177,7 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       padding: 6px 13px;
-      border: 1.5px solid rgba(122,106,82,0.35);
+      border: 1.5px solid rgba(var(--borde-rgb),0.35);
       background: transparent;
       color: var(--gris-tex);
       cursor: pointer;
@@ -1134,7 +1208,7 @@
       display: flex; align-items: center; gap: 10px;
       margin-bottom: 1rem;
       padding-bottom: 0.7rem;
-      border-bottom: 2px solid rgba(122,106,82,0.25);
+      border-bottom: 2px solid rgba(var(--borde-rgb),0.25);
     }
 
     .da-cat-icon { font-size: 1.2rem; }
@@ -1163,7 +1237,7 @@
 
     .da-entry {
       background: var(--roble);
-      border: 1.5px solid rgba(122,106,82,0.2);
+      border: 1.5px solid rgba(var(--borde-rgb),0.2);
       padding: 14px 16px;
       transition: border-color 0.2s, transform 0.15s;
       position: relative;
@@ -1180,7 +1254,7 @@
       transform-origin: bottom;
     }
 
-    .da-entry:hover { border-color: rgba(232,164,58,0.4); transform: translateY(-1px); }
+    .da-entry:hover { border-color: rgba(var(--madera-rgb),0.4); transform: translateY(-1px); }
     .da-entry:hover::before { transform: scaleY(1); }
 
     .da-en {
@@ -1195,7 +1269,7 @@
     .da-pron {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.68rem;
-      color: #7a9a5e;
+      color: var(--verde);
       margin-bottom: 5px;
     }
     .da-pron::before { content: '🔊 '; font-size: 0.6rem; }
@@ -1218,7 +1292,7 @@
       font-size: 0.78rem;
       color: var(--crema2);
       line-height: 1.5;
-      border-top: 1px solid rgba(122,106,82,0.2);
+      border-top: 1px solid rgba(var(--borde-rgb),0.2);
       padding-top: 7px;
       opacity: 0.75;
     }
@@ -1274,7 +1348,7 @@
       font-weight: 900;
       font-size: 4.5rem;
       line-height: 1;
-      color: rgba(196,122,42,0.12);
+      color: rgba(var(--madera-rgb),0.12);
       position: absolute;
       top: 1rem;
       right: 1.5rem;
@@ -1330,7 +1404,7 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       padding: 0.2rem 0.55rem;
-      border: 1px solid rgba(122,106,82,0.35);
+      border: 1px solid rgba(var(--borde-rgb),0.35);
       color: var(--gris-tex);
     }
 
@@ -1382,6 +1456,20 @@
       footer { padding: 2rem 1.5rem; }
       .hero-vertical { display: none; }
     }
+  
+    /* Colores de los SVG en línea: los atributos no aceptan variables, se pisan desde acá */
+    [fill="#1a1209"] { fill: var(--nogal); }
+    [stroke="#1a1209"] { stroke: var(--nogal); }
+    [stop-color="#1a1209"] { stop-color: var(--nogal); }
+    [fill="#c47a2a"] { fill: var(--siena); }
+    [stroke="#c47a2a"] { stroke: var(--siena); }
+    [stop-color="#c47a2a"] { stop-color: var(--siena); }
+    [fill="#e8a43a"] { fill: var(--ambar); }
+    [stroke="#e8a43a"] { stroke: var(--ambar); }
+    [stop-color="#e8a43a"] { stop-color: var(--ambar); }
+    [fill="#f5edd8"] { fill: var(--crema); }
+    [stroke="#f5edd8"] { stroke: var(--nogal); }
+    [stop-color="#f5edd8"] { stop-color: var(--crema); }
   </style>
 </head>
 <body>
@@ -2591,13 +2679,13 @@
     <!-- ESTANTE: GUÍAS -->
     <div class="bib-bloque">
       <p class="bib-estante">Guías</p>
-      <a href="tp1_marqueteria.html" style="display:flex;align-items:center;gap:1.25rem;background:rgba(255,255,255,.03);border:1px solid #3d2c15;border-radius:10px;padding:1.1rem 1.4rem;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.06)'" onmouseout="this.style.background='rgba(255,255,255,.03)'">
+      <a href="tp1_marqueteria.html" style="display:flex;align-items:center;gap:1.25rem;background:rgba(var(--crema-rgb),.03);border:1px solid var(--linea);border-radius:10px;padding:1.1rem 1.4rem;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(var(--crema-rgb),.06)'" onmouseout="this.style.background='rgba(var(--crema-rgb),.03)'">
         <div style="width:42px;height:42px;background:var(--siena);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5edd8" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
         </div>
         <div>
           <div style="font-family:'Fraunces',Georgia,serif;font-size:1rem;color:var(--crema);margin-bottom:3px;">TP1 — Marquetería</div>
-          <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim,#8a7560);">Guía visual completa: diseño, corte, pegado y terminado · Spilimbergo / FAD / UPC</div>
+          <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim);">Guía visual completa: diseño, corte, pegado y terminado · Spilimbergo / FAD / UPC</div>
         </div>
         <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver →</div>
       </a>
@@ -2606,23 +2694,23 @@
     <!-- ESTANTE: ENSAYOS -->
     <div class="bib-bloque">
       <p class="bib-estante">Ensayos</p>
-      <a href="historia_oficio_arte.html" style="display:flex;align-items:center;gap:1.25rem;background:rgba(255,255,255,.03);border:1px solid #3d2c15;border-radius:10px;padding:1.1rem 1.4rem;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.06)'" onmouseout="this.style.background='rgba(255,255,255,.03)'">
+      <a href="historia_oficio_arte.html" style="display:flex;align-items:center;gap:1.25rem;background:rgba(var(--crema-rgb),.03);border:1px solid var(--linea);border-radius:10px;padding:1.1rem 1.4rem;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(var(--crema-rgb),.06)'" onmouseout="this.style.background='rgba(var(--crema-rgb),.03)'">
         <div style="width:42px;height:42px;background:var(--siena);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5edd8" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
         </div>
         <div>
           <div style="font-family:'Fraunces',Georgia,serif;font-size:1rem;color:var(--crema);margin-bottom:3px;">El arte y lo artesanal</div>
-          <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim,#8a7560);">Historia del concepto de arte, la distinción arte/artesanía, y quiénes trabajan en el límite de esa categoría</div>
+          <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim);">Historia del concepto de arte, la distinción arte/artesanía, y quiénes trabajan en el límite de esa categoría</div>
         </div>
         <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver →</div>
       </a>
-      <a href="cuando_el_mueble_es_arte.html" style="display:flex;align-items:center;gap:1.25rem;background:rgba(255,255,255,.03);border:1px solid #3d2c15;border-radius:10px;padding:1.1rem 1.4rem;text-decoration:none;margin-top:.75rem;transition:background .2s;" onmouseover="this.style.background='rgba(255,255,255,.06)'" onmouseout="this.style.background='rgba(255,255,255,.03)'">
+      <a href="cuando_el_mueble_es_arte.html" style="display:flex;align-items:center;gap:1.25rem;background:rgba(var(--crema-rgb),.03);border:1px solid var(--linea);border-radius:10px;padding:1.1rem 1.4rem;text-decoration:none;margin-top:.75rem;transition:background .2s;" onmouseover="this.style.background='rgba(var(--crema-rgb),.06)'" onmouseout="this.style.background='rgba(var(--crema-rgb),.03)'">
         <div style="width:42px;height:42px;background:var(--siena);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f5edd8" stroke-width="2" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
         </div>
         <div>
           <div style="font-family:'Fraunces',Georgia,serif;font-size:1rem;color:var(--crema);margin-bottom:3px;">Cuando el mueble es arte</div>
-          <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim,#8a7560);">Wharton Esherick, el Studio Furniture Movement, Arts &amp; Crafts, Mingei y Bauhaus</div>
+          <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim);">Wharton Esherick, el Studio Furniture Movement, Arts &amp; Crafts, Mingei y Bauhaus</div>
         </div>
         <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver →</div>
       </a>
@@ -2645,23 +2733,23 @@
 
     <!-- BOTÓN ADMIN -->
     <div style="margin-top:4rem; text-align:right;">
-      <button onclick="astAdminToggle()" style="background:none; border:1px solid var(--ambar-dim,#8a6a2a); color:var(--ambar); padding:0.5rem 1rem; font-size:0.8rem; letter-spacing:0.1em; cursor:pointer; font-family:inherit;">⚙ Administrar</button>
+      <button onclick="astAdminToggle()" style="background:none; border:1px solid var(--ambar-dim); color:var(--ambar); padding:0.5rem 1rem; font-size:0.8rem; letter-spacing:0.1em; cursor:pointer; font-family:inherit;">⚙ Administrar</button>
     </div>
 
     <!-- PANEL ADMIN (oculto) -->
-    <div id="ast-admin-panel" style="display:none; margin-top:2rem; border:1px solid var(--ambar-dim,#8a6a2a); padding:2rem; background:rgba(255,255,255,0.03);">
+    <div id="ast-admin-panel" style="display:none; margin-top:2rem; border:1px solid var(--ambar-dim); padding:2rem; background:rgba(var(--crema-rgb),0.03);">
       <div id="ast-login" style="">
         <p style="color:var(--crema); margin-bottom:1rem; font-size:0.9rem;">Contraseña de administrador</p>
-        <input id="ast-pwd" type="password" placeholder="Contraseña…" style="background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; width:220px;">
-        <button onclick="astLogin()" style="margin-left:0.75rem; background:var(--ambar,#c8912a); color:#1a1209; border:none; padding:0.6rem 1.2rem; cursor:pointer; font-family:inherit; font-weight:700;">Entrar</button>
-        <p id="ast-pwd-err" style="color:#e05555; font-size:0.8rem; margin-top:0.5rem; display:none;">Contraseña incorrecta.</p>
+        <input id="ast-pwd" type="password" placeholder="Contraseña…" style="background:rgba(var(--crema-rgb),0.07); border:1px solid var(--ambar-dim); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; width:220px;">
+        <button onclick="astLogin()" style="margin-left:0.75rem; background:var(--ambar); color:var(--nogal); border:none; padding:0.6rem 1.2rem; cursor:pointer; font-family:inherit; font-weight:700;">Entrar</button>
+        <p id="ast-pwd-err" style="color:var(--error); font-size:0.8rem; margin-top:0.5rem; display:none;">Contraseña incorrecta.</p>
       </div>
       <div id="ast-form" style="display:none;">
         <h4 style="color:var(--ambar); font-family:'Fraunces',serif; margin-bottom:1.5rem;">Agregar contenido</h4>
         <div style="display:grid; gap:1rem; max-width:560px;">
           <div>
             <label style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">Tipo</label>
-            <select id="ast-tipo" style="width:100%; background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit;">
+            <select id="ast-tipo" style="width:100%; background:rgba(var(--crema-rgb),0.07); border:1px solid var(--ambar-dim); color:var(--crema); padding:0.6rem 1rem; font-family:inherit;">
               <option value="pdf">📄 PDF / Documento</option>
               <option value="video">▶ Video (YouTube / Vimeo)</option>
               <option value="imagen">🖼 Imagen / Foto</option>
@@ -2669,21 +2757,21 @@
           </div>
           <div>
             <label style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">Título</label>
-            <input id="ast-titulo" type="text" placeholder="Ej: Guía de ensambles EN/ES" style="width:100%; background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
+            <input id="ast-titulo" type="text" placeholder="Ej: Guía de ensambles EN/ES" style="width:100%; background:rgba(var(--crema-rgb),0.07); border:1px solid var(--ambar-dim); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
           </div>
           <div>
             <label style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">Descripción (opcional)</label>
-            <input id="ast-desc" type="text" placeholder="Breve descripción del recurso" style="width:100%; background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
+            <input id="ast-desc" type="text" placeholder="Breve descripción del recurso" style="width:100%; background:rgba(var(--crema-rgb),0.07); border:1px solid var(--ambar-dim); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
           </div>
           <div>
             <label id="ast-url-label" style="color:var(--crema-dim); font-size:0.8rem; display:block; margin-bottom:0.4rem;">URL del archivo / video / imagen</label>
-            <input id="ast-url" type="url" placeholder="https://…" style="width:100%; background:rgba(255,255,255,0.07); border:1px solid var(--ambar-dim,#8a6a2a); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
+            <input id="ast-url" type="url" placeholder="https://…" style="width:100%; background:rgba(var(--crema-rgb),0.07); border:1px solid var(--ambar-dim); color:var(--crema); padding:0.6rem 1rem; font-family:inherit; box-sizing:border-box;">
           </div>
           <div style="display:flex; gap:1rem; margin-top:0.5rem;">
-            <button onclick="astAgregar()" style="background:var(--ambar,#c8912a); color:#1a1209; border:none; padding:0.7rem 1.5rem; cursor:pointer; font-family:inherit; font-weight:700;">Agregar</button>
-            <button onclick="astCerrarSesion()" style="background:none; border:1px solid rgba(255,255,255,0.2); color:var(--crema-dim); padding:0.7rem 1.5rem; cursor:pointer; font-family:inherit;">Cerrar sesión</button>
+            <button onclick="astAgregar()" style="background:var(--ambar); color:var(--nogal); border:none; padding:0.7rem 1.5rem; cursor:pointer; font-family:inherit; font-weight:700;">Agregar</button>
+            <button onclick="astCerrarSesion()" style="background:none; border:1px solid rgba(var(--crema-rgb),0.2); color:var(--crema-dim); padding:0.7rem 1.5rem; cursor:pointer; font-family:inherit;">Cerrar sesión</button>
           </div>
-          <p id="ast-form-err" style="color:#e05555; font-size:0.8rem; display:none;"></p>
+          <p id="ast-form-err" style="color:var(--error); font-size:0.8rem; display:none;"></p>
         </div>
 
         <!-- Lista de items existentes -->
@@ -2936,7 +3024,7 @@
           function hl(text) {
             if (!q) return text;
             const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
-            return text.replace(re, '<mark style="background:#e8a43a;color:#1a1209;border-radius:2px">$1</mark>');
+            return text.replace(re, '<mark style="background:var(--ambar);color:var(--nogal);border-radius:2px">$1</mark>');
           }
           const card = document.createElement('div');
           card.className = 'da-entry';
@@ -3126,7 +3214,7 @@
     } catch (e) {
       astItems = [];
       document.getElementById('astillas-grid').innerHTML =
-        `<p style="color:#e05555;">Error al cargar contenido. Revisá la conexión.</p>`;
+        `<p style="color:var(--error);">Error al cargar contenido. Revisá la conexión.</p>`;
       return;
     }
     astRender();
@@ -3153,7 +3241,7 @@
           return `<div class="ast-card"><div class="ast-card-tipo">📄 PDF · Documento</div><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}<a href="${item.url}" target="_blank" class="ast-btn">Descargar →</a>${deleteBtn}</div>`;
         } else if (item.tipo === 'video') {
           const embedUrl = astVideoEmbed(item.url);
-          return `<div class="ast-card"><div class="ast-card-tipo">▶ Video</div><h3>${item.titulo}</h3>${embedUrl ? `<div class="ast-video-wrap"><iframe src="${embedUrl}" allowfullscreen></iframe></div>` : `<p style="color:#e05555">URL de video no reconocida.</p>`}${item.desc ? `<p>${item.desc}</p>` : ''}${deleteBtn}</div>`;
+          return `<div class="ast-card"><div class="ast-card-tipo">▶ Video</div><h3>${item.titulo}</h3>${embedUrl ? `<div class="ast-video-wrap"><iframe src="${embedUrl}" allowfullscreen></iframe></div>` : `<p style="color:var(--error)">URL de video no reconocida.</p>`}${item.desc ? `<p>${item.desc}</p>` : ''}${deleteBtn}</div>`;
         } else {
           return `<div class="ast-card"><div class="ast-card-tipo">🖼 Imagen · Foto</div><img class="ast-card-img" src="${item.url}" alt="${item.titulo}" onerror="this.style.display='none'"><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}${deleteBtn}</div>`;
         }
@@ -3168,9 +3256,9 @@
     if (lista) {
       if (astItems.length === 0) { lista.innerHTML = ''; return; }
       lista.innerHTML = `<p style="color:var(--crema-dim);font-size:0.8rem;margin-bottom:1rem;">${astItems.length} item(s) en Sheets</p>` +
-        astItems.map((item, i) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(255,255,255,0.07);">
+        astItems.map((item, i) => `<div style="display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(var(--crema-rgb),0.07);">
           <span style="color:var(--crema);font-size:0.88rem;">${item.tipo === 'pdf' ? '📄' : item.tipo === 'video' ? '▶' : '🖼'} ${item.titulo}</span>
-          <button onclick="astEliminar(${i})" style="background:none;border:none;color:#e05555;cursor:pointer;font-size:0.8rem;">Eliminar</button>
+          <button onclick="astEliminar(${i})" style="background:none;border:none;color:var(--error);cursor:pointer;font-size:0.8rem;">Eliminar</button>
         </div>`).join('');
     }
   }

@@ -11,20 +11,87 @@
   <style>
     /* ── TOKENS ── */
     :root {
-      --nogal:      #1a1209;
-      --nogal-mid:  #251a0e;
-      --roble:      #2e2010;
-      --cedro:      #3a2a14;
-      --siena:      #a0522d;
-      --siena-claro:#c4733f;
-      --ambar:      #d4922a;
-      --ambar-claro:#e8b84b;
-      --crema:      #f0e6cc;
-      --crema-suave:#d9c9a8;
-      --blanco:     #faf7f0;
-      --sombra:     rgba(0,0,0,0.55);
-      --radio:      6px;
-      --radio-lg:   12px;
+      color-scheme: light;
+      --nogal: #e9e7e1;
+      --nogal-rgb: 233,231,225;
+      --nogal-mid: #e4e1da;
+      --nogal-2: #e4e1da;
+      --roble: #dfdcd4;
+      --nogal-3: #dfdcd4;
+      --cedro: #d6d2c9;
+      --cedro-rgb: 214,210,201;
+      --siena: #7b5d3f;
+      --siena-claro: #7b5d3f;
+      --ambar: #6b5138;
+      --ambar-claro: #6b5138;
+      --madera-rgb: 123,93,63;
+      --crema: #2b2926;
+      --crema-rgb: 43,41,38;
+      --crema2: #45423d;
+      --crema-2: #45423d;
+      --crema-suave: #45423d;
+      --blanco: #1f1d1b;
+      --gris-tex: #6a655d;
+      --crema-dim: #6a655d;
+      --borde-rgb: 106,101,93;
+      --linea: #cfcbc2;
+      --ambar-dim: #a8937c;
+      --verde-musgo: #55663f;
+      --verde: #55663f;
+      --verde-rgb: 85,102,63;
+      --azul: #4f6676;
+      --azul-rgb: 79,102,118;
+      --pie: #4a5c69;
+      --pie-tinta: #e7eaeb;
+      --pie-suave: #b9c4cb;
+      --error: #a8443a;
+      --sombra-rgb: 43,41,38;
+      --sombra: rgba(43,41,38,0.16);
+      --humo: rgba(43,41,38,0.05);
+      --radio: 6px;
+      --radio-lg: 12px;
+    }
+    /* Variante oscura: se activa sola si el visitante navega en modo oscuro */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --nogal: #1f1d1a;
+        --nogal-rgb: 31,29,26;
+        --nogal-mid: #24221e;
+        --nogal-2: #24221e;
+        --roble: #2a2824;
+        --nogal-3: #2a2824;
+        --cedro: #33302b;
+        --cedro-rgb: 51,48,43;
+        --siena: #b89572;
+        --siena-claro: #b89572;
+        --ambar: #c9a680;
+        --ambar-claro: #c9a680;
+        --madera-rgb: 184,149,114;
+        --crema: #ddd8ce;
+        --crema-rgb: 221,216,206;
+        --crema2: #c9c3b8;
+        --crema-2: #c9c3b8;
+        --crema-suave: #c9c3b8;
+        --blanco: #ece8df;
+        --gris-tex: #9a9488;
+        --crema-dim: #9a9488;
+        --borde-rgb: 154,148,136;
+        --linea: #3a3732;
+        --ambar-dim: #6b5a47;
+        --verde-musgo: #8fa67a;
+        --verde: #8fa67a;
+        --verde-rgb: 143,166,122;
+        --azul: #9db2c0;
+        --azul-rgb: 157,178,192;
+        --pie: #2b363d;
+        --pie-tinta: #dfe4e6;
+        --pie-suave: #93a3ad;
+        --error: #e07a6e;
+        --sombra-rgb: 0,0,0;
+        --sombra: rgba(0,0,0,0.45);
+        --humo: rgba(221,216,206,0.06);
+      }
     }
 
     /* ── RESET ── */
@@ -41,8 +108,8 @@
       line-height: 1.6;
       min-height: 100vh;
       background-image:
-        radial-gradient(ellipse 80% 60% at 20% 0%, rgba(58,42,20,0.5) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(42,28,12,0.6) 0%, transparent 55%);
+        radial-gradient(ellipse 80% 60% at 20% 0%, rgba(var(--cedro-rgb),0.5) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(var(--cedro-rgb),0.6) 0%, transparent 55%);
     }
 
     /* ── NAV ── */
@@ -51,8 +118,8 @@
       align-items: center;
       gap: 1rem;
       padding: 1.1rem 2rem;
-      border-bottom: 1px solid rgba(212,146,42,0.18);
-      background: rgba(26,18,9,0.85);
+      border-bottom: 1px solid rgba(var(--madera-rgb),0.18);
+      background: rgba(var(--nogal-rgb),0.85);
       backdrop-filter: blur(6px);
       position: sticky;
       top: 0;
@@ -77,7 +144,7 @@
     .nav-sep {
       width: 1px;
       height: 1.1rem;
-      background: rgba(212,146,42,0.25);
+      background: rgba(var(--madera-rgb),0.25);
     }
 
     .nav-title {
@@ -140,7 +207,7 @@
     /* ── FORMULA BOX ── */
     .formula-box {
       background: var(--nogal-mid);
-      border: 1px solid rgba(212,146,42,0.2);
+      border: 1px solid rgba(var(--madera-rgb),0.2);
       border-left: 3px solid var(--ambar);
       border-radius: var(--radio);
       padding: 1rem 1.4rem;
@@ -164,14 +231,14 @@
     }
     .formula-box .formula-note {
       font-size: 0.72rem;
-      color: rgba(240,230,204,0.5);
+      color: rgba(var(--crema-rgb),0.5);
       margin-top: 0.2rem;
     }
 
     /* ── CARD ── */
     .card {
       background: var(--nogal-mid);
-      border: 1px solid rgba(212,146,42,0.15);
+      border: 1px solid rgba(var(--madera-rgb),0.15);
       border-radius: var(--radio-lg);
       padding: 1.8rem 2rem;
       margin-bottom: 1.5rem;
@@ -183,7 +250,7 @@
       color: var(--crema);
       margin-bottom: 1.4rem;
       padding-bottom: 0.7rem;
-      border-bottom: 1px solid rgba(212,146,42,0.15);
+      border-bottom: 1px solid rgba(var(--madera-rgb),0.15);
       display: flex;
       align-items: center;
       gap: 0.6rem;
@@ -194,7 +261,7 @@
       justify-content: center;
       width: 28px;
       height: 28px;
-      background: rgba(212,146,42,0.12);
+      background: rgba(var(--madera-rgb),0.12);
       border-radius: 4px;
       color: var(--ambar);
       font-size: 0.95rem;
@@ -217,8 +284,8 @@
     }
     .toggle-pills {
       display: flex;
-      background: rgba(0,0,0,0.3);
-      border: 1px solid rgba(212,146,42,0.15);
+      background: rgba(var(--sombra-rgb),0.3);
+      border: 1px solid rgba(var(--madera-rgb),0.15);
       border-radius: 100px;
       padding: 3px;
       gap: 2px;
@@ -231,7 +298,7 @@
       border-radius: 100px;
       border: none;
       background: transparent;
-      color: rgba(240,230,204,0.5);
+      color: rgba(var(--crema-rgb),0.5);
       cursor: pointer;
       transition: background 0.18s, color 0.18s;
       letter-spacing: 0.04em;
@@ -277,7 +344,7 @@
     input[type="number"], input[type="text"] {
       width: 100%;
       background: var(--cedro);
-      border: 1px solid rgba(212,146,42,0.25);
+      border: 1px solid rgba(var(--madera-rgb),0.25);
       border-radius: var(--radio);
       padding: 0.7rem 2.8rem 0.7rem 0.9rem;
       font-family: 'IBM Plex Mono', monospace;
@@ -293,9 +360,9 @@
     input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; }
     input[type="number"]:focus, input[type="text"]:focus {
       border-color: var(--ambar);
-      background: rgba(58,42,20,0.9);
+      background: rgba(var(--cedro-rgb),0.9);
     }
-    input::placeholder { color: rgba(240,230,204,0.25); }
+    input::placeholder { color: rgba(var(--crema-rgb),0.25); }
 
     .input-unit {
       position: absolute;
@@ -304,7 +371,7 @@
       transform: translateY(-50%);
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.7rem;
-      color: rgba(212,146,42,0.6);
+      color: rgba(var(--madera-rgb),0.6);
       pointer-events: none;
     }
 
@@ -337,7 +404,7 @@
     }
     .preset-btn {
       background: var(--cedro);
-      border: 1px solid rgba(212,146,42,0.2);
+      border: 1px solid rgba(var(--madera-rgb),0.2);
       border-radius: var(--radio);
       padding: 0.65rem 0.9rem;
       text-align: left;
@@ -347,7 +414,7 @@
     }
     .preset-btn:hover {
       border-color: var(--ambar);
-      background: rgba(58,42,20,0.85);
+      background: rgba(var(--cedro-rgb),0.85);
     }
     .preset-btn .preset-name {
       font-family: 'Crimson Pro', serif;
@@ -376,7 +443,7 @@
       font-family: 'Fraunces', serif;
       font-size: 1.05rem;
       font-weight: 600;
-      color: var(--blanco);
+      color: var(--nogal);
       cursor: pointer;
       letter-spacing: 0.02em;
       transition: background 0.2s, transform 0.1s;
@@ -387,7 +454,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(255,255,255,0);
+      background: rgba(var(--crema-rgb),0);
       transition: background 0.2s;
     }
     .btn-calcular:hover { background: var(--siena-claro); }
@@ -396,7 +463,7 @@
     /* ── RESULTADO ── */
     .resultado-panel {
       background: var(--cedro);
-      border: 1px solid rgba(212,146,42,0.25);
+      border: 1px solid rgba(var(--madera-rgb),0.25);
       border-radius: var(--radio-lg);
       padding: 1.8rem 2rem;
       margin-top: 1.5rem;
@@ -420,7 +487,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(240,230,204,0.55);
+      color: rgba(var(--crema-rgb),0.55);
     }
     .resultado-item .r-value {
       font-family: 'Fraunces', serif;
@@ -444,16 +511,16 @@
     .resultado-desglose {
       margin-top: 1.2rem;
       padding-top: 1rem;
-      border-top: 1px solid rgba(212,146,42,0.15);
+      border-top: 1px solid rgba(var(--madera-rgb),0.15);
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.73rem;
-      color: rgba(240,230,204,0.45);
+      color: rgba(var(--crema-rgb),0.45);
       line-height: 1.9;
     }
 
     .error-msg {
-      background: rgba(160,82,45,0.2);
-      border: 1px solid rgba(160,82,45,0.4);
+      background: rgba(var(--madera-rgb),0.2);
+      border: 1px solid rgba(var(--madera-rgb),0.4);
       border-radius: var(--radio);
       padding: 0.7rem 1rem;
       font-family: 'IBM Plex Mono', monospace;
@@ -466,8 +533,8 @@
 
     /* ── INFO BOX ── */
     .info-box {
-      background: rgba(26,18,9,0.6);
-      border: 1px solid rgba(212,146,42,0.12);
+      background: rgba(var(--nogal-rgb),0.6);
+      border: 1px solid rgba(var(--madera-rgb),0.12);
       border-radius: var(--radio);
       padding: 1.2rem 1.4rem;
       margin-top: 1.5rem;
@@ -487,8 +554,8 @@
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.68rem;
       letter-spacing: 0.06em;
-      color: rgba(240,230,204,0.2);
-      border-top: 1px solid rgba(212,146,42,0.08);
+      color: rgba(var(--crema-rgb),0.2);
+      border-top: 1px solid rgba(var(--madera-rgb),0.08);
     }
     footer a { color: var(--ambar); text-decoration: none; }
     footer a:hover { color: var(--ambar-claro); }
@@ -499,7 +566,7 @@
       align-items: center;
       gap: 1rem;
       margin: 2rem 0;
-      color: rgba(212,146,42,0.2);
+      color: rgba(var(--madera-rgb),0.2);
       font-family: 'IBM Plex Mono', monospace;
       font-size: 0.65rem;
       letter-spacing: 0.12em;
@@ -509,7 +576,7 @@
       content: '';
       flex: 1;
       height: 1px;
-      background: rgba(212,146,42,0.12);
+      background: rgba(var(--madera-rgb),0.12);
     }
   </style>
 </head>

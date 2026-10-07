@@ -9,16 +9,90 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ambar:#e8a43a;
-    --siena:#c47a2a;
-    --crema:#f5edd8;
-    --nogal:#1a1209;
-    --crema-dim:#b8a896;
-    --font-titular:'Fraunces', Georgia, serif;
-    --font-cuerpo:'Crimson Pro', Georgia, serif;
-    --font-mono:'IBM Plex Mono', monospace;
-  }
+  :root {
+      color-scheme: light;
+      --nogal: #e9e7e1;
+      --nogal-rgb: 233,231,225;
+      --nogal-mid: #e4e1da;
+      --nogal-2: #e4e1da;
+      --roble: #dfdcd4;
+      --nogal-3: #dfdcd4;
+      --cedro: #d6d2c9;
+      --cedro-rgb: 214,210,201;
+      --siena: #7b5d3f;
+      --siena-claro: #7b5d3f;
+      --ambar: #6b5138;
+      --ambar-claro: #6b5138;
+      --madera-rgb: 123,93,63;
+      --crema: #2b2926;
+      --crema-rgb: 43,41,38;
+      --crema2: #45423d;
+      --crema-2: #45423d;
+      --crema-suave: #45423d;
+      --blanco: #1f1d1b;
+      --gris-tex: #6a655d;
+      --crema-dim: #6a655d;
+      --borde-rgb: 106,101,93;
+      --linea: #cfcbc2;
+      --ambar-dim: #a8937c;
+      --verde-musgo: #55663f;
+      --verde: #55663f;
+      --verde-rgb: 85,102,63;
+      --azul: #4f6676;
+      --azul-rgb: 79,102,118;
+      --pie: #4a5c69;
+      --pie-tinta: #e7eaeb;
+      --pie-suave: #b9c4cb;
+      --error: #a8443a;
+      --sombra-rgb: 43,41,38;
+      --sombra: rgba(43,41,38,0.16);
+      --humo: rgba(43,41,38,0.05);
+      --font-titular: 'Fraunces', Georgia, serif;
+      --font-cuerpo: 'Crimson Pro', Georgia, serif;
+      --font-mono: 'IBM Plex Mono', monospace;
+    }
+    /* Variante oscura: se activa sola si el visitante navega en modo oscuro */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --nogal: #1f1d1a;
+        --nogal-rgb: 31,29,26;
+        --nogal-mid: #24221e;
+        --nogal-2: #24221e;
+        --roble: #2a2824;
+        --nogal-3: #2a2824;
+        --cedro: #33302b;
+        --cedro-rgb: 51,48,43;
+        --siena: #b89572;
+        --siena-claro: #b89572;
+        --ambar: #c9a680;
+        --ambar-claro: #c9a680;
+        --madera-rgb: 184,149,114;
+        --crema: #ddd8ce;
+        --crema-rgb: 221,216,206;
+        --crema2: #c9c3b8;
+        --crema-2: #c9c3b8;
+        --crema-suave: #c9c3b8;
+        --blanco: #ece8df;
+        --gris-tex: #9a9488;
+        --crema-dim: #9a9488;
+        --borde-rgb: 154,148,136;
+        --linea: #3a3732;
+        --ambar-dim: #6b5a47;
+        --verde-musgo: #8fa67a;
+        --verde: #8fa67a;
+        --verde-rgb: 143,166,122;
+        --azul: #9db2c0;
+        --azul-rgb: 157,178,192;
+        --pie: #2b363d;
+        --pie-tinta: #dfe4e6;
+        --pie-suave: #93a3ad;
+        --error: #e07a6e;
+        --sombra-rgb: 0,0,0;
+        --sombra: rgba(0,0,0,0.45);
+        --humo: rgba(221,216,206,0.06);
+      }
+    }
   *,*::before,*::after{ box-sizing:border-box; }
   body{
     margin:0;
@@ -28,14 +102,14 @@
     font-size:1.15rem;
     line-height:1.65;
   }
-  a{ color:var(--ambar); text-decoration:none; border-bottom:1px solid rgba(232,164,58,0.35); }
+  a{ color:var(--ambar); text-decoration:none; border-bottom:1px solid rgba(var(--madera-rgb),0.35); }
   a:hover{ border-bottom-color:var(--ambar); }
 
   header.tm-hero{
     padding:4rem 1.5rem 3rem;
     max-width:760px;
     margin:0 auto;
-    border-bottom:1px solid rgba(245,237,216,0.12);
+    border-bottom:1px solid rgba(var(--crema-rgb),0.12);
   }
   .tm-kicker{
     font-family:var(--font-mono);
@@ -71,13 +145,13 @@
     color:var(--siena);
     margin:3rem 0 1.2rem;
     padding-top:1.5rem;
-    border-top:1px solid rgba(245,237,216,0.12);
+    border-top:1px solid rgba(var(--crema-rgb),0.12);
   }
   .tm-section-label:first-of-type{ border-top:none; padding-top:0; margin-top:2rem; }
 
   article.tm-perfil{
     padding:1.6rem 0;
-    border-bottom:1px solid rgba(245,237,216,0.08);
+    border-bottom:1px solid rgba(var(--crema-rgb),0.08);
   }
   article.tm-perfil:last-child{ border-bottom:none; }
 
@@ -103,7 +177,7 @@
     font-family:var(--font-mono);
     font-size:0.85rem;
     margin-top:0.4rem;
-    border-bottom:1px dashed rgba(232,164,58,0.5);
+    border-bottom:1px dashed rgba(var(--madera-rgb),0.5);
   }
 
   footer.tm-footer{
@@ -112,10 +186,10 @@
     padding:2rem 1.5rem 4rem;
     font-family:var(--font-mono);
     font-size:0.85rem;
-    color:rgba(245,237,216,0.6);
-    border-top:1px solid rgba(245,237,216,0.12);
+    color:rgba(var(--crema-rgb),0.6);
+    border-top:1px solid rgba(var(--crema-rgb),0.12);
   }
-  footer.tm-footer a{ color:rgba(245,237,216,0.75); }
+  footer.tm-footer a{ color:rgba(var(--crema-rgb),0.75); }
 
   @media (max-width:900px){
     body{ font-size:1.05rem; }

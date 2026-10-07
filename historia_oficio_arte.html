@@ -14,19 +14,90 @@
        VARIABLES Y RESET
     ============================================= */
     :root {
-      --nogal:   #1a1209;
-      --nogal-2: #221808;
-      --nogal-3: #2e2010;
-      --siena:   #c47a2a;
-      --ambar:   #e8a43a;
-      --crema:   #f5edd8;
-      --crema-2: #ede0c4;
-      --humo:    rgba(245,237,216,0.06);
+      color-scheme: light;
+      --nogal: #e9e7e1;
+      --nogal-rgb: 233,231,225;
+      --nogal-mid: #e4e1da;
+      --nogal-2: #e4e1da;
+      --roble: #dfdcd4;
+      --nogal-3: #dfdcd4;
+      --cedro: #d6d2c9;
+      --cedro-rgb: 214,210,201;
+      --siena: #7b5d3f;
+      --siena-claro: #7b5d3f;
+      --ambar: #6b5138;
+      --ambar-claro: #6b5138;
+      --madera-rgb: 123,93,63;
+      --crema: #2b2926;
+      --crema-rgb: 43,41,38;
+      --crema2: #45423d;
+      --crema-2: #45423d;
+      --crema-suave: #45423d;
+      --blanco: #1f1d1b;
+      --gris-tex: #6a655d;
+      --crema-dim: #6a655d;
+      --borde-rgb: 106,101,93;
+      --linea: #cfcbc2;
+      --ambar-dim: #a8937c;
+      --verde-musgo: #55663f;
+      --verde: #55663f;
+      --verde-rgb: 85,102,63;
+      --azul: #4f6676;
+      --azul-rgb: 79,102,118;
+      --pie: #4a5c69;
+      --pie-tinta: #e7eaeb;
+      --pie-suave: #b9c4cb;
+      --error: #a8443a;
+      --sombra-rgb: 43,41,38;
+      --sombra: rgba(43,41,38,0.16);
+      --humo: rgba(43,41,38,0.05);
       --font-display: 'Fraunces', Georgia, serif;
-      --font-body:    'Crimson Pro', Georgia, serif;
-      --font-mono:    'IBM Plex Mono', monospace;
+      --font-body: 'Crimson Pro', Georgia, serif;
+      --font-mono: 'IBM Plex Mono', monospace;
       --max-w: 820px;
       --gap: clamp(2rem, 5vw, 4rem);
+    }
+    /* Variante oscura: se activa sola si el visitante navega en modo oscuro */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --nogal: #1f1d1a;
+        --nogal-rgb: 31,29,26;
+        --nogal-mid: #24221e;
+        --nogal-2: #24221e;
+        --roble: #2a2824;
+        --nogal-3: #2a2824;
+        --cedro: #33302b;
+        --cedro-rgb: 51,48,43;
+        --siena: #b89572;
+        --siena-claro: #b89572;
+        --ambar: #c9a680;
+        --ambar-claro: #c9a680;
+        --madera-rgb: 184,149,114;
+        --crema: #ddd8ce;
+        --crema-rgb: 221,216,206;
+        --crema2: #c9c3b8;
+        --crema-2: #c9c3b8;
+        --crema-suave: #c9c3b8;
+        --blanco: #ece8df;
+        --gris-tex: #9a9488;
+        --crema-dim: #9a9488;
+        --borde-rgb: 154,148,136;
+        --linea: #3a3732;
+        --ambar-dim: #6b5a47;
+        --verde-musgo: #8fa67a;
+        --verde: #8fa67a;
+        --verde-rgb: 143,166,122;
+        --azul: #9db2c0;
+        --azul-rgb: 157,178,192;
+        --pie: #2b363d;
+        --pie-tinta: #dfe4e6;
+        --pie-suave: #93a3ad;
+        --error: #e07a6e;
+        --sombra-rgb: 0,0,0;
+        --sombra: rgba(0,0,0,0.45);
+        --humo: rgba(221,216,206,0.06);
+      }
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -65,9 +136,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(26,18,9,0.85);
+      background: rgba(var(--nogal-rgb),0.85);
       backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(196,122,42,0.15);
+      border-bottom: 1px solid rgba(var(--madera-rgb),0.15);
     }
 
     .nav-logo {
@@ -211,7 +282,7 @@
       border-left: 3px solid var(--siena);
       padding: 1.2rem 1.8rem;
       margin: 2.5rem 0;
-      background: rgba(196,122,42,0.05);
+      background: rgba(var(--madera-rgb),0.05);
       font-family: var(--font-display);
       font-size: clamp(1.15rem, 2.2vw, 1.5rem);
       font-style: italic;
@@ -236,7 +307,7 @@
       max-width: var(--max-w);
       margin: 0 auto;
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(196,122,42,0.3), transparent);
+      background: linear-gradient(to right, transparent, rgba(var(--madera-rgb),0.3), transparent);
     }
 
     /* =============================================
@@ -283,8 +354,8 @@
     }
 
     .tl-panel-content {
-      background: rgba(196,122,42,0.08);
-      border: 1px solid rgba(196,122,42,0.2);
+      background: rgba(var(--madera-rgb),0.08);
+      border: 1px solid rgba(var(--madera-rgb),0.2);
       border-radius: 2px;
       padding: 1.5rem 2rem;
       animation: fadeUp 0.35s forwards;
@@ -338,7 +409,7 @@
 
     .buho-card {
       background: var(--nogal-3);
-      border: 1px solid rgba(196,122,42,0.18);
+      border: 1px solid rgba(var(--madera-rgb),0.18);
       padding: 1.4rem 1rem;
       text-align: center;
       position: relative;
@@ -376,7 +447,7 @@
 
     .buho-sub {
       font-size: 0.78rem;
-      color: rgba(245,237,216,0.45);
+      color: rgba(var(--crema-rgb),0.45);
       margin-top: 0.3rem;
       font-style: italic;
     }
@@ -385,8 +456,8 @@
        BLOQUE KANT
     ============================================= */
     .kant-block {
-      background: linear-gradient(135deg, rgba(196,122,42,0.07), transparent);
-      border: 1px solid rgba(196,122,42,0.2);
+      background: linear-gradient(135deg, rgba(var(--madera-rgb),0.07), transparent);
+      border: 1px solid rgba(var(--madera-rgb),0.2);
       padding: 2.5rem;
       margin: 2.5rem 0;
       position: relative;
@@ -417,7 +488,7 @@
        NOTAS AL PIE / ATRIBUCIÓN
     ============================================= */
     .fuentes {
-      border-top: 1px solid rgba(196,122,42,0.2);
+      border-top: 1px solid rgba(var(--madera-rgb),0.2);
       padding: 3rem 2rem;
       max-width: var(--max-w);
       margin: 0 auto;
@@ -434,7 +505,7 @@
 
     .fuente-item {
       font-size: 0.88rem;
-      color: rgba(245,237,216,0.55);
+      color: rgba(var(--crema-rgb),0.55);
       margin-bottom: 0.7rem;
       line-height: 1.5;
       font-family: var(--font-body);
@@ -453,10 +524,10 @@
     .atribucion {
       margin-top: 2rem;
       padding: 1.5rem;
-      background: rgba(196,122,42,0.06);
+      background: rgba(var(--madera-rgb),0.06);
       border-left: 2px solid var(--siena);
       font-size: 0.85rem;
-      color: rgba(245,237,216,0.5);
+      color: rgba(var(--crema-rgb),0.5);
       line-height: 1.65;
       font-style: italic;
     }
@@ -473,7 +544,7 @@
 
     .campo-card {
       background: var(--nogal-3);
-      border: 1px solid rgba(196,122,42,0.15);
+      border: 1px solid rgba(var(--madera-rgb),0.15);
       padding: 1.6rem 1.4rem;
       position: relative;
     }
@@ -498,7 +569,7 @@
 
     .campo-card p {
       font-size: 0.9rem;
-      color: rgba(245,237,216,0.6);
+      color: rgba(var(--crema-rgb),0.6);
       margin-bottom: 0;
       line-height: 1.55;
     }
@@ -508,7 +579,7 @@
       font-size: 0.58rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(196,122,42,0.5);
+      color: rgba(var(--madera-rgb),0.5);
       margin-top: 0.8rem;
       display: block;
     }
@@ -516,8 +587,8 @@
     .entrevista-block {
       margin: 2.5rem 0;
       padding: 2rem;
-      background: rgba(30,22,12,0.5);
-      border-left: 2px solid rgba(196,122,42,0.3);
+      background: rgba(var(--cedro-rgb),0.5);
+      border-left: 2px solid rgba(var(--madera-rgb),0.3);
       position: relative;
     }
 
@@ -548,7 +619,7 @@
     .entrevista-cita {
       border-left: none;
       padding: 0.8rem 1.4rem;
-      background: rgba(196,122,42,0.05);
+      background: rgba(var(--madera-rgb),0.05);
       margin: 1.2rem 0;
       font-family: var(--font-display);
       font-size: 1.05rem;
@@ -562,7 +633,7 @@
       font-family: var(--font-mono);
       font-size: 0.65rem;
       letter-spacing: 0.12em;
-      color: rgba(196,122,42,0.45);
+      color: rgba(var(--madera-rgb),0.45);
       margin-bottom: 1.5rem;
       text-transform: uppercase;
     }
@@ -577,7 +648,7 @@
     footer {
       text-align: center;
       padding: 2.5rem 2rem;
-      border-top: 1px solid rgba(196,122,42,0.1);
+      border-top: 1px solid rgba(var(--madera-rgb),0.1);
       position: relative;
       z-index: 1;
     }
@@ -593,7 +664,7 @@
       font-family: var(--font-mono);
       font-size: 0.62rem;
       letter-spacing: 0.1em;
-      color: rgba(196,122,42,0.4);
+      color: rgba(var(--madera-rgb),0.4);
       margin-top: 0.5rem;
       text-transform: uppercase;
     }
@@ -622,6 +693,20 @@
       nav .nav-tag { display: none; }
       .kant-block { padding: 1.8rem 1.5rem; }
     }
+  
+    /* Colores de los SVG en línea: los atributos no aceptan variables, se pisan desde acá */
+    [fill="#1a1209"] { fill: var(--nogal); }
+    [stroke="#1a1209"] { stroke: var(--nogal); }
+    [stop-color="#1a1209"] { stop-color: var(--nogal); }
+    [fill="#c47a2a"] { fill: var(--siena); }
+    [stroke="#c47a2a"] { stroke: var(--siena); }
+    [stop-color="#c47a2a"] { stop-color: var(--siena); }
+    [fill="#e8a43a"] { fill: var(--ambar); }
+    [stroke="#e8a43a"] { stroke: var(--ambar); }
+    [stop-color="#e8a43a"] { stop-color: var(--ambar); }
+    [fill="#f5edd8"] { fill: var(--crema); }
+    [stroke="#f5edd8"] { stroke: var(--crema); }
+    [stop-color="#f5edd8"] { stop-color: var(--crema); }
   </style>
 </head>
 
@@ -859,7 +944,7 @@
           <p class="buho-price">Mercado local</p>
           <p class="buho-sub">objeto popular</p>
         </div>
-        <div class="buho-card" style="border-color:rgba(232,164,58,0.4);">
+        <div class="buho-card" style="border-color:rgba(var(--madera-rgb),0.4);">
           <span class="buho-icon">🦉</span>
           <p class="buho-name">Pablo Picasso</p>
           <span class="buho-label">Artista institucional</span>
