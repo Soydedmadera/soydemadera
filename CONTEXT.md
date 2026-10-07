@@ -11,7 +11,7 @@
 - **Frontend:** HTML estático puro (sin frameworks). CSS vanilla + JS vanilla.
 - **Hosting:** Cloudflare Pages (migrado desde Netlify el 25/03/2026). Deploy automático por push a `main`.
 - **Dominio:** soydemadera.com — registrado en Namecheap, DNS en Cloudflare
-- **Repo:** https://github.com/Soydedmadera/soydemadera (rama `main`, única rama)
+- **Repo:** https://github.com/Soydedmadera/soydemadera (rama publicada: `main`; quedan ramas de trabajo ya integradas: `claude/biblioteca-agenda`, `claude/paleta-apagada`, `correcciones-lucas-diccionario`)
 - **Biblioteca · estante Archivo:** Google Sheets + Apps Script (constante `AST_SCRIPT` en `index.html`)
 - **Backend IA (sin integrar):** FastAPI + Python + Anthropic API (carpeta `backend/`)
 - **Máquina de Abel:** Windows, Git Bash y PowerShell. Sin Python3 ni Node.js; `sed` no es confiable por los finales de línea CRLF.
