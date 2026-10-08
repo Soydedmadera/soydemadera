@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taller digital — Soy de Madera</title>
+  <meta name="description" content="Cuatro herramientas para el taller: movimiento de la madera según especie y humedad, ensambles explicados, despiece de tableros con kerf y glosario español, inglés y lituano." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS (mismos que index.html) ── */
+    :root {
+      color-scheme: light;
+      --nogal: #e9e7e1;
+      --nogal-rgb: 233,231,225;
+      --nogal-mid: #e4e1da;
+      --roble: #dfdcd4;
+      --cedro: #d6d2c9;
+      --cedro-rgb: 214,210,201;
+      --siena: #7b5d3f;
+      --ambar: #6b5138;
+      --madera-rgb: 123,93,63;
+      --crema: #2b2926;
+      --crema-rgb: 43,41,38;
+      --crema-suave: #45423d;
+      --blanco: #1f1d1b;
+      --crema-dim: #6a655d;
+      --linea: #cfcbc2;
+      --ambar-dim: #a8937c;
+      --verde: #55663f;
+      --azul: #4f6676;
+      --azul-rgb: 79,102,118;
+      --pie: #4a5c69;
+      --pie-tinta: #e7eaeb;
+      --pie-suave: #b9c4cb;
+      --error: #a8443a;
+      --radio: 6px;
+      --radio-lg: 10px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --nogal: #1f1d1a;
+        --nogal-rgb: 31,29,26;
+        --nogal-mid: #24221e;
+        --roble: #2a2824;
+        --cedro: #33302b;
+        --cedro-rgb: 51,48,43;
+        --siena: #b89572;
+        --ambar: #c9a680;
+        --madera-rgb: 184,149,114;
+        --crema: #ddd8ce;
+        --crema-rgb: 221,216,206;
+        --crema-suave: #c9c3b8;
+        --blanco: #ece8df;
+        --crema-dim: #9a9488;
+        --linea: #3a3732;
+        --ambar-dim: #6b5a47;
+        --verde: #8fa67a;
+        --azul: #9db2c0;
+        --azul-rgb: 157,178,192;
+        --pie: #2b363d;
+        --pie-tinta: #dfe4e6;
+        --pie-suave: #93a3ad;
+        --error: #e07a6e;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body {
+      background: var(--nogal);
+      color: var(--crema);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 1.12rem;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a { color: var(--azul); }
+    a:hover { color: var(--siena); }
+    .mono { font-family: 'IBM Plex Mono', monospace; }
+
+    /* ── NAV ── */
+    nav.top {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--linea);
+      background: rgba(var(--nogal-rgb),0.92);
+      position: sticky; top: 0; z-index: 50;
+    }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: .45rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: .76rem; letter-spacing: .04em;
+      color: var(--azul); text-decoration: none;
+    }
+    .nav-back svg { width: 15px; height: 15px; }
+    .nav-sep { width: 1px; height: 1.1rem; background: var(--linea); }
+    .nav-title { font-family: 'Fraunces', Georgia, serif; font-size: .9rem; font-weight: 300; color: var(--crema-suave); }
+
+    main { max-width: 960px; margin: 0 auto; padding: 2.8rem 1.5rem 4rem; }
+
+    /* ── ENCABEZADO ── */
+    .page-header { margin-bottom: 2rem; max-width: 640px; }
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--siena); margin-bottom: .6rem;
+    }
+    h1 {
+      font-family: 'Fraunces', Georgia, serif; font-weight: 600;
+      font-size: clamp(2rem, 5vw, 3rem); line-height: 1.1; color: var(--blanco);
+      margin-bottom: .8rem; text-wrap: balance;
+    }
+    .page-header p { color: var(--crema-suave); }
+
+    /* ── PESTAÑAS ── */
+    .tabs {
+      display: flex; flex-wrap: wrap; gap: .25rem;
+      border-bottom: 1px solid var(--linea); margin-bottom: 2rem;
+    }
+    .tab {
+      font-family: 'IBM Plex Mono', monospace; font-size: .8rem; letter-spacing: .03em;
+      background: none; border: none; border-bottom: 2px solid transparent;
+      color: var(--crema-dim); padding: .7rem .9rem; cursor: pointer; margin-bottom: -1px;
+    }
+    .tab:hover { color: var(--crema); }
+    .tab[aria-selected="true"] { color: var(--crema); border-bottom-color: var(--siena); }
+    .tab:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 2px solid var(--azul); outline-offset: 2px;
+    }
+    .panel[hidden] { display: none; }
+
+    h2 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 1.5rem; color: var(--blanco); margin-bottom: .4rem; }
+    h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 600; font-size: 1.12rem; color: var(--crema); margin-bottom: .3rem; }
+    .lead { color: var(--crema-suave); max-width: 640px; margin-bottom: 1.6rem; }
+
+    /* ── CAMPOS ── */
+    .grid { display: grid; gap: 1.5rem; }
+    .grid-2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); }
+    .controls { display: flex; flex-direction: column; gap: 1rem; }
+    .field { display: flex; flex-direction: column; gap: .35rem; }
+    label, .label {
+      font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--crema-dim);
+    }
+    input[type="number"], input[type="text"], input[type="search"], select {
+      font-family: 'IBM Plex Mono', monospace; font-size: .9rem;
+      background: var(--nogal-mid); color: var(--crema);
+      border: 1px solid var(--linea); border-radius: var(--radio);
+      padding: .55rem .7rem; width: 100%;
+    }
+    .pair { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+    .seg { display: inline-flex; border: 1px solid var(--linea); border-radius: var(--radio); overflow: hidden; }
+    .seg button {
+      font-family: 'IBM Plex Mono', monospace; font-size: .76rem;
+      background: transparent; color: var(--crema-dim); border: none; padding: .5rem .8rem; cursor: pointer;
+    }
+    .seg button + button { border-left: 1px solid var(--linea); }
+    .seg button[aria-pressed="true"] { background: var(--siena); color: var(--nogal); }
+    .hint { font-size: .95rem; color: var(--crema-dim); }
+
+    /* ── RESULTADOS ── */
+    .figure {
+      background: var(--nogal-mid); border: 1px solid var(--linea); border-radius: var(--radio-lg);
+      padding: 1.2rem; min-width: 0;
+    }
+    .readout { display: flex; flex-wrap: wrap; gap: 1.6rem; margin-top: 1rem; }
+    .readout div { min-width: 7rem; }
+    .readout .num {
+      font-family: 'IBM Plex Mono', monospace; font-size: 1.35rem; color: var(--blanco);
+      font-variant-numeric: tabular-nums;
+    }
+    .readout .label { display: block; margin-bottom: .1rem; }
+    .rule {
+      margin-top: 1rem; padding: .8rem 1rem; border-left: 2px solid var(--siena);
+      background: rgba(var(--madera-rgb),0.07); color: var(--crema-suave);
+    }
+    .note { margin-top: .8rem; font-size: .92rem; color: var(--crema-dim); font-style: italic; }
+    svg text { font-family: 'IBM Plex Mono', monospace; }
+
+    /* ── ENSAMBLES ── */
+    .joints { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
+    .joint { border: 1px solid var(--linea); border-radius: var(--radio-lg); padding: 1.1rem; background: var(--nogal-mid); min-width: 0; }
+    .joint svg { width: 100%; height: auto; display: block; margin: .3rem 0 .8rem; }
+    .joint dl { display: grid; grid-template-columns: auto minmax(0,1fr); gap: .25rem .7rem; font-size: 1rem; }
+    .joint dt { font-family: 'IBM Plex Mono', monospace; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--siena); padding-top: .25rem; }
+    .joint dd { color: var(--crema-suave); }
+    .tag { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: .66rem; letter-spacing: .05em; color: var(--azul); border: 1px solid rgba(var(--azul-rgb),.4); border-radius: 100px; padding: .05rem .5rem; margin-left: .3rem; vertical-align: middle; }
+
+    /* ── DESPIECE ── */
+    table.pieces { width: 100%; border-collapse: collapse; font-family: 'IBM Plex Mono', monospace; font-size: .82rem; }
+    table.pieces th { text-align: left; font-weight: 400; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--crema-dim); padding: .3rem .3rem; }
+    table.pieces td { padding: .2rem .3rem; }
+    table.pieces input { padding: .4rem .5rem; font-size: .82rem; }
+    .tbl-wrap { overflow-x: auto; }
+    .btn {
+      font-family: 'IBM Plex Mono', monospace; font-size: .78rem; letter-spacing: .03em;
+      background: transparent; color: var(--azul); border: 1px solid rgba(var(--azul-rgb),.5);
+      border-radius: var(--radio); padding: .45rem .8rem; cursor: pointer;
+    }
+    .btn:hover { background: rgba(var(--azul-rgb),.08); }
+    .btn-x { border: none; color: var(--crema-dim); padding: .3rem .5rem; }
+    .btn-x:hover { color: var(--error); background: none; }
+    .sheets { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+    .sheet svg { width: 100%; height: auto; display: block; }
+    .sheet .cap { font-family: 'IBM Plex Mono', monospace; font-size: .72rem; color: var(--crema-dim); margin-bottom: .3rem; }
+    .warn { color: var(--error); font-size: .98rem; margin-top: .6rem; }
+    .check { display: flex; align-items: flex-start; gap: .5rem; font-family: 'Crimson Pro', Georgia, serif; font-size: 1rem; letter-spacing: 0; text-transform: none; color: var(--crema-suave); }
+    .check input { accent-color: var(--siena); width: 1rem; height: 1rem; margin-top: .3rem; flex-shrink: 0; }
+
+    /* ── GLOSARIO ── */
+    .gl-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: .9rem; margin-top: 1rem; }
+    .gl { border-top: 1px solid var(--linea); padding-top: .6rem; min-width: 0; }
+    .gl .es { font-family: 'Fraunces', Georgia, serif; font-weight: 600; color: var(--blanco); }
+    .gl .en { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; color: var(--siena); }
+    .gl .lt { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; color: var(--azul); }
+    .gl p { font-size: 1rem; color: var(--crema-suave); margin-top: .2rem; }
+
+    footer {
+      text-align: center; padding: 2rem 1.5rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: .7rem; letter-spacing: .05em;
+      color: var(--pie-suave); background: var(--pie);
+    }
+    footer a { color: var(--pie-tinta); }
+
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: minmax(0, 1fr); }
+      nav.top { padding: .9rem 1rem; }
+      main { padding: 2rem 1rem 3rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+
+  <nav class="top">
+    <a href="index.html#herramientas" class="nav-back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+      Herramientas
+    </a>
+    <div class="nav-sep"></div>
+    <span class="nav-title">Taller digital</span>
+  </nav>
+
+  <main>
+    <header class="page-header">
+      <div class="eyebrow">Herramientas para el taller</div>
+      <h1>Taller digital</h1>
+      <p>Cuatro herramientas para resolver en el navegador lo que después se hace con las manos: cuánto se va a mover una tabla, cómo funciona un ensamble, cómo sacar las piezas de un tablero y cómo se llama cada cosa en otro idioma.</p>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label="Herramientas del taller">
+      <button class="tab" role="tab" id="tab-movimiento" aria-controls="panel-movimiento" aria-selected="true">Movimiento de la madera</button>
+      <button class="tab" role="tab" id="tab-ensambles" aria-controls="panel-ensambles" aria-selected="false">Ensambles</button>
+      <button class="tab" role="tab" id="tab-despiece" aria-controls="panel-despiece" aria-selected="false">Despiece</button>
+      <button class="tab" role="tab" id="tab-glosario" aria-controls="panel-glosario" aria-selected="false">Glosario</button>
+    </div>
+
+    <!-- ═══════════ 1. MOVIMIENTO ═══════════ -->
+    <section class="panel" id="panel-movimiento" role="tabpanel" aria-labelledby="tab-movimiento">
+      <h2>Movimiento de la madera</h2>
+      <p class="lead">La madera gana y pierde agua con el ambiente, y al hacerlo cambia de ancho. Cargá la tabla y el cambio de humedad que va a sufrir, y fijate cuánto se mueve y para qué lado se curva.</p>
+
+      <div class="grid grid-2">
+        <div class="controls">
+          <div class="field">
+            <label for="mv-especie">Especie</label>
+            <select id="mv-especie"></select>
+          </div>
+          <div class="field">
+            <label for="mv-ancho">Ancho de la tabla (mm)</label>
+            <input type="number" id="mv-ancho" value="200" min="10" max="1200" step="1" />
+          </div>
+          <div class="pair">
+            <div class="field">
+              <label for="mv-ch1">Humedad hoy (%)</label>
+              <input type="number" id="mv-ch1" value="15" min="0" max="40" step="0.5" />
+            </div>
+            <div class="field">
+              <label for="mv-ch2">Humedad final (%)</label>
+              <input type="number" id="mv-ch2" value="9" min="0" max="40" step="0.5" />
+            </div>
+          </div>
+          <p class="hint">Es el contenido de humedad de la madera, no la humedad del aire. Como referencia, la madera secada en horno suele venderse entre 8 y 12 %, y la estacionada al aire queda bastante más arriba. Por encima de 28 % la madera casi no cambia de medida.</p>
+          <div class="field">
+            <span class="label" id="mv-corte-l">Cómo está cortada</span>
+            <div class="seg" role="group" aria-labelledby="mv-corte-l">
+              <button type="button" data-corte="plano" aria-pressed="true">Corte plano</button>
+              <button type="button" data-corte="radial" aria-pressed="false">Corte radial</button>
+            </div>
+          </div>
+          <div class="field" id="mv-cara-f">
+            <span class="label" id="mv-cara-l">Cara de la corteza</span>
+            <div class="seg" role="group" aria-labelledby="mv-cara-l">
+              <button type="button" data-cara="arriba" aria-pressed="true">Arriba</button>
+              <button type="button" data-cara="abajo" aria-pressed="false">Abajo</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="figure">
+          <svg id="mv-svg" viewBox="0 0 420 210" role="img" aria-label="Sección de la tabla"></svg>
+          <div class="readout">
+            <div><span class="label">Cambio de ancho</span><span class="num" id="mv-delta">—</span></div>
+            <div><span class="label">Ancho final</span><span class="num" id="mv-final">—</span></div>
+            <div><span class="label">Movimiento</span><span class="num" id="mv-rango">—</span></div>
+          </div>
+          <div class="rule" id="mv-regla"></div>
+          <p class="note">La curvatura del dibujo está exagerada para que se vea. Los valores de contracción por especie son aproximados y sirven para comparar especies entre sí; no reemplazan datos de laboratorio.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ 2. ENSAMBLES ═══════════ -->
+    <section class="panel" id="panel-ensambles" role="tabpanel" aria-labelledby="tab-ensambles" hidden>
+      <h2>Ensambles</h2>
+      <p class="lead">Seis uniones para entender antes de cortar: qué pieza entra en cuál, qué esfuerzo aguantan y dónde se usan. Los dibujos muestran las piezas separadas, como si estuvieran por encajar.</p>
+      <div class="joints" id="joints"></div>
+    </section>
+
+    <!-- ═══════════ 3. DESPIECE ═══════════ -->
+    <section class="panel" id="panel-despiece" role="tabpanel" aria-labelledby="tab-despiece" hidden>
+      <h2>Despiece de tableros</h2>
+      <p class="lead">Cargá la medida del tablero y las piezas que necesitás. Calcula cuántos tableros hacen falta y cómo ubicar las piezas, descontando lo que se come la sierra en cada corte.</p>
+
+      <div class="grid grid-2">
+        <div class="controls">
+          <div class="pair">
+            <div class="field">
+              <label for="dp-largo">Largo del tablero (mm)</label>
+              <input type="number" id="dp-largo" value="2440" min="100" step="1" />
+            </div>
+            <div class="field">
+              <label for="dp-ancho">Ancho del tablero (mm)</label>
+              <input type="number" id="dp-ancho" value="1220" min="100" step="1" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="dp-kerf">Kerf, ancho del corte (mm)</label>
+            <input type="number" id="dp-kerf" value="3" min="0" max="10" step="0.5" />
+          </div>
+          <label class="check"><input type="checkbox" id="dp-girar" /> Permitir girar piezas (solo si el material no tiene veta que respetar)</label>
+          <p class="hint">Sin girar, el largo de cada pieza va a lo largo del tablero, en el sentido de la veta.</p>
+        </div>
+
+        <div class="figure">
+          <div class="tbl-wrap">
+            <table class="pieces">
+              <thead><tr><th>Pieza</th><th>Largo</th><th>Ancho</th><th>Cant.</th><th></th></tr></thead>
+              <tbody id="dp-rows"></tbody>
+            </table>
+          </div>
+          <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.7rem;">
+            <button type="button" class="btn" id="dp-add">+ Agregar pieza</button>
+            <button type="button" class="btn" id="dp-ejemplo">Cargar ejemplo</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="figure" style="margin-top:1.5rem;">
+        <div class="readout" style="margin-top:0;">
+          <div><span class="label">Tableros</span><span class="num" id="dp-n">—</span></div>
+          <div><span class="label">Aprovechamiento</span><span class="num" id="dp-ap">—</span></div>
+          <div><span class="label">Piezas ubicadas</span><span class="num" id="dp-ok">—</span></div>
+        </div>
+        <div id="dp-warn"></div>
+        <div class="sheets" id="dp-sheets"></div>
+        <p class="note">El acomodo es por filas, como se corta en una escuadradora: primero cortes a lo ancho, después a lo largo. No es el óptimo matemático, pero es un despiece que se puede ejecutar. El aprovechamiento cuenta solo la superficie de las piezas.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════ 4. GLOSARIO ═══════════ -->
+    <section class="panel" id="panel-glosario" role="tabpanel" aria-labelledby="tab-glosario" hidden>
+      <h2>Glosario del taller</h2>
+      <p class="lead">Los términos que aparecen en estas herramientas, en español, inglés y lituano. El diccionario completo, con 131 términos y pronunciación, está en <a href="diccionario_carpinteria_v2.html">el diccionario técnico</a>.</p>
+      <div class="field" style="max-width:360px;">
+        <label for="gl-q">Buscar en los tres idiomas</label>
+        <input type="search" id="gl-q" placeholder="Ej.: kerf, espiga, veta" />
+      </div>
+      <div class="gl-list" id="gl-list"></div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="index.html">soydemadera.com</a> · Taller digital · uso libre
+  </footer>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ── PESTAÑAS ── */
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+    function abrir(id, foco) {
+      tabs.forEach(function (t) {
+        var on = t.getAttribute('aria-controls') === 'panel-' + id;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+        if (on && foco) t.focus();
+      });
+      if (history.replaceState) history.replaceState(null, '', '#' + id);
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { abrir(t.getAttribute('aria-controls').replace('panel-', '')); });
+      t.addEventListener('keydown', function (e) {
+        var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (d) { var n = tabs[(i + d + tabs.length) % tabs.length]; abrir(n.getAttribute('aria-controls').replace('panel-', ''), true); }
+      });
+    });
+    var PANELES = ['movimiento', 'ensambles', 'despiece', 'glosario'];
+    function desdeHash() {
+      var h = (location.hash || '').replace('#', '');
+      abrir(PANELES.indexOf(h) >= 0 ? h : 'movimiento');
+    }
+    window.addEventListener('hashchange', desdeHash);
+    desdeHash();
+
+    function esc(t) {
+      return String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+    function fmt(n, d) { return n.toLocaleString('es-AR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
+
+    /* ═══════════ 1. MOVIMIENTO ═══════════ */
+    // Contracción total de verde a seco (%), tangencial y radial. Valores aproximados para comparar especies.
+    var ESPECIES = [
+      { id: 'algarrobo', nombre: 'Algarrobo', t: 3.5, r: 2.0 },
+      { id: 'cedro', nombre: 'Cedro misionero', t: 6.0, r: 4.0 },
+      { id: 'lapacho', nombre: 'Lapacho', t: 7.5, r: 6.0 },
+      { id: 'pino', nombre: 'Pino elliottii', t: 7.6, r: 5.1 },
+      { id: 'guatambu', nombre: 'Guatambú', t: 8.5, r: 5.0 },
+      { id: 'eucalipto', nombre: 'Eucalipto grandis', t: 9.5, r: 5.0 }
+    ];
+    var PSF = 28; // punto de saturación de las fibras (%)
+    var sel = document.getElementById('mv-especie');
+    sel.innerHTML = ESPECIES.map(function (e) { return '<option value="' + e.id + '">' + esc(e.nombre) + '</option>'; }).join('');
+    sel.value = 'cedro';
+    var corte = 'plano', cara = 'arriba';
+
+    function segmento(attr, cb) {
+      var btns = document.querySelectorAll('[data-' + attr + ']');
+      Array.prototype.forEach.call(btns, function (b) {
+        b.addEventListener('click', function () {
+          Array.prototype.forEach.call(btns, function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+          cb(b.getAttribute('data-' + attr));
+        });
+      });
+    }
+    segmento('corte', function (v) { corte = v; mover(); });
+    segmento('cara', function (v) { cara = v; mover(); });
+    ['mv-especie', 'mv-ancho', 'mv-ch1', 'mv-ch2'].forEach(function (id) {
+      document.getElementById(id).addEventListener('input', mover);
+    });
+
+    function mover() {
+      var esp = ESPECIES.filter(function (e) { return e.id === sel.value; })[0];
+      var W = Math.max(0, parseFloat(document.getElementById('mv-ancho').value) || 0);
+      var c1 = Math.min(PSF, Math.max(0, parseFloat(document.getElementById('mv-ch1').value) || 0));
+      var c2 = Math.min(PSF, Math.max(0, parseFloat(document.getElementById('mv-ch2').value) || 0));
+      var S = corte === 'plano' ? esp.t : esp.r;
+      var delta = W * (S / 100) * ((c2 - c1) / PSF); // negativo = se achica
+      var Wf = W + delta;
+      document.getElementById('mv-cara-f').style.display = corte === 'plano' ? '' : 'none';
+
+      document.getElementById('mv-delta').textContent = (delta > 0 ? '+' : '') + fmt(delta, 1) + ' mm';
+      document.getElementById('mv-final').textContent = fmt(Wf, 1) + ' mm';
+      var pct = W ? Math.abs(delta) / W * 100 : 0;
+      document.getElementById('mv-rango').textContent = fmt(pct, 2) + ' %';
+
+      var seca = c2 < c1, quieta = Math.abs(c2 - c1) < 0.01;
+      var regla;
+      if (quieta) {
+        regla = 'Sin cambio de humedad, la tabla no se mueve.';
+      } else if (corte === 'radial') {
+        regla = 'En corte radial los anillos quedan casi perpendiculares a las caras. La tabla cambia de ancho menos que en corte plano y prácticamente no se curva: por eso es el corte preferido para piezas que tienen que quedarse quietas.';
+      } else {
+        var concavaArriba = (seca && cara === 'arriba') || (!seca && cara === 'abajo');
+        regla = (seca ? 'Al secarse' : 'Al tomar humedad') + ', la cara de la corteza ' + (seca ? 'se contrae' : 'se hincha') + ' más que la cara del corazón. ' +
+          'La tabla se curva y queda <strong>' + (concavaArriba ? 'cóncava hacia arriba, como una canaleta' : 'convexa hacia arriba, como un lomo') + '</strong>. ' +
+          'En un tablero encolado conviene alternar la cara de la corteza de cada listón, para que las curvaturas se compensen.';
+      }
+      document.getElementById('mv-regla').innerHTML = regla;
+
+      // Dibujo: sección transversal
+      var svg = document.getElementById('mv-svg');
+      var cx = 210, cy = 105, maxW = 340;
+      var esc0 = maxW / Math.max(W, Wf, 1);
+      var w = Wf * esc0, h = 34;
+      var cup = 0;
+      if (corte === 'plano' && !quieta) {
+        cup = Math.min(30, Math.abs(c2 - c1) * (esp.t - esp.r) * 0.9);
+        var conc = (seca && cara === 'arriba') || (!seca && cara === 'abajo');
+        cup = conc ? cup : -cup; // + = extremos para arriba
+      }
+      var x0 = cx - w / 2, x1 = cx + w / 2, top = cy - h / 2, bot = cy + h / 2;
+      var d = 'M' + x0 + ',' + (top - cup) + ' Q' + cx + ',' + (top + cup) + ' ' + x1 + ',' + (top - cup) +
+              ' L' + x1 + ',' + (bot - cup) + ' Q' + cx + ',' + (bot + cup) + ' ' + x0 + ',' + (bot - cup) + ' Z';
+      var anillos = '';
+      if (corte === 'plano') {
+        var sgn = cara === 'arriba' ? 1 : -1; // corteza arriba: corazón abajo
+        for (var k = 0; k < 5; k++) {
+          var r = 46 + k * 9;
+          var pcy = cy + sgn * 64;
+          anillos += '<circle cx="' + cx + '" cy="' + pcy + '" r="' + r + '" />';
+        }
+      } else {
+        for (var j = -3; j <= 3; j++) {
+          var xx = cx + j * w / 8;
+          anillos += '<line x1="' + xx + '" y1="0" x2="' + xx + '" y2="210" />';
+        }
+      }
+      var orig = W * esc0;
+      svg.innerHTML =
+        '<defs><clipPath id="mv-clip"><path d="' + d + '"/></clipPath></defs>' +
+        '<rect x="' + (cx - orig / 2) + '" y="' + top + '" width="' + orig + '" height="' + h + '" fill="none" stroke="var(--crema-dim)" stroke-dasharray="4 4" stroke-width="1"/>' +
+        '<path d="' + d + '" fill="rgba(var(--madera-rgb),0.22)" stroke="var(--siena)" stroke-width="1.5"/>' +
+        '<g clip-path="url(#mv-clip)" fill="none" stroke="var(--siena)" stroke-opacity=".45" stroke-width="1">' + anillos + '</g>' +
+        (corte === 'plano' ? '<text x="' + cx + '" y="' + (cara === 'arriba' ? 26 : 196) + '" text-anchor="middle" font-size="11" fill="var(--crema-dim)">cara de la corteza</text>' : '') +
+        '<text x="' + cx + '" y="' + (cara === 'arriba' || corte === 'radial' ? 196 : 26) + '" text-anchor="middle" font-size="11" fill="var(--crema-dim)">' +
+          (corte === 'plano' ? 'cara del corazón' : 'anillos casi verticales') + '</text>' +
+        '<text x="' + (cx - orig / 2) + '" y="' + (top - 34) + '" font-size="10" fill="var(--crema-dim)">contorno punteado: tabla original</text>';
+    }
+    mover();
+
+    /* ═══════════ 2. ENSAMBLES ═══════════ */
+    var S = 'stroke="var(--siena)" stroke-width="1.5"';
+    var A = 'fill="rgba(var(--madera-rgb),0.18)"';
+    var B = 'fill="rgba(var(--azul-rgb),0.16)"';
+    var H = 'fill="none" stroke="var(--crema-dim)" stroke-dasharray="4 3" stroke-width="1.2"';
+    var ENSAMBLES = [
+      {
+        nombre: 'Caja y espiga', en: 'Mortise and tenon',
+        svg: '<rect x="20" y="60" width="140" height="40" ' + A + ' ' + S + '/><rect x="160" y="70" width="40" height="20" ' + A + ' ' + S + '/>' +
+             '<rect x="230" y="10" width="50" height="140" ' + B + ' ' + S + '/><rect x="230" y="70" width="40" height="20" ' + H + '/>' +
+             '<text x="90" y="125" text-anchor="middle" font-size="10" fill="var(--crema-dim)">travesaño con espiga</text><text x="255" y="165" text-anchor="middle" font-size="10" fill="var(--crema-dim)">pata con caja</text>',
+        entra: 'La espiga, un saliente rectangular en la punta del travesaño, entra en la caja, un hueco del mismo tamaño en la pata.',
+        resiste: 'Esfuerzos en todas las direcciones. Las paredes de la caja impiden que la espiga gire o se doble.',
+        uso: 'Sillas, mesas, marcos de puertas: es la base de la carpintería estructural.',
+        ojo: 'La espiga tiene que entrar justa, sin forzar. Si hay que martillarla, raja la pata.'
+      },
+      {
+        nombre: 'Espiga pasante con cuña', en: 'Wedged through tenon',
+        svg: '<rect x="20" y="70" width="290" height="26" ' + B + ' ' + S + '/><text x="40" y="88" font-size="10" fill="var(--crema-dim)">asiento</text>' +
+             '<rect x="140" y="96" width="50" height="64" ' + A + ' ' + S + '/><rect x="150" y="40" width="30" height="56" ' + A + ' ' + S + '/>' +
+             '<line x1="165" y1="40" x2="165" y2="80" stroke="var(--blanco)" stroke-width="1.5"/>' +
+             '<path d="M159 6 L171 6 L166 34 L164 34 Z" fill="var(--siena)"/><text x="185" y="22" font-size="10" fill="var(--crema-dim)">cuña</text>' +
+             '<text x="200" y="140" font-size="10" fill="var(--crema-dim)">pata</text>',
+        entra: 'La espiga de la pata atraviesa el asiento de lado a lado. Arriba lleva un corte donde se clava una cuña, que abre la espiga y la traba.',
+        resiste: 'Que la pata se salga o afloje con el uso. La cuña trabaja aunque la cola se seque o falle.',
+        uso: 'Banquetas, bancos de trabajo, sillas rústicas.',
+        ojo: 'La cuña va cruzada a la veta del asiento, no a favor: si no, lo raja.'
+      },
+      {
+        nombre: 'Cola de milano', en: 'Dovetail joint',
+        svg: '<path d="M20 20 H150 V40 H130 L120 70 H150 V90 H120 L130 120 H150 V140 H20 Z" ' + A + ' ' + S + '/>' +
+             '<path d="M190 20 H200 V40 H220 L230 70 H200 V90 H230 L220 120 H200 V140 H190 Z" transform="translate(40,0)" ' + B + ' ' + S + '/>' +
+             '<path d="M240 40 L260 40 L270 70 L240 70 Z M240 90 L270 90 L260 120 L240 120 Z" ' + B + ' ' + S + '/>' +
+             '<text x="85" y="160" text-anchor="middle" font-size="10" fill="var(--crema-dim)">colas</text><text x="245" y="160" text-anchor="middle" font-size="10" fill="var(--crema-dim)">pasadores</text>',
+        entra: 'Las colas, en forma de trapecio, entran entre los pasadores de la otra pieza. Encajan en un solo sentido.',
+        resiste: 'La tracción: una vez armada, no se puede separar tirando, aun sin cola.',
+        uso: 'Cajones, cajas, cuerpos de muebles finos.',
+        ojo: 'Se traza con gramil y falsa escuadra, y se corta del lado de afuera de la línea.'
+      },
+      {
+        nombre: 'Media madera', en: 'Lap joint',
+        svg: '<path d="M20 50 H140 V75 H200 V100 H20 Z" ' + A + ' ' + S + '/>' +
+             '<path d="M150 20 H280 V70 H220 V45 H150 Z" transform="translate(0,60)" ' + B + ' ' + S + '/>' +
+             '<text x="80" y="40" font-size="10" fill="var(--crema-dim)">cada pieza pierde medio espesor</text>',
+        entra: 'Las dos piezas se rebajan a la mitad del espesor en la zona de cruce y se superponen.',
+        resiste: 'Bien la carga de costado; poco la tracción si no lleva cola o tornillos.',
+        uso: 'Bastidores, cruces de travesaños, estructuras de taller.',
+        ojo: 'Los dos rebajes tienen que sumar exactamente el espesor, o la unión queda escalonada.'
+      },
+      {
+        nombre: 'Lengüeta', en: 'Spline',
+        svg: '<rect x="20" y="55" width="120" height="50" ' + A + ' ' + S + '/><rect x="200" y="55" width="120" height="50" ' + A + ' ' + S + '/>' +
+             '<rect x="130" y="74" width="10" height="12" fill="var(--nogal)" ' + S + '/><rect x="200" y="74" width="10" height="12" fill="var(--nogal)" ' + S + '/>' +
+             '<rect x="155" y="75" width="30" height="10" ' + B + ' ' + S + '/><text x="170" y="65" text-anchor="middle" font-size="10" fill="var(--crema-dim)">lengüeta</text>',
+        entra: 'Las dos piezas llevan una ranura enfrentada en el canto. Una tira delgada, la lengüeta, entra en las dos.',
+        resiste: 'Mantiene las caras alineadas y suma superficie de encolado.',
+        uso: 'Tableros de varias tablas, ingletes de marcos.',
+        ojo: 'La lengüeta rinde más si la veta cruza la unión, no si corre a lo largo.'
+      },
+      {
+        nombre: 'Unión con tarugos', en: 'Dowel joint',
+        svg: '<rect x="20" y="40" width="120" height="80" ' + A + ' ' + S + '/><rect x="200" y="40" width="120" height="80" ' + A + ' ' + S + '/>' +
+             '<rect x="125" y="58" width="15" height="10" ' + H + '/><rect x="125" y="92" width="15" height="10" ' + H + '/>' +
+             '<rect x="200" y="58" width="15" height="10" ' + H + '/><rect x="200" y="92" width="15" height="10" ' + H + '/>' +
+             '<rect x="155" y="58" width="30" height="10" rx="4" ' + B + ' ' + S + '/><rect x="155" y="92" width="30" height="10" rx="4" ' + B + ' ' + S + '/>' +
+             '<text x="170" y="140" text-anchor="middle" font-size="10" fill="var(--crema-dim)">tarugos</text>',
+        entra: 'Agujeros enfrentados en las dos piezas y clavijas de madera encoladas que entran en ambos.',
+        resiste: 'Alinea las piezas y aguanta cargas moderadas. Menos que una caja y espiga.',
+        uso: 'Muebles de tablero, uniones a tope que necesitan refuerzo.',
+        ojo: 'Los agujeros tienen que coincidir al milímetro: conviene usar una guía o marcadores de centro.'
+      }
+    ];
+    document.getElementById('joints').innerHTML = ENSAMBLES.map(function (j) {
+      return '<article class="joint"><h3>' + esc(j.nombre) + (j.tag ? '<span class="tag">' + esc(j.tag) + '</span>' : '') + '</h3>' +
+        '<div class="mono" style="font-size:.74rem;color:var(--crema-dim);">' + esc(j.en) + '</div>' +
+        '<svg viewBox="0 0 340 170" role="img" aria-label="' + esc(j.nombre) + '">' + j.svg + '</svg>' +
+        '<dl><dt>Qué entra</dt><dd>' + esc(j.entra) + '</dd><dt>Resiste</dt><dd>' + esc(j.resiste) + '</dd>' +
+        '<dt>Se usa en</dt><dd>' + esc(j.uso) + '</dd><dt>Ojo</dt><dd>' + esc(j.ojo) + '</dd></dl></article>';
+    }).join('');
+
+    /* ═══════════ 3. DESPIECE ═══════════ */
+    var EJEMPLO = [
+      { n: 'Lateral', l: 600, a: 400, c: 2 },
+      { n: 'Tapa', l: 520, a: 420, c: 1 },
+      { n: 'Base', l: 464, a: 400, c: 1 },
+      { n: 'Estante', l: 464, a: 380, c: 2 },
+      { n: 'Frente de cajón', l: 460, a: 150, c: 2 }
+    ];
+    var rows = EJEMPLO.map(function (p) { return { n: p.n, l: p.l, a: p.a, c: p.c }; });
+    var tbody = document.getElementById('dp-rows');
+
+    function pintarFilas() {
+      tbody.innerHTML = rows.map(function (p, i) {
+        return '<tr>' +
+          '<td><input type="text" id="dp-n' + i + '" data-i="' + i + '" data-k="n" value="' + esc(p.n) + '" aria-label="Nombre de la pieza"></td>' +
+          '<td><input type="number" id="dp-l' + i + '" data-i="' + i + '" data-k="l" value="' + p.l + '" min="1" aria-label="Largo en mm"></td>' +
+          '<td><input type="number" id="dp-a' + i + '" data-i="' + i + '" data-k="a" value="' + p.a + '" min="1" aria-label="Ancho en mm"></td>' +
+          '<td><input type="number" id="dp-c' + i + '" data-i="' + i + '" data-k="c" value="' + p.c + '" min="1" step="1" aria-label="Cantidad"></td>' +
+          '<td><button type="button" class="btn btn-x" data-del="' + i + '" aria-label="Quitar pieza">✕</button></td></tr>';
+      }).join('');
+    }
+    tbody.addEventListener('input', function (e) {
+      var t = e.target, i = +t.getAttribute('data-i'), k = t.getAttribute('data-k');
+      if (!k) return;
+      rows[i][k] = k === 'n' ? t.value : (parseFloat(t.value) || 0);
+      despiece();
+    });
+    tbody.addEventListener('click', function (e) {
+      var i = e.target.getAttribute('data-del');
+      if (i === null) return;
+      rows.splice(+i, 1); pintarFilas(); despiece();
+    });
+    document.getElementById('dp-add').addEventListener('click', function () {
+      rows.push({ n: 'Pieza ' + (rows.length + 1), l: 300, a: 200, c: 1 }); pintarFilas(); despiece();
+    });
+    document.getElementById('dp-ejemplo').addEventListener('click', function () {
+      rows = EJEMPLO.map(function (p) { return { n: p.n, l: p.l, a: p.a, c: p.c }; }); pintarFilas(); despiece();
+    });
+    ['dp-largo', 'dp-ancho', 'dp-kerf', 'dp-girar'].forEach(function (id) {
+      document.getElementById(id).addEventListener('input', despiece);
+    });
+
+    function despiece() {
+      var L = parseFloat(document.getElementById('dp-largo').value) || 0;
+      var Aw = parseFloat(document.getElementById('dp-ancho').value) || 0;
+      var k = Math.max(0, parseFloat(document.getElementById('dp-kerf').value) || 0);
+      var girar = document.getElementById('dp-girar').checked;
+      var piezas = [], fuera = [];
+      rows.forEach(function (p) {
+        var c = Math.max(0, Math.floor(p.c));
+        for (var i = 0; i < c; i++) {
+          var l = p.l, a = p.a;
+          var cabe = l <= L && a <= Aw;
+          var cabeG = girar && a <= L && l <= Aw;
+          if (!cabe && cabeG) { var t = l; l = a; a = t; cabe = true; }
+          if (l > 0 && a > 0 && cabe) piezas.push({ n: p.n, l: l, a: a });
+          else if (l > 0 && a > 0) fuera.push(p.n);
+        }
+      });
+      // Filas (franjas): ordenar por ancho de franja descendente, luego largo
+      piezas.sort(function (x, y) { return (y.a - x.a) || (y.l - x.l); });
+      var tableros = [];
+      piezas.forEach(function (p) {
+        var ubicada = false;
+        for (var s = 0; s < tableros.length && !ubicada; s++) {
+          var T = tableros[s];
+          for (var f = 0; f < T.filas.length && !ubicada; f++) {
+            var F = T.filas[f];
+            if (p.a <= F.h && F.x + p.l <= L) {
+              T.items.push({ n: p.n, x: F.x, y: F.y, l: p.l, a: p.a }); F.x += p.l + k; ubicada = true;
+            }
+          }
+          if (!ubicada && T.yLibre + p.a <= Aw) {
+            var nf = { y: T.yLibre, h: p.a, x: p.l + k };
+            T.filas.push(nf); T.items.push({ n: p.n, x: 0, y: nf.y, l: p.l, a: p.a });
+            T.yLibre += p.a + k; ubicada = true;
+          }
+        }
+        if (!ubicada) {
+          var T2 = { filas: [{ y: 0, h: p.a, x: p.l + k }], items: [{ n: p.n, x: 0, y: 0, l: p.l, a: p.a }], yLibre: p.a + k };
+          tableros.push(T2);
+        }
+      });
+
+      var areaP = piezas.reduce(function (s, p) { return s + p.l * p.a; }, 0);
+      var areaT = tableros.length * L * Aw;
+      document.getElementById('dp-n').textContent = tableros.length || '0';
+      document.getElementById('dp-ap').textContent = areaT ? fmt(areaP / areaT * 100, 0) + ' %' : '—';
+      document.getElementById('dp-ok').textContent = piezas.length + (fuera.length ? ' de ' + (piezas.length + fuera.length) : '');
+      document.getElementById('dp-warn').innerHTML = fuera.length
+        ? '<p class="warn">No entran en el tablero: ' + esc(fuera.filter(function (v, i, a) { return a.indexOf(v) === i; }).join(', ')) + '. Revisá las medidas' + (girar ? '.' : ' o permití girar las piezas.') + '</p>'
+        : '';
+
+      var cont = document.getElementById('dp-sheets');
+      cont.innerHTML = tableros.map(function (T, n) {
+        var vb = '0 0 ' + L + ' ' + Aw;
+        var fs = Math.max(L, Aw) / 45;
+        var items = T.items.map(function (it) {
+          var cxp = it.x + it.l / 2, cyp = it.y + it.a / 2;
+          var dims = it.l + '×' + it.a;
+          var fN = Math.min(fs, it.l * 0.9 / (Math.max(it.n.length, 1) * 0.62));
+          var fD = Math.min(fs * 0.85, it.l * 0.9 / (dims.length * 0.62));
+          var conNombre = fN >= fs * 0.55 && it.a > fs * 2.4;
+          var conDims = fD >= fs * 0.45 && it.a > fs * 1.2;
+          var txt = '';
+          if (conNombre) {
+            txt = '<text x="' + cxp + '" y="' + (cyp - fN * 0.15) + '" text-anchor="middle" font-size="' + fN + '" fill="var(--crema)">' + esc(it.n) + '</text>' +
+                  '<text x="' + cxp + '" y="' + (cyp + fN * 1.05) + '" text-anchor="middle" font-size="' + fD + '" fill="var(--crema-dim)">' + dims + '</text>';
+          } else if (conDims) {
+            txt = '<text x="' + cxp + '" y="' + (cyp + fD * 0.35) + '" text-anchor="middle" font-size="' + fD + '" fill="var(--crema-dim)">' + dims + '</text>';
+          }
+          return '<rect x="' + it.x + '" y="' + it.y + '" width="' + it.l + '" height="' + it.a + '" fill="rgba(var(--madera-rgb),0.2)" stroke="var(--siena)" stroke-width="' + (fs / 6) + '"><title>' + esc(it.n) + ' · ' + dims + ' mm</title></rect>' + txt;
+        }).join('');
+        return '<div class="sheet"><div class="cap">Tablero ' + (n + 1) + ' · ' + L + ' × ' + Aw + ' mm · ' + T.items.length + ' piezas</div>' +
+          '<svg viewBox="' + vb + '" role="img" aria-label="Tablero ' + (n + 1) + '"><rect x="0" y="0" width="' + L + '" height="' + Aw + '" fill="var(--roble)" stroke="var(--crema-dim)" stroke-width="' + (fs / 5) + '"/>' + items + '</svg></div>';
+      }).join('');
+    }
+    pintarFilas();
+    despiece();
+
+    /* ═══════════ 4. GLOSARIO ═══════════ */
+    var GLOSARIO = [
+      { es: 'Corte de sierra / Sangría', en: 'Kerf', lt: 'Pjovimo plyšys', d: 'El ancho del material que quita el disco de la sierra (~2–3 mm). Hay que contarlo en el plan de corte.' },
+      { es: 'Margen de corte', en: 'Kerf allowance', lt: 'Pjovimo leidimas', d: 'Material extra que se deja en el plan de corte para compensar el ancho del disco.' },
+      { es: 'Corte longitudinal', en: 'Rip cut', lt: 'Išilginis pjūvis', d: 'Corte paralelo a la veta.' },
+      { es: 'Corte transversal', en: 'Cross cut', lt: 'Skersinis pjūvis', d: 'Corte perpendicular a la veta.' },
+      { es: 'Dirección de la veta', en: 'Grain direction', lt: 'Grūdų kryptis', d: 'Orientación de las fibras de la madera. Cortar en contra de la veta produce astillas.' },
+      { es: 'Astillado / Desgarro', en: 'Tearout', lt: 'Drožlių atskilimas', d: 'Astillas que se arrancan al cortar o fresar en contra de la veta.' },
+      { es: 'Madera maciza', en: 'Solid wood', lt: 'Kietmedis', d: 'Madera natural, no tablero. Se mueve con los cambios de humedad.' },
+      { es: 'Terciado', en: 'Plywood', lt: 'Fanera', d: 'Tablero de chapas cruzadas y encoladas. Muy estable.' },
+      { es: 'MDF', en: 'MDF', lt: 'Vidutinio tankio plaušų plokštė', d: 'Tablero de fibras de madera y resina prensadas. Superficie muy lisa.' },
+      { es: 'Espiga y caja / Mortaja', en: 'Mortise and tenon', lt: 'Tenono ir mortizo jungimas', d: 'Una espiga entra en una caja. Base de la carpintería estructural.' },
+      { es: 'Cola de milano', en: 'Dovetail joint', lt: 'Uodegos jungimas', d: 'Unión en forma de trapecio, muy resistente a la tracción.' },
+      { es: 'Unión a media madera', en: 'Lap joint', lt: 'Sluoksninis jungimas', d: 'Dos piezas se superponen quitando la mitad del espesor de cada una.' },
+      { es: 'Lengüeta / Filete', en: 'Spline', lt: 'Jungiamoji juostelė', d: 'Lámina delgada en dos ranuras enfrentadas para unir y alinear dos piezas.' },
+      { es: 'Unión con tarugo', en: 'Dowel joint', lt: 'Kaiščių jungimas', d: 'Clavija de madera encolada en agujeros enfrentados.' },
+      { es: 'Gramil', en: 'Marking gauge', lt: 'Žymėjimo storis', d: 'Instrumento para trazar líneas paralelas al canto de una pieza.' },
+      { es: 'Formón / Escoplo', en: 'Chisel', lt: 'Kaltas', d: 'Herramienta de corte con hoja plana y bisel, para cajas y ajustes finos.' },
+      { es: 'Bastón de cotas', en: 'Story stick', lt: 'Matavimo lazdelė', d: 'Listón donde se marcan todas las medidas de un proyecto para trasladarlas sin números.' },
+      { es: 'Tolerancia', en: 'Tolerance', lt: 'Tolerancija', d: 'Margen de error aceptable en una medida. En muebles suele ser de ±1 mm.' },
+      { es: 'Ensamble en seco', en: 'Dry fit', lt: 'Sausas surinkimas', d: 'Armar sin cola para verificar que todo encaje antes de pegar.' },
+      { es: 'Cuadrar / Escuadrar', en: 'Squaring up', lt: 'Sulyginimas', d: 'Lograr que todas las caras queden a 90° entre sí. Primer paso de cualquier proyecto.' }
+    ];
+    var q = document.getElementById('gl-q');
+    function glosario() {
+      var t = q.value.trim().toLowerCase();
+      var lista = GLOSARIO.filter(function (g) {
+        return !t || (g.es + ' ' + g.en + ' ' + g.lt + ' ' + g.d).toLowerCase().indexOf(t) >= 0;
+      });
+      document.getElementById('gl-list').innerHTML = lista.length ? lista.map(function (g) {
+        return '<div class="gl"><div class="es">' + esc(g.es) + '</div><div class="en">EN · ' + esc(g.en) + '</div><div class="lt">LT · ' + esc(g.lt) + '</div><p>' + esc(g.d) + '</p></div>';
+      }).join('') : '<p class="hint">No hay términos que coincidan. Probá en el <a href="diccionario_carpinteria_v2.html">diccionario completo</a>.</p>';
+    }
+    q.addEventListener('input', glosario);
+    glosario();
+  })();
+  </script>
+</body>
+</html>
