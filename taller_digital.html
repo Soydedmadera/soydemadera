@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Taller digital — Soy de Madera</title>
-  <meta name="description" content="Cuatro herramientas para el taller: movimiento de la madera según especie y humedad, ensambles explicados, despiece de tableros con kerf y glosario español, inglés y lituano." />
+  <meta name="description" content="Cuatro herramientas para el taller: movimiento de la madera según especie y humedad, ensambles explicados, despiece de tableros con kerf y glosario español e inglés." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -372,9 +372,9 @@
     <!-- ═══════════ 4. GLOSARIO ═══════════ -->
     <section class="panel" id="panel-glosario" role="tabpanel" aria-labelledby="tab-glosario" hidden>
       <h2>Glosario del taller</h2>
-      <p class="lead">Los términos que aparecen en estas herramientas, en español, inglés y lituano. El diccionario completo, con 150 términos y pronunciación, está en <a href="diccionario_carpinteria_v2.html">el diccionario técnico</a>.</p>
+      <p class="lead">Los términos que aparecen en estas herramientas, en español e inglés. El diccionario completo, con 150 términos y pronunciación, está en <a href="diccionario_carpinteria_v2.html">el diccionario técnico</a>.</p>
       <div class="field" style="max-width:360px;">
-        <label for="gl-q">Buscar en los tres idiomas</label>
+        <label for="gl-q">Buscar en español o en inglés</label>
         <input type="search" id="gl-q" placeholder="Ej.: kerf, espiga, veta" />
       </div>
       <div class="gl-list" id="gl-list"></div>
@@ -386,6 +386,8 @@
   </footer>
 
   <script>
+    // El lituano queda en los datos pero no se muestra. Para publicarlo: true.
+    const SHOW_LT = false;
   (function () {
     'use strict';
 
@@ -749,10 +751,10 @@
     function glosario() {
       var t = q.value.trim().toLowerCase();
       var lista = GLOSARIO.filter(function (g) {
-        return !t || (g.es + ' ' + g.en + ' ' + g.lt + ' ' + g.d).toLowerCase().indexOf(t) >= 0;
+        return !t || (g.es + ' ' + g.en + ' ' + (SHOW_LT ? g.lt + ' ' : '') + g.d).toLowerCase().indexOf(t) >= 0;
       });
       document.getElementById('gl-list').innerHTML = lista.length ? lista.map(function (g) {
-        return '<div class="gl"><div class="es">' + esc(g.es) + '</div><div class="en">EN · ' + esc(g.en) + '</div><div class="lt">LT · ' + esc(g.lt) + '</div><p>' + esc(g.d) + '</p></div>';
+        return '<div class="gl"><div class="es">' + esc(g.es) + '</div><div class="en">EN · ' + esc(g.en) + '</div>' + (SHOW_LT ? '<div class="lt">LT · ' + esc(g.lt) + '</div>' : '') + '<p>' + esc(g.d) + '</p></div>';
       }).join('') : '<p class="hint">No hay términos que coincidan. Probá en el <a href="diccionario_carpinteria_v2.html">diccionario completo</a>.</p>';
     }
     q.addEventListener('input', glosario);

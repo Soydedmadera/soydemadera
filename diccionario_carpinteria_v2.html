@@ -1226,7 +1226,7 @@
         <div class="pilar-num">02</div>
         <span class="pilar-icon">📖</span>
         <h3 class="pilar-title">Terminología técnica</h3>
-        <p class="pilar-desc">150 términos técnicos EN/ES/LT con pronunciación. Porque nombrar bien lo que hacés es la primera herramienta del oficio.</p>
+        <p class="pilar-desc">150 términos técnicos en inglés y español, con pronunciación. Porque nombrar bien lo que hacés es la primera herramienta del oficio.</p>
         <p class="pilar-tag">// diccionario · EN · ES · LT</p>
       </div>
     </div>
@@ -1236,7 +1236,7 @@
   <div id="diccionario" style="background:var(--nogal); padding: 7rem 0 0;">
     <div style="max-width:1200px; margin:0 auto; padding: 0 3rem 3rem;">
       <p class="section-label reveal">Recurso online</p>
-      <h2 class="section-title reveal">Diccionario técnico<br><em>EN / ES / Lituano</em></h2>
+      <h2 class="section-title reveal">Diccionario técnico<br><em>Inglés / Español</em></h2>
     </div>
 
     <!-- Dictionary app — scoped with .da prefix to avoid style collisions -->
@@ -1245,7 +1245,7 @@
       <div class="da-controls">
         <div class="da-search-wrap">
           <span class="da-search-icon">🔍</span>
-          <input type="text" id="da-search" placeholder="Buscar en inglés, español, lituano o pronunciación…" autocomplete="off">
+          <input type="text" id="da-search" placeholder="Buscar en inglés, español o pronunciación…" autocomplete="off">
         </div>
         <div class="da-filters">
           <button class="da-filter-btn active" data-cat="all">Todos</button>
@@ -1401,7 +1401,7 @@
 
           <div class="estudiar-item">
             <div class="item-info">
-              <div class="item-nombre">Diccionario técnico EN/ES/LT</div>
+              <div class="item-nombre">Diccionario técnico EN/ES</div>
               <div class="item-detalle">soydemadera.com · 150 términos con pronunciación</div>
             </div>
             <span class="item-badge gratuito">Gratuito</span>
@@ -1471,6 +1471,8 @@
 
   <script>
     // ── DICCIONARIO DATA ──
+    // El lituano queda en los datos pero no se muestra. Para publicarlo: true.
+    const SHOW_LT = false;
     const daData = {
       partes: {
         icon: "🪑", label: "Partes del mueble",
@@ -1678,7 +1680,7 @@
           return e.en.toLowerCase().includes(q) ||
                  e.pron.toLowerCase().includes(q) ||
                  e.es.toLowerCase().includes(q) ||
-                 e.lt.toLowerCase().includes(q) ||
+                 (SHOW_LT && e.lt.toLowerCase().includes(q)) ||
                  e.def.toLowerCase().includes(q);
         });
         if (!filtered.length) return;
@@ -1709,7 +1711,7 @@
             <div class="da-en">${hl(e.en)}</div>
             <div class="da-pron">${hl(e.pron)}</div>
             <div class="da-es">${hl(e.es)}</div>
-            <div class="da-lt">${hl(e.lt)}</div>
+            ${SHOW_LT ? `<div class="da-lt">${hl(e.lt)}</div>` : ''}
             <div class="da-def">${hl(e.def)}</div>
           `;
           grid.appendChild(card);
@@ -1718,7 +1720,7 @@
       });
 
       if (!totalShown) {
-        main.innerHTML = `<div class="da-no-results">🔍 Sin resultados<span>Probá en inglés, pronunciación, español o lituano</span></div>`;
+        main.innerHTML = `<div class="da-no-results">🔍 Sin resultados<span>Probá en inglés, pronunciación o español</span></div>`;
       }
 
       const total = Object.values(daData).reduce((a,c)=>a+c.entries.length,0);
