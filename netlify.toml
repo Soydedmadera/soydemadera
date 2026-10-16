@@ -1,3 +1,14 @@
 [build]
   publish = "."
   command = "echo 'Static site'"
+
+# Seminario del Foro de la Madera 2026: postergado a 2027 y retirado del sitio (16/10/2026)
+[[redirects]]
+  from = "/seminario_foro_madera_2026"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/seminario_foro_madera_2026.html"
+  to = "/"
+  status = 301

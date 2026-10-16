@@ -176,6 +176,10 @@
       background: rgba(var(--madera-rgb),0.07); color: var(--crema-suave);
     }
     .note { margin-top: .8rem; font-size: .92rem; color: var(--crema-dim); font-style: italic; }
+    .fuentes summary { cursor: pointer; color: var(--ambar); font-style: normal; }
+    .fuentes ul { margin: .5rem 0 0 1.1rem; padding: 0; }
+    .fuentes li { margin: .25rem 0; }
+    .fuentes a { color: var(--ambar); }
     svg text { font-family: 'IBM Plex Mono', monospace; }
 
     /* ── ENSAMBLES ── */
@@ -307,6 +311,18 @@
           </div>
           <div class="rule" id="mv-regla"></div>
           <p class="note">La curvatura del dibujo está exagerada para que se vea. Los valores de contracción por especie son aproximados y sirven para comparar especies entre sí; no reemplazan datos de laboratorio.</p>
+          <details class="note fuentes">
+            <summary>Fuentes de los valores de contracción</summary>
+            <p>Contracción total de verde a anhidro, tangencial / radial. Son promedios publicados: la madera de cada árbol, y en especial la de plantación joven, puede apartarse de ellos.</p>
+            <ul>
+              <li>Algarrobo blanco (<i>Prosopis alba</i>), 3,1 / 2,2 %: <a href="https://www.wood-database.com/algarrobo-blanco/" target="_blank" rel="noopener noreferrer">The Wood Database</a>.</li>
+              <li>Cedro misionero (<i>Cedrela</i> spp.), 6,2 / 4,0 %: <a href="https://madeiras.ipt.br/cedro/" target="_blank" rel="noopener noreferrer">IPT, Brasil</a>.</li>
+              <li>Lapacho (<i>Handroanthus impetiginosus</i>), 7,2 / 4,3 %: <a href="https://www.wood-database.com/pink-lapacho/" target="_blank" rel="noopener noreferrer">The Wood Database</a>.</li>
+              <li>Pino elliottii (<i>Pinus elliottii</i>), 7,6 / 5,4 %: <a href="https://www.wood-database.com/slash-pine/" target="_blank" rel="noopener noreferrer">The Wood Database</a>.</li>
+              <li>Guatambú (<i>Balfourodendron riedelianum</i>), 8,8 / 4,6 %: <a href="https://www.fpl.fs.usda.gov/documnts/TechSheets/Chudnoff/TropAmerican/pdf_files/balfou1new.pdf" target="_blank" rel="noopener noreferrer">Forest Products Laboratory, USDA</a>. El IPT de Brasil da 9,6 / 4,9 %.</li>
+              <li>Eucalipto grandis (<i>Eucalyptus grandis</i>), 10,1 / 5,9 %: <a href="https://www.wood-database.com/rose-gum/" target="_blank" rel="noopener noreferrer">The Wood Database</a>.</li>
+            </ul>
+          </details>
         </div>
       </div>
     </section>
@@ -424,14 +440,14 @@
     function fmt(n, d) { return n.toLocaleString('es-AR', { minimumFractionDigits: d, maximumFractionDigits: d }); }
 
     /* ═══════════ 1. MOVIMIENTO ═══════════ */
-    // Contracción total de verde a seco (%), tangencial y radial. Valores aproximados para comparar especies.
+    // Contracción total de verde a anhidro (%), tangencial y radial. Fuentes verificadas el 16/10/2026: ver la nota de fuentes en el panel.
     var ESPECIES = [
-      { id: 'algarrobo', nombre: 'Algarrobo', t: 3.5, r: 2.0 },
-      { id: 'cedro', nombre: 'Cedro misionero', t: 6.0, r: 4.0 },
-      { id: 'lapacho', nombre: 'Lapacho', t: 7.5, r: 6.0 },
-      { id: 'pino', nombre: 'Pino elliottii', t: 7.6, r: 5.1 },
-      { id: 'guatambu', nombre: 'Guatambú', t: 8.5, r: 5.0 },
-      { id: 'eucalipto', nombre: 'Eucalipto grandis', t: 9.5, r: 5.0 }
+      { id: 'algarrobo', nombre: 'Algarrobo blanco', t: 3.1, r: 2.2 },
+      { id: 'cedro', nombre: 'Cedro misionero', t: 6.2, r: 4.0 },
+      { id: 'lapacho', nombre: 'Lapacho', t: 7.2, r: 4.3 },
+      { id: 'pino', nombre: 'Pino elliottii', t: 7.6, r: 5.4 },
+      { id: 'guatambu', nombre: 'Guatambú', t: 8.8, r: 4.6 },
+      { id: 'eucalipto', nombre: 'Eucalipto grandis', t: 10.1, r: 5.9 }
     ];
     var PSF = 28; // punto de saturación de las fibras (%)
     var sel = document.getElementById('mv-especie');
