@@ -19,3 +19,11 @@ desktop.ini
 .vscode/
 .idea/
 *.swp
+
+# Archivos de trabajo locales de Abel: nunca al repo público
+*.bak
+*.ps1
+*.sh
+index (*).html
+/soydemadera/
+/_archivo/
