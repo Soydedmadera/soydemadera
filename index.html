@@ -2813,6 +2813,23 @@
     </article>
   </section>
 
+  <!-- ANOTATE: lista de correo (MailerLite, plan gratuito, doble confirmación) -->
+  <section id="anotate" class="page-section" style="max-width:1200px; padding: 5rem 3rem 7rem;">
+    <div style="max-width:600px;">
+      <p style="font-family:'Fraunces',Georgia,serif; color:var(--ambar); font-size:0.85rem; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:1rem;">Novedades</p>
+      <h2 style="font-family:'Fraunces',Georgia,serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:900; color:var(--crema); line-height:1.1;">Anotate para enterarte de lo nuevo</h2>
+      <p style="color:var(--crema-dim); margin-top:1rem; line-height:1.7;">Un mail cuando haya algo nuevo: entradas del Diario, términos del diccionario y la salida de los cuadernos. Sin publicidad.</p>
+      <form id="anotate-form" action="https://assets.mailerlite.com/jsonp/2730683/forms/201943835133085076/subscribe" method="post" style="display:flex; flex-wrap:wrap; gap:0.75rem; margin-top:2rem;">
+        <label for="anotate-email" style="position:absolute; left:-9999px;">Tu correo</label>
+        <input id="anotate-email" type="email" name="fields[email]" required placeholder="tu@correo.com" autocomplete="email" style="flex:1 1 240px; min-width:0; padding:0.9rem 1rem; font-family:inherit; font-size:1rem; border:2px solid rgba(var(--borde-rgb),0.4); background:var(--roble); color:var(--crema);">
+        <input type="hidden" name="ml-submit" value="1">
+        <input type="hidden" name="anticsrf" value="true">
+        <button type="submit" class="btn-primary" style="border:none; cursor:pointer;">Anotarme</button>
+      </form>
+      <p id="anotate-msg" role="status" style="color:var(--crema-dim); margin-top:1rem; line-height:1.6; font-size:0.9rem;">Te llega un mail para confirmar. Podés darte de baja cuando quieras.</p>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-brand">Soy de Madera</div>
@@ -2820,6 +2837,27 @@
   </footer>
 
   <script>
+    // ── ANOTATE (MailerLite) ──
+    (function () {
+      var form = document.getElementById('anotate-form');
+      var msg = document.getElementById('anotate-msg');
+      if (!form) return;
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var btn = form.querySelector('button');
+        btn.disabled = true;
+        fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+          .then(function () {
+            form.reset();
+            msg.textContent = 'Listo. Revisá tu correo y confirmá la suscripción (si no lo ves, mirá en spam o promociones).';
+          })
+          .catch(function () {
+            msg.textContent = 'No se pudo enviar. Probá de nuevo en un rato o escribinos a hola@soydemadera.com.';
+          })
+          .finally(function () { btn.disabled = false; });
+      });
+    })();
+
     // ── DICCIONARIO DATA ──
     // El lituano queda en los datos pero no se muestra. Para publicarlo: true.
     const SHOW_LT = false;
