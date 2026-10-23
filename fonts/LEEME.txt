@@ -1,0 +1,13 @@
+Fuente del sitio: Schola SdM
+
+Es una versión modificada de TeX Gyre Schola (GUST, grupo polaco de usuarios de TeX),
+basada en Century Schoolbook. La modificación consiste en reducir el juego de caracteres
+al alfabeto latino que usa el sitio, convertir el formato a WOFF2 y cambiar el nombre de la
+familia a "Schola SdM", como pide la licencia para las obras derivadas.
+
+No es la fuente original. La original se descarga gratis en:
+https://www.gust.org.pl/projects/e-foundry/tex-gyre/schola
+https://ctan.org/pkg/tex-gyre
+
+Licencia: GUST Font License (LaTeX Project Public License 1.3c), incluida en
+GUST-FONT-LICENSE.txt. Archivos: schola-regular.woff2, schola-italic.woff2, schola-bold.woff2.

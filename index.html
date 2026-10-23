@@ -59,46 +59,44 @@
     ]
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com/">
-  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=IBM+Plex+Mono:wght@300;400;500&family=Crimson+Pro:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/schola-regular.woff2" as="font" type="font/woff2" crossorigin="">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       color-scheme: light;
-      --nogal: #e9e7e1;
-      --nogal-rgb: 233,231,225;
-      --nogal-mid: #e4e1da;
-      --nogal-2: #e4e1da;
-      --roble: #dfdcd4;
-      --nogal-3: #dfdcd4;
-      --cedro: #d6d2c9;
-      --cedro-rgb: 214,210,201;
-      --siena: #7b5d3f;
-      --siena-claro: #7b5d3f;
-      --ambar: #6b5138;
-      --ambar-claro: #6b5138;
-      --madera-rgb: 123,93,63;
-      --crema: #2b2926;
-      --crema-rgb: 43,41,38;
-      --crema2: #45423d;
-      --crema-2: #45423d;
-      --crema-suave: #45423d;
-      --blanco: #1f1d1b;
-      --gris-tex: #6a655d;
-      --crema-dim: #6a655d;
-      --borde-rgb: 106,101,93;
-      --linea: #cfcbc2;
-      --ambar-dim: #a8937c;
-      --verde-musgo: #55663f;
-      --verde: #55663f;
-      --verde-rgb: 85,102,63;
-      --azul: #4f6676;
-      --azul-rgb: 79,102,118;
-      --pie: #4a5c69;
-      --pie-tinta: #e7eaeb;
-      --pie-suave: #b9c4cb;
+      --nogal: #ebebe6;
+      --nogal-rgb: 235,235,230;
+      --nogal-mid: #e4e4de;
+      --nogal-2: #e4e4de;
+      --roble: #dedfd8;
+      --nogal-3: #dedfd8;
+      --cedro: #d3d5cc;
+      --cedro-rgb: 211,213,204;
+      --siena: #2d4535;
+      --siena-claro: #2d4535;
+      --ambar: #2d4535;
+      --ambar-claro: #2d4535;
+      --madera-rgb: 45,69,53;
+      --crema: #1c1c1a;
+      --crema-rgb: 28,28,26;
+      --crema2: #33332f;
+      --crema-2: #33332f;
+      --crema-suave: #33332f;
+      --blanco: #111110;
+      --gris-tex: #5f5e58;
+      --crema-dim: #5f5e58;
+      --borde-rgb: 95,94,88;
+      --linea: #cfcfc8;
+      --ambar-dim: #8fa196;
+      --verde-musgo: #2d4535;
+      --verde: #2d4535;
+      --verde-rgb: 45,69,53;
+      --azul: #2d4535;
+      --azul-rgb: 45,69,53;
+      --pie: #2d4535;
+      --pie-tinta: #ebe8df;
+      --pie-suave: #b7bfb0;
       --error: #a8443a;
       --sombra-rgb: 43,41,38;
       --sombra: rgba(43,41,38,0.16);
@@ -108,38 +106,38 @@
     @media (prefers-color-scheme: dark) {
       :root {
         color-scheme: dark;
-        --nogal: #1f1d1a;
-        --nogal-rgb: 31,29,26;
-        --nogal-mid: #24221e;
-        --nogal-2: #24221e;
-        --roble: #2a2824;
-        --nogal-3: #2a2824;
-        --cedro: #33302b;
-        --cedro-rgb: 51,48,43;
-        --siena: #b89572;
-        --siena-claro: #b89572;
-        --ambar: #c9a680;
-        --ambar-claro: #c9a680;
-        --madera-rgb: 184,149,114;
-        --crema: #ddd8ce;
-        --crema-rgb: 221,216,206;
-        --crema2: #c9c3b8;
-        --crema-2: #c9c3b8;
-        --crema-suave: #c9c3b8;
-        --blanco: #ece8df;
-        --gris-tex: #9a9488;
-        --crema-dim: #9a9488;
-        --borde-rgb: 154,148,136;
-        --linea: #3a3732;
-        --ambar-dim: #6b5a47;
-        --verde-musgo: #8fa67a;
-        --verde: #8fa67a;
-        --verde-rgb: 143,166,122;
-        --azul: #9db2c0;
-        --azul-rgb: 157,178,192;
-        --pie: #2b363d;
-        --pie-tinta: #dfe4e6;
-        --pie-suave: #93a3ad;
+        --nogal: #191c1a;
+        --nogal-rgb: 25,28,26;
+        --nogal-mid: #1f2320;
+        --nogal-2: #1f2320;
+        --roble: #252a26;
+        --nogal-3: #252a26;
+        --cedro: #2e342f;
+        --cedro-rgb: 46,52,47;
+        --siena: #a9c2ae;
+        --siena-claro: #a9c2ae;
+        --ambar: #a9c2ae;
+        --ambar-claro: #a9c2ae;
+        --madera-rgb: 169,194,174;
+        --crema: #e4e3dd;
+        --crema-rgb: 228,227,221;
+        --crema2: #cfcec7;
+        --crema-2: #cfcec7;
+        --crema-suave: #cfcec7;
+        --blanco: #f0efe9;
+        --gris-tex: #a3a29b;
+        --crema-dim: #a3a29b;
+        --borde-rgb: 163,162,155;
+        --linea: #2f3431;
+        --ambar-dim: #4f6355;
+        --verde-musgo: #a9c2ae;
+        --verde: #a9c2ae;
+        --verde-rgb: 169,194,174;
+        --azul: #a9c2ae;
+        --azul-rgb: 169,194,174;
+        --pie: #23372a;
+        --pie-tinta: #e6e3da;
+        --pie-suave: #a9b2a2;
         --error: #e07a6e;
         --sombra-rgb: 0,0,0;
         --sombra: rgba(0,0,0,0.45);
@@ -1519,6 +1517,73 @@
     [fill="#f5edd8"] { fill: var(--crema); }
     [stroke="#f5edd8"] { stroke: var(--nogal); }
     [stop-color="#f5edd8"] { stop-color: var(--crema); }
+
+    /* ═══ PIEL 2026-10 · tela de encuadernación y Schola ═══
+       Fuente: Schola SdM (TeX Gyre Schola modificada, licencia en fonts/LEEME.txt).
+       Este bloque va al final a propósito: pisa la tipografía y los adornos de las reglas anteriores. */
+    @font-face { font-family: "Schola SdM"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/schola-regular.woff2") format("woff2"); }
+    @font-face { font-family: "Schola SdM"; font-weight: 400; font-style: italic; font-display: swap; src: url("fonts/schola-italic.woff2") format("woff2"); }
+    @font-face { font-family: "Schola SdM"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/schola-bold.woff2") format("woff2"); }
+    :root { --texto: "Schola SdM", "Century Schoolbook", "New Century Schoolbook", Georgia, serif; --tela: #2d4535; --tela-tinta: #ebe8df; --tela-suave: #b7bfb0; --lamina: #f1f0eb; --font-mono: var(--texto); }
+    @media (prefers-color-scheme: dark) { :root { --tela: #23372a; --tela-tinta: #e6e3da; --tela-suave: #a9b2a2; --lamina: #e9e8e2; } }
+
+    body, body *:not(svg):not(svg *) { font-family: var(--texto) !important; letter-spacing: normal !important; text-transform: none !important; }
+    body { font-size: 19px; line-height: 1.55; }
+    h1, h2, h3, h4, .section-title, .pilar-title, .herramienta-titulo, .nav-logo, .footer-brand, .ag-fecha b { font-weight: 400 !important; }
+    .section-title em, .nav-logo span, .hero-title .accent { font-style: normal !important; color: inherit !important; font-weight: inherit !important; }
+    .section-title { font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.12; text-wrap: balance; }
+
+    /* Adornos que no dicen nada del oficio: afuera */
+    body::before, .wood-lines, .hero-bg, .hero-vertical, .hero-eyebrow, .hero-scroll, .divider,
+    .section-label, .pilar-num, .pilar-tag, .pilar-icon, .herramienta-num, .da-cat-icon, .bloque-icon, .da-search-icon, .red-arrow { display: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    #da-search { padding-left: 1rem !important; }
+
+    /* Botones y enlaces: letra normal, sin flechas ni saltos */
+    .btn-primary, .btn-secondary { font-size: 1rem; padding: .7rem 1.2rem; font-weight: 400; }
+    .btn-primary { background: var(--tela); color: var(--tela-tinta); }
+    .btn-primary:hover, .btn-secondary:hover { transform: none; }
+    .btn-primary:hover { background: var(--crema); color: var(--nogal); }
+    .nav-links a, .nav-mobile-menu a { font-size: 1rem; }
+
+    /* Barra de arriba sobre la tela */
+    nav { background: var(--tela); backdrop-filter: none; }
+    nav .nav-logo, nav .nav-logo span { color: var(--tela-tinta) !important; }
+    nav .nav-links a { color: var(--tela-suave); }
+    nav .nav-links a:hover, nav .nav-links a.nav-active { color: var(--tela-tinta) !important; text-decoration: underline; text-underline-offset: .2em; }
+    .nav-hamburger span { background: var(--tela-tinta); }
+
+    /* Tapa */
+    .hero { min-height: 0; display: block; padding: 0; overflow: visible; background: var(--nogal); }
+    .tapa { background: var(--tela); color: var(--tela-tinta); }
+    .tapa-in { max-width: 1200px; margin: 0 auto; padding: 8.5rem 3rem 4.5rem; display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1.05fr); gap: 3.5rem; align-items: start; }
+    .tapa h1 { font-size: clamp(2.8rem, 6vw, 4.8rem); line-height: 1.02; margin: 0 0 1.4rem; color: var(--tela-tinta); }
+    .tapa .bajada { font-size: 1.15rem; max-width: 30em; margin: 0 0 2rem; color: var(--tela-tinta); }
+    .ficha { background: var(--lamina); color: #1c1c1a; padding: 1.6rem 1.75rem 1.5rem; max-width: 470px; }
+    .ficha .en { font-size: 1.85rem; line-height: 1.1; }
+    .ficha .pron { color: #5f5e58; font-size: 1rem; margin-left: .5rem; }
+    .ficha .es { font-size: 1.1rem; margin-top: .35rem; }
+    .ficha p { font-size: 1rem; line-height: 1.5; margin: .6rem 0 1.1rem; color: #33322f; }
+    .ficha form { display: flex; gap: .6rem; flex-wrap: wrap; }
+    .ficha input { flex: 1 1 200px; min-width: 0; font-size: 1rem; padding: .55rem .7rem; border: 1px solid #9c9b94; background: #fff; color: #1c1c1a; border-radius: 0; }
+    .ficha button { font-size: 1rem; padding: .55rem .9rem; background: #2d4535; color: #ebe8df; border: 0; cursor: pointer; }
+    .tapa .hero-actions { margin-top: 1.4rem; opacity: 1; animation: none; }
+    .tapa .hero-actions a { color: var(--tela-tinta); font-size: 1rem; }
+    .foto-tapa img, .franja img { display: block; width: 100%; height: auto; }
+    .foto-tapa figcaption { font-size: .85rem; margin-top: .5rem; color: var(--tela-suave); }
+    .foto-tapa a { color: inherit; }
+    .franja { max-width: 1200px; margin: 0 auto; padding: 2.5rem 3rem 3rem; }
+    .franja img { aspect-ratio: 1200 / 560; object-fit: cover; max-width: 100%; }
+    .franja figcaption { font-size: .85rem; margin-top: .5rem; color: var(--gris-tex); }
+    .franja a { color: inherit; }
+    a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+    footer .footer-brand, footer .footer-copy, footer .footer-next { color: var(--pie-tinta); }
+    @media (max-width: 900px) {
+      .tapa-in { grid-template-columns: minmax(0,1fr); gap: 2.25rem; padding: 6.5rem max(16px, env(safe-area-inset-left, 0px)) 3rem; }
+      .franja { padding: 2rem max(16px, env(safe-area-inset-left, 0px)) 2.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
@@ -1557,30 +1622,36 @@
 
   <!-- HERO -->
   <div class="hero">
-    <div class="hero-bg"></div>
-    <div class="wood-lines"></div>
-    <div class="hero-vertical">Carpintería · Ebanistería · Terminología</div>
-
-    <div class="hero-content">
-      <p class="hero-eyebrow">Divulgación técnica · En español</p>
-      <h1 class="hero-title">
-        Soy<br>
-        <span class="accent">de</span><br>
-        Madera
-      </h1>
-      <p class="hero-subtitle">
-        Carpintería y ebanistería explicadas con precisión. Herramientas digitales, terminología técnica y ensayos sobre el oficio, en castellano.
-      </p>
-      <div class="hero-actions">
-        <a href="#diccionario" class="btn-primary">Ver el diccionario</a>
-        <a href="#pilares" class="btn-secondary">Explorar el proyecto</a>
+    <div class="tapa">
+      <div class="tapa-in">
+        <div>
+          <h1 class="hero-title">Soy de Madera</h1>
+          <p class="bajada">Carpintería y ebanistería en castellano: un diccionario técnico inglés y español, calculadoras para el taller y una biblioteca de libros del oficio.</p>
+          <div class="ficha">
+            <div><span class="en">Jointer</span><span class="pron">YÓin-ter</span></div>
+            <div class="es">Garlopa (AR) · Cepilladora (ES)</div>
+            <p>Máquina para aplanar una cara y escuadrar un canto. Es el primer paso, antes de llevar la tabla a espesor.</p>
+            <form id="ficha-buscar" role="search">
+              <label for="ficha-q" style="position:absolute;left:-9999px;">Buscar un término</label>
+              <input id="ficha-q" type="search" placeholder="Buscá en inglés o en castellano" autocomplete="off">
+              <button type="submit">Buscar en el diccionario</button>
+            </form>
+          </div>
+          <div class="hero-actions">
+            <a href="#herramientas">Calculadoras para el taller</a>
+            <a href="#biblioteca">Biblioteca</a>
+          </div>
+        </div>
+        <figure class="foto-tapa">
+          <img src="img/tabaquillo-achala.jpg" width="720" height="560" alt="Tabaquillos en la Pampa de Achala: troncos retorcidos de corteza rojiza que se desprende en láminas, bajo un follaje verde claro.">
+          <figcaption>Tabaquillo (<i>Polylepis australis</i>), Pampa de Achala, Córdoba. Foto: Arianza1, <a href="https://creativecommons.org/licenses/by/3.0/deed.es" target="_blank" rel="noopener noreferrer">CC BY 3.0</a>, recortada.</figcaption>
+        </figure>
       </div>
     </div>
-
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      <span class="scroll-text">Seguir leyendo</span>
-    </div>
+    <figure class="franja">
+      <img src="img/niebla-condorito.jpg" width="1200" height="560" loading="lazy" alt="Roca granítica y pastizal de altura en la Quebrada del Condorito, con la niebla subiendo desde la quebrada.">
+      <figcaption>Niebla en la Quebrada del Condorito, Sierras Grandes de Córdoba. Foto: Kevin Jones, <a href="https://creativecommons.org/licenses/by/2.0/deed.es" target="_blank" rel="noopener noreferrer">CC BY 2.0</a>, recortada.</figcaption>
+    </figure>
   </div>
 
   <div class="divider" style="max-width:1200px; margin: 0 auto;"></div>
@@ -1602,21 +1673,21 @@
       <div class="pilar-card reveal" style="transition-delay:0.15s">
         <div class="wood-lines"></div>
         <div class="pilar-num">01</div>
-        <span class="pilar-icon">⚙️</span>
+        <span class="pilar-icon"></span>
         <h3 class="pilar-title">Herramientas digitales</h3>
         <p class="pilar-desc">Calculadoras de corte, planificadores de tableros, recursos técnicos online. La tecnología al servicio del taller.</p>
         <p class="pilar-tag">// software · apps · utilidades</p>
         <div style="margin-top:1.25rem; display:flex; flex-direction:column; gap:0.5rem;">
-          <a href="calculadora_pie_madera.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">→ Calculadora pie de madera</a>
-          <a href="conversor_imperial.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">→ Conversor imperial / decimal</a>
-          <a href="taller_digital.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">→ Taller digital</a>
+          <a href="calculadora_pie_madera.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">Calculadora pie de madera</a>
+          <a href="conversor_imperial.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">Conversor imperial / decimal</a>
+          <a href="taller_digital.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">Taller digital</a>
         </div>
       </div>
 
       <div class="pilar-card reveal" style="transition-delay:0.3s">
         <div class="wood-lines"></div>
         <div class="pilar-num">02</div>
-        <span class="pilar-icon">📖</span>
+        <span class="pilar-icon"></span>
         <h3 class="pilar-title">Terminología técnica</h3>
         <p class="pilar-desc">197 términos técnicos en inglés y español, con pronunciación. Porque nombrar bien lo que hacés es la primera herramienta del oficio.</p>
         <p class="pilar-tag">// diccionario · EN · ES</p>
@@ -1642,13 +1713,12 @@
         <div class="herramienta-card">
           <div class="herramienta-card-inner">
             <div class="herramienta-num">01</div>
-            <div style="font-size:2.4rem; margin-bottom:1.2rem;">🪵</div>
             <p class="herramienta-cat">Cálculo de volumen</p>
             <h3 class="herramienta-titulo">Calculadora<br>Pie de Madera</h3>
             <p class="herramienta-desc">Calculá pies de madera a partir de dimensiones en mm o cm. Incluye presets de tableros estándar del mercado argentino.</p>
             <div class="herramienta-footer">
               <span class="herramienta-tags"><span class="h-tag">mm / cm</span><span class="h-tag">presets ARG</span></span>
-              <span class="herramienta-cta">Abrir →</span>
+              <span class="herramienta-cta">Abrir</span>
             </div>
           </div>
         </div>
@@ -1658,13 +1728,12 @@
         <div class="herramienta-card">
           <div class="herramienta-card-inner">
             <div class="herramienta-num">02</div>
-            <div style="font-size:2.4rem; margin-bottom:1.2rem;">📐</div>
             <p class="herramienta-cat">Conversión de medidas</p>
             <h3 class="herramienta-titulo">Conversor<br>Imperial / Decimal</h3>
             <p class="herramienta-desc">Convertí pulgadas fraccionarias y pies/pulgadas a mm, cm y metros. Tabla de tamaños nominales vs reales de madera aserrada.</p>
             <div class="herramienta-footer">
               <span class="herramienta-tags"><span class="h-tag">pulgadas ↔ mm</span><span class="h-tag">tabla nominal</span></span>
-              <span class="herramienta-cta">Abrir →</span>
+              <span class="herramienta-cta">Abrir</span>
             </div>
           </div>
         </div>
@@ -1674,13 +1743,12 @@
         <div class="herramienta-card">
           <div class="herramienta-card-inner">
             <div class="herramienta-num">03</div>
-            <div style="font-size:2.4rem; margin-bottom:1.2rem;">📖</div>
             <p class="herramienta-cat">Referencia técnica</p>
             <h3 class="herramienta-titulo">Diccionario<br>Inglés / Español</h3>
             <p class="herramienta-desc">197 términos técnicos con pronunciación fonética y definición en contexto. Buscá en inglés o en español.</p>
             <div class="herramienta-footer">
               <span class="herramienta-tags"><span class="h-tag">197 términos</span><span class="h-tag">EN / ES</span></span>
-              <span class="herramienta-cta">Ver →</span>
+              <span class="herramienta-cta">Ver</span>
             </div>
           </div>
         </div>
@@ -1690,13 +1758,12 @@
         <div class="herramienta-card">
           <div class="herramienta-card-inner">
             <div class="herramienta-num">04</div>
-            <div style="font-size:2.4rem; margin-bottom:1.2rem;">🪚</div>
             <p class="herramienta-cat">Planificación de piezas</p>
             <h3 class="herramienta-titulo">Taller<br>digital</h3>
             <p class="herramienta-desc">Calculá cuánto se mueve una tabla con la humedad según la especie, repasá seis ensambles básicos y armá el despiece de un tablero con la pérdida del corte.</p>
             <div class="herramienta-footer">
               <span class="herramienta-tags"><span class="h-tag">movimiento</span><span class="h-tag">despiece</span></span>
-              <span class="herramienta-cta">Abrir →</span>
+              <span class="herramienta-cta">Abrir</span>
             </div>
           </div>
         </div>
@@ -1719,26 +1786,26 @@
 
       <div class="da-controls">
         <div class="da-search-wrap">
-          <span class="da-search-icon">🔍</span>
+          <span class="da-search-icon"></span>
           <input type="text" id="da-search" placeholder="Buscar en inglés, español o pronunciación…" autocomplete="off">
         </div>
         <div class="da-filters">
           <button class="da-filter-btn active" data-cat="all">Todos</button>
-          <button class="da-filter-btn" data-cat="partes">🪑 Partes del mueble</button>
-          <button class="da-filter-btn" data-cat="herramientas">🔨 Herramientas</button>
-          <button class="da-filter-btn" data-cat="tecnicas">🔧 Técnicas y uniones</button>
-          <button class="da-filter-btn" data-cat="materiales">🪵 Materiales</button>
-          <button class="da-filter-btn" data-cat="medicion">📐 Medición y trazado</button>
-          <button class="da-filter-btn" data-cat="acabados">🎨 Acabados</button>
-          <button class="da-filter-btn" data-cat="figura">🌳 Veta y figura</button>
-          <button class="da-filter-btn" data-cat="estructura">🔬 Estructura</button>
+          <button class="da-filter-btn" data-cat="partes">Partes del mueble</button>
+          <button class="da-filter-btn" data-cat="herramientas">Herramientas</button>
+          <button class="da-filter-btn" data-cat="tecnicas">Técnicas y uniones</button>
+          <button class="da-filter-btn" data-cat="materiales">Materiales</button>
+          <button class="da-filter-btn" data-cat="medicion">Medición y trazado</button>
+          <button class="da-filter-btn" data-cat="acabados">Acabados</button>
+          <button class="da-filter-btn" data-cat="figura">Veta y figura</button>
+          <button class="da-filter-btn" data-cat="estructura">Estructura</button>
         </div>
       </div>
 
       <div class="da-stats" id="da-stats">Mostrando 197 de 197 términos · 8 categorías</div>
       <main class="da-main" id="da-main"><div class="da-cat-section">
           <div class="da-cat-header">
-            <span class="da-cat-icon">🪑</span>
+            <span class="da-cat-icon"></span>
             <span class="da-cat-name">Partes del mueble</span>
             <span class="da-cat-count">20 términos</span>
           </div>
@@ -1865,7 +1932,7 @@
           </div></div>
         </div><div class="da-cat-section">
           <div class="da-cat-header">
-            <span class="da-cat-icon">🔨</span>
+            <span class="da-cat-icon"></span>
             <span class="da-cat-name">Herramientas y máquinas</span>
             <span class="da-cat-count">22 términos</span>
           </div>
@@ -2004,7 +2071,7 @@
           </div></div>
         </div><div class="da-cat-section">
           <div class="da-cat-header">
-            <span class="da-cat-icon">🔧</span>
+            <span class="da-cat-icon"></span>
             <span class="da-cat-name">Técnicas y uniones</span>
             <span class="da-cat-count">22 términos</span>
           </div>
@@ -2143,7 +2210,7 @@
           </div></div>
         </div><div class="da-cat-section">
           <div class="da-cat-header">
-            <span class="da-cat-icon">🪵</span>
+            <span class="da-cat-icon"></span>
             <span class="da-cat-name">Materiales y tableros</span>
             <span class="da-cat-count">18 términos</span>
           </div>
@@ -2258,7 +2325,7 @@
           </div></div>
         </div><div class="da-cat-section">
           <div class="da-cat-header">
-            <span class="da-cat-icon">📐</span>
+            <span class="da-cat-icon"></span>
             <span class="da-cat-name">Medición y trazado</span>
             <span class="da-cat-count">14 términos</span>
           </div>
@@ -2349,7 +2416,7 @@
           </div></div>
         </div><div class="da-cat-section">
           <div class="da-cat-header">
-            <span class="da-cat-icon">🎨</span>
+            <span class="da-cat-icon"></span>
             <span class="da-cat-name">Acabados y tratamientos</span>
             <span class="da-cat-count">15 términos</span>
           </div>
@@ -2503,7 +2570,7 @@
           <span class="tipo-tag texto">perfil</span>
           <span class="tipo-tag obra">obra</span>
         </div>
-        <div class="maestro-photo-placeholder">👤</div>
+        <div class="maestro-photo-placeholder"></div>
         <p class="maestro-especialidad">Ebanistería · New Hope, Pensilvania (EE.UU.)</p>
         <h3 class="maestro-nombre">George Nakashima</h3>
         <p class="maestro-bio">Nació en 1905 en Spokane, hijo de inmigrantes japoneses. Formado en arquitectura en el MIT y en la École des Beaux-Arts de París, aprendió carpintería tradicional japonesa de Gentaro Hikogawa durante su internamiento en un campo de concentración en Idaho, en plena Segunda Guerra Mundial. Fundó su taller en New Hope, Pensilvania, donde desarrolló el borde libre y la unión de mariposa como forma de honrar — no ocultar — las grietas y la forma natural del tronco. Murió en 1990. No llegamos a entrevistarlo: este perfil sale de lo que él mismo escribió en <em>El alma de un árbol</em> (1981) y de lo que quedó documentado de su obra, no de una conversación que tuvimos.</p>
@@ -2515,7 +2582,7 @@
           <span class="tipo-tag texto">perfil</span>
           <span class="tipo-tag obra">obra</span>
         </div>
-        <div class="maestro-photo-placeholder">👤</div>
+        <div class="maestro-photo-placeholder"></div>
         <p class="maestro-especialidad">Diseño de mobiliario · Ciudad de México (México)</p>
         <h3 class="maestro-nombre">Clara Porset</h3>
         <p class="maestro-bio">Nació en Cuba en 1895 y estudió arquitectura en Europa, donde conoció a Walter Gropius y Hannes Meyer, de la Bauhaus. Se exilió en México y, casada con el muralista Xavier Guerrero, recorrió el país estudiando el mueble tradicional de distintas culturas originarias. De ese trabajo nació el butaque, su reinterpretación del asiento colonial mexicano — Luis Barragán lo adoptó en su propia casa y le encargó una versión a medida, el "Miguelito". Murió en 1981; la UNAM sostiene una beca con su nombre para diseñadoras industriales. No la entrevistamos: este perfil sale de lo que quedó documentado de su obra y su historia, no de una conversación que tuvimos.</p>
@@ -2532,7 +2599,7 @@
           <span class="tipo-tag obra">obra</span>
           <span class="tipo-tag texto">texto</span>
         </div>
-        <div class="maestro-photo-placeholder">👤</div>
+        <div class="maestro-photo-placeholder"></div>
         <p class="maestro-especialidad">Ebanistería clásica · Buenos Aires</p>
         <h3 class="maestro-nombre">Nombre Apellido</h3>
         <p class="maestro-bio">Breve descripción del maestro, su trayectoria y por qué vale la pena conocer su trabajo.</p>
@@ -2546,7 +2613,7 @@
         <h3>¿Conocés a un maestro que debería estar acá?</h3>
         <p>Escribinos por Instagram o por mail. Buscamos referentes del oficio en todo el mundo hispanohablante.</p>
       </div>
-      <a href="https://instagram.com/abelanuzis" class="btn-primary" target="_blank" rel="noopener noreferrer">Proponer un maestro →</a>
+      <a href="https://instagram.com/abelanuzis" class="btn-primary" target="_blank" rel="noopener noreferrer">Proponer un maestro</a>
     </div>
   </section>
 
@@ -2569,7 +2636,7 @@
       <!-- Escuelas y tecnicaturas -->
       <div class="estudiar-bloque reveal">
         <div class="bloque-header">
-          <span class="bloque-icon">🏛️</span>
+          <span class="bloque-icon"></span>
           <div>
             <div class="bloque-titulo">Escuelas y tecnicaturas</div>
             <div class="bloque-subtitle">formación oficial · título</div>
@@ -2600,13 +2667,13 @@
           <span class="item-badge presencial">Presencial</span>
         </div>
 
-        <p class="agregar-cta">+ Sugerí una escuela →</p>
+        <p class="agregar-cta">+ Sugerí una escuela</p>
       </div>
 
       <!-- Maestros particulares -->
       <div class="estudiar-bloque reveal" style="transition-delay:0.15s">
         <div class="bloque-header">
-          <span class="bloque-icon">🤝</span>
+          <span class="bloque-icon"></span>
           <div>
             <div class="bloque-titulo">Carpinteros que enseñan</div>
             <div class="bloque-subtitle">clases y talleres · consultar con cada uno</div>
@@ -2637,13 +2704,13 @@
           <span class="item-badge particular">Consultar</span>
         </div>
 
-        <p class="agregar-cta">+ ¿Sos maestro? Escribinos →</p>
+        <p class="agregar-cta">+ ¿Sos maestro? Escribinos</p>
       </div>
 
       <!-- Recursos autodidactas — ancho completo -->
       <div class="estudiar-bloque full-width reveal" style="transition-delay:0.3s">
         <div class="bloque-header">
-          <span class="bloque-icon">📚</span>
+          <span class="bloque-icon"></span>
           <div>
             <div class="bloque-titulo">Recursos autodidactas</div>
             <div class="bloque-subtitle">libros · canales · referencia</div>
@@ -2662,7 +2729,7 @@
 
         </div>
 
-        <p class="agregar-cta">+ Sugerí un recurso →</p>
+        <p class="agregar-cta">+ Sugerí un recurso</p>
       </div>
 
     </div>
@@ -2711,7 +2778,7 @@
           <div style="font-family:'Fraunces',Georgia,serif;font-size:1rem;color:var(--crema);margin-bottom:3px;">Diario del Aprendiz</div>
           <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim);">El camino personal hacia el oficio. I. El umbral</div>
         </div>
-        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver →</div>
+        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver</div>
       </a>
     </div>
 
@@ -2726,7 +2793,7 @@
           <div style="font-family:'Fraunces',Georgia,serif;font-size:1rem;color:var(--crema);margin-bottom:3px;">TP1 — Marquetería</div>
           <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim);">Guía visual completa: diseño, corte, pegado y terminado</div>
         </div>
-        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver →</div>
+        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver</div>
       </a>
     </div>
 
@@ -2741,7 +2808,7 @@
           <div style="font-family:'Fraunces',Georgia,serif;font-size:1rem;color:var(--crema);margin-bottom:3px;">El arte y lo artesanal</div>
           <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim);">Historia del concepto de arte, la distinción arte/artesanía, y quiénes trabajan en el límite de esa categoría</div>
         </div>
-        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver →</div>
+        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver</div>
       </a>
       <a href="cuando_el_mueble_es_arte.html" style="display:flex;align-items:center;gap:1.25rem;background:rgba(var(--crema-rgb),.03);border:1px solid var(--linea);border-radius:10px;padding:1.1rem 1.4rem;text-decoration:none;margin-top:.75rem;transition:background .2s;" onmouseover="this.style.background='rgba(var(--crema-rgb),.06)'" onmouseout="this.style.background='rgba(var(--crema-rgb),.03)'">
         <div style="width:42px;height:42px;background:var(--siena);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -2751,7 +2818,7 @@
           <div style="font-family:'Fraunces',Georgia,serif;font-size:1rem;color:var(--crema);margin-bottom:3px;">Cuando el mueble es arte</div>
           <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim);">Wharton Esherick, el Studio Furniture Movement, Arts &amp; Crafts, Mingei y Bauhaus</div>
         </div>
-        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver →</div>
+        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver</div>
       </a>
     </div>
 
@@ -2766,7 +2833,7 @@
           <div style="font-family:'Fraunces',Georgia,serif;font-size:1rem;color:var(--crema);margin-bottom:3px;">Ira S. Griffith, Essentials of Woodworking (1908)</div>
           <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim);">El manual de un maestro de taller que escribió para enseñar. Libro en dominio público, gratis en línea</div>
         </div>
-        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver →</div>
+        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver</div>
       </a>
       <a href="resena_loudon.html" style="display:flex;align-items:center;gap:1.25rem;background:rgba(var(--crema-rgb),.03);border:1px solid var(--linea);border-radius:10px;padding:1.1rem 1.4rem;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='rgba(var(--crema-rgb),.06)'" onmouseout="this.style.background='rgba(var(--crema-rgb),.03)'">
         <div style="width:42px;height:42px;background:var(--siena);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -2776,7 +2843,7 @@
           <div style="font-family:'Fraunces',Georgia,serif;font-size:1rem;color:var(--crema);margin-bottom:3px;">La enciclopedia de Loudon (1833)</div>
           <div style="font-family:'Crimson Pro',Georgia,serif;font-size:.875rem;color:var(--crema-dim);">Muebles del común explicados para quien los hace. Libro en dominio público, gratis en línea</div>
         </div>
-        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver →</div>
+        <div style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:.65rem;color:var(--ambar);letter-spacing:.08em;flex-shrink:0;">ver</div>
       </a>
     </div>
 
@@ -2787,9 +2854,9 @@
     <!-- FILTROS -->
     <div id="astillas-filtros" style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1.75rem;">
       <button class="ast-filtro active" data-tipo="todos" onclick="astFiltrar(this)">Todos</button>
-      <button class="ast-filtro" data-tipo="pdf" onclick="astFiltrar(this)">📄 PDFs</button>
+      <button class="ast-filtro" data-tipo="pdf" onclick="astFiltrar(this)">PDFs</button>
       <button class="ast-filtro" data-tipo="video" onclick="astFiltrar(this)">▶ Videos</button>
-      <button class="ast-filtro" data-tipo="imagen" onclick="astFiltrar(this)">🖼 Fotos</button>
+      <button class="ast-filtro" data-tipo="imagen" onclick="astFiltrar(this)">Fotos</button>
     </div>
 
     <!-- GRID -->
@@ -2818,7 +2885,7 @@
       <div>
         <h3>Tocar Madera 2026</h3>
         <p>Encuentro del oficio de la madera en Parque La Estación, Avellaneda. Nota sobre los expositores y patrocinadores que participaron.</p>
-        <a class="ag-link" href="tocar_madera_2026.html">Leer la nota →</a>
+        <a class="ag-link" href="tocar_madera_2026.html">Leer la nota</a>
       </div>
     </article>
   </section>
@@ -2873,7 +2940,7 @@
     const SHOW_LT = false;
     const daData = {
       partes: {
-        icon: "🪑", label: "Partes del mueble",
+        icon: "", label: "Partes del mueble",
         entries: [
           { en: "Carcass", pron: "KAR-kas", es: "Carcasa / Cuerpo", lt: "Korpusas", def: "La caja estructural del mueble sin puertas ni cajones. Es el esqueleto que define el volumen." },
           { en: "Face frame", pron: "féis freim", es: "Marco frontal", lt: "Priekinis rėmas", def: "Marco de madera maciza pegado al frente de la carcasa. Define las aberturas y oculta los cantos del tablero." },
@@ -2898,7 +2965,7 @@
         ]
       },
       herramientas: {
-        icon: "🔨", label: "Herramientas y máquinas",
+        icon: "", label: "Herramientas y máquinas",
         entries: [
           { en: "Table saw", pron: "TÉI-bel so", es: "Sierra de mesa / Escuadra", lt: "Stalo pjūklas", def: "Máquina con disco circular fijo y mesa deslizante. La herramienta central de cualquier taller." },
           { en: "Miter saw", pron: "MÁI-ter so", es: "Sierra ingleteadora", lt: "Stūmoklinė pjovimo mašina", def: "Sierra de brazo con cabezal giratorio para cortes en ángulo y a tope." },
@@ -2925,7 +2992,7 @@
         ]
       },
       tecnicas: {
-        icon: "🔧", label: "Técnicas y uniones",
+        icon: "", label: "Técnicas y uniones",
         entries: [
           { en: "Dovetail joint", pron: "DÁV-teil yoint", es: "Cola de milano", lt: "Uodegos jungimas", def: "Unión en forma de trapecio. Extremadamente resistente a la tracción. Marca de calidad artesanal." },
           { en: "Mortise and tenon", pron: "MÓR-tis and TÉ-non", es: "Espiga y caja / Mortaja", lt: "Tenono ir mortizo jungimas", def: "Unión clásica: una espiga entra en una caja. Base de la carpintería estructural." },
@@ -2954,7 +3021,7 @@
         ]
       },
       materiales: {
-        icon: "🪵", label: "Materiales y tableros",
+        icon: "", label: "Materiales y tableros",
         entries: [
           { en: "Plywood", pron: "PLÁI-ud", es: "Terciado / Madera terciada", lt: "Fanera", def: "Tablero de chapas de madera cruzadas y encoladas. Alta resistencia y estabilidad dimensional." },
           { en: "Marine plywood", pron: "ma-RÍN PLÁI-ud", es: "Fenólico marino", lt: "Jūrinė fanera", def: "Terciado de alta calidad con resinas resistentes al agua. Sin vacíos internos. Ideal para muebles." },
@@ -2977,7 +3044,7 @@
         ]
       },
       medicion: {
-        icon: "📐", label: "Medición y trazado",
+        icon: "", label: "Medición y trazado",
         entries: [
           { en: "Kerf allowance", pron: "kerf a-LÁU-ans", es: "Margen de corte", lt: "Pjovimo leidimas", def: "Material extra que se deja en el plan de corte para compensar el ancho del disco de sierra (~3 mm)." },
           { en: "Story stick", pron: "STÓ-ri stik", es: "Bastón de cotas", lt: "Matavimo lazdelė", def: "Regla o listón donde se marcan todas las medidas de un proyecto para transferirlas sin números." },
@@ -2996,7 +3063,7 @@
         ]
       },
       figura: {
-        icon: "🌳", label: "Veta y figura",
+        icon: "", label: "Veta y figura",
         entries: [
           { en: "Figure", pron: "FÍ-guiur", es: "Figura / Dibujo", lt: "—", def: "El dibujo decorativo que se ve en la superficie. Sale de cómo quedaron cortados los anillos, los radios y las fibras. No es lo mismo que la fibra, que es la dirección de las células." },
           { en: "Quartersawn", pron: "KUÓR-ter-son", es: "Corte radial / Cuarteado", lt: "Radialinis pjūvis", def: "Tabla aserrada con los anillos casi perpendiculares a la cara (60° a 90°). Es la más estable y la que muestra los espejuelos del roble." },
@@ -3019,7 +3086,7 @@
         ]
       },
       acabados: {
-        icon: "🎨", label: "Acabados y tratamientos",
+        icon: "", label: "Acabados y tratamientos",
         entries: [
           { en: "Finishing", pron: "FÍ-ni-shing", es: "Acabado / Terminación", lt: "Apdaila", def: "Todo proceso aplicado a la superficie de la madera para protegerla y darle apariencia final." },
           { en: "Sanding sealer", pron: "SÁN-ding SÍ-ler", es: "Sellador para lijar", lt: "Gruntas šlifavimui", def: "Primera capa que sella el poro de la madera y facilita el lijado final antes del acabado." },
@@ -3039,7 +3106,7 @@
         ]
       },
       estructura: {
-        icon: "🔬", label: "Estructura de la madera",
+        icon: "", label: "Estructura de la madera",
         entries: [
           { en: "Wood", pron: "wud", es: "Madera", lt: "Mediena", def: "Tejido del tronco que está dentro de la corteza. Es lo que se asierra: crece en anillos alrededor de la médula." },
           { en: "Bark", pron: "bark", es: "Corteza", lt: "Žievė", def: "Capa exterior del tronco que protege al árbol. La separa de la madera el cámbium." },
@@ -3165,7 +3232,7 @@
       });
 
       if (!totalShown) {
-        main.innerHTML = `<div class="da-no-results">🔍 Sin resultados<span>Probá en inglés, pronunciación o español</span></div>`;
+        main.innerHTML = `<div class="da-no-results">Sin resultados<span>Probá en inglés, pronunciación o español</span></div>`;
       }
 
       const total = Object.values(daData).reduce((a,c)=>a+c.entries.length,0);
@@ -3368,12 +3435,12 @@
       empty.style.display = 'none';
       grid.innerHTML = filtered.map((item) => {
         if (item.tipo === 'pdf') {
-          return `<div class="ast-card"><div class="ast-card-tipo">📄 PDF · Documento</div><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}<a href="${item.url}" target="_blank" class="ast-btn">Descargar →</a></div>`;
+          return `<div class="ast-card"><div class="ast-card-tipo">PDF · Documento</div><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}<a href="${item.url}" target="_blank" class="ast-btn">Descargar</a></div>`;
         } else if (item.tipo === 'video') {
           const embedUrl = astVideoEmbed(item.url);
           return `<div class="ast-card"><div class="ast-card-tipo">▶ Video</div><h3>${item.titulo}</h3>${embedUrl ? `<div class="ast-video-wrap"><iframe src="${embedUrl}" allowfullscreen></iframe></div>` : `<p style="color:var(--error)">URL de video no reconocida.</p>`}${item.desc ? `<p>${item.desc}</p>` : ''}</div>`;
         } else {
-          return `<div class="ast-card"><div class="ast-card-tipo">🖼 Imagen · Foto</div><img class="ast-card-img" src="${item.url}" alt="${item.titulo}" onerror="this.style.display='none'"><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}</div>`;
+          return `<div class="ast-card"><div class="ast-card-tipo">Imagen · Foto</div><img class="ast-card-img" src="${item.url}" alt="${item.titulo}" onerror="this.style.display='none'"><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}</div>`;
         }
       }).join('');
     }
@@ -3415,4 +3482,20 @@
   </script>
 
 
+  <script>
+  // Buscador de la ficha de la tapa: abre la pestaña Diccionario y filtra
+  (function () {
+    var f = document.getElementById('ficha-buscar');
+    if (!f) return;
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = document.getElementById('ficha-q').value.trim();
+      location.hash = 'diccionario';
+      setTimeout(function () {
+        var d = document.getElementById('da-search');
+        if (d) { d.value = v; d.dispatchEvent(new Event('input')); }
+      }, 50);
+    });
+  })();
+  </script>
 </body></html>
