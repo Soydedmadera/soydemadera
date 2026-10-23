@@ -1583,6 +1583,11 @@
       .tapa-in { grid-template-columns: minmax(0,1fr); gap: 2.25rem; padding: 6.5rem max(16px, env(safe-area-inset-left, 0px)) 3rem; }
       .franja { padding: 2rem max(16px, env(safe-area-inset-left, 0px)) 2.5rem; }
     }
+    .maestro-retrato { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; display: block; margin-bottom: 1.2rem; }
+    .maestro-obra { margin: 1.4rem 0 0; }
+    .maestro-obra img { display: block; width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; max-width: 100%; }
+    .maestro-obra figcaption { font-size: .85rem; line-height: 1.45; margin-top: .5rem; color: var(--gris-tex); }
+    .maestro-obra a { color: inherit; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
@@ -2570,10 +2575,11 @@
           <span class="tipo-tag texto">perfil</span>
           <span class="tipo-tag obra">obra</span>
         </div>
-        <div class="maestro-photo-placeholder"></div>
+        <img class="maestro-retrato" src="img/nakashima-retrato-1929.jpg" width="300" height="300" alt="George Nakashima en 1929, con toga y birrete de graduación.">
         <p class="maestro-especialidad">Ebanistería · New Hope, Pensilvania (EE.UU.)</p>
         <h3 class="maestro-nombre">George Nakashima</h3>
         <p class="maestro-bio">Nació en 1905 en Spokane, hijo de inmigrantes japoneses. Formado en arquitectura en el MIT y en la École des Beaux-Arts de París, aprendió carpintería tradicional japonesa de Gentaro Hikogawa durante su internamiento en un campo de concentración en Idaho, en plena Segunda Guerra Mundial. Fundó su taller en New Hope, Pensilvania, donde desarrolló el borde libre y la unión de mariposa como forma de honrar — no ocultar — las grietas y la forma natural del tronco. Murió en 1990. No llegamos a entrevistarlo: este perfil sale de lo que él mismo escribió en <em>El alma de un árbol</em> (1981) y de lo que quedó documentado de su obra, no de una conversación que tuvimos.</p>
+        <figure class="maestro-obra"><img src="img/nakashima-silla-conoide.jpg" width="700" height="700" loading="lazy" alt="Respaldo y asiento de una silla Conoide de Nakashima: varillas torneadas y asiento de nogal con la veta a la vista."><figcaption>Silla Conoide, 1988, Art Institute of Chicago. Foto: Sailko, <a href="https://creativecommons.org/licenses/by/3.0/deed.es" target="_blank" rel="noopener noreferrer">CC BY 3.0</a>, recortada. Retrato de 1929, autor desconocido, dominio público.</figcaption></figure>
       </div>
 
       <!-- Maestro 3: Clara Porset -->
@@ -2582,10 +2588,11 @@
           <span class="tipo-tag texto">perfil</span>
           <span class="tipo-tag obra">obra</span>
         </div>
-        <div class="maestro-photo-placeholder"></div>
+        <img class="maestro-retrato" src="img/porset-retrato.jpg" width="300" height="300" alt="Retrato de Clara Porset, ya mayor, con un suéter de lana y las manos cruzadas sobre la mesa.">
         <p class="maestro-especialidad">Diseño de mobiliario · Ciudad de México (México)</p>
         <h3 class="maestro-nombre">Clara Porset</h3>
         <p class="maestro-bio">Nació en Cuba en 1895 y estudió arquitectura en Europa, donde conoció a Walter Gropius y Hannes Meyer, de la Bauhaus. Se exilió en México y, casada con el muralista Xavier Guerrero, recorrió el país estudiando el mueble tradicional de distintas culturas originarias. De ese trabajo nació el butaque, su reinterpretación del asiento colonial mexicano — Luis Barragán lo adoptó en su propia casa y le encargó una versión a medida, el "Miguelito". Murió en 1981; la UNAM sostiene una beca con su nombre para diseñadoras industriales. No la entrevistamos: este perfil sale de lo que quedó documentado de su obra y su historia, no de una conversación que tuvimos.</p>
+        <figure class="maestro-obra"><img src="img/porset-butaque.jpg" width="700" height="700" loading="lazy" alt="Butaque de Clara Porset de 1949: marco curvo de madera tejido con cuerdas de ixtle."><figcaption>Butaque rediseñado por Clara Porset en 1949, marco de madera tejido con ixtle. Retrato y foto: Archivo Clara Porset, CIDI, Facultad de Arquitectura, UNAM, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, recortadas.</figcaption></figure>
       </div>
     </div>
 
