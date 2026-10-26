@@ -1344,6 +1344,17 @@
       opacity: 0.75;
     }
 
+    .da-corregir {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 0.74rem;
+      color: var(--azul);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      opacity: 0.85;
+    }
+    .da-corregir:hover, .da-corregir:focus-visible { opacity: 1; }
+
     .da-no-results {
       text-align: center; padding: 60px 20px;
       color: var(--gris-tex);
@@ -3279,6 +3290,7 @@
             <div class="da-es">${hl(e.es)}</div>
             ${SHOW_LT ? `<div class="da-lt">${hl(e.lt)}</div>` : ''}
             <div class="da-def">${hl(e.def)}</div>
+            <a class="da-corregir" href="mailto:hola@soydemadera.com?subject=${encodeURIComponent('Diccionario: ' + e.en)}&body=${encodeURIComponent('Término: ' + e.en + ' / ' + e.es + '\n\nEn mi taller le decimos: \nZona o país: \nNombre, si querés que figure: \n')}">¿En tu taller le dicen distinto?</a>
           `;
           grid.appendChild(card);
         });
