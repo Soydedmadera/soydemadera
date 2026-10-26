@@ -1574,6 +1574,8 @@
     .foto-tapa a { color: inherit; }
     .franja { max-width: 1200px; margin: 0 auto; padding: 2.5rem 3rem 3rem; }
     .franja img { aspect-ratio: 1200 / 560; object-fit: cover; max-width: 100%; }
+    .franja .tira { display: flex; height: clamp(170px, 30vw, 360px); }
+    .franja .tira img { flex: 1 1 0; min-width: 0; width: auto; height: 100%; aspect-ratio: auto; object-fit: cover; }
     .franja figcaption { font-size: .85rem; margin-top: .5rem; color: var(--gris-tex); }
     .franja a { color: inherit; }
     a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
@@ -1654,8 +1656,11 @@
       </div>
     </div>
     <figure class="franja">
-      <img src="img/niebla-condorito.jpg" width="1200" height="560" loading="lazy" alt="Roca granítica y pastizal de altura en la Quebrada del Condorito, con la niebla subiendo desde la quebrada.">
-      <figcaption>Niebla en la Quebrada del Condorito, Sierras Grandes de Córdoba. Foto: Kevin Jones, <a href="https://creativecommons.org/licenses/by/2.0/deed.es" target="_blank" rel="noopener noreferrer">CC BY 2.0</a>, recortada.</figcaption>
+      <div class="tira">
+        <img src="img/palo-santo.jpg" width="900" height="700" loading="lazy" alt="Tabla de palo santo: la albura clara arriba y, debajo, el duramen oscuro con vetas onduladas en tonos de oliva, ocre y castaño.">
+        <img src="img/quebracho-colorado.jpg" width="900" height="700" loading="lazy" alt="Corte transversal de un tronco de quebracho colorado: la albura clara en el borde y el duramen rojo oscuro en el centro.">
+      </div>
+      <figcaption>Las fotos de la tapa, una por semana, de izquierda a derecha: palo santo (<i>Bulnesia sarmientoi</i>), foto de Abarmot, <a href="https://commons.wikimedia.org/wiki/File:BulnesiaSarmientoi_wood.jpg" target="_blank" rel="noopener noreferrer">dominio público</a>; quebracho colorado (<i>Schinopsis balansae</i>), foto de Valerio Pillar, <a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a>. Recortadas.</figcaption>
     </figure>
   </div>
 
