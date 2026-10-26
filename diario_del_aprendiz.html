@@ -361,7 +361,9 @@
     .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
     .hero-title em { font-style: normal !important; color: inherit !important; }
     .section-label::after { display: none; }
-    .indice { display: flex; flex-wrap: wrap; gap: .4rem 1.6rem; margin-top: 1.6rem; }
+    .indice { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1.6rem; margin-top: 1.6rem; }
+    body::before, .hero::after { display: none !important; }
+    html { scroll-padding-top: 5rem; }
     .indice a { color: var(--azul); text-underline-offset: .2em; }
     .entrada-titulo { font-size: clamp(1.6rem, 3vw, 2.1rem); line-height: 1.15; margin: 0 0 1.4rem; color: var(--crema); }
     .entrada + .entrada { border-top: 1px solid var(--linea); }
@@ -384,10 +386,10 @@
       <h1 class="hero-title">Diario del Aprendiz</h1>
       <p class="hero-sub">El camino hacia el oficio: desde la primera vez que me enamoré de la madera hasta la oportunidad que me di de amarla de verdad. Con pausas, desvíos y la alegría que me mantiene absorto.</p>
       <p class="hero-byline">Por Abel J. Anuzis · soydemadera.com</p>
-      <nav class="indice" aria-label="Entradas">
+      <div class="indice" role="navigation" aria-label="Entradas">
         <a href="#i-el-umbral">I. El umbral</a>
         <a href="#ii-juguetes-rabiosos">II. Juguetes rabiosos</a>
-      </nav>
+      </div>
     </header>
 
     <section class="reveal entrada" id="i-el-umbral">
