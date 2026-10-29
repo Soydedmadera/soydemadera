@@ -3279,7 +3279,19 @@
         <p class="maestro-bio">Nació en Brooklyn, estudió y se doctoró en literatura hispánica y aprendió el oficio como aprendiz en City Joinery, un estudio de muebles de diseño en Dumbo. Hoy hace muebles a medida en su estudio de las sierras de Córdoba, con el método que llama <em>bench made</em>: un artesano, o un grupo chico, empieza y termina una sola pieza a la vez. Seca su propia madera al aire, de 9 a 12 meses por pulgada. <a href="maestros_dan_bursztyn.html">Leer la entrevista</a>.</p>
       </div>
 
-      <!-- Maestro 3: Clara Porset -->
+      <!-- Maestro 3: Salvador Flores -->
+      <div class="maestro-card reveal" style="transition-delay:0.3s">
+        <div class="maestro-tipos">
+          <span class="tipo-tag entrevista">entrevista</span>
+          <span class="tipo-tag obra">obra</span>
+        </div>
+        <img class="maestro-retrato" src="img/salvador-flores-banco-2016.jpg" width="600" height="337" loading="lazy" alt="Salvador Flores en su banco de Monterrey, en 2016, trabajando los barrotes del sofá raíz.">
+        <p class="maestro-especialidad">Ebanistería · España (antes, México)</p>
+        <h3 class="maestro-nombre">Salvador Flores</h3>
+        <p class="maestro-bio">Ingeniero: diseñaba componentes para la industria de electrodomésticos e investigaba fallas. Se dedica a la ebanistería desde 2013; hizo su taller en Monterrey y hace poco se mudó a España. Dirige sfebanista, una academia en línea, fabrica herramientas como el alisador BRIN y dedicó diez videos a <em>The Nature and Art of Workmanship</em> de David Pye. <a href="maestros_salvador_flores.html">Leer la entrevista</a>.</p>
+      </div>
+
+      <!-- Maestro 4: Clara Porset -->
       <div class="maestro-card reveal" style="transition-delay:0.3s">
         <div class="maestro-tipos">
           <span class="tipo-tag texto">perfil</span>
@@ -4170,7 +4182,7 @@
       empty.style.display = 'none';
       grid.innerHTML = filtered.map((item) => {
         if (item.tipo === 'pdf') {
-          return `<div class="ast-card"><div class="ast-card-tipo">PDF · Documento</div><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}<a href="${item.url}" target="_blank" class="ast-btn">Descargar</a></div>`;
+          return `<div class="ast-card"><div class="ast-card-tipo">PDF · Documento</div><h3>${item.titulo}</h3>${item.desc ? `<p>${item.desc}</p>` : ''}<a href="${item.url}" target="_blank" rel="noopener noreferrer" class="ast-btn">Descargar</a></div>`;
         } else if (item.tipo === 'video') {
           const embedUrl = astVideoEmbed(item.url);
           return `<div class="ast-card"><div class="ast-card-tipo">▶ Video</div><h3>${item.titulo}</h3>${embedUrl ? `<div class="ast-video-wrap"><iframe src="${embedUrl}" allowfullscreen></iframe></div>` : `<p style="color:var(--error)">URL de video no reconocida.</p>`}${item.desc ? `<p>${item.desc}</p>` : ''}</div>`;
