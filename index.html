@@ -66,6 +66,7 @@
         "sameAs": [
           "https://www.linkedin.com/in/abel-anuzis-41a3b815/",
           "https://orcid.org/0000-0002-8011-6286",
+          "https://scholar.google.com/citations?user=JCeKO9IAAAAJ",
           "https://www.instagram.com/abelanuzis/"
         ]
       }
@@ -1643,6 +1644,17 @@
     .maestro-obra figcaption { font-size: .85rem; line-height: 1.45; margin-top: .5rem; color: var(--gris-tex); }
     .maestro-obra a { color: inherit; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    /* Herramientas y pie: sin cortes fijos, sin pastillas, letra de 15 px o más */
+    h3, .herramienta-titulo { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    .herramienta-cat { font-size: .95rem; color: var(--gris-tex); }
+    .herramienta-titulo { font-size: 1.6rem; line-height: 1.15; }
+    .herramienta-desc { font-size: 1rem; }
+    .herramienta-tags { display: block; font-size: .95rem; color: var(--gris-tex); }
+    .herramienta-cta { font-size: 1rem; }
+    a:hover .herramienta-cta { letter-spacing: normal; text-decoration: underline; text-underline-offset: .2em; }
+    .footer-copy, .footer-next { font-size: .95rem; }
   </style>
 </head>
 <body>
@@ -1762,7 +1774,7 @@
     <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; flex-wrap:wrap; margin-bottom:3.5rem;">
       <div>
         <p class="section-label reveal">Herramientas digitales</p>
-        <h2 class="section-title reveal">Calculadoras<br><em>para el taller</em></h2>
+        <h2 class="section-title reveal">Calculadoras <em>para el taller</em></h2>
       </div>
       <p class="reveal" style="max-width:340px; font-size:0.95rem; color:var(--gris-tex); line-height:1.75;">
         Herramientas online para resolver cálculos del día a día en el taller. Sin instalación, desde el navegador.
@@ -1776,10 +1788,10 @@
           <div class="herramienta-card-inner">
             <div class="herramienta-num">01</div>
             <p class="herramienta-cat">Cálculo de volumen</p>
-            <h3 class="herramienta-titulo">Calculadora<br>Pie de Madera</h3>
+            <h3 class="herramienta-titulo">Calculadora de pie de madera</h3>
             <p class="herramienta-desc">Calculá pies de madera a partir de dimensiones en mm o cm. Incluye presets de tableros estándar del mercado argentino.</p>
             <div class="herramienta-footer">
-              <span class="herramienta-tags"><span class="h-tag">mm / cm</span><span class="h-tag">presets ARG</span></span>
+              <span class="herramienta-tags">En mm o cm, con tableros del mercado argentino</span>
               <span class="herramienta-cta">Abrir</span>
             </div>
           </div>
@@ -1791,10 +1803,10 @@
           <div class="herramienta-card-inner">
             <div class="herramienta-num">02</div>
             <p class="herramienta-cat">Conversión de medidas</p>
-            <h3 class="herramienta-titulo">Conversor<br>Imperial / Decimal</h3>
+            <h3 class="herramienta-titulo">Conversor imperial / decimal</h3>
             <p class="herramienta-desc">Convertí pulgadas fraccionarias y pies/pulgadas a mm, cm y metros. Tabla de tamaños nominales vs reales de madera aserrada.</p>
             <div class="herramienta-footer">
-              <span class="herramienta-tags"><span class="h-tag">pulgadas ↔ mm</span><span class="h-tag">tabla nominal</span></span>
+              <span class="herramienta-tags">Pulgadas a mm, con tabla de medidas nominales</span>
               <span class="herramienta-cta">Abrir</span>
             </div>
           </div>
@@ -1806,10 +1818,10 @@
           <div class="herramienta-card-inner">
             <div class="herramienta-num">03</div>
             <p class="herramienta-cat">Referencia técnica</p>
-            <h3 class="herramienta-titulo">Diccionario<br>Inglés / Español</h3>
+            <h3 class="herramienta-titulo">Diccionario inglés / español</h3>
             <p class="herramienta-desc"><span class="da-total">221</span> términos técnicos con pronunciación fonética y definición en contexto. Buscá en inglés o en español.</p>
             <div class="herramienta-footer">
-              <span class="herramienta-tags"><span class="h-tag"><span class="da-total">221</span> términos</span><span class="h-tag">EN / ES</span></span>
+              <span class="herramienta-tags">Búsqueda en inglés y en español</span>
               <span class="herramienta-cta">Ver</span>
             </div>
           </div>
@@ -1821,10 +1833,10 @@
           <div class="herramienta-card-inner">
             <div class="herramienta-num">04</div>
             <p class="herramienta-cat">Planificación de piezas</p>
-            <h3 class="herramienta-titulo">Taller<br>digital</h3>
+            <h3 class="herramienta-titulo">Taller digital</h3>
             <p class="herramienta-desc">Calculá cuánto se mueve una tabla con la humedad según la especie, repasá seis ensambles básicos y armá el despiece de un tablero con la pérdida del corte.</p>
             <div class="herramienta-footer">
-              <span class="herramienta-tags"><span class="h-tag">movimiento</span><span class="h-tag">despiece</span></span>
+              <span class="herramienta-tags">Movimiento de la madera y despiece</span>
               <span class="herramienta-cta">Abrir</span>
             </div>
           </div>
@@ -1840,7 +1852,7 @@
   <div id="diccionario" class="page-section" style="background:var(--nogal); padding: 7rem 0 0;">
     <div style="max-width:1200px; margin:0 auto; padding: 0 3rem 3rem;">
       <p class="section-label reveal">Recurso online</p>
-      <h2 class="section-title reveal">Diccionario técnico<br><em>Inglés / Español</em></h2>
+      <h2 class="section-title reveal">Diccionario técnico <em>inglés / español</em></h2>
     </div>
 
     <!-- Dictionary app — scoped with .da prefix to avoid style collisions -->
@@ -3289,7 +3301,7 @@
     <div class="maestros-intro">
       <div>
         <p class="section-label reveal">Referentes del oficio</p>
-        <h2 class="section-title reveal">Maestros<br><em>ebanistas</em></h2>
+        <h2 class="section-title reveal">Maestros <em>ebanistas</em></h2>
       </div>
       <p class="maestros-intro-text reveal">
         Entrevistas, textos y obras de carpinteros y ebanistas que vale la pena conocer. El oficio se aprende mirando a quienes lo dominan.
@@ -3371,7 +3383,7 @@
     <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; flex-wrap:wrap; margin-bottom:4rem;">
       <div>
         <p class="section-label reveal">Formación</p>
-        <h2 class="section-title reveal">Dónde<br><em>estudiar</em></h2>
+        <h2 class="section-title reveal">Dónde <em>estudiar</em></h2>
       </div>
       <p class="reveal" style="max-width:360px; font-size:0.95rem; color:var(--gris-tex); line-height:1.75;">
         Escuelas, talleres y recursos para aprender carpintería y ebanistería en español. Directorio en construcción permanente.
@@ -3487,7 +3499,7 @@
 
   <section id="redes" class="redes-section page-section" style="max-width:1200px;">
     <p class="section-label reveal">Seguí el proyecto</p>
-    <h2 class="section-title reveal">Encontranos<br><em>donde trabajamos</em></h2>
+    <h2 class="section-title reveal">Encontranos <em>donde trabajamos</em></h2>
 
     <div class="redes-grid">
       <a href="https://instagram.com/abelanuzis" class="red-card reveal" target="_blank">
