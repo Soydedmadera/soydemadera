@@ -1600,6 +1600,25 @@
     .da-pron, .da-lt, .da-corregir { font-size: .95rem; }
     .da-def { font-size: 1rem; line-height: 1.5; }
 
+    /* Diccionario como glosario impreso: entradas separadas por filetes, sin cajas */
+    .da-cat-section { margin-bottom: 3.5rem; }
+    .da-cat-header { border-bottom: 0; padding-bottom: 0; margin-bottom: .6rem; }
+    .da-cat-name { font-weight: 400; font-size: 1.5rem; }
+    .da-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3.5rem; row-gap: 0; }
+    .da-entry { background: none; border: 0; border-top: 1px solid rgba(var(--borde-rgb), .35); padding: 1rem 0 1.2rem; overflow: visible; transition: none; }
+    .da-entry:hover { border-color: rgba(var(--borde-rgb), .35); }
+    .da-en { display: inline; font-size: 1.15rem; color: var(--crema); margin: 0; }
+    .da-pron { display: inline; margin: 0 0 0 .6rem; color: var(--gris-tex); }
+    .da-es { margin: .3rem 0 .35rem; font-size: 1.05rem; color: var(--crema); }
+    .da-lt { margin-bottom: .35rem; }
+    .da-def { border-top: 0; padding-top: 0; opacity: 1; color: var(--crema2); max-width: 36em; }
+    .da-corregir { margin-top: .45rem; color: var(--gris-tex); text-decoration-color: rgba(var(--borde-rgb), .45); opacity: 1; }
+    .da-corregir:hover, .da-corregir:focus-visible { color: var(--crema); text-decoration-color: currentColor; }
+    @media (max-width: 900px) {
+      .da-grid { grid-template-columns: minmax(0, 1fr); }
+      #diccionario > div:first-child { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+    }
+
     footer .footer-brand, footer .footer-copy, footer .footer-next { color: var(--pie-tinta); }
     @media (max-width: 900px) {
       .tapa-in { grid-template-columns: minmax(0,1fr); gap: 2.25rem; padding: 6.5rem max(16px, env(safe-area-inset-left, 0px)) 3rem; }
