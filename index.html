@@ -1577,6 +1577,7 @@
     .ficha input { flex: 1 1 200px; min-width: 0; font-size: 1rem; padding: .55rem .7rem; border: 1px solid #9c9b94; background: #fff; color: #1c1c1a; border-radius: 0; }
     .ficha button { font-size: 1rem; padding: .55rem .9rem; background: #2d4535; color: #ebe8df; border: 0; cursor: pointer; }
     .tapa .hero-actions { margin-top: 1.4rem; opacity: 1; animation: none; }
+    .tapa h1.hero-title { opacity: 1; animation: none; }
     .tapa .hero-actions a { color: var(--tela-tinta); font-size: 1rem; }
     .foto-tapa img, .franja img { display: block; width: 100%; height: auto; }
     .foto-tapa figcaption { font-size: .85rem; margin-top: .5rem; color: var(--tela-suave); }
@@ -1588,6 +1589,16 @@
     .franja figcaption { font-size: .85rem; margin-top: .5rem; color: var(--gris-tex); }
     .franja a { color: inherit; }
     a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+    /* Diccionario: sin emoji, sin contadores, letra de 15 px o más */
+    .da-pron::before, .da-entry::before { content: none; display: none; }
+    .da-stats, .da-cat-count { display: none !important; }
+    .da-entry, .da-entry:hover { transform: none; }
+    #da-search { font-size: 1rem; }
+    .da-filter-btn { font-size: .95rem; padding: .35rem .75rem; }
+    .da-en { font-size: 1rem; }
+    .da-pron, .da-lt, .da-corregir { font-size: .95rem; }
+    .da-def { font-size: 1rem; line-height: 1.5; }
 
     footer .footer-brand, footer .footer-copy, footer .footer-next { color: var(--pie-tinta); }
     @media (max-width: 900px) {
