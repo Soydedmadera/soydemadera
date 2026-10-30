@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<!-- saved from url=(0024)https://soydemadera.com/ -->
 <html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soy de Madera — Carpintería y Ebanistería en español</title>
   <meta name="description" content="Divulgación técnica de carpintería y ebanistería en español. Herramientas digitales, terminología técnica y ensayos sobre el oficio.">
+  <link rel="canonical" href="https://soydemadera.com/">
+  <!-- Vista previa al compartir (WhatsApp, Instagram, Facebook, X) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Soy de Madera">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Soy de Madera — Carpintería y ebanistería en español">
+  <meta property="og:description" content="Divulgación técnica de carpintería y ebanistería en español. Herramientas digitales, terminología técnica y ensayos sobre el oficio.">
+  <meta property="og:url" content="https://soydemadera.com/">
+  <meta property="og:image" content="https://soydemadera.com/img/og-soydemadera.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Soy de Madera — Carpintería y ebanistería en español">
+  <meta name="twitter:card" content="summary_large_image">
   <!-- Datos estructurados: autor del sitio (schema.org) -->
   <script type="application/ld+json">
   {
@@ -53,6 +66,7 @@
         "sameAs": [
           "https://www.linkedin.com/in/abel-anuzis-41a3b815/",
           "https://orcid.org/0000-0002-8011-6286",
+          "https://scholar.google.com/citations?user=JCeKO9IAAAAJ",
           "https://www.instagram.com/abelanuzis/"
         ]
       }
@@ -1579,6 +1593,7 @@
     .ficha input { flex: 1 1 200px; min-width: 0; font-size: 1rem; padding: .55rem .7rem; border: 1px solid #9c9b94; background: #fff; color: #1c1c1a; border-radius: 0; }
     .ficha button { font-size: 1rem; padding: .55rem .9rem; background: #2d4535; color: #ebe8df; border: 0; cursor: pointer; }
     .tapa .hero-actions { margin-top: 1.4rem; opacity: 1; animation: none; }
+    .tapa h1.hero-title { opacity: 1; animation: none; }
     .tapa .hero-actions a { color: var(--tela-tinta); font-size: 1rem; }
     .foto-tapa img, .franja img { display: block; width: 100%; height: auto; }
     .foto-tapa figcaption { font-size: .85rem; margin-top: .5rem; color: var(--tela-suave); }
@@ -1591,6 +1606,35 @@
     .franja a { color: inherit; }
     a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 
+    /* Diccionario: sin emoji, sin contadores, letra de 15 px o más */
+    .da-pron::before, .da-entry::before { content: none; display: none; }
+    .da-stats, .da-cat-count { display: none !important; }
+    .da-entry, .da-entry:hover { transform: none; }
+    #da-search { font-size: 1rem; }
+    .da-filter-btn { font-size: .95rem; padding: .35rem .75rem; }
+    .da-en { font-size: 1rem; }
+    .da-pron, .da-lt, .da-corregir { font-size: .95rem; }
+    .da-def { font-size: 1rem; line-height: 1.5; }
+
+    /* Diccionario como glosario impreso: entradas separadas por filetes, sin cajas */
+    .da-cat-section { margin-bottom: 3.5rem; }
+    .da-cat-header { border-bottom: 0; padding-bottom: 0; margin-bottom: .6rem; }
+    .da-cat-name { font-weight: 400; font-size: 1.5rem; }
+    .da-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3.5rem; row-gap: 0; }
+    .da-entry { background: none; border: 0; border-top: 1px solid rgba(var(--borde-rgb), .35); padding: 1rem 0 1.2rem; overflow: visible; transition: none; }
+    .da-entry:hover { border-color: rgba(var(--borde-rgb), .35); }
+    .da-en { display: inline; font-size: 1.15rem; color: var(--crema); margin: 0; }
+    .da-pron { display: inline; margin: 0 0 0 .6rem; color: var(--gris-tex); }
+    .da-es { margin: .3rem 0 .35rem; font-size: 1.05rem; color: var(--crema); }
+    .da-lt { margin-bottom: .35rem; }
+    .da-def { border-top: 0; padding-top: 0; opacity: 1; color: var(--crema2); max-width: 36em; }
+    .da-corregir { margin-top: .45rem; color: var(--gris-tex); text-decoration-color: rgba(var(--borde-rgb), .45); opacity: 1; }
+    .da-corregir:hover, .da-corregir:focus-visible { color: var(--crema); text-decoration-color: currentColor; }
+    @media (max-width: 900px) {
+      .da-grid { grid-template-columns: minmax(0, 1fr); }
+      #diccionario > div:first-child { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+    }
+
     footer .footer-brand, footer .footer-copy, footer .footer-next { color: var(--pie-tinta); }
     @media (max-width: 900px) {
       .tapa-in { grid-template-columns: minmax(0,1fr); gap: 2.25rem; padding: 6.5rem max(16px, env(safe-area-inset-left, 0px)) 3rem; }
@@ -1602,6 +1646,17 @@
     .maestro-obra figcaption { font-size: .85rem; line-height: 1.45; margin-top: .5rem; color: var(--gris-tex); }
     .maestro-obra a { color: inherit; }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+    /* Herramientas y pie: sin cortes fijos, sin pastillas, letra de 15 px o más */
+    h3, .herramienta-titulo { text-wrap: balance; }
+    p { text-wrap: pretty; }
+    .herramienta-cat { font-size: .95rem; color: var(--gris-tex); }
+    .herramienta-titulo { font-size: 1.6rem; line-height: 1.15; }
+    .herramienta-desc { font-size: 1rem; }
+    .herramienta-tags { display: block; font-size: .95rem; color: var(--gris-tex); }
+    .herramienta-cta { font-size: 1rem; }
+    a:hover .herramienta-cta { letter-spacing: normal; text-decoration: underline; text-underline-offset: .2em; }
+    .footer-copy, .footer-next { font-size: .95rem; }
   </style>
 </head>
 <body>
@@ -1682,7 +1737,7 @@
     <div class="pilares-header">
       <div>
         <p class="section-label reveal">Dos pilares</p>
-        <h2 class="section-title reveal">El <em>oficio</em><br>en dos ejes</h2>
+        <h2 class="section-title reveal">El <em>oficio</em> en dos ejes</h2>
       </div>
       <p class="reveal" style="max-width:320px; font-size:0.95rem; color:var(--gris-tex); line-height:1.7;">
         Cada pieza del proyecto gira alrededor de estas dos dimensiones del trabajo con madera.
@@ -1721,7 +1776,7 @@
     <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; flex-wrap:wrap; margin-bottom:3.5rem;">
       <div>
         <p class="section-label reveal">Herramientas digitales</p>
-        <h2 class="section-title reveal">Calculadoras<br><em>para el taller</em></h2>
+        <h2 class="section-title reveal">Calculadoras <em>para el taller</em></h2>
       </div>
       <p class="reveal" style="max-width:340px; font-size:0.95rem; color:var(--gris-tex); line-height:1.75;">
         Herramientas online para resolver cálculos del día a día en el taller. Sin instalación, desde el navegador.
@@ -1735,10 +1790,10 @@
           <div class="herramienta-card-inner">
             <div class="herramienta-num">01</div>
             <p class="herramienta-cat">Cálculo de volumen</p>
-            <h3 class="herramienta-titulo">Calculadora<br>Pie de Madera</h3>
+            <h3 class="herramienta-titulo">Calculadora de pie de madera</h3>
             <p class="herramienta-desc">Calculá pies de madera a partir de dimensiones en mm o cm. Incluye presets de tableros estándar del mercado argentino.</p>
             <div class="herramienta-footer">
-              <span class="herramienta-tags"><span class="h-tag">mm / cm</span><span class="h-tag">presets ARG</span></span>
+              <span class="herramienta-tags">En mm o cm, con tableros del mercado argentino</span>
               <span class="herramienta-cta">Abrir</span>
             </div>
           </div>
@@ -1750,10 +1805,10 @@
           <div class="herramienta-card-inner">
             <div class="herramienta-num">02</div>
             <p class="herramienta-cat">Conversión de medidas</p>
-            <h3 class="herramienta-titulo">Conversor<br>Imperial / Decimal</h3>
+            <h3 class="herramienta-titulo">Conversor imperial / decimal</h3>
             <p class="herramienta-desc">Convertí pulgadas fraccionarias y pies/pulgadas a mm, cm y metros. Tabla de tamaños nominales vs reales de madera aserrada.</p>
             <div class="herramienta-footer">
-              <span class="herramienta-tags"><span class="h-tag">pulgadas ↔ mm</span><span class="h-tag">tabla nominal</span></span>
+              <span class="herramienta-tags">Pulgadas a mm, con tabla de medidas nominales</span>
               <span class="herramienta-cta">Abrir</span>
             </div>
           </div>
@@ -1765,10 +1820,10 @@
           <div class="herramienta-card-inner">
             <div class="herramienta-num">03</div>
             <p class="herramienta-cat">Referencia técnica</p>
-            <h3 class="herramienta-titulo">Diccionario<br>Inglés / Español</h3>
+            <h3 class="herramienta-titulo">Diccionario inglés / español</h3>
             <p class="herramienta-desc"><span class="da-total">221</span> términos técnicos con pronunciación fonética y definición en contexto. Buscá en inglés o en español.</p>
             <div class="herramienta-footer">
-              <span class="herramienta-tags"><span class="h-tag"><span class="da-total">221</span> términos</span><span class="h-tag">EN / ES</span></span>
+              <span class="herramienta-tags">Búsqueda en inglés y en español</span>
               <span class="herramienta-cta">Ver</span>
             </div>
           </div>
@@ -1780,10 +1835,10 @@
           <div class="herramienta-card-inner">
             <div class="herramienta-num">04</div>
             <p class="herramienta-cat">Planificación de piezas</p>
-            <h3 class="herramienta-titulo">Taller<br>digital</h3>
+            <h3 class="herramienta-titulo">Taller digital</h3>
             <p class="herramienta-desc">Calculá cuánto se mueve una tabla con la humedad según la especie, repasá seis ensambles básicos y armá el despiece de un tablero con la pérdida del corte.</p>
             <div class="herramienta-footer">
-              <span class="herramienta-tags"><span class="h-tag">movimiento</span><span class="h-tag">despiece</span></span>
+              <span class="herramienta-tags">Movimiento de la madera y despiece</span>
               <span class="herramienta-cta">Abrir</span>
             </div>
           </div>
@@ -1799,7 +1854,7 @@
   <div id="diccionario" class="page-section" style="background:var(--nogal); padding: 7rem 0 0;">
     <div style="max-width:1200px; margin:0 auto; padding: 0 3rem 3rem;">
       <p class="section-label reveal">Recurso online</p>
-      <h2 class="section-title reveal">Diccionario técnico<br><em>Inglés / Español</em></h2>
+      <h2 class="section-title reveal">Diccionario técnico <em>inglés / español</em></h2>
     </div>
 
     <!-- Dictionary app — scoped with .da prefix to avoid style collisions -->
@@ -3248,7 +3303,7 @@
     <div class="maestros-intro">
       <div>
         <p class="section-label reveal">Referentes del oficio</p>
-        <h2 class="section-title reveal">Maestros<br><em>ebanistas</em></h2>
+        <h2 class="section-title reveal">Maestros <em>ebanistas</em></h2>
       </div>
       <p class="maestros-intro-text reveal">
         Entrevistas, textos y obras de carpinteros y ebanistas que vale la pena conocer. El oficio se aprende mirando a quienes lo dominan.
@@ -3342,7 +3397,7 @@
     <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:2rem; flex-wrap:wrap; margin-bottom:4rem;">
       <div>
         <p class="section-label reveal">Formación</p>
-        <h2 class="section-title reveal">Dónde<br><em>estudiar</em></h2>
+        <h2 class="section-title reveal">Dónde <em>estudiar</em></h2>
       </div>
       <p class="reveal" style="max-width:360px; font-size:0.95rem; color:var(--gris-tex); line-height:1.75;">
         Escuelas, talleres y recursos para aprender carpintería y ebanistería en español. Directorio en construcción permanente.
@@ -3458,7 +3513,7 @@
 
   <section id="redes" class="redes-section page-section" style="max-width:1200px;">
     <p class="section-label reveal">Seguí el proyecto</p>
-    <h2 class="section-title reveal">Encontranos<br><em>donde trabajamos</em></h2>
+    <h2 class="section-title reveal">Encontranos <em>donde trabajamos</em></h2>
 
     <div class="redes-grid">
       <a href="https://instagram.com/abelanuzis" class="red-card reveal" target="_blank">

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página no encontrada — Soy de Madera</title>
+  <meta name="robots" content="noindex" />
+  <!--
+    Cloudflare Pages sirve este archivo, con código 404, ante cualquier dirección que no existe.
+    Como puede mostrarse en cualquier profundidad (/a/b/c), las rutas empiezan con «/»:
+    es la única página del sitio donde las rutas internas no son relativas.
+  -->
+  <style>
+    @font-face { font-family: "Schola SdM"; font-weight: 400; font-style: normal; font-display: swap; src: url("/fonts/schola-regular.woff2") format("woff2"); }
+    @font-face { font-family: "Schola SdM"; font-weight: 400; font-style: italic; font-display: swap; src: url("/fonts/schola-italic.woff2") format("woff2"); }
+
+    :root {
+      color-scheme: light;
+      --texto: "Schola SdM", "Century Schoolbook", "New Century Schoolbook", Georgia, serif;
+      --nogal: #ebebe6;
+      --crema: #1c1c1a;
+      --crema-dim: #5f5e58;
+      --linea: #cfcfc8;
+      --tela: #2d4535;
+      --tela-tinta: #ebe8df;
+      --tela-suave: #b7bfb0;
+      --azul: #2d4535;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --nogal: #191c1a;
+        --crema: #e4e3dd;
+        --crema-dim: #a3a29b;
+        --linea: #2f3431;
+        --tela: #23372a;
+        --tela-tinta: #e6e3da;
+        --tela-suave: #a9b2a2;
+        --azul: #a9c2ae;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; }
+
+    body {
+      background: var(--nogal);
+      color: var(--crema);
+      font-family: var(--texto);
+      font-size: 19px;
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 38rem;
+      margin: 0 auto;
+      padding: 6rem 1.5rem 4rem;
+    }
+
+    .marca {
+      display: inline-block;
+      color: var(--crema);
+      text-decoration: none;
+      margin-bottom: 3.5rem;
+    }
+
+    h1 {
+      font-weight: 400;
+      font-size: 2.2rem;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    p { margin-bottom: 1rem; }
+
+    .dim { color: var(--crema-dim); }
+
+    ul {
+      list-style: none;
+      margin-top: 2rem;
+      border-top: 1px solid var(--linea);
+    }
+    li { border-bottom: 1px solid var(--linea); }
+    li a {
+      display: block;
+      padding: 0.85rem 0;
+      color: var(--azul);
+      text-decoration: none;
+    }
+    li a:hover, li a:focus-visible { text-decoration: underline; text-underline-offset: 0.2em; }
+
+    footer {
+      background: var(--tela);
+      color: var(--tela-suave);
+      padding: 1.6rem 1.5rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    footer a { color: var(--tela-tinta); }
+
+    @media (max-width: 900px) {
+      main { padding-top: 3.5rem; }
+      h1 { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="marca" href="/">Soy de Madera</a>
+    <h1>Esta página no existe</h1>
+    <p>La dirección que seguiste no corresponde a ninguna página del sitio. Puede que el enlace esté mal copiado o que la página haya cambiado de nombre.</p>
+    <p class="dim">Si llegaste desde un enlace roto dentro del sitio, avisanos por <a href="https://instagram.com/abelanuzis" target="_blank" rel="noopener noreferrer" style="color: var(--azul);">Instagram</a> y lo corregimos.</p>
+    <ul>
+      <li><a href="/">Inicio</a></li>
+      <li><a href="/#diccionario">Diccionario de carpintería</a></li>
+      <li><a href="/#herramientas">Herramientas</a></li>
+      <li><a href="/#biblioteca">Biblioteca</a></li>
+    </ul>
+  </main>
+  <footer>
+    <a href="/">soydemadera.com</a>
+  </footer>
+</body>
+</html>
