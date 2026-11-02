@@ -7,3 +7,7 @@
 /README.md     /  301
 /netlify.toml  /  301
 /.gitignore    /  301
+
+# Páginas retiradas del sitio.
+/guia_geometria_talla.html  /  301
+/guia_geometria_talla       /  301
