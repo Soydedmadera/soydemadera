@@ -2,6 +2,9 @@
 # Enlaces que circulan con un punto pegado al final (fin de oración en un posteo).
 /maestros_dan_bursztyn.  /maestros_dan_bursztyn  301
 
+# Enlace de la bio de Instagram cargado sin la «l» final (6/11/2026).
+/maestros_german_pless  /maestros_german_plessl  301
+
 # Archivos internos del repo que Cloudflare publica igual: no se muestran en el sitio.
 /backend/*     /  301
 /README.md     /  301
