@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Enviar láminas</title></head>
+<body><p id="m">Enviando…</p>
+<script>
+(async () => {
+  const m = document.getElementById('m');
+  try {
+    if (!window.opener) { m.textContent = 'Sin ventana de origen.'; return; }
+    const files = [];
+    for (let i = 1; i <= 3; i++) {
+      const r = await fetch('lamina-' + i + '.jpg', { cache: 'no-store' });
+      files.push({ name: 'lucas-lamina-' + i + '.jpg', buf: await r.arrayBuffer() });
+    }
+    window.opener.postMessage({ tipo: 'laminas-sdm', files }, 'https://business.facebook.com');
+    m.textContent = 'Listo: ' + files.length + ' láminas enviadas.';
+    setTimeout(() => window.close(), 1500);
+  } catch (e) { m.textContent = 'Error: ' + e.message; }
+})();
+</script></body></html>
