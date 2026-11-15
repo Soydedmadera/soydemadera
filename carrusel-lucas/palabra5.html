@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Generar láminas · Palabra de taller n.º 5</title>
+<style>
+  @font-face { font-family: "Schola SdM"; font-weight: 400; font-style: normal; src: url("../fonts/schola-regular.woff2") format("woff2"); }
+  @font-face { font-family: "Schola SdM"; font-weight: 400; font-style: italic; src: url("../fonts/schola-italic.woff2") format("woff2"); }
+  body { margin: 0; background: #222; color: #eee; font-family: sans-serif; }
+  canvas { width: 270px; height: 338px; margin: 6px; }
+</style>
+</head>
+<body>
+<p id="estado">Generando…</p>
+<script>
+const W = 1080, H = 1350, M = 96;
+const TELA = '#2d4535', HUESO = '#ebe8df', SUAVE = '#b7bfb0';
+const FUENTE = '"Schola SdM"';
+
+function fondo(c) {
+  c.fillStyle = TELA; c.fillRect(0, 0, W, H);
+  c.globalAlpha = 0.05;
+  for (let y = 0; y < H; y += 3) { c.fillStyle = y % 6 ? '#000' : '#fff'; c.fillRect(0, y, W, 1); }
+  for (let x = 0; x < W; x += 3) { c.fillStyle = x % 6 ? '#000' : '#fff'; c.fillRect(x, 0, 1, H); }
+  c.globalAlpha = 1;
+}
+function texto(c, t, x, y, tam, color, estilo = '') { c.font = `${estilo} 400 ${tam}px ${FUENTE}`; c.fillStyle = color; c.fillText(t, x, y); }
+function parrafo(c, t, x, y, ancho, tam, interlinea, color, estilo = '') {
+  c.font = `${estilo} 400 ${tam}px ${FUENTE}`; c.fillStyle = color;
+  let linea = '', lineas = [];
+  for (const p of t.split(' ')) { const prueba = linea ? linea + ' ' + p : p; if (c.measureText(prueba).width > ancho && linea) { lineas.push(linea); linea = p; } else linea = prueba; }
+  lineas.push(linea); lineas.forEach((l, i) => c.fillText(l, x, y + i * interlinea));
+  return y + (lineas.length - 1) * interlinea;
+}
+function cabecera(c, n) { texto(c, 'Palabra de taller n.º 5', M, 130, 32, SUAVE); c.font = `400 30px ${FUENTE}`; const t = `${n} / 5`; texto(c, t, W - M - c.measureText(t).width, 130, 30, SUAVE); }
+function pie(c) { texto(c, 'soydemadera.com', M, 1270, 26, SUAVE); c.font = `400 26px ${FUENTE}`; const t = 'Noviembre 2026'; texto(c, t, W - M - c.measureText(t).width, 1270, 26, SUAVE); }
+function filete(c, y) { c.fillStyle = 'rgba(183,191,176,.45)'; c.fillRect(M, y, 140, 2); }
+
+function bloque(c, n, titulo, cuerpos) {
+  fondo(c); cabecera(c, n);
+  let y = parrafo(c, titulo, M, 380, W - 2 * M, 72, 86, HUESO);
+  filete(c, y + 60); y += 160;
+  for (const [txt, tam, color, estilo] of cuerpos) { y = parrafo(c, txt, M, y, W - 2 * M, tam, Math.round(tam * 1.38), color, estilo) + Math.round(tam * 1.9); }
+  pie(c);
+}
+
+async function generar() {
+  await document.fonts.load(`400 40px ${FUENTE}`); await document.fonts.load(`italic 400 40px ${FUENTE}`);
+  const laminas = [
+    c => { fondo(c); cabecera(c, 1);
+      texto(c, 'Lap joint', M, 640, 150, HUESO);
+      texto(c, 'Unión a media madera', M, 740, 66, HUESO);
+      texto(c, 'lap yoint', M, 810, 34, SUAVE, 'italic');
+      parrafo(c, 'Dos piezas que se cruzan sin sumar espesor: qué es, qué la hace cerrar y cómo se marca.', M, 920, W - 2 * M, 36, 50, HUESO);
+      pie(c); },
+    c => bloque(c, 2, 'Qué es', [
+      ['A cada pieza se le quita la mitad del espesor en la zona donde se cruzan. Al encastrarlas, quedan al ras: las dos caras en el mismo plano.', 44, HUESO, ''],
+      ['Se usa en marcos, bastidores y cruces en T o en X.', 36, SUAVE, ''] ]),
+    c => bloque(c, 3, 'Sus partes', [
+      ['Hombro (shoulder): la cara que apoya contra la otra pieza. Si no está a escuadra, la unión no cierra.', 44, HUESO, ''],
+      ['Cara (cheek): la superficie que queda en la mitad del espesor, paralela a la cara de la pieza. Se corta a favor de la fibra.', 44, HUESO, ''] ]),
+    c => bloque(c, 4, 'Cómo se marca', [
+      ['Con el gramil, siempre desde la misma cara de referencia en las dos piezas. Así las caras quedan al ras aunque el espesor no sea exacto.', 44, HUESO, ''],
+      ['Se sierra del lado del sobrante, dejando la línea, y se repasa con formón hasta ella.', 36, SUAVE, ''] ]),
+    c => { fondo(c); cabecera(c, 5);
+      const y = parrafo(c, 'Esta y otras palabras del oficio, en el diccionario de soydemadera.com', M, 420, W - 2 * M, 60, 78, HUESO);
+      filete(c, y + 70);
+      parrafo(c, '¿En tu taller cómo le dicen? Contalo en los comentarios.', M, y + 180, W - 2 * M, 40, 56, SUAVE);
+      pie(c); },
+  ];
+  for (let i = 0; i < laminas.length; i++) {
+    const cv = document.createElement('canvas'); cv.width = W; cv.height = H; document.body.appendChild(cv);
+    laminas[i](cv.getContext('2d'));
+    const b64 = cv.toDataURL('image/jpeg', 0.92).split(',')[1];
+    await fetch('/guardar', { method: 'POST', body: JSON.stringify({ nombre: `palabra5-${i + 1}.jpg`, b64 }) });
+  }
+  document.getElementById('estado').textContent = 'Listo: 5 láminas guardadas';
+}
+generar().catch(e => { document.getElementById('estado').textContent = 'Error: ' + e; });
+</script>
+</body>
+</html>
