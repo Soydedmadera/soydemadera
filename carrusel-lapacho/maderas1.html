@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Generar láminas · Maderas de la tapa n.º 1 (lapacho negro)</title>
+<style>
+  @font-face { font-family: "Schola SdM"; font-weight: 400; font-style: normal; src: url("../fonts/schola-regular.woff2") format("woff2"); }
+  @font-face { font-family: "Schola SdM"; font-weight: 400; font-style: italic; src: url("../fonts/schola-italic.woff2") format("woff2"); }
+  body { margin: 0; background: #222; color: #eee; font-family: sans-serif; }
+  canvas { width: 270px; height: 338px; margin: 6px; }
+</style>
+</head>
+<body>
+<p id="estado">Generando…</p>
+<script>
+// Misma estética que la Palabra de taller: tela verde, hueso, Schola, 1080 × 1350.
+const W = 1080, H = 1350, M = 96, N = 5;
+const TELA = '#2d4535', HUESO = '#ebe8df', SUAVE = '#b7bfb0';
+const FUENTE = '"Schola SdM"';
+
+function fondo(c) {
+  c.fillStyle = TELA; c.fillRect(0, 0, W, H);
+  c.globalAlpha = 0.05;
+  for (let y = 0; y < H; y += 3) { c.fillStyle = y % 6 ? '#000' : '#fff'; c.fillRect(0, y, W, 1); }
+  for (let x = 0; x < W; x += 3) { c.fillStyle = x % 6 ? '#000' : '#fff'; c.fillRect(x, 0, 1, H); }
+  c.globalAlpha = 1;
+}
+function texto(c, t, x, y, tam, color, estilo = '') { c.font = `${estilo} 400 ${tam}px ${FUENTE}`; c.fillStyle = color; c.fillText(t, x, y); }
+function parrafo(c, t, x, y, ancho, tam, interlinea, color, estilo = '') {
+  c.font = `${estilo} 400 ${tam}px ${FUENTE}`; c.fillStyle = color;
+  let linea = '', lineas = [];
+  for (const p of t.split(' ')) { const prueba = linea ? linea + ' ' + p : p; if (c.measureText(prueba).width > ancho && linea) { lineas.push(linea); linea = p; } else linea = prueba; }
+  lineas.push(linea); lineas.forEach((l, i) => c.fillText(l, x, y + i * interlinea));
+  return y + (lineas.length - 1) * interlinea;
+}
+function cabecera(c, n) { texto(c, 'Maderas de la tapa', M, 130, 32, SUAVE); c.font = `400 30px ${FUENTE}`; const t = `${n} / ${N}`; texto(c, t, W - M - c.measureText(t).width, 130, 30, SUAVE); }
+function pie(c) { texto(c, 'soydemadera.com', M, 1270, 26, SUAVE); c.font = `400 26px ${FUENTE}`; const t = 'Noviembre 2026'; texto(c, t, W - M - c.measureText(t).width, 1270, 26, SUAVE); }
+function filete(c, y) { c.fillStyle = 'rgba(183,191,176,.45)'; c.fillRect(M, y, 140, 2); }
+
+// Un dato: la cifra grande y la explicación debajo
+function dato(c, y, cifra, explicacion) {
+  texto(c, cifra, M, y, 64, HUESO);
+  return parrafo(c, explicacion, M, y + 62, W - 2 * M, 36, 50, SUAVE) + 120;
+}
+function bloque(c, n, titulo, cuerpos, yTitulo = 330) {
+  fondo(c); cabecera(c, n);
+  let y = parrafo(c, titulo, M, yTitulo, W - 2 * M, 72, 86, HUESO);
+  filete(c, y + 60); y += 160;
+  for (const [txt, tam, color, estilo] of cuerpos) { y = parrafo(c, txt, M, y, W - 2 * M, tam, Math.round(tam * 1.38), color, estilo) + Math.round(tam * 1.9); }
+  pie(c);
+}
+
+async function generar() {
+  await document.fonts.load(`400 40px ${FUENTE}`); await document.fonts.load(`italic 400 40px ${FUENTE}`);
+  const foto = new Image(); foto.src = 'foto-lapacho.jpg'; await foto.decode();
+  const laminas = [
+    c => { fondo(c); cabecera(c, 1);
+      // La foto de la tapa, a lo ancho de la caja de texto (900 × 700, sin deformar)
+      const fw = W - 2 * M, fh = Math.round(fw * 700 / 900);
+      c.drawImage(foto, M, 190, fw, fh);
+      texto(c, 'Lapacho negro', M, 190 + fh + 120, 96, HUESO);
+      texto(c, 'Handroanthus heptaphyllus', M, 190 + fh + 180, 38, SUAVE, 'italic');
+      parrafo(c, 'Foto: Xiloteca del CIRAD, dominio público, recortada y girada.', M, 1205, W - 2 * M, 22, 30, SUAVE);
+      pie(c); },
+    c => bloque(c, 2, 'Una madera por semana, ahora con ficha', [
+      ['Cada lunes cambia la foto de la tapa de soydemadera.com: siempre una madera nativa argentina.', 44, HUESO, ''],
+      ['Desde ahora, cada una tiene su ficha: cómo se llama, dónde crece, cómo es, cómo se trabaja y qué cuidados pide. Cada dato, con su fuente.', 40, SUAVE, ''] ]),
+    c => { fondo(c); cabecera(c, 3);
+      let y = parrafo(c, 'El lapacho en tres datos', M, 300, W - 2 * M, 72, 86, HUESO);
+      filete(c, y + 60); y += 190;
+      y = dato(c, y, '1.040 kg/m³', 'En promedio, más densa que el agua: un taco seco suele hundirse.');
+      y = dato(c, y, 'T/R 1,3', 'Contrae poco y parejo: secada despacio, casi no se tuerce.');
+      y = dato(c, y, 'Clase 1', 'Muy durable frente a hongos. No necesita preservante.');
+      texto(c, 'Fuente: CIRAD, Tropix 7 (2024).', M, 1205, 22, SUAVE);
+      pie(c); },
+    c => bloque(c, 4, 'En el taller', [
+      ['Desafila: conviene una hoja de sierra con widia.', 42, HUESO, ''],
+      ['Tornillos siempre con agujero guía; sin él, la pieza se raja.', 42, HUESO, ''],
+      ['El aserrín puede irritar la piel y las vías respiratorias: aspiración, barbijo FFP2 y mangas largas.', 42, HUESO, ''] ], 300),
+    c => { fondo(c); cabecera(c, 5);
+      const y = parrafo(c, 'La ficha completa del lapacho negro, con fuentes, en soydemadera.com', M, 420, W - 2 * M, 60, 78, HUESO);
+      filete(c, y + 70);
+      const y2 = parrafo(c, 'Ya pasaron por la tapa el palo santo, el quebracho colorado y el urunday. Sus fichas vienen en las próximas semanas.', M, y + 180, W - 2 * M, 40, 56, SUAVE);
+      parrafo(c, '¿Trabajaste lapacho? Contá en los comentarios cómo te fue.', M, y2 + 110, W - 2 * M, 40, 56, SUAVE);
+      pie(c); },
+  ];
+  window.laminas = [];
+  for (let i = 0; i < laminas.length; i++) {
+    const cv = document.createElement('canvas'); cv.width = W; cv.height = H; document.body.appendChild(cv);
+    laminas[i](cv.getContext('2d'));
+    window.laminas.push(cv.toDataURL('image/jpeg', 0.92));
+  }
+  document.getElementById('estado').textContent = `Listo: ${laminas.length} láminas`;
+}
+generar().catch(e => { document.getElementById('estado').textContent = 'Error: ' + e; });
+</script>
+</body>
+</html>
