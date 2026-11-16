@@ -1612,9 +1612,20 @@
     .foto-tapa .carta-tapa a.ct-ver { color: var(--tela); font-size: 1rem; text-decoration: underline; text-underline-offset: .2em; }
     .franja { max-width: 1200px; margin: 0 auto; padding: 2.5rem 3rem 3rem; }
     .franja img { aspect-ratio: 1200 / 560; object-fit: cover; max-width: 100%; }
-    .franja .tira { display: flex; height: clamp(170px, 30vw, 360px); }
-    .franja .tira img { flex: 1 1 0; min-width: 0; width: auto; height: 100%; aspect-ratio: auto; object-fit: cover; }
-    .franja figcaption { font-size: .85rem; margin-top: .5rem; color: var(--gris-tex); }
+    /* Cartas de las tapas anteriores: foto, parte de la carta y enlace a la completa */
+    .franja .cf-titulo { font-size: 1.35rem; margin: 0 0 1rem; }
+    .franja .cf-fila { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+    .franja .cf-carta { background: var(--lamina); color: var(--lamina-tinta); border: 1px solid var(--lamina-linea); border-radius: 14px; padding: .8rem .8rem 1rem; display: flex; flex-direction: column; }
+    .franja .cf-carta img { aspect-ratio: 900 / 700; object-fit: cover; border-radius: 6px; }
+    .franja .cf-cab { display: flex; justify-content: space-between; gap: 1rem; font-size: .78rem; color: var(--lamina-suave); margin: .7rem 0 .15rem; }
+    .franja .cf-nombre { font-size: 1.45rem; line-height: 1.15; margin: 0; }
+    .franja .cf-cien { font-size: .85rem; color: var(--lamina-suave); margin: .1rem 0 .6rem; }
+    .franja .cf-carta dl { margin: 0; border-top: 1px solid var(--lamina-linea); }
+    .franja .cf-carta dl div { padding: .35rem 0; border-bottom: 1px solid var(--lamina-linea); }
+    .franja .cf-carta dt { font-size: .72rem; color: var(--lamina-suave); }
+    .franja .cf-carta dd { margin: .05rem 0 0; font-size: .92rem; line-height: 1.3; }
+    .franja .cf-carta a.cf-seguir { color: var(--tela); font-size: .98rem; text-decoration: underline; text-underline-offset: .2em; margin-top: auto; }
+    .franja .cf-credito { font-size: .74rem; line-height: 1.35; color: var(--lamina-suave); margin: .5rem 0 .9rem; }
     .franja a { color: inherit; }
     a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 
@@ -1749,14 +1760,38 @@
         </figure>
       </div>
     </div>
-    <figure class="franja">
-      <div class="tira">
-        <img src="img/palo-santo.jpg" width="900" height="700" loading="lazy" alt="Tabla de palo santo: la albura clara arriba y, debajo, el duramen oscuro con vetas onduladas en tonos de oliva, ocre y castaño.">
-        <img src="img/quebracho-colorado.jpg" width="900" height="700" loading="lazy" alt="Corte transversal de un tronco de quebracho colorado: la albura clara en el borde y el duramen rojo oscuro en el centro.">
-        <img src="img/urunday.jpg" width="900" height="700" loading="lazy" alt="Cara de una tabla de urunday: duramen rojizo atravesado a lo largo por franjas castaño oscuro, casi negras, de ancho desparejo.">
+    <section class="franja" aria-labelledby="cf-titulo">
+      <h2 class="cf-titulo" id="cf-titulo">Las maderas de las tapas anteriores</h2>
+      <div class="cf-fila">
+        <article class="cf-carta">
+          <img src="img/palo-santo.jpg" width="900" height="700" loading="lazy" alt="Tabla de palo santo: la albura clara arriba y, debajo, el duramen oscuro con vetas onduladas en tonos de oliva, ocre y castaño.">
+          <div class="cf-cab"><span>Maderas nativas argentinas</span><span>N.º 1</span></div>
+          <h3 class="cf-nombre">Palo santo</h3>
+          <p class="cf-cien"><i>Bulnesia sarmientoi</i></p>
+          <dl><div><dt>Dónde crece</dt><dd>Chaco, Formosa y Salta</dd></div><div><dt>Peso</dt><dd>Unos 1.200 kg/m³; se hunde</dd></div><div><dt>Durabilidad</dt><dd>No se pudre enterrada</dd></div></dl>
+          <p class="cf-credito">Foto: Abarmot, <a href="https://commons.wikimedia.org/wiki/File:BulnesiaSarmientoi_wood.jpg" target="_blank" rel="noopener noreferrer">dominio público</a>, recortada.</p>
+          <a class="cf-seguir" href="madera_palo_santo.html">Seguir leyendo</a>
+        </article>
+        <article class="cf-carta">
+          <img src="img/quebracho-colorado.jpg" width="900" height="700" loading="lazy" alt="Corte transversal de un tronco de quebracho colorado: la albura clara en el borde y el duramen rojo oscuro en el centro.">
+          <div class="cf-cab"><span>Maderas nativas argentinas</span><span>N.º 2</span></div>
+          <h3 class="cf-nombre">Quebracho colorado</h3>
+          <p class="cf-cien"><i>Schinopsis balansae</i></p>
+          <dl><div><dt>Dónde crece</dt><dd>Chaco, Formosa, Corrientes y el norte de Santa Fe y de Entre Ríos</dd></div><div><dt>Peso</dt><dd>Unos 1.250 kg/m³; se hunde</dd></div><div><dt>Durabilidad</dt><dd>Máxima: más de 30 años en servicio</dd></div></dl>
+          <p class="cf-credito">Foto: Valerio Pillar, <a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Quebracho_colorado_wood.jpg" target="_blank" rel="noopener noreferrer">archivo original</a>, recortada.</p>
+          <a class="cf-seguir" href="madera_quebracho_colorado.html">Seguir leyendo</a>
+        </article>
+        <article class="cf-carta">
+          <img src="img/urunday.jpg" width="900" height="700" loading="lazy" alt="Cara de una tabla de urunday: duramen rojizo atravesado a lo largo por franjas castaño oscuro, casi negras, de ancho desparejo.">
+          <div class="cf-cab"><span>Maderas nativas argentinas</span><span>N.º 3</span></div>
+          <h3 class="cf-nombre">Urunday</h3>
+          <p class="cf-cien"><i>Astronium balansae</i></p>
+          <dl><div><dt>Dónde crece</dt><dd>Chaco, Formosa, Corrientes, Misiones y el noreste de Santa Fe</dd></div><div><dt>Peso</dt><dd>1.100 a 1.250 kg/m³; se hunde</dd></div><div><dt>Durabilidad</dt><dd>No se pudre enterrada ni bajo agua</dd></div></dl>
+          <p class="cf-credito">Foto: Abarmot, <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Goncalo_alves_(tigerwood).jpg" target="_blank" rel="noopener noreferrer">archivo original</a>, recortada.</p>
+          <a class="cf-seguir" href="madera_urunday.html">Seguir leyendo</a>
+        </article>
       </div>
-      <figcaption>Las fotos de la tapa, una por semana, de izquierda a derecha (cada nombre lleva a su carta): <a href="madera_palo_santo.html">palo santo</a> (<i>Bulnesia sarmientoi</i>), foto de Abarmot, <a href="https://commons.wikimedia.org/wiki/File:BulnesiaSarmientoi_wood.jpg" target="_blank" rel="noopener noreferrer">dominio público</a>; <a href="madera_quebracho_colorado.html">quebracho colorado</a> (<i>Schinopsis balansae</i>), foto de Valerio Pillar, <a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a>; <a href="madera_urunday.html">urunday</a> (<i>Astronium balansae</i>), foto de Abarmot, <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Goncalo_alves_(tigerwood).jpg" target="_blank" rel="noopener noreferrer">archivo original</a>. Recortadas.</figcaption>
-    </figure>
+    </section>
   </div>
 
   <div class="divider" style="max-width:1200px; margin: 0 auto;"></div>
