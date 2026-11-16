@@ -6,10 +6,14 @@
   const m = document.getElementById('m');
   try {
     if (!window.opener) { m.textContent = 'Sin ventana de origen.'; return; }
+    const q = new URLSearchParams(location.search);
+    const set = q.get('set') === 'palabra5' ? 'palabra5' : 'lucas';
+    const n = set === 'palabra5' ? 5 : 3;
     const files = [];
-    for (let i = 1; i <= 3; i++) {
-      const r = await fetch('lamina-' + i + '.jpg', { cache: 'no-store' });
-      files.push({ name: 'lucas-lamina-' + i + '.jpg', buf: await r.arrayBuffer() });
+    for (let i = 1; i <= n; i++) {
+      const src = set === 'palabra5' ? 'palabra5-' + i + '.jpg' : 'lamina-' + i + '.jpg';
+      const r = await fetch(src, { cache: 'no-store' });
+      files.push({ name: set + '-lamina-' + i + '.jpg', buf: await r.arrayBuffer() });
     }
     window.opener.postMessage({ tipo: 'laminas-sdm', files }, 'https://business.facebook.com');
     m.textContent = 'Listo: ' + files.length + ' láminas enviadas.';
