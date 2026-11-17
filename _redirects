@@ -10,3 +10,7 @@
 /README.md     /  301
 /netlify.toml  /  301
 /.gitignore    /  301
+
+# Página vieja del diccionario, retirada el 17/11/2026: los términos viven en la sección Diccionario del inicio.
+/diccionario_carpinteria_v2.html  /#diccionario  301
+/diccionario_carpinteria_v2       /#diccionario  301

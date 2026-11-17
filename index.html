@@ -4116,6 +4116,21 @@
 
     daBuild();
 
+    // ── LINK DIRECTO A UN TÉRMINO: ./?q=Terminaci%C3%B3n#diccionario (también lo usa la redirección de la página vieja del diccionario) ──
+    (function () {
+      let q = '';
+      try { q = (new URLSearchParams(location.search).get('q') || '').trim(); } catch (e) {}
+      if (!q) return;
+      if (location.hash !== '#diccionario') location.hash = 'diccionario';
+      setTimeout(function () {
+        const input = document.getElementById('da-search');
+        if (!input) return;
+        input.value = q;
+        daBuild(daActiveFilter, q);
+        input.scrollIntoView({ block: 'start' });
+      }, 50);
+    })();
+
     // ── SCROLL REVEAL ──
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
