@@ -7,7 +7,6 @@ soydemadera/
 ├── index.html                  ← tu página (ya corregida)
 ├── calculadora_pie_madera.html
 ├── conversor_imperial.html
-├── diccionario_carpinteria_v2.html
 └── backend/
     ├── main.py                 ← el servidor de IA
     ├── requirements.txt        ← dependencias de Python
