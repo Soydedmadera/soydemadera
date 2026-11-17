@@ -14,3 +14,7 @@
 # Página vieja del diccionario, retirada el 17/11/2026: los términos viven en la sección Diccionario del inicio.
 /diccionario_carpinteria_v2.html  /#diccionario  301
 /diccionario_carpinteria_v2       /#diccionario  301
+
+# TP1 Marquetería, retirado del sitio el 17/11/2026 por decisión de Abel.
+/tp1_marqueteria.html  /#biblioteca  301
+/tp1_marqueteria       /#biblioteca  301
