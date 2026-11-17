@@ -5,35 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Taller digital — Soy de Madera</title>
   <meta name="description" content="Cuatro herramientas para el taller: movimiento de la madera según especie y humedad, ensambles explicados, despiece de tableros con kerf y glosario español e inglés." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     /* ── TOKENS (mismos que index.html) ── */
     :root {
       color-scheme: light;
-      --nogal: #e9e7e1;
-      --nogal-rgb: 233,231,225;
-      --nogal-mid: #e4e1da;
-      --roble: #dfdcd4;
-      --cedro: #d6d2c9;
-      --cedro-rgb: 214,210,201;
-      --siena: #7b5d3f;
-      --ambar: #6b5138;
-      --madera-rgb: 123,93,63;
-      --crema: #2b2926;
-      --crema-rgb: 43,41,38;
-      --crema-suave: #45423d;
-      --blanco: #1f1d1b;
-      --crema-dim: #6a655d;
-      --linea: #cfcbc2;
-      --ambar-dim: #a8937c;
-      --verde: #55663f;
-      --azul: #4f6676;
-      --azul-rgb: 79,102,118;
-      --pie: #4a5c69;
-      --pie-tinta: #e7eaeb;
-      --pie-suave: #b9c4cb;
+      --nogal: #ebebe6;
+      --nogal-rgb: 235,235,230;
+      --nogal-mid: #e4e4de;
+      --roble: #dedfd8;
+      --cedro: #d3d5cc;
+      --cedro-rgb: 211,213,204;
+      --siena: #2d4535;
+      --ambar: #2d4535;
+      --madera-rgb: 45,69,53;
+      --crema: #1c1c1a;
+      --crema-rgb: 28,28,26;
+      --crema-suave: #33332f;
+      --blanco: #111110;
+      --crema-dim: #5f5e58;
+      --linea: #cfcfc8;
+      --ambar-dim: #8fa196;
+      --verde: #2d4535;
+      --azul: #2d4535;
+      --azul-rgb: 45,69,53;
+      --pie: #2d4535;
+      --pie-tinta: #ebe8df;
+      --pie-suave: #b7bfb0;
       --error: #a8443a;
       --radio: 6px;
       --radio-lg: 10px;
@@ -41,28 +38,28 @@
     @media (prefers-color-scheme: dark) {
       :root {
         color-scheme: dark;
-        --nogal: #1f1d1a;
-        --nogal-rgb: 31,29,26;
-        --nogal-mid: #24221e;
-        --roble: #2a2824;
-        --cedro: #33302b;
-        --cedro-rgb: 51,48,43;
-        --siena: #b89572;
-        --ambar: #c9a680;
-        --madera-rgb: 184,149,114;
-        --crema: #ddd8ce;
-        --crema-rgb: 221,216,206;
-        --crema-suave: #c9c3b8;
-        --blanco: #ece8df;
-        --crema-dim: #9a9488;
-        --linea: #3a3732;
-        --ambar-dim: #6b5a47;
-        --verde: #8fa67a;
-        --azul: #9db2c0;
-        --azul-rgb: 157,178,192;
-        --pie: #2b363d;
-        --pie-tinta: #dfe4e6;
-        --pie-suave: #93a3ad;
+        --nogal: #191c1a;
+        --nogal-rgb: 25,28,26;
+        --nogal-mid: #1f2320;
+        --roble: #252a26;
+        --cedro: #2e342f;
+        --cedro-rgb: 46,52,47;
+        --siena: #a9c2ae;
+        --ambar: #a9c2ae;
+        --madera-rgb: 169,194,174;
+        --crema: #e4e3dd;
+        --crema-rgb: 228,227,221;
+        --crema-suave: #cfcec7;
+        --blanco: #f0efe9;
+        --crema-dim: #a3a29b;
+        --linea: #2f3431;
+        --ambar-dim: #4f6355;
+        --verde: #a9c2ae;
+        --azul: #a9c2ae;
+        --azul-rgb: 169,194,174;
+        --pie: #23372a;
+        --pie-tinta: #e6e3da;
+        --pie-suave: #a9b2a2;
         --error: #e07a6e;
       }
     }
@@ -233,6 +230,27 @@
       main { padding: 2rem 1rem 3rem; }
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+      /* ═══ PIEL 2026-10 · la misma del inicio (tela de encuadernación y Schola) ═══ */
+    @font-face { font-family: "Schola SdM"; font-weight: 400; font-style: normal; font-display: swap; src: url("fonts/schola-regular.woff2") format("woff2"); }
+    @font-face { font-family: "Schola SdM"; font-weight: 400; font-style: italic; font-display: swap; src: url("fonts/schola-italic.woff2") format("woff2"); }
+    @font-face { font-family: "Schola SdM"; font-weight: 700; font-style: normal; font-display: swap; src: url("fonts/schola-bold.woff2") format("woff2"); }
+    :root { --texto: "Schola SdM", "Century Schoolbook", "New Century Schoolbook", Georgia, serif; --tela: #2d4535; --tela-tinta: #ebe8df; --tela-suave: #b7bfb0; }
+    @media (prefers-color-scheme: dark) { :root { --tela: #23372a; --tela-tinta: #e6e3da; --tela-suave: #a9b2a2; } }
+    body, body *:not(svg):not(svg *) { font-family: var(--texto) !important; letter-spacing: normal !important; text-transform: none !important; }
+    body { font-size: 19px; line-height: 1.55; background-image: none !important; }
+    h1, h2, h3, h4 { font-weight: 400 !important; }
+    h1 em, h2 em { font-style: normal !important; color: inherit !important; }
+    .eyebrow, .icon { display: none !important; }
+    *, *::before, *::after { animation: none !important; }
+    body::before { display: none !important; }
+    nav { background: var(--tela) !important; backdrop-filter: none !important; border-bottom: 0 !important; }
+    nav a, nav span { color: var(--tela-tinta) !important; }
+    nav a:hover { text-decoration: underline; text-underline-offset: .2em; }
+    footer { background: var(--pie); color: var(--pie-suave); font-size: .9rem; }
+    footer a { color: var(--pie-tinta); text-decoration: underline; text-underline-offset: .2em; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+    nav .nav-sep { background: var(--tela-suave); }
   </style>
 </head>
 <body>
