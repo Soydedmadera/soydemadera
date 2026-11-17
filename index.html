@@ -3747,10 +3747,18 @@
         e.preventDefault();
         var btn = form.querySelector('button');
         btn.disabled = true;
-        fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
-          .then(function () {
-            form.reset();
-            msg.textContent = 'Listo. Revisá tu correo y confirmá la suscripción (si no lo ves, mirá en spam o promociones).';
+        // MailerLite responde JSON con CORS: se lee la respuesta para mostrar el resultado real.
+        fetch(form.action, { method: 'POST', body: new FormData(form) })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (data && data.success) {
+              form.reset();
+              msg.textContent = 'Listo. Revisá tu correo y confirmá la suscripción (si no lo ves, mirá en spam, promociones o notificaciones).';
+            } else if (data && data.errors && data.errors.fields && data.errors.fields.email) {
+              msg.textContent = 'Revisá el correo: no parece una dirección válida.';
+            } else {
+              msg.textContent = 'No se pudo completar la suscripción. Probá de nuevo en un rato o escribinos a hola@soydemadera.com.';
+            }
           })
           .catch(function () {
             msg.textContent = 'No se pudo enviar. Probá de nuevo en un rato o escribinos a hola@soydemadera.com.';
