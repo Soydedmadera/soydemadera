@@ -201,6 +201,11 @@
     .ag-link { display: inline-block; margin-top: .9rem; font-family: 'IBM Plex Mono', monospace; font-size: .72rem; letter-spacing: .08em; color: var(--azul); text-decoration: none; }
     .ag-link:hover { text-decoration: underline; }
     .ag-pasado .ag-fecha, .ag-pasado h3 { opacity: .6; }
+    /* Bloques de la Agenda: sin eventos no se muestran (también sin JS, con :has) */
+    .ag-bloque[hidden] { display: none; }
+    .ag-bloque:not(:has(.ag-item)) { display: none; }
+    #ag-proximos:not([hidden]) + #ag-pasados { margin-top: 3.5rem; }
+    #ag-proximos:not(:has(.ag-item)) + #ag-pasados { margin-top: 0; }
     @media (max-width: 900px) {
       #biblioteca, #agenda { padding: 7.5rem 1.25rem 4rem !important; }
       .ag-item { grid-template-columns: 1fr; gap: .75rem; }
@@ -3700,19 +3705,24 @@
       <p style="color:var(--crema-dim); max-width:600px; margin-top:1rem; line-height:1.7;">Seminarios, ferias y encuentros del oficio y de la madera en Argentina.</p>
     </div>
 
-    <!-- Próximos: vacío desde el 17/11 (se sacó el workshop de Germán Plessl). Para volver a usarlo, descomentar y agregar margin-top:3.5rem a «Ya pasaron» (regla de contenido).
-    <p class="bib-estante">Próximos</p>
-    -->
+    <!-- Cómo cargar un evento: copiar un <article class="ag-item"> dentro de «Próximos», en orden de fecha,
+         con data-hasta="AAAA-MM-DD" = último día del evento. Al día siguiente (hora de Argentina) el script
+         lo pasa solo a «Ya pasaron». Un bloque sin eventos no se muestra (regla de contenido). -->
+    <div class="ag-bloque" id="ag-proximos">
+      <p class="bib-estante">Próximos</p>
+    </div>
 
-    <p class="bib-estante">Ya pasaron</p>
-    <article class="ag-item ag-pasado">
-      <div class="ag-fecha"><b>18–20</b><span>Septiembre 2026</span></div>
-      <div>
-        <h3>Tocar Madera 2026</h3>
-        <p>Encuentro del oficio de la madera en Parque La Estación, Avellaneda. Nota sobre los expositores y patrocinadores que participaron.</p>
-        <a class="ag-link" href="tocar_madera_2026.html">Leer la nota</a>
-      </div>
-    </article>
+    <div class="ag-bloque" id="ag-pasados">
+      <p class="bib-estante">Ya pasaron</p>
+      <article class="ag-item ag-pasado" data-hasta="2026-09-20">
+        <div class="ag-fecha"><b>18–20</b><span>Septiembre 2026</span></div>
+        <div>
+          <h3>Tocar Madera 2026</h3>
+          <p>Encuentro del oficio de la madera en Parque La Estación, Avellaneda. Nota sobre los expositores y patrocinadores que participaron.</p>
+          <a class="ag-link" href="tocar_madera_2026.html">Leer la nota</a>
+        </div>
+      </article>
+    </div>
   </section>
 
   <!-- ANOTATE: lista de correo (MailerLite, plan gratuito, doble confirmación) -->
@@ -3738,6 +3748,22 @@
   </footer>
 
   <script>
+    // ── AGENDA: los eventos vencidos (data-hasta anterior a hoy, hora de Argentina) pasan a «Ya pasaron» ──
+    function agendaOrdenar() {
+      var prox = document.getElementById('ag-proximos'), pas = document.getElementById('ag-pasados');
+      if (!prox || !pas) return;
+      var hoy = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Argentina/Buenos_Aires' }).format(new Date());
+      prox.querySelectorAll('.ag-item[data-hasta]').forEach(function (it) {
+        if (it.dataset.hasta < hoy) { it.classList.add('ag-pasado'); pas.appendChild(it); }
+      });
+      Array.prototype.slice.call(pas.querySelectorAll('.ag-item')).sort(function (a, b) {
+        return (b.dataset.hasta || '').localeCompare(a.dataset.hasta || '');
+      }).forEach(function (it) { pas.appendChild(it); });
+      prox.hidden = !prox.querySelector('.ag-item');
+      pas.hidden = !pas.querySelector('.ag-item');
+    }
+    agendaOrdenar();
+
     // ── ANOTATE (MailerLite) ──
     (function () {
       var form = document.getElementById('anotate-form');
