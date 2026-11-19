@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="robots" content="noindex, nofollow">
+<title>Historia · Ensambla Chiloé 2026</title>
+<style>
+@font-face { font-family: "Schola SdM"; font-weight: 400; font-style: normal; src: url("../fonts/schola-regular.woff2") format("woff2"); }
+@font-face { font-family: "Schola SdM"; font-weight: 400; font-style: italic; src: url("../fonts/schola-italic.woff2") format("woff2"); }
+body { margin: 0; background: #222; }
+</style></head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script>
+const W = 1080, H = 1920, M = 96;
+const TELA = '#2d4535', HUESO = '#ebe8df', SUAVE = '#b7bfb0';
+const FUENTE = '"Schola SdM"';
+function fondo(c) {
+  c.fillStyle = TELA; c.fillRect(0, 0, W, H);
+  c.globalAlpha = 0.05;
+  for (let y = 0; y < H; y += 3) { c.fillStyle = y % 6 ? '#000' : '#fff'; c.fillRect(0, y, W, 1); }
+  for (let x = 0; x < W; x += 3) { c.fillStyle = x % 6 ? '#000' : '#fff'; c.fillRect(x, 0, 1, H); }
+  c.globalAlpha = 1;
+}
+function texto(c, t, x, y, tam, color, estilo = '') { c.font = `${estilo} 400 ${tam}px ${FUENTE}`; c.fillStyle = color; c.fillText(t, x, y); }
+function derecha(c, t, y, tam, color) { c.font = `400 ${tam}px ${FUENTE}`; texto(c, t, W - M - c.measureText(t).width, y, tam, color); }
+function parrafo(c, t, x, y, ancho, tam, interlinea, color, estilo = '') {
+  c.font = `${estilo} 400 ${tam}px ${FUENTE}`; c.fillStyle = color;
+  let linea = '', lineas = [];
+  for (const p of t.split(' ')) { const prueba = linea ? linea + ' ' + p : p; if (c.measureText(prueba).width > ancho && linea) { lineas.push(linea); linea = p; } else linea = prueba; }
+  lineas.push(linea); lineas.forEach((l, i) => c.fillText(l, x, y + i * interlinea));
+  return y + (lineas.length - 1) * interlinea;
+}
+function filete(c, y) { c.fillStyle = 'rgba(183,191,176,.45)'; c.fillRect(M, y, 140, 2); }
+(async () => {
+  await document.fonts.load(`400 40px ${FUENTE}`); await document.fonts.load(`italic 400 40px ${FUENTE}`);
+  const c = document.getElementById('c').getContext('2d');
+  fondo(c);
+  texto(c, 'Agenda', M, 200, 34, SUAVE);
+  derecha(c, 'Soy de Madera', 200, 34, SUAVE);
+  texto(c, '19 al 21 de noviembre', M, 560, 40, SUAVE);
+  texto(c, 'Ensambla', M, 720, 150, HUESO);
+  texto(c, 'Chiloé 2026', M, 870, 150, HUESO);
+  texto(c, 'Festival creativo de la madera', M, 970, 52, HUESO);
+  texto(c, 'Museo de las Iglesias · Ancud, Chile', M, 1040, 36, SUAVE, 'italic');
+  filete(c, 1110);
+  parrafo(c, 'Las ponencias del seminario se transmiten en vivo. El enlace está en la Agenda del sitio.', M, 1200, W - 2 * M, 42, 60, HUESO);
+  texto(c, 'soydemadera.com', M, 1790, 30, SUAVE);
+  derecha(c, 'Noviembre 2026', 1790, 30, SUAVE);
+  document.title = 'listo';
+})();
+</script></body></html>
