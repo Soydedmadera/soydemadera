@@ -1693,7 +1693,6 @@
     .indice a { font-size: 1.15rem; color: var(--crema); text-decoration: none; }
     .indice a:hover, .indice a:focus-visible { text-decoration: underline; text-underline-offset: .2em; }
     .indice-desc { display: block; font-size: 1rem; line-height: 1.5; color: var(--gris-tex); margin-top: .2rem; }
-    .pilar-card a { font-size: 1rem !important; }
     .ag-fecha span, .ag-item .ag-datos, .ag-link { font-size: .95rem; }
   </style>
 </head>
@@ -1703,7 +1702,6 @@
   <nav>
     <a href="./" class="nav-logo">Soy <span>de</span> Madera</a>
     <ul class="nav-links">
-      <li><a href="#pilares" data-nav="pilares">Pilares</a></li>
       <li><a href="#diccionario" data-nav="diccionario">Diccionario</a></li>
       <li><a href="#herramientas" data-nav="herramientas">Herramientas</a></li>
       <li><a href="#maestros" data-nav="maestros">Maestros</a></li>
@@ -1720,7 +1718,6 @@
 
   <!-- MENÚ MOBILE -->
   <div class="nav-mobile-menu" id="nav-mobile-menu">
-    <a href="#pilares"    data-nav="pilares"     class="nav-mobile-link">Pilares</a>
     <a href="#diccionario" data-nav="diccionario" class="nav-mobile-link">Diccionario</a>
     <a href="#herramientas" data-nav="herramientas" class="nav-mobile-link">Herramientas</a>
     <a href="#maestros"  data-nav="maestros"    class="nav-mobile-link">Maestros</a>
@@ -1819,45 +1816,6 @@
   </div>
 
   <div class="divider" style="max-width:1200px; margin: 0 auto;"></div>
-
-  <!-- PILARES -->
-  <section id="pilares" class="pilares-section page-section" style="max-width:1200px;">
-    <div class="pilares-header">
-      <div>
-        <p class="section-label reveal">Dos pilares</p>
-        <h2 class="section-title reveal">El <em>oficio</em> en dos ejes</h2>
-      </div>
-      <p class="reveal" style="max-width:320px; font-size:0.95rem; color:var(--gris-tex); line-height:1.7;">
-        Cada pieza del proyecto gira alrededor de estas dos dimensiones del trabajo con madera.
-      </p>
-    </div>
-
-    <div class="pilares-grid">
-
-      <div class="pilar-card reveal" style="transition-delay:0.15s">
-        <div class="wood-lines"></div>
-        <div class="pilar-num">01</div>
-        <span class="pilar-icon"></span>
-        <h3 class="pilar-title">Herramientas digitales</h3>
-        <p class="pilar-desc">Calculadoras de corte, planificadores de tableros, recursos técnicos online. La tecnología al servicio del taller.</p>
-        <p class="pilar-tag">// software · apps · utilidades</p>
-        <div style="margin-top:1.25rem; display:flex; flex-direction:column; gap:0.5rem;">
-          <a href="calculadora_pie_madera.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">Calculadora pie de madera</a>
-          <a href="conversor_imperial.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">Conversor imperial / decimal</a>
-          <a href="taller_digital.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">Taller digital</a>
-        </div>
-      </div>
-
-      <div class="pilar-card reveal" style="transition-delay:0.3s">
-        <div class="wood-lines"></div>
-        <div class="pilar-num">02</div>
-        <span class="pilar-icon"></span>
-        <h3 class="pilar-title">Terminología técnica</h3>
-        <p class="pilar-desc"><span class="da-total">235</span> términos técnicos en inglés y español, con pronunciación. Porque nombrar bien lo que hacés es la primera herramienta del oficio.</p>
-        <p class="pilar-tag">// diccionario · EN · ES</p>
-      </div>
-    </div>
-  </section>
 
   <!-- HERRAMIENTAS -->
   <section id="herramientas" class="page-section" style="max-width:1200px; padding: 7rem 3rem;">
@@ -4281,7 +4239,7 @@
   const allSections = document.querySelectorAll('.page-section');
 
   // Anclas viejas que siguen circulando en links externos
-  const SECCION_ALIAS = { astillas: 'biblioteca' };
+  const SECCION_ALIAS = { astillas: 'biblioteca', pilares: 'herramientas' };
 
   function showSection(id) {
     id = SECCION_ALIAS[id] || id;
