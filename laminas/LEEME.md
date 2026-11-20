@@ -14,7 +14,7 @@ Decisión 5A del 20/11/2026. El sitio, las láminas de Instagram y los cuadernos
 
 - `plantilla.js` trae las piezas: fondo de tela, cabecera con el nombre de la serie, pie con sitio y mes, párrafo, filete y `lamina()` para pegar una foto o un croquis sobre papel con su crédito debajo.
 - Ningún texto por debajo de 36 px (en el celular queda en unos 13 px); el cuerpo, a 44 px o más.
-- Cada Palabra de taller lleva un croquis de línea en tinta: dibujo de Abel escaneado o SVG.
+- Una Palabra de taller puede llevar un croquis de línea. Debajo del croquis no va crédito ni firma.
 - Las láminas de «Maderas de la tapa» usan la misma foto y el mismo crédito que la carta del sitio.
 - `ejemplo.html` muestra cuatro láminas de muestra. Para un carrusel nuevo: copiar `ejemplo.html`, cambiar el contenido y abrirlo desde la vista previa de la rama (la fuente no carga si se abre el archivo directo desde la compu). Cada lámina tiene su enlace de descarga.
 

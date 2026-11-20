@@ -30,13 +30,13 @@ const laminas = [
     SDM.texto(c, 'lap yoint', M, 775, 40, SUAVE, 'italic');
     SDM.parrafo(c, 'Dos piezas que se cruzan sin sumar espesor: qué es, qué la hace cerrar y cómo se marca.', M, 890, W - 2 * M, 44, HUESO);
     SDM.pie(c, 'Noviembre 2026'); },
-  // Palabra de taller: lámina de texto con espacio para el croquis de Abel
+  // Palabra de taller: lámina de texto con espacio para un croquis (sin crédito debajo)
   c => { SDM.fondo(c); SDM.cabecera(c, 'Palabra de taller n.º 5');
     SDM.texto(c, 'Qué es', M, 300, 72, HUESO); SDM.filete(c, 350);
     const y = SDM.parrafo(c, 'A cada pieza se le quita la mitad del espesor donde se cruzan. Al encastrarlas, las dos caras quedan al ras.', M, 440, W - 2 * M, 48, HUESO);
-    SDM.lamina(c, null, M, y + 70, W - 2 * M, 1110 - (y + 70), 'Croquis a mano · Dibujo: Abel J. Anuzis');
+    SDM.lamina(c, null, M, y + 70, W - 2 * M, 1110 - (y + 70));
     c.font = `italic 400 40px ${SDM.FUENTE}`; c.fillStyle = '#5f5e58';
-    c.fillText('acá va el croquis escaneado', M + 60, y + 170);
+    c.fillText('acá va el croquis', M + 60, y + 170);
     SDM.pie(c, 'Noviembre 2026'); },
   // Maderas de la tapa: portada
   c => { SDM.fondo(c); SDM.cabecera(c, 'Maderas de la tapa');
