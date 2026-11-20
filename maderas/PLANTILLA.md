@@ -4,7 +4,7 @@ Cada madera que pasa por la tapa del inicio tiene su carta, en la raíz del siti
 
 ## Número
 
-Orden de paso por la tapa: 1 palo santo, 2 quebracho colorado, 3 urunday, 4 lapacho negro. La siguiente es la 5.
+Orden de paso por la tapa: 1 palo santo, 2 quebracho colorado, 3 urunday, 4 lapacho negro, 5 cedro misionero, 6 caroba. La siguiente es la 7.
 
 ## La carta (arriba)
 
