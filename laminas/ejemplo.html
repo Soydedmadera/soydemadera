@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<title>Láminas: ejemplo de la plantilla común</title>
+<style>
+  @font-face { font-family: "Schola SdM"; font-weight: 400; font-style: normal; src: url("../fonts/schola-regular.woff2") format("woff2"); }
+  @font-face { font-family: "Schola SdM"; font-weight: 400; font-style: italic; src: url("../fonts/schola-italic.woff2") format("woff2"); }
+  body { margin: 0; padding: 16px; background: #222; color: #eee; font: 16px/1.4 Georgia, serif; }
+  #laminas { display: flex; flex-wrap: wrap; gap: 12px; }
+  figure { margin: 0; }
+  canvas { width: 270px; height: 338px; display: block; }
+  a { color: #b7bfb0; }
+</style>
+</head>
+<body>
+<p id="estado">Generando…</p>
+<p>Ejemplo de la plantilla común (decisión 5A del 20/11/2026): dos láminas de una Palabra de taller y dos de «Maderas de la tapa». No es para publicar tal cual: los datos de cada carrusel se verifican antes.</p>
+<div id="laminas"></div>
+<script src="plantilla.js"></script>
+<script>
+const { M, W, HUESO, SUAVE } = SDM;
+
+const laminas = [
+  // Palabra de taller: portada, sin contador
+  c => { SDM.fondo(c); SDM.cabecera(c, 'Palabra de taller n.º 5');
+    SDM.texto(c, 'Lap joint', M, 600, 150, HUESO);
+    SDM.texto(c, 'Unión a media madera', M, 700, 66, HUESO);
+    SDM.texto(c, 'lap yoint', M, 775, 40, SUAVE, 'italic');
+    SDM.parrafo(c, 'Dos piezas que se cruzan sin sumar espesor: qué es, qué la hace cerrar y cómo se marca.', M, 890, W - 2 * M, 44, HUESO);
+    SDM.pie(c, 'Noviembre 2026'); },
+  // Palabra de taller: lámina de texto con espacio para el croquis de Abel
+  c => { SDM.fondo(c); SDM.cabecera(c, 'Palabra de taller n.º 5');
+    SDM.texto(c, 'Qué es', M, 300, 72, HUESO); SDM.filete(c, 350);
+    const y = SDM.parrafo(c, 'A cada pieza se le quita la mitad del espesor donde se cruzan. Al encastrarlas, las dos caras quedan al ras.', M, 440, W - 2 * M, 48, HUESO);
+    SDM.lamina(c, null, M, y + 70, W - 2 * M, 1110 - (y + 70), 'Croquis a mano · Dibujo: Abel J. Anuzis');
+    c.font = `italic 400 40px ${SDM.FUENTE}`; c.fillStyle = '#5f5e58';
+    c.fillText('acá va el croquis escaneado', M + 60, y + 170);
+    SDM.pie(c, 'Noviembre 2026'); },
+  // Maderas de la tapa: portada
+  c => { SDM.fondo(c); SDM.cabecera(c, 'Maderas de la tapa');
+    SDM.texto(c, 'Cinco maderas', M, 600, 120, HUESO);
+    SDM.texto(c, 'nativas argentinas', M, 720, 72, HUESO);
+    SDM.parrafo(c, 'Las cartas que pasaron por la tapa de soydemadera.com: de dónde viene cada una y cómo se trabaja.', M, 850, W - 2 * M, 44, HUESO);
+    SDM.pie(c, 'Noviembre 2026'); },
+  // Maderas de la tapa: una carta, con la foto pegada y el crédito de una línea (misma forma que en el sitio)
+  async c => { SDM.fondo(c); SDM.cabecera(c, 'Maderas de la tapa');
+    const img = await SDM.cargarImagen('../img/cedro-misionero.jpg');
+    SDM.texto(c, 'Cedro misionero', M, 270, 72, HUESO);
+    SDM.texto(c, 'Cedrela fissilis', M, 330, 40, SUAVE, 'italic');
+    const y = SDM.lamina(c, img, M, 380, W - 2 * M, 470, 'Foto: Xiloteca del CIRAD, dominio público, recortada.');
+    SDM.parrafo(c, 'Blanda y liviana: 470 a 610 kg/m³, flota. Fácil de trabajar; la resina empasta la sierra.', M, y + 100, W - 2 * M, 44, HUESO);
+    SDM.pie(c, 'Noviembre 2026'); },
+];
+SDM.generar(laminas, 'ejemplo').catch(e => { document.getElementById('estado').textContent = 'Error: ' + e; });
+</script>
+</body>
+</html>
