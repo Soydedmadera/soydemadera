@@ -1694,6 +1694,13 @@
     .indice a:hover, .indice a:focus-visible { text-decoration: underline; text-underline-offset: .2em; }
     .indice-desc { display: block; font-size: 1rem; line-height: 1.5; color: var(--gris-tex); margin-top: .2rem; }
     .ag-fecha span, .ag-item .ag-datos, .ag-link { font-size: .95rem; }
+    /* Decisión 2A (20/11): el filete marca el cambio de categoría o de estante; entre entradas, aire */
+    .da-entry, .da-entry:hover { border-top: 0; padding: .55rem 0; }
+    .da-cat-section { border-top: 1px solid rgba(var(--borde-rgb), .35); padding-top: 1.1rem; }
+    .indice li, .indice li:last-child { border: 0; padding: .55rem 0; }
+    .ag-item, .ag-item:last-child { border: 0; padding: 1.1rem 0; }
+    .bib-estante { border-top: 1px solid rgba(var(--borde-rgb), .35); padding-top: 1.1rem; }
+    svg text { font-family: var(--texto) !important; }
   </style>
 </head>
 <body>
