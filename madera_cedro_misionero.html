@@ -121,6 +121,9 @@
   svg text { font-family: var(--texto) !important; }
   .carta-cab, .carta-pie, .carta-grilla dt, .carta-nota { font-size: .85rem; }
   .carta-grilla small { font-size: .85em; }
+  /* Decisión 3A (20/11): crédito de una línea debajo de la foto */
+  .carta-credito { font-size: .85rem; line-height: 1.4; color: var(--gris-tex); margin: .45rem 0 0; }
+  .colofon { display: block; margin: .5rem auto 0; font-size: .85rem; }
 </style>
 </head>
 <body>
@@ -133,6 +136,7 @@
     <h1 id="carta-nombre">Cedro misionero</h1>
     <p class="carta-cien"><i>Cedrela fissilis</i> · Meliáceas</p>
     <img class="carta-foto" src="img/cedro-misionero.jpg" width="900" height="700" alt="Cara de una muestra de cedro misionero: madera castaño rosada, de veta recta, con los poros abiertos como trazos cortos y oscuros a lo largo de la fibra.">
+    <p class="carta-credito">Foto: <a href="https://commons.wikimedia.org/wiki/File:Collection_de_bois_de_la_Xyloth%C3%A8que_du_Cirad._Bois_de_la_Collection_de_r%C3%A9f%C3%A9rence._Cedrela_fissilis_Vell._-_btv1b10113202x.jpg" target="_blank" rel="noopener noreferrer">Xiloteca del CIRAD</a>, dominio público, recortada.</p>
     <dl class="carta-grilla">
       <div class="ancha"><dt>Otros nombres</dt><dd>Cedro; ygary en Paraguay</dd></div>
       <div class="ancha"><dt>Dónde crece</dt><dd>Misiones y Corrientes; también citado en Salta, Jujuy, Catamarca y Córdoba</dd></div>
@@ -145,7 +149,7 @@
     </dl>
     <div class="carta-pie"><span>Su perfume le dio el nombre de cedro</span><span>soydemadera.com</span></div>
   </article>
-  <p class="carta-nota">Datos de la carta<sup><a href="#f-unne">1</a></sup><sup><a href="#f-embrapa">2</a></sup><sup><a href="#f-cirad">3</a></sup><sup><a href="#f-smart">4</a></sup><sup><a href="#f-bfn">5</a></sup><sup><a href="#f-bgci">7</a></sup>. El peso es al 15 % de humedad. Foto: Xiloteca del CIRAD, <a href="https://commons.wikimedia.org/wiki/File:Collection_de_bois_de_la_Xyloth%C3%A8que_du_Cirad._Bois_de_la_Collection_de_r%C3%A9f%C3%A9rence._Cedrela_fissilis_Vell._-_btv1b10113202x.jpg" target="_blank" rel="noopener noreferrer">dominio público</a>, recortada.</p>
+  <p class="carta-nota">Datos de la carta<sup><a href="#f-unne">1</a></sup><sup><a href="#f-embrapa">2</a></sup><sup><a href="#f-cirad">3</a></sup><sup><a href="#f-smart">4</a></sup><sup><a href="#f-bfn">5</a></sup><sup><a href="#f-bgci">7</a></sup>. El peso es al 15 % de humedad.</p>
 </header>
 
 <main>
@@ -210,6 +214,7 @@
 
 <footer class="tm-footer">
   <p>Abel J. Anuzis · soydemadera.com · Noviembre 2026. Si encontrás un dato que no coincide, escribinos a hola@soydemadera.com.</p>
+  <p class="colofon">Compuesto en Schola SdM, derivada de TeX Gyre Schola (<a href="fonts/GUST-FONT-LICENSE.txt">licencia GUST</a>).</p>
 </footer>
 
 </body>

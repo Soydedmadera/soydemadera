@@ -121,6 +121,9 @@
   svg text { font-family: var(--texto) !important; }
   .carta-cab, .carta-pie, .carta-grilla dt, .carta-nota { font-size: .85rem; }
   .carta-grilla small { font-size: .85em; }
+  /* Decisión 3A (20/11): crédito de una línea debajo de la foto */
+  .carta-credito { font-size: .85rem; line-height: 1.4; color: var(--gris-tex); margin: .45rem 0 0; }
+  .colofon { display: block; margin: .5rem auto 0; font-size: .85rem; }
 </style>
 </head>
 <body>
@@ -133,6 +136,7 @@
     <h1 id="carta-nombre">Palo santo</h1>
     <p class="carta-cien"><i>Bulnesia sarmientoi</i> · Zigofiláceas</p>
     <img class="carta-foto" src="img/palo-santo.jpg" width="900" height="700" alt="Tabla de palo santo: la albura clara arriba y, debajo, el duramen oscuro con vetas onduladas en tonos de oliva, ocre y castaño.">
+    <p class="carta-credito">Foto: <a href="https://commons.wikimedia.org/wiki/File:BulnesiaSarmientoi_wood.jpg" target="_blank" rel="noopener noreferrer">Abarmot</a>, dominio público, recortada.</p>
     <dl class="carta-grilla">
       <div class="ancha"><dt>Otros nombres</dt><dd>Guayacán, palo bálsamo; en el comercio, <i>verawood</i> o <i>Argentine lignum vitae</i></dd></div>
       <div class="ancha"><dt>Dónde crece</dt><dd>Chaco, Formosa y Salta, y algo en Santiago del Estero: solo en el Gran Chaco</dd></div>
@@ -145,7 +149,7 @@
     </dl>
     <div class="carta-pie"><span>Florece en octubre y noviembre</span><span>soydemadera.com</span></div>
   </article>
-  <p class="carta-nota">Datos de la carta<sup><a href="#f-cop15">1</a></sup><sup><a href="#f-pc20">2</a></sup><sup><a href="#f-wdb">3</a></sup><sup><a href="#f-guia">5</a></sup><sup><a href="#f-notif">6</a></sup>. Las fuentes dan entre 990 y 1.280 kg/m³; el INTI midió unos 1.130 al 12 % de humedad. Foto: Abarmot, <a href="https://commons.wikimedia.org/wiki/File:BulnesiaSarmientoi_wood.jpg" target="_blank" rel="noopener noreferrer">dominio público</a>, recortada.</p>
+  <p class="carta-nota">Datos de la carta<sup><a href="#f-cop15">1</a></sup><sup><a href="#f-pc20">2</a></sup><sup><a href="#f-wdb">3</a></sup><sup><a href="#f-guia">5</a></sup><sup><a href="#f-notif">6</a></sup>. Las fuentes dan entre 990 y 1.280 kg/m³; el INTI midió unos 1.130 al 12 % de humedad.</p>
 </header>
 
 <main>
@@ -204,6 +208,7 @@
 
 <footer class="tm-footer">
   <p>Abel J. Anuzis · soydemadera.com · Noviembre 2026. Si encontrás un dato que no coincide, escribinos a hola@soydemadera.com.</p>
+  <p class="colofon">Compuesto en Schola SdM, derivada de TeX Gyre Schola (<a href="fonts/GUST-FONT-LICENSE.txt">licencia GUST</a>).</p>
 </footer>
 
 </body>

@@ -11,9 +11,10 @@ Orden de paso por la tapa: 1 palo santo, 2 quebracho colorado, 3 urunday, 4 lapa
 - Encabezado: «Maderas nativas argentinas» y «N.º x».
 - Nombre común, nombre científico aceptado en la bibliografía argentina y familia.
 - Foto de la tapa (900 × 700, la misma de `img/`).
+- Debajo de la foto, el crédito en una línea (`<p class="carta-credito">`): «Foto: autor, licencia, recortada.» El nombre del autor enlaza al archivo original y la licencia, a su texto; si es de dominio público, «dominio público» va sin enlace. Si no se recortó, no se dice «recortada».
 - Cuadrícula, siempre en este orden: Otros nombres y Dónde crece (a lo ancho); Color, Peso, Dureza, Durabilidad, En el taller, Protección (de a dos).
 - Pie: floración y soydemadera.com.
-- Debajo, una nota corta con las fuentes de la carta, aclaraciones de los valores (humedad, especie de la que sale el dato) y el crédito de la foto con su licencia.
+- Debajo de la carta, una nota corta con las fuentes y las aclaraciones de los valores (humedad, especie de la que sale el dato). El crédito de la foto ya no va acá.
 
 En la cuadrícula va lo esencial y comparable entre maderas. Los datos muy técnicos (flexión, elasticidad, contracción) no van.
 
@@ -26,6 +27,10 @@ No repite nada de la cuadrícula.
 3. Para qué se usa.
 4. Si la comprás: CITES, normativa argentina, UICN si está confirmada, y cómo pedirla (nombre científico, procedencia).
 5. Notas, Fuentes (numeradas, con enlace), Glosario y Seguir leyendo (enlaces a las otras cartas y a la lista de correo).
+
+## Letra y créditos
+
+Desde el 20/11/2026: 15 px como mínimo en todo, salvo pies de foto, fichas y notas, que van a 13,6 px (0,85 rem). Todos los créditos del sitio y de las láminas siguen la misma forma de una línea: «Qué se ve · Foto: autor, licencia o forma de uso, recortada».
 
 ## Reglas de datos
 

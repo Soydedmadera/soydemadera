@@ -121,6 +121,9 @@
   svg text { font-family: var(--texto) !important; }
   .carta-cab, .carta-pie, .carta-grilla dt, .carta-nota { font-size: .85rem; }
   .carta-grilla small { font-size: .85em; }
+  /* Decisión 3A (20/11): crédito de una línea debajo de la foto */
+  .carta-credito { font-size: .85rem; line-height: 1.4; color: var(--gris-tex); margin: .45rem 0 0; }
+  .colofon { display: block; margin: .5rem auto 0; font-size: .85rem; }
 </style>
 </head>
 <body>
@@ -133,6 +136,7 @@
     <h1 id="carta-nombre">Urunday</h1>
     <p class="carta-cien"><i>Astronium balansae</i> · Anacardiáceas</p>
     <img class="carta-foto" src="img/urunday.jpg" width="900" height="700" alt="Cara de una tabla de urunday: duramen rojizo atravesado a lo largo por franjas castaño oscuro, casi negras, de ancho desparejo.">
+    <p class="carta-credito">Foto: <a href="https://commons.wikimedia.org/wiki/File:Goncalo_alves_(tigerwood).jpg" target="_blank" rel="noopener noreferrer">Abarmot</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>, recortada.</p>
     <dl class="carta-grilla">
       <div class="ancha"><dt>Otros nombres</dt><dd>Urunday rubio, colorado o crespo; urunde’y pichai en Paraguay</dd></div>
       <div class="ancha"><dt>Dónde crece</dt><dd>Chaco, Formosa, Corrientes, Misiones y el noreste de Santa Fe</dd></div>
@@ -145,7 +149,7 @@
     </dl>
     <div class="carta-pie"><span>Florece de noviembre a enero</span><span>soydemadera.com</span></div>
   </article>
-  <p class="carta-nota">Datos de la carta<sup><a href="#f-unse">1</a></sup><sup><a href="#f-luna">2</a></sup><sup><a href="#f-embrapa">3</a></sup><sup><a href="#f-unne">4</a></sup><sup><a href="#f-cirad">5</a></sup>. El peso va de 1.100 kg/m³ (sin humedad indicada) a 1.250 al 15 % de humedad; la floración está registrada en el sur de Brasil. Foto: Abarmot, <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Goncalo_alves_(tigerwood).jpg" target="_blank" rel="noopener noreferrer">archivo original</a>, recortada.</p>
+  <p class="carta-nota">Datos de la carta<sup><a href="#f-unse">1</a></sup><sup><a href="#f-luna">2</a></sup><sup><a href="#f-embrapa">3</a></sup><sup><a href="#f-unne">4</a></sup><sup><a href="#f-cirad">5</a></sup>. El peso va de 1.100 kg/m³ (sin humedad indicada) a 1.250 al 15 % de humedad; la floración está registrada en el sur de Brasil.</p>
 </header>
 
 <main>
@@ -213,6 +217,7 @@
 
 <footer class="tm-footer">
   <p>Abel J. Anuzis · soydemadera.com · Noviembre 2026. Si encontrás un dato que no coincide, escribinos a hola@soydemadera.com.</p>
+  <p class="colofon">Compuesto en Schola SdM, derivada de TeX Gyre Schola (<a href="fonts/GUST-FONT-LICENSE.txt">licencia GUST</a>).</p>
 </footer>
 
 </body>
