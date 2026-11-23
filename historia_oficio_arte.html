@@ -737,7 +737,19 @@
     main p, main li { font-size: max(16px, 1em); }
     .pull-quote span, .pull-quote span em { font-size: 15px !important; }
     .campo-card p { font-size: 16px !important; }
-  </style>
+  
+  /* Decisión 1B (20/11): 13,6 px como mínimo en pies de foto, fichas y notas; 15 px en todo lo demás */
+  .volver, .tm-ig { font-size: .95rem !important; }
+  svg text { font-family: var(--texto) !important; }
+  /* Línea de tiempo: rótulos legibles (14 y 16 px a escala 1); en el celular se desliza de costado en vez de achicarse */
+  #timeline-svg text[font-size="8"], #timeline-svg text[font-size="9"] { font-size: 14px; letter-spacing: normal; }
+  #timeline-svg text[font-size="11"] { font-size: 16px; transform: translateY(5px); }
+  @media (max-width: 900px) {
+    #timeline-svg-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    #timeline-svg { min-width: 920px; }
+  }
+  .colofon { display: block; margin: .5rem auto 0; font-size: .85rem; }
+</style>
 </head>
 
 <body>
@@ -897,7 +909,7 @@
             <!-- Etiqueta "FRACTURA" -->
             <text x="690" y="46" text-anchor="middle"
                   font-family="'IBM Plex Mono', monospace" font-size="8"
-                  fill="#e8a43a" letter-spacing="1" opacity="0.8">FRACTURA</text>
+                  fill="#e8a43a" letter-spacing="1" opacity="0.8">Fractura</text>
             <line x1="690" y1="52" x2="690" y2="62" stroke="#e8a43a" stroke-width="1" opacity="0.5"/>
             <text x="690" y="115" text-anchor="middle"
                   font-family="'IBM Plex Mono', monospace" font-size="9"
@@ -1324,6 +1336,7 @@
   <footer>
     <a href="index.html" class="footer-logo">Soy de Madera</a>
     <p class="footer-meta">soydemadera.com · Abel J. Anuzis · 2026</p>
+    <span class="colofon">Compuesto en Schola SdM, derivada de TeX Gyre Schola (<a href="fonts/GUST-FONT-LICENSE.txt">licencia GUST</a>).</span>
   </footer>
 
   <!-- =============================================

@@ -255,7 +255,22 @@
     /* Con la Schola, nada por debajo de 15px */
     .nav-back, .nav-title, button, .tab, label, .label, footer, .note, summary { font-size: max(15px, .9rem) !important; }
     main p, main li, main a, main i { font-size: max(16px, 1em); }
-  </style>
+  
+  /* Decisión 1B (20/11): 13,6 px como mínimo en pies de foto, fichas y notas; 15 px en todo lo demás */
+  .volver, .tm-ig { font-size: .95rem !important; }
+  svg text { font-family: var(--texto) !important; }
+  .colofon { display: block; margin: .5rem auto 0; font-size: .85rem; }
+  /* Rótulos de los dibujos: en el celular no bajan de 13,6 px */
+  .joint svg text { font-size: 18.2px; }
+  .joint dt, .joint > .mono { font-size: .85rem !important; }
+  #mv-svg text { font-size: 13px; }
+  table.pieces th, .sheet .cap, .gl .en, .gl .lt { font-size: .85rem !important; }
+  @media (max-width: 900px) {
+    #mv-svg text { font-size: 18.2px; }
+    .sheet { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .sheet svg { min-width: 730px; }
+  }
+</style>
 </head>
 <body>
 
@@ -421,6 +436,7 @@
 
   <footer>
     <a href="index.html">soydemadera.com</a> · Taller digital · uso libre
+    <span class="colofon">Compuesto en Schola SdM, derivada de TeX Gyre Schola (<a href="fonts/GUST-FONT-LICENSE.txt">licencia GUST</a>).</span>
   </footer>
 
   <script>
@@ -605,7 +621,7 @@
         nombre: 'Media madera', en: 'Lap joint',
         svg: '<path d="M20 50 H140 V75 H200 V100 H20 Z" ' + A + ' ' + S + '/>' +
              '<path d="M150 20 H280 V70 H220 V45 H150 Z" transform="translate(0,60)" ' + B + ' ' + S + '/>' +
-             '<text x="80" y="40" font-size="10" fill="var(--crema-dim)">cada pieza pierde medio espesor</text>',
+             '<text x="20" y="40" font-size="10" fill="var(--crema-dim)">cada pieza pierde medio espesor</text>',
         entra: 'Las dos piezas se rebajan a la mitad del espesor en la zona de cruce y se superponen.',
         resiste: 'Bien la carga de costado; poco la tracción si no lleva cola o tornillos.',
         uso: 'Bastidores, cruces de travesaños, estructuras de taller.',
@@ -615,7 +631,7 @@
         nombre: 'Lengüeta', en: 'Spline',
         svg: '<rect x="20" y="55" width="120" height="50" ' + A + ' ' + S + '/><rect x="200" y="55" width="120" height="50" ' + A + ' ' + S + '/>' +
              '<rect x="130" y="74" width="10" height="12" fill="var(--nogal)" ' + S + '/><rect x="200" y="74" width="10" height="12" fill="var(--nogal)" ' + S + '/>' +
-             '<rect x="155" y="75" width="30" height="10" ' + B + ' ' + S + '/><text x="170" y="65" text-anchor="middle" font-size="10" fill="var(--crema-dim)">lengüeta</text>',
+             '<rect x="155" y="75" width="30" height="10" ' + B + ' ' + S + '/><text x="170" y="46" text-anchor="middle" font-size="10" fill="var(--crema-dim)">lengüeta</text>',
         entra: 'Las dos piezas llevan una ranura enfrentada en el canto. Una tira delgada, la lengüeta, entra en las dos.',
         resiste: 'Mantiene las caras alineadas y suma superficie de encolado.',
         uso: 'Tableros de varias tablas, ingletes de marcos.',

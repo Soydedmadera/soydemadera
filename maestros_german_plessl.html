@@ -89,6 +89,11 @@
   .tm-footer p { max-width: 760px; margin: 0 auto; color: var(--pie-suave); }
   .tm-footer a { color: var(--pie-tinta); border-bottom-color: var(--pie-suave); }
   @media (max-width: 900px) { body { font-size: 18px; } }
+
+  /* Decisión 1B (20/11): 13,6 px como mínimo en pies de foto, fichas y notas; 15 px en todo lo demás */
+  .volver, .tm-ig { font-size: .95rem !important; }
+  svg text { font-family: var(--texto) !important; }
+  .colofon { display: block; margin: .5rem auto 0; font-size: .85rem; }
 </style>
 </head>
 <body>
@@ -100,7 +105,7 @@
   <div class="tm-meta">Ebanista, diseñador artesano e instructor · Buenos Aires</div>
   <figure class="retrato">
     <img src="img/german-plessl-retrato.jpg" width="1200" height="839" alt="Germán Plessl apoyado sobre una mesa de roble claro, con un banquito de madera en miniatura entre las manos.">
-    <figcaption>Germán Plessl. Foto cedida por él.</figcaption>
+    <figcaption>Germán Plessl · Foto: cedida por él.</figcaption>
   </figure>
 </header>
 
@@ -120,15 +125,15 @@
     </blockquote>
     <figure class="obra vertical">
       <img loading="lazy" src="img/german-plessl-kyoto.jpg" width="506" height="900" alt="Columna de madera de un templo en Kyoto, reparada con un empalme de solape: la parte inferior es madera nueva, más clara, encastrada en la vieja.">
-      <figcaption>Columna de unos 6 × 6 en Kyoto, reparada con un empalme de solape por la testa. Foto de Germán Plessl.</figcaption>
+      <figcaption>Columna de unos 6 × 6 en Kyoto, reparada con un empalme de solape por la testa · Foto: Germán Plessl.</figcaption>
     </figure>
     <figure class="obra vertical">
       <img loading="lazy" src="img/german-plessl-solape-desarmado.jpg" width="506" height="900" alt="Ejercicio de solape por la testa desarmado: dos piezas de madera con cortes escalonados y una clavija oscura al costado.">
-      <figcaption>El mismo principio a escala de banco: ejercicio del seminario, desarmado. Armado, la clavija traba las dos piezas sin cola. Foto de Germán Plessl.</figcaption>
+      <figcaption>El mismo principio a escala de banco: ejercicio del seminario, desarmado. Armado, la clavija traba las dos piezas sin cola · Foto: Germán Plessl.</figcaption>
     </figure>
     <figure class="obra vertical">
       <img loading="lazy" src="img/german-plessl-workshop-encastres.jpg" width="506" height="900" alt="Ejercicios del seminario de encastres japoneses armados sobre un banco de trabajo: empalmes y uniones en ángulo en listones de madera clara y oscura, trabados con clavijas.">
-      <figcaption>Ejercicios terminados en el seminario de encastres japoneses, armados sobre el banco. Foto de Germán Plessl.</figcaption>
+      <figcaption>Ejercicios terminados en el seminario de encastres japoneses, armados sobre el banco · Foto: Germán Plessl.</figcaption>
     </figure>
   </article>
 
@@ -143,7 +148,7 @@
     </blockquote>
     <figure class="obra vertical">
       <img loading="lazy" src="img/german-plessl-cuatro-encastres.jpg" width="506" height="900" alt="Dos marcos cuadrados de madera clara, cada uno con encastres distintos en las esquinas y una pieza oscura de contraste.">
-      <figcaption>El ejercicio de los cuatro encastres. Foto de Germán Plessl.</figcaption>
+      <figcaption>El ejercicio de los cuatro encastres · Foto: Germán Plessl.</figcaption>
     </figure>
   </article>
 
@@ -160,7 +165,7 @@
     </figure>
     <figure class="obra ancha">
       <img loading="lazy" src="img/german-plessl-escritorio-detalle.jpg" width="1000" height="650" alt="Detalle del escritorio: el canto de la tapa, el encuentro de una pata con el faldón y dos espigas a la vista.">
-      <figcaption>Escritorio de roble europeo, 2025, diseñado y realizado por Germán Plessl. Fotos cedidas por él.</figcaption>
+      <figcaption>Escritorio de roble europeo, 2025, diseñado y realizado por Germán Plessl · Fotos: cedidas por él.</figcaption>
     </figure>
   </article>
 
@@ -230,6 +235,7 @@
 
 <footer class="tm-footer">
   <p>Abel J. Anuzis · soydemadera.com · Noviembre 2026. Datos biográficos de sus respuestas.</p>
+  <p class="colofon">Compuesto en Schola SdM, derivada de TeX Gyre Schola (<a href="fonts/GUST-FONT-LICENSE.txt">licencia GUST</a>).</p>
 </footer>
 
 </body>

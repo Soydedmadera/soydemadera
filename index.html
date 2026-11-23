@@ -1605,14 +1605,14 @@
     .foto-tapa a { color: inherit; }
     /* Carta de la semana: la foto de la tapa con su cuadrícula, como en madera_*.html */
     .carta-tapa { background: var(--lamina); color: var(--lamina-tinta); border-radius: 14px; padding: 1rem 1rem 1.1rem; max-width: 520px; }
-    .carta-tapa .ct-cab { display: flex; justify-content: space-between; gap: 1rem; font-size: .8rem; color: var(--lamina-suave); }
+    .carta-tapa .ct-cab { display: flex; justify-content: space-between; gap: 1rem; font-size: .85rem; color: var(--lamina-suave); }
     .carta-tapa .ct-nombre { font-size: 2rem; line-height: 1.1; margin: .6rem 0 .1rem; }
     .carta-tapa .ct-cien { margin: 0 0 .8rem; color: var(--lamina-suave); font-size: .95rem; }
     .foto-tapa .carta-tapa img { border-radius: 6px; }
     .ct-grilla { display: grid; grid-template-columns: 1fr 1fr; margin: .9rem 0 .8rem; border-top: 1px solid var(--lamina-linea); border-left: 1px solid var(--lamina-linea); }
     .ct-grilla div { padding: .4rem .6rem .45rem; border-right: 1px solid var(--lamina-linea); border-bottom: 1px solid var(--lamina-linea); }
     .ct-grilla .ancha { grid-column: 1 / -1; }
-    .ct-grilla dt { font-size: .75rem; line-height: 1.3; color: var(--lamina-suave); }
+    .ct-grilla dt { font-size: .85rem; line-height: 1.3; color: var(--lamina-suave); }
     .ct-grilla dd { margin: .1rem 0 0; font-size: .95rem; line-height: 1.3; }
     .foto-tapa .carta-tapa a.ct-ver { color: var(--tela); font-size: 1rem; text-decoration: underline; text-underline-offset: .2em; }
     .franja { max-width: 1200px; margin: 0 auto; padding: 2.5rem 3rem 3rem; }
@@ -1622,15 +1622,16 @@
     .franja .cf-fila { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
     .franja .cf-carta { background: var(--lamina); color: var(--lamina-tinta); border: 1px solid var(--lamina-linea); border-radius: 14px; padding: .8rem .8rem 1rem; display: flex; flex-direction: column; }
     .franja .cf-carta img { aspect-ratio: 900 / 700; object-fit: cover; border-radius: 6px; }
-    .franja .cf-cab { display: flex; justify-content: space-between; gap: 1rem; font-size: .78rem; color: var(--lamina-suave); margin: .7rem 0 .15rem; }
+    .franja .cf-cab { display: flex; justify-content: space-between; gap: 1rem; font-size: .85rem; color: var(--lamina-suave); margin: .7rem 0 .15rem; }
     .franja .cf-nombre { font-size: 1.45rem; line-height: 1.15; margin: 0; }
     .franja .cf-cien { font-size: .85rem; color: var(--lamina-suave); margin: .1rem 0 .6rem; }
     .franja .cf-carta dl { margin: 0; border-top: 1px solid var(--lamina-linea); }
     .franja .cf-carta dl div { padding: .35rem 0; border-bottom: 1px solid var(--lamina-linea); }
-    .franja .cf-carta dt { font-size: .72rem; color: var(--lamina-suave); }
-    .franja .cf-carta dd { margin: .05rem 0 0; font-size: .92rem; line-height: 1.3; }
+    .franja .cf-carta dt { font-size: .85rem; color: var(--lamina-suave); }
+    .franja .cf-carta dd { margin: .05rem 0 0; font-size: .95rem; line-height: 1.3; }
     .franja .cf-carta a.cf-seguir { color: var(--tela); font-size: .98rem; text-decoration: underline; text-underline-offset: .2em; margin-top: auto; }
-    .franja .cf-credito { font-size: .74rem; line-height: 1.35; color: var(--lamina-suave); margin: .5rem 0 .9rem; }
+    .franja .cf-credito { font-size: .85rem; line-height: 1.35; color: var(--lamina-suave); margin: .45rem 0 0; }
+    .franja .cf-carta dl { margin-bottom: .9rem; }
     .franja a { color: inherit; }
     a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 
@@ -1693,8 +1694,16 @@
     .indice a { font-size: 1.15rem; color: var(--crema); text-decoration: none; }
     .indice a:hover, .indice a:focus-visible { text-decoration: underline; text-underline-offset: .2em; }
     .indice-desc { display: block; font-size: 1rem; line-height: 1.5; color: var(--gris-tex); margin-top: .2rem; }
-    .pilar-card a { font-size: 1rem !important; }
     .ag-fecha span, .ag-item .ag-datos, .ag-link { font-size: .95rem; }
+    /* Decisión 2A (20/11): el filete marca el cambio de categoría o de estante; entre entradas, aire */
+    .da-entry, .da-entry:hover { border-top: 0; padding: .55rem 0; }
+    .da-cat-section { border-top: 1px solid rgba(var(--borde-rgb), .35); padding-top: 1.1rem; }
+    .indice li, .indice li:last-child { border: 0; padding: .55rem 0; }
+    .ag-item, .ag-item:last-child { border: 0; padding: 1.1rem 0; }
+    .bib-estante { border-top: 1px solid rgba(var(--borde-rgb), .35); padding-top: 1.1rem; }
+    svg text { font-family: var(--texto) !important; }
+    .footer-colofon { flex-basis: 100%; font-size: .85rem; color: var(--pie-suave); }
+    .footer-colofon a { color: var(--pie-tinta); }
   </style>
 </head>
 <body>
@@ -1703,7 +1712,6 @@
   <nav>
     <a href="./" class="nav-logo">Soy <span>de</span> Madera</a>
     <ul class="nav-links">
-      <li><a href="#pilares" data-nav="pilares">Pilares</a></li>
       <li><a href="#diccionario" data-nav="diccionario">Diccionario</a></li>
       <li><a href="#herramientas" data-nav="herramientas">Herramientas</a></li>
       <li><a href="#maestros" data-nav="maestros">Maestros</a></li>
@@ -1720,7 +1728,6 @@
 
   <!-- MENÚ MOBILE -->
   <div class="nav-mobile-menu" id="nav-mobile-menu">
-    <a href="#pilares"    data-nav="pilares"     class="nav-mobile-link">Pilares</a>
     <a href="#diccionario" data-nav="diccionario" class="nav-mobile-link">Diccionario</a>
     <a href="#herramientas" data-nav="herramientas" class="nav-mobile-link">Herramientas</a>
     <a href="#maestros"  data-nav="maestros"    class="nav-mobile-link">Maestros</a>
@@ -1771,7 +1778,7 @@
             </dl>
             <a class="ct-ver" href="madera_cedro_misionero.html">Ver la carta completa, con fuentes</a>
           </div>
-          <figcaption>Foto: Xiloteca del CIRAD, <a href="https://commons.wikimedia.org/wiki/File:Collection_de_bois_de_la_Xyloth%C3%A8que_du_Cirad._Bois_de_la_Collection_de_r%C3%A9f%C3%A9rence._Cedrela_fissilis_Vell._-_btv1b10113202x.jpg" target="_blank" rel="noopener noreferrer">dominio público</a>, recortada.</figcaption>
+          <figcaption>Foto: <a href="https://commons.wikimedia.org/wiki/File:Collection_de_bois_de_la_Xyloth%C3%A8que_du_Cirad._Bois_de_la_Collection_de_r%C3%A9f%C3%A9rence._Cedrela_fissilis_Vell._-_btv1b10113202x.jpg" target="_blank" rel="noopener noreferrer">Xiloteca del CIRAD</a>, dominio público, recortada.</figcaption>
         </figure>
       </div>
     </div>
@@ -1780,38 +1787,38 @@
       <div class="cf-fila">
         <article class="cf-carta">
           <img src="img/palo-santo.jpg" width="900" height="700" loading="lazy" alt="Tabla de palo santo: la albura clara arriba y, debajo, el duramen oscuro con vetas onduladas en tonos de oliva, ocre y castaño.">
+          <p class="cf-credito">Foto: <a href="https://commons.wikimedia.org/wiki/File:BulnesiaSarmientoi_wood.jpg" target="_blank" rel="noopener noreferrer">Abarmot</a>, dominio público, recortada.</p>
           <div class="cf-cab"><span>Maderas nativas argentinas</span><span>N.º 1</span></div>
           <h3 class="cf-nombre">Palo santo</h3>
           <p class="cf-cien"><i>Bulnesia sarmientoi</i></p>
           <dl><div><dt>Dónde crece</dt><dd>Chaco, Formosa y Salta</dd></div><div><dt>Peso</dt><dd>Unos 1.200 kg/m³; se hunde</dd></div><div><dt>Durabilidad</dt><dd>No se pudre enterrada</dd></div></dl>
-          <p class="cf-credito">Foto: Abarmot, <a href="https://commons.wikimedia.org/wiki/File:BulnesiaSarmientoi_wood.jpg" target="_blank" rel="noopener noreferrer">dominio público</a>, recortada.</p>
           <a class="cf-seguir" href="madera_palo_santo.html">Seguir leyendo</a>
         </article>
         <article class="cf-carta">
           <img src="img/quebracho-colorado.jpg" width="900" height="700" loading="lazy" alt="Corte transversal de un tronco de quebracho colorado: la albura clara en el borde y el duramen rojo oscuro en el centro.">
+          <p class="cf-credito">Foto: <a href="https://commons.wikimedia.org/wiki/File:Quebracho_colorado_wood.jpg" target="_blank" rel="noopener noreferrer">Valerio Pillar</a>, <a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a>, recortada.</p>
           <div class="cf-cab"><span>Maderas nativas argentinas</span><span>N.º 2</span></div>
           <h3 class="cf-nombre">Quebracho colorado</h3>
           <p class="cf-cien"><i>Schinopsis balansae</i></p>
           <dl><div><dt>Dónde crece</dt><dd>Chaco, Formosa, Corrientes y el norte de Santa Fe y de Entre Ríos</dd></div><div><dt>Peso</dt><dd>Unos 1.250 kg/m³; se hunde</dd></div><div><dt>Durabilidad</dt><dd>Máxima: más de 30 años en servicio</dd></div></dl>
-          <p class="cf-credito">Foto: Valerio Pillar, <a href="https://creativecommons.org/licenses/by-sa/2.0" target="_blank" rel="noopener noreferrer">CC BY-SA 2.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Quebracho_colorado_wood.jpg" target="_blank" rel="noopener noreferrer">archivo original</a>, recortada.</p>
           <a class="cf-seguir" href="madera_quebracho_colorado.html">Seguir leyendo</a>
         </article>
         <article class="cf-carta">
           <img src="img/urunday.jpg" width="900" height="700" loading="lazy" alt="Cara de una tabla de urunday: duramen rojizo atravesado a lo largo por franjas castaño oscuro, casi negras, de ancho desparejo.">
+          <p class="cf-credito">Foto: <a href="https://commons.wikimedia.org/wiki/File:Goncalo_alves_(tigerwood).jpg" target="_blank" rel="noopener noreferrer">Abarmot</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>, recortada.</p>
           <div class="cf-cab"><span>Maderas nativas argentinas</span><span>N.º 3</span></div>
           <h3 class="cf-nombre">Urunday</h3>
           <p class="cf-cien"><i>Astronium balansae</i></p>
           <dl><div><dt>Dónde crece</dt><dd>Chaco, Formosa, Corrientes, Misiones y el noreste de Santa Fe</dd></div><div><dt>Peso</dt><dd>1.100 a 1.250 kg/m³; se hunde</dd></div><div><dt>Durabilidad</dt><dd>No se pudre enterrada ni bajo agua</dd></div></dl>
-          <p class="cf-credito">Foto: Abarmot, <a href="https://creativecommons.org/licenses/by-sa/3.0" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>, <a href="https://commons.wikimedia.org/wiki/File:Goncalo_alves_(tigerwood).jpg" target="_blank" rel="noopener noreferrer">archivo original</a>, recortada.</p>
           <a class="cf-seguir" href="madera_urunday.html">Seguir leyendo</a>
         </article>
         <article class="cf-carta">
           <img src="img/lapacho.jpg" width="900" height="700" loading="lazy" alt="Cara de una muestra de lapacho: duramen castaño oliváceo con una figura ondulada de tono más oscuro y poros finos a lo largo de la fibra.">
+          <p class="cf-credito">Foto: <a href="https://commons.wikimedia.org/wiki/File:Collection_de_bois_de_la_Xyloth%C3%A8que_du_Cirad._Bois_de_l%27Atlas_des_bois_tropicaux._Handroanthus_heptaphylla_A._Mattos_-_btv1b10105300s_(1_of_2).jpg" target="_blank" rel="noopener noreferrer">Xiloteca del CIRAD</a>, dominio público, recortada y girada.</p>
           <div class="cf-cab"><span>Maderas nativas argentinas</span><span>N.º 4</span></div>
           <h3 class="cf-nombre">Lapacho negro</h3>
           <p class="cf-cien"><i>Handroanthus heptaphyllus</i></p>
           <dl><div><dt>Dónde crece</dt><dd>Misiones, Corrientes, Chaco, Formosa, Santa Fe y Entre Ríos</dd></div><div><dt>Peso</dt><dd>1.040 kg/m³; se hunde</dd></div><div><dt>Durabilidad</dt><dd>Muy alta, sin preservante</dd></div></dl>
-          <p class="cf-credito">Foto: Xiloteca del CIRAD, <a href="https://commons.wikimedia.org/wiki/File:Collection_de_bois_de_la_Xyloth%C3%A8que_du_Cirad._Bois_de_l%27Atlas_des_bois_tropicaux._Handroanthus_heptaphylla_A._Mattos_-_btv1b10105300s_(1_of_2).jpg" target="_blank" rel="noopener noreferrer">dominio público</a>, recortada y girada.</p>
           <a class="cf-seguir" href="madera_lapacho_negro.html">Seguir leyendo</a>
         </article>
       </div>
@@ -1819,45 +1826,6 @@
   </div>
 
   <div class="divider" style="max-width:1200px; margin: 0 auto;"></div>
-
-  <!-- PILARES -->
-  <section id="pilares" class="pilares-section page-section" style="max-width:1200px;">
-    <div class="pilares-header">
-      <div>
-        <p class="section-label reveal">Dos pilares</p>
-        <h2 class="section-title reveal">El <em>oficio</em> en dos ejes</h2>
-      </div>
-      <p class="reveal" style="max-width:320px; font-size:0.95rem; color:var(--gris-tex); line-height:1.7;">
-        Cada pieza del proyecto gira alrededor de estas dos dimensiones del trabajo con madera.
-      </p>
-    </div>
-
-    <div class="pilares-grid">
-
-      <div class="pilar-card reveal" style="transition-delay:0.15s">
-        <div class="wood-lines"></div>
-        <div class="pilar-num">01</div>
-        <span class="pilar-icon"></span>
-        <h3 class="pilar-title">Herramientas digitales</h3>
-        <p class="pilar-desc">Calculadoras de corte, planificadores de tableros, recursos técnicos online. La tecnología al servicio del taller.</p>
-        <p class="pilar-tag">// software · apps · utilidades</p>
-        <div style="margin-top:1.25rem; display:flex; flex-direction:column; gap:0.5rem;">
-          <a href="calculadora_pie_madera.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">Calculadora pie de madera</a>
-          <a href="conversor_imperial.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">Conversor imperial / decimal</a>
-          <a href="taller_digital.html" style="font-family:var(--font-mono); font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--siena); text-decoration:none; display:flex; align-items:center; gap:0.5rem;">Taller digital</a>
-        </div>
-      </div>
-
-      <div class="pilar-card reveal" style="transition-delay:0.3s">
-        <div class="wood-lines"></div>
-        <div class="pilar-num">02</div>
-        <span class="pilar-icon"></span>
-        <h3 class="pilar-title">Terminología técnica</h3>
-        <p class="pilar-desc"><span class="da-total">235</span> términos técnicos en inglés y español, con pronunciación. Porque nombrar bien lo que hacés es la primera herramienta del oficio.</p>
-        <p class="pilar-tag">// diccionario · EN · ES</p>
-      </div>
-    </div>
-  </section>
 
   <!-- HERRAMIENTAS -->
   <section id="herramientas" class="page-section" style="max-width:1200px; padding: 7rem 3rem;">
@@ -3493,7 +3461,7 @@
         <p class="maestro-especialidad">Ebanistería · New Hope, Pensilvania (EE.UU.)</p>
         <h3 class="maestro-nombre">George Nakashima</h3>
         <p class="maestro-bio">Nació en 1905 en Spokane, hijo de inmigrantes japoneses. Formado en arquitectura en el MIT y en la École des Beaux-Arts de París, aprendió carpintería tradicional japonesa de Gentaro Hikogawa durante su internamiento en un campo de concentración en Idaho, en plena Segunda Guerra Mundial. Fundó su taller en New Hope, Pensilvania, donde desarrolló el borde libre y la unión de mariposa como forma de honrar — no ocultar — las grietas y la forma natural del tronco. Murió en 1990. No llegamos a entrevistarlo: este perfil sale de lo que él mismo escribió en <em>El alma de un árbol</em> (1981) y de lo que quedó documentado de su obra, no de una conversación que tuvimos.</p>
-        <figure class="maestro-obra"><img src="img/nakashima-silla-conoide.jpg" width="700" height="700" loading="lazy" alt="Respaldo y asiento de una silla Conoide de Nakashima: varillas torneadas y asiento de nogal con la veta a la vista."><figcaption>Silla Conoide, 1988, Art Institute of Chicago. Foto: Sailko, <a href="https://creativecommons.org/licenses/by/3.0/deed.es" target="_blank" rel="noopener noreferrer">CC BY 3.0</a>, recortada. Retrato de 1929, autor desconocido, dominio público.</figcaption></figure>
+        <figure class="maestro-obra"><img src="img/nakashima-silla-conoide.jpg" width="700" height="700" loading="lazy" alt="Respaldo y asiento de una silla Conoide de Nakashima: varillas torneadas y asiento de nogal con la veta a la vista."><figcaption>Silla Conoide, 1988, Art Institute of Chicago · Foto: Sailko, <a href="https://creativecommons.org/licenses/by/3.0/deed.es" target="_blank" rel="noopener noreferrer">CC BY 3.0</a>, recortada. Retrato de 1929: autor desconocido, dominio público.</figcaption></figure>
       </div>
 
       <!-- Maestro 2: Dan Bursztyn -->
@@ -3554,7 +3522,7 @@
         <p class="maestro-especialidad">Diseño de mobiliario · Ciudad de México (México)</p>
         <h3 class="maestro-nombre">Clara Porset</h3>
         <p class="maestro-bio">Nació en Cuba en 1895 y estudió arquitectura en Europa, donde conoció a Walter Gropius y Hannes Meyer, de la Bauhaus. Se exilió en México y, casada con el muralista Xavier Guerrero, recorrió el país estudiando el mueble tradicional de distintas culturas originarias. De ese trabajo nació el butaque, su reinterpretación del asiento colonial mexicano — Luis Barragán lo adoptó en su propia casa y le encargó una versión a medida, el "Miguelito". Murió en 1981; la UNAM sostiene una beca con su nombre para diseñadoras industriales. No la entrevistamos: este perfil sale de lo que quedó documentado de su obra y su historia, no de una conversación que tuvimos.</p>
-        <figure class="maestro-obra"><img src="img/porset-butaque.jpg" width="700" height="700" loading="lazy" alt="Butaque de Clara Porset de 1949: marco curvo de madera tejido con cuerdas de ixtle."><figcaption>Butaque rediseñado por Clara Porset en 1949, marco de madera tejido con ixtle. Retrato y foto: Archivo Clara Porset, CIDI, Facultad de Arquitectura, UNAM, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, recortadas.</figcaption></figure>
+        <figure class="maestro-obra"><img src="img/porset-butaque.jpg" width="700" height="700" loading="lazy" alt="Butaque de Clara Porset de 1949: marco curvo de madera tejido con cuerdas de ixtle."><figcaption>Butaque rediseñado por Clara Porset en 1949, marco de madera tejido con ixtle · Retrato y foto: Archivo Clara Porset, CIDI, Facultad de Arquitectura, UNAM, <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a>, recortadas.</figcaption></figure>
       </div>
     </div>
 
@@ -3837,6 +3805,7 @@
   <footer>
     <div class="footer-brand">Soy de Madera</div>
     <div class="footer-copy">© 2026 soydemadera.com · Córdoba, Argentina</div>
+    <div class="footer-colofon">Compuesto en Schola SdM, derivada de TeX Gyre Schola (<a href="fonts/GUST-FONT-LICENSE.txt">licencia GUST</a>).</div>
   </footer>
 
   <script>
@@ -4281,7 +4250,7 @@
   const allSections = document.querySelectorAll('.page-section');
 
   // Anclas viejas que siguen circulando en links externos
-  const SECCION_ALIAS = { astillas: 'biblioteca' };
+  const SECCION_ALIAS = { astillas: 'biblioteca', pilares: 'herramientas' };
 
   function showSection(id) {
     id = SECCION_ALIAS[id] || id;

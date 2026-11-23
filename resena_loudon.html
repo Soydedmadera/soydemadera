@@ -234,7 +234,12 @@
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
     .tm-kicker, .tm-meta { font-size: .95rem !important; color: var(--gris-tex) !important; }
     .tm-section-label { font-size: 1.35rem !important; color: var(--crema) !important; margin: 2.8rem 0 .8rem !important; }
-  </style>
+  
+  /* Decisión 1B (20/11): 13,6 px como mínimo en pies de foto, fichas y notas; 15 px en todo lo demás */
+  .volver, .tm-ig { font-size: .95rem !important; }
+  svg text { font-family: var(--texto) !important; }
+  .colofon { display: block; margin: .5rem auto 0; font-size: .85rem; }
+</style>
 </head>
 <body>
 
@@ -262,7 +267,7 @@
     <p>De ahí sale el plano que estamos redibujando: la <strong>banqueta para chicos de la figura 630</strong>, en la página 315, de cuatro patas y travesaños a dos alturas. En la misma lámina está la <strong>figura 623</strong>, una banqueta redonda de tres patas que descartamos: con las patas rectas, vuelca si se carga en el borde entre dos patas, a cualquier escala. Ese descarte también es parte de la lección.</p>
     <figure class="rs-lamina">
       <img src="img/loudon-fig630.jpg" alt="Grabado de la figura 630 de Loudon: banqueta rectangular de cuatro patas rectas, con travesaños a dos alturas." width="825" height="540" loading="lazy">
-      <figcaption>Figura 630, p. 315 de la edición de 1842. Dominio público.</figcaption>
+      <figcaption>Figura 630, p. 315 de la edición de 1842 · Dominio público.</figcaption>
     </figure>
   </article>
 
@@ -305,6 +310,7 @@
 <footer class="tm-footer">
   <p>Abel J. Anuzis · soydemadera.com · Fuentes: portada, prefacio y láminas de la edición de 1842; ficha del ejemplar en Internet Archive.</p>
   <p><a href="index.html#biblioteca">← Volver a la biblioteca</a></p>
+  <p class="colofon">Compuesto en Schola SdM, derivada de TeX Gyre Schola (<a href="fonts/GUST-FONT-LICENSE.txt">licencia GUST</a>).</p>
 </footer>
 
 </body>
