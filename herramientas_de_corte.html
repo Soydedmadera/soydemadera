@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Herramientas de corte manuales: Occidente y Japón | Soy de Madera</title>
 <link rel="canonical" href="https://soydemadera.com/herramientas_de_corte">
-<meta name="description" content="Formones, cepillos y sierras de Occidente y de Japón: nombres, tipos, partes y diferencias de construcción, con fotos y tablas de equivalencias. Guía de Soy de Madera; el PDF completo se recibe por correo.">
+<meta name="description" content="Formones, cepillos y sierras de Occidente y de Japón: nombres, tipos, partes y diferencias de construcción, con fotos y tablas de equivalencias. Apuntes y notas de estudio de Soy de Madera; el PDF completo se recibe por correo.">
 <meta property="og:title" content="Herramientas de corte manuales: Occidente y Japón">
-<meta property="og:description" content="Formones y nomi, cepillos y kanna, serruchos y nokogiri. Guía de Soy de Madera.">
+<meta property="og:description" content="Formones y nomi, cepillos y kanna, serruchos y nokogiri. Apuntes y notas de estudio de Soy de Madera.">
 <meta property="og:image" content="https://soydemadera.com/img/herramientas-kanna-takenaka.jpg">
 <meta property="og:type" content="article">
 <style>
@@ -300,13 +300,13 @@
   <div class="tm-section-label" id="recibir">Recibila por correo</div>
 
   <article class="tm-perfil">
-    <p>Dejá tu correo y te mandamos el PDF completo. Te llegan dos mails: uno con el enlace a la guía y otro para confirmar tu lugar en la lista de Soy de Madera, que avisa cuando hay algo nuevo. Te podés dar de baja cuando quieras.</p>
+    <p>Dejá tu correo y te mandamos el PDF completo. Te llegan dos mails: uno con el enlace a los apuntes y otro para confirmar tu lugar en la lista de Soy de Madera, que avisa cuando hay algo nuevo. Te podés dar de baja cuando quieras.</p>
     <form id="guia-form" class="es-form" action="FORM_ACTION" method="post">
       <label for="guia-email" class="es-oculto">Tu correo</label>
       <input id="guia-email" type="email" name="fields[email]" required placeholder="tu@correo.com" autocomplete="email">
       <input type="hidden" name="ml-submit" value="1">
       <input type="hidden" name="anticsrf" value="true">
-      <button type="submit">Quiero la guía</button>
+      <button type="submit">Quiero los apuntes</button>
     </form>
     <p id="guia-msg" role="status" class="es-msg">Sin publicidad. El correo se usa solo para Soy de Madera.</p>
   </article>
@@ -343,7 +343,7 @@
         .then(function (data) {
           if (data && data.success) {
             form.reset();
-            msg.textContent = 'Listo. Revisá tu correo: te llegan el enlace a la guía y un mail para confirmar la suscripción (si no los ves, mirá en spam, promociones o notificaciones).';
+            msg.textContent = 'Listo. Revisá tu correo: te llegan el enlace a los apuntes y un mail para confirmar la suscripción (si no los ves, mirá en spam, promociones o notificaciones).';
           } else if (data && data.errors && data.errors.fields && data.errors.fields.email) {
             msg.textContent = 'Revisá el correo: no parece una dirección válida.';
           } else {
