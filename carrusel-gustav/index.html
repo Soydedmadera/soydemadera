@@ -22,21 +22,36 @@
 const { M, W, HUESO, SUAVE } = SDM;
 const MES = 'Noviembre 2026';
 const laminas = [
-  // Portada
+  // 1. Portada
   async c => { SDM.fondo(c); SDM.cabecera(c, 'Maestros · Soy de Madera');
     const img = await SDM.cargarImagen('../img/gustav-breitler-cofre-obsesion.jpg');
-    SDM.lamina(c, img, 270, 210, 540, 540);
-    SDM.texto(c, 'Gustav Breitler', M, 940, 104, HUESO);
-    SDM.texto(c, 'En el hacer viene el saber', M, 1020, 54, HUESO, 'italic');
+    SDM.lamina(c, img, 270, 200, 540, 540);
+    SDM.parrafo(c, 'Cofre para té «Obsesión» · Foto: Gustav Breitler (Instagram)', 270, 802, 540, 36, SUAVE);
+    SDM.texto(c, 'Gustav Breitler', M, 990, 104, HUESO);
+    SDM.texto(c, 'En el hacer viene el saber', M, 1070, 54, HUESO, 'italic');
     SDM.pie(c, MES); },
-  // Cita con foto
-  async c => { SDM.fondo(c);
+  // 2. Probar lo que no atrae
+  async c => { SDM.fondo(c); SDM.cabecera(c, 'Lo que no le gustaba');
+    const img = await SDM.cargarImagen('../img/gustav-breitler-cajonera-marqueteria.jpg');
+    SDM.lamina(c, img, 270, 190, 540, 540);
+    SDM.parrafo(c, 'Su primera pieza con marquetería, en sicómoro · Foto: Gustav Breitler (Instagram)', M, 792, W - 2 * M, 36, SUAVE);
+    const y = SDM.parrafo(c, '«Muchas veces lo que me lleva a probar cosas nuevas es el aliento y el apoyo, más que la curiosidad: ese dejar de dudar de uno mismo.»', M, 940, W - 2 * M, 48, HUESO);
+    SDM.texto(c, 'Sobre las colas de milano y la marquetería', M, y + 80, 36, SUAVE); },
+  // 3. Japón
+  async c => { SDM.fondo(c); SDM.cabecera(c, 'La tradición japonesa');
     const img = await SDM.cargarImagen('../img/gustav-breitler-cajas-kasane-rindo.jpg');
-    SDM.lamina(c, img, 300, 150, 480, 600);
-    const y = SDM.parrafo(c, '«Lo que más me aportó es la constancia y la serenidad que hay al trabajar de esa manera, en silencio y netamente con herramientas manuales.»', M, 870, W - 2 * M, 48, HUESO);
-    SDM.texto(c, 'Gustav Breitler, sobre la tradición japonesa', M, y + 80, 36, SUAVE);
-    SDM.parrafo(c, 'Cajitas con el patrón «Kasane Rindo». Cuadro de un video de Instagram de Gustav Breitler', M, 1232, W - 2 * M, 36, SUAVE); },
-  // Cierre
+    SDM.lamina(c, img, 330, 180, 420, 525);
+    SDM.parrafo(c, 'Cajitas con el patrón «Kasane Rindo» · Cuadro de un video de Gustav Breitler (Instagram)', M, 767, W - 2 * M, 36, SUAVE);
+    const y = SDM.parrafo(c, '«Lo que más me aportó es la constancia y la serenidad que hay al trabajar de esa manera, en silencio y netamente con herramientas manuales.»', M, 915, W - 2 * M, 48, HUESO);
+    SDM.texto(c, 'Sobre el kumiko y los ensambles japoneses', M, y + 80, 36, SUAVE); },
+  // 4. Juego
+  async c => { SDM.fondo(c); SDM.cabecera(c, 'Objetos que invitan a jugar');
+    const img = await SDM.cargarImagen('../img/gustav-breitler-caja-piure.jpg');
+    SDM.lamina(c, img, 270, 190, 540, 540);
+    SDM.parrafo(c, 'Caja de corte «Piure», en cerezo, maple y cedro · Foto: Gustav Breitler (Instagram)', M, 792, W - 2 * M, 36, SUAVE);
+    const y = SDM.parrafo(c, '«Lo lúdico de los objetos lo plasmo, por ejemplo, al dejar los ensambles pasantes, que de primera impresión llaman a querer tocar el objeto.»', M, 940, W - 2 * M, 48, HUESO);
+    SDM.texto(c, 'Sobre la precisión y el juego', M, y + 80, 36, SUAVE); },
+  // 5. Cierre
   c => { SDM.fondo(c);
     const y = SDM.parrafo(c, 'La entrevista completa, en la sección Maestros de soydemadera.com', M, 300, W - 2 * M, 64, HUESO);
     c.fillStyle = 'rgba(183,191,176,.45)'; c.fillRect(M, y + 70, W - 2 * M, 2);
