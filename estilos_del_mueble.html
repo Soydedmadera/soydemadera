@@ -309,7 +309,7 @@
   <div class="tm-section-label" id="recibir">Recibilo por correo</div>
 
   <article class="tm-perfil">
-    <p>Dejá tu correo y te mandamos el PDF completo. Te llegan dos mails: uno con el enlace al muestrario y otro para confirmar tu lugar en la lista de Soy de Madera, que avisa cuando hay algo nuevo. Te podés dar de baja cuando quieras.</p>
+    <p>Dejá tu correo y te llega un mail para confirmarlo. Cuando lo confirmás, te mandamos el enlace al muestrario y quedás en la lista de Soy de Madera, que avisa cuando hay algo nuevo. Te podés dar de baja cuando quieras.</p>
     <form id="guia-form" class="es-form" action="https://assets.mailerlite.com/jsonp/2730683/forms/205110709060634057/subscribe" method="post">
       <label for="guia-email" class="es-oculto">Tu correo</label>
       <input id="guia-email" type="email" name="fields[email]" required placeholder="tu@correo.com" autocomplete="email">
@@ -363,7 +363,7 @@
         .then(function (data) {
           if (data && data.success) {
             form.reset();
-            msg.textContent = 'Listo. Revisá tu correo: te llegan el enlace al muestrario y un mail para confirmar la suscripción (si no los ves, mirá en spam, promociones o notificaciones).';
+            msg.textContent = 'Listo. Revisá tu correo y confirmalo: después de la confirmación te llega el enlace al muestrario (si no ves el mail, mirá en spam, promociones o notificaciones).';
           } else if (data && data.errors && data.errors.fields && data.errors.fields.email) {
             msg.textContent = 'Revisá el correo: no parece una dirección válida.';
           } else {
